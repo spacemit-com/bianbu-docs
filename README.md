@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # 简介
 
-Bianbu是一个针对RISC-V架构的处理器做了深度优化的操作系统，有Bianbu Desktop和Bianbu NAS等版本，适用于不同的产品领域。
+Bianbu是一个针对RISC-V架构的处理器做了深度优化的操作系统，基于Ubuntu社区源码构建，有Bianbu Desktop和Bianbu NAS等版本，适用于不同的产品领域。
 
 ## 为什么做Bianbu
 
@@ -127,7 +127,7 @@ Bianbu NAS 是一个 NAS 操作系统，包含应用（openmediavault、docker �
 
 ## 固件
 
-最新版本：v1.0。
+最新版本：v1.0.3。
 
 Bianbu Desktop/NAS 固件：[https://archive.spacemit.com/image/k1/version/bianbu/](https://archive.spacemit.com/image/k1/version/bianbu/)
 

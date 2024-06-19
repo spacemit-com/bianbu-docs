@@ -30,7 +30,7 @@ Bianbu 固件可以通过 Titan Flasher 进行刷机，也可以直接通过 fas
 3. 进入 fastboot 模式
 
 ```bash
-reboot bootloader
+reboot fastboot
 ```
 
 等待设备重启并进入 fastboot 模式：
