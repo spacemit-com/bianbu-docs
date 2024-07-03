@@ -120,6 +120,11 @@ Bianbu NAS 是一个 NAS 操作系统，包含应用（openmediavault、docker �
 
 ![](static/Ga05bfXeVo6t0fxwTBkcSYxTnve.png)
 
+#### 应用
+
+- Openmediavault
+- Docker
+
 ### 支持的设备
 
 - BPI-F3
