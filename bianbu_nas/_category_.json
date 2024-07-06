@@ -1,9 +1,0 @@
-{
-  "label": "Bianbu NAS",
-  "position": 5,
-  "link": {
-    "type": "generated-index",
-    "description": "Bianbu NAS软件使用指南，包括基础设置、共享服务、Docker服务等。"
-  }
-}
-
