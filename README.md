@@ -132,7 +132,7 @@ Bianbu NAS 是一个 NAS 操作系统，包含应用（openmediavault、docker �
 
 ## 固件
 
-最新版本：v1.0.7。
+最新版本：v1.0.8。
 
 Bianbu Desktop/NAS 固件：[https://archive.spacemit.com/image/k1/version/bianbu/](https://archive.spacemit.com/image/k1/version/bianbu/)
 
