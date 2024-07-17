@@ -110,31 +110,15 @@ OpenSBI 是 RISC-V 架构处理器的监管程序接口的实现，运行在 M �
 ### 支持的设备
 
 - BPI-F3
-- Muse Pi
-- Muse Box
-- Muse Book
-
-## Bianbu NAS
-
-Bianbu NAS 是一个 NAS 操作系统，包含应用（openmediavault、docker 和常用软件）、框架、库、运行时、Linux 内核、引导加载程序（U-Boot）和监管程序接口（OpenSBI）等。其目标是为客户提供 NAS 软件参考设计，并且可以开发驱动或应用。
-
-![](static/Ga05bfXeVo6t0fxwTBkcSYxTnve.png)
-
-#### 应用
-
-- Openmediavault
-- Docker
-
-### 支持的设备
-
-- BPI-F3
-- Muse Pi
+- MUSE Pi
+- MUSE Box
+- MUSE Book
 
 ## 固件
 
 最新版本：v1.0.8。
 
-Bianbu Desktop/NAS 固件：[https://archive.spacemit.com/image/k1/version/bianbu/](https://archive.spacemit.com/image/k1/version/bianbu/)
+Bianbu Desktop 固件：[https://archive.spacemit.com/image/k1/version/bianbu/](https://archive.spacemit.com/image/k1/version/bianbu/)
 
 `*.img.zip`是sdcard固件，解压后可以用dd命令或者[balenaEtcher](https://etcher.balena.io/)写入sdcard。
 
