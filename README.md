@@ -116,7 +116,7 @@ OpenSBI 是 RISC-V 架构处理器的监管程序接口的实现，运行在 M �
 
 ## 固件
 
-最新版本：v1.0.9。
+最新版本：v1.0.12。
 
 Bianbu Desktop 固件：[https://archive.spacemit.com/image/k1/version/bianbu/](https://archive.spacemit.com/image/k1/version/bianbu/)
 
