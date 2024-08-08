@@ -1,5 +1,5 @@
 ---
-sidebar_postition: 4
+sidebar_position: 4
 ---
 
 # 软件包管理
