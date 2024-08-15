@@ -110,15 +110,25 @@ OpenSBI 是 RISC-V 架构处理器的监管程序接口的实现，运行在 M �
 ### 支持的设备
 
 - BPI-F3
+- Milk-V Jupiter
+- MUSE Card
 - MUSE Pi
 - MUSE Box
 - MUSE Book
 
-## 固件
+## 版本
+
+### Bianbu 1.0
 
 最新版本：v1.0.12。
 
-Bianbu Desktop 固件：[https://archive.spacemit.com/image/k1/version/bianbu/](https://archive.spacemit.com/image/k1/version/bianbu/)
+### Bianbu 2.0
+
+开发中的版本：v2.0alpha1。
+
+## 固件
+
+Bianbu固件地址：[https://archive.spacemit.com/image/k1/version/bianbu/](https://archive.spacemit.com/image/k1/version/bianbu/)
 
 `*.img.zip`是sdcard固件，解压后可以用dd命令或者[balenaEtcher](https://etcher.balena.io/)写入sdcard。
 
