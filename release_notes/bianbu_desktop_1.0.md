@@ -132,3 +132,17 @@ Bianbu Linux版本：[v1.0.12](https://bianbu-linux.bianbu.xyz/release_notes/bl-
 ### 主要更新
 
 - 修复目标检测和姿态跟踪无法打开的问题
+
+## v1.0.13
+
+发布日期：2024-8-16
+
+Bianbu Linux版本：[v1.0.13](https://bianbu-linux.bianbu.xyz/release_notes/bl-v1.0.y#v1013%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+
+### 主要更新
+
+- 支持开关机动画
+- 支持安装`llm-client`大语言模型客户端
+- 支持安装`box64`
+- 完善universe组件
+- 修复版本号错误，反复在线升级的问题
