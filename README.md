@@ -135,3 +135,7 @@ Bianbu固件地址：[https://archive.spacemit.com/image/k1/version/bianbu/](htt
 `*.zip`适用于Titan Flasher，刷机参考[刷机工具使用手册](https://developer.spacemit.com/#/documentation?token=O6wlwlXcoiBZUikVNh2cczhin5d)，或者解压后用fastboot刷机。
 
 固件 root 用户的密码：`bianbu`。
+
+## 问题反馈
+
+[https://gitee.com/bianbu/docs/issues](https://gitee.com/bianbu/docs/issues)。
