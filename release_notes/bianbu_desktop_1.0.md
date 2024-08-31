@@ -146,3 +146,14 @@ Bianbu Linux版本：[v1.0.13](https://bianbu-linux.bianbu.xyz/release_notes/bl-
 - 支持安装`box64`
 - 完善universe组件
 - 修复版本号错误，反复在线升级的问题
+
+## v1.0.14
+
+发布日期：2024-8-31
+
+Bianbu Linux版本：[v1.0.14](https://bianbu-linux.bianbu.xyz/release_notes/bl-v1.0.y#v1014%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+
+### 主要更新
+
+- 修复HDMI作为主屏时，没接导致串口无法登录的问题
+- 修复ssh不支持压缩的问题
