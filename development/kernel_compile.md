@@ -136,7 +136,7 @@ make -j$(nproc) dtbs
 安装依赖：
 
 ```shell
-sudo apt-get install flex bison libncurses-dev debhelper libssl-dev u-boot-tools libpfm4-dev libpfm4-dev libtraceevent-dev asciidoc
+sudo apt-get install flex bison libncurses-dev debhelper libssl-dev u-boot-tools libpfm4-dev libtraceevent-dev asciidoc bc rsync libelf-dev
 ```
 
 ### 编译软件包
