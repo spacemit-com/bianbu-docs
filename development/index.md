@@ -12,3 +12,4 @@ slug: /development
 - [固件制作](firmware.md)
 - [Electron使用指南](electron.md)
 - [远程开发](remote_development.md)
+- [Coredump](coredump.md)
