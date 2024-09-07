@@ -33,7 +33,7 @@ git clone https://gitee.com/bianbu-linux/linux-6.6 ~/linux-6.6
 3. 设置交叉编译器环境变量：
 
    ```shell
-   export PATH=/path/to/spacemit-toolchain-linux-glibc-x86_64-v1.0.0/bin:$PATH
+   export PATH=/opt/spacemit-toolchain-linux-glibc-x86_64-v1.0.0/bin:$PATH
    ```
 
 ### 编译软件包

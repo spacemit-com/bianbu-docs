@@ -152,3 +152,14 @@ Bianbu Linux版本：[v1.0.14](https://bianbu-linux.bianbu.xyz/release_notes/bl-
 
 - 修复HDMI作为主屏时，没接导致串口无法登录的问题
 - 修复ssh不支持压缩的问题
+
+## v1.0.15
+
+发布日期：2024-9-7
+
+Bianbu Linux版本：[v1.0.15](https://bianbu-linux.bianbu.xyz/release_notes/bl-v1.0.y#v1015%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+
+### 主要更新
+
+- 修复spacemit-uart-bt软件包版本过低的问题
+- 支持升级到Bianbu 2.0（开发中的版本）
