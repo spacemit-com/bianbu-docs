@@ -16,7 +16,7 @@ git clone https://gitee.com/bianbu-linux/linux-6.6 ~/linux-6.6
 
 ### 开发环境
 
-参考Bianbu Linux的[开发环境](https://bianbu-linux.bianbu.xyz/download_and_build#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83)准备好交叉编译环境。
+参考Bianbu Linux的[开发环境](https://bianbu-linux.spacemit.com/download_and_build#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83)准备好交叉编译环境。
 
 ### 编译器
 
