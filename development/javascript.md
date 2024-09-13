@@ -4,17 +4,13 @@ sidebar_position: 4
 
 # JavaScript使用指南
 
-## 准备工作
-
-在使用JavaScript前，需要为其安装Node.js和npm。
+## Node.js使用指南
 
 ### 使用apt安装Node.js
 
-
 ```shell
 sudo apt-get update
-sudo apt-get install -y nodejs
-sudo apt-get install -y npm
+sudo apt-get install -y nodejs npm
 ```
 
 检查是否安装成功。
@@ -26,21 +22,23 @@ $ npm -v
 9.2.0
 ```
 
-bianbu源中的Node.js默认版本为v18.13.0，若想使用特定版本的Node.js，请使用NVM安装。
-
+Bianbu源中的Node.js默认版本为v18.13.0，若想使用特定版本的Node.js，请使用NVM安装。
 
 ### 使用NVM安装特定版本Node.js
 
 #### 安装NVM
 
-根据 https://github.com/nvm-sh/nvm 提供的命令行下载并执行安装脚本，请根据该仓库替换最新的NVM版本号。
+根据 <https://github.com/nvm-sh/nvm> 提供的命令行下载并执行安装脚本，请根据该仓库替换最新的NVM版本号。
 
-使用curl
+使用curl：
+
 ```shell
 sudo apt install curl
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 ```
-或使用wget
+
+或使用wget：
+
 ```bash
 sudo apt install wget
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
@@ -55,8 +53,7 @@ $ nvm -v
 
 #### 安装Node.js
 
-目前官方源中的node尚未适配riscv，直接安装会导致错误，因此我们从unofficial-builds中下载已适配riscv的node。  
-更多信息请参考 https://github.com/nodejs/unofficial-builds/
+目前官方源中的node尚未适配riscv，直接安装会导致错误，因此我们从unofficial-builds中下载已适配riscv的node。更多信息请参考 <https://github.com/nodejs/unofficial-builds/>
 
 ```shell
 NVM_NODEJS_ORG_MIRROR=https://unofficial-builds.nodejs.org/download/release nvm install 20.16.0
@@ -93,7 +90,7 @@ sudo apt install grunt
 grunt connect
 ```
 
-你可以看到如下输出，服务默认部署在 http://0.0.0.0:8001，在浏览器中打开该网页进行体验。
+你可以看到如下输出，服务默认部署在<http://0.0.0.0:8001>，在浏览器中打开该网页进行体验。
 
 ```shell
 $ grunt connect
@@ -106,7 +103,7 @@ Started connect web server on http://0.0.0.0:8001
 
 ### 准备工作
 
-请参考JavaScript使用指南进行准备工作。
+请先安装Node.js。
 
 ### 快速开始
 
@@ -133,15 +130,13 @@ npm start
 
 ![electron-quick-start](./static/electron-quick-start.png)
 
-## Electron-builder使用指南
+## electron-builder使用指南
 
-Electron-builder 是一个用于简化 Electron 应用打包和发布的工具，支持多平台构建和自动更新功能。  
-目前官方源中的Electron-builder和相关组件未完全适配RISCV平台，因此需要使用SpacemiT适配的内部版本。  
-这里以 [electron-quick-start](https://github.com/electron/electron-quick-start) 为打包项目。
+electron-builder 是一个用于简化 Electron 应用打包和发布的工具，支持多平台构建和自动更新功能。目前官方源中的electron-builder和相关组件未完全适配RISCV平台，因此需要使用SpacemiT适配的内部版本。这里以 [electron-quick-start](https://github.com/electron/electron-quick-start) 为打包项目。
 
 ### 准备工作
 
-请参考JavaScript使用指南进行准备工作。
+请先安装Node.js。
 
 ### 克隆仓库
 
@@ -179,8 +174,7 @@ vim package.json
   },
 ```
 
-添加依赖项，请使用@【仓库】/【依赖包】来指定从哪个仓库下载包。  
-@electron指SpacemiT的 [Node.js包仓库](https://git.spacemit.com/electron/electron-builder/-/packages)
+添加依赖项，请使用@【仓库】/【依赖包】来指定从哪个仓库下载包。@electron指SpacemiT的 [Node.js包仓库](https://git.spacemit.com/electron/electron-builder/-/packages)。
 
 ```json
   "devDependencies": {
@@ -236,8 +230,7 @@ npm config set @electron:registry https://git.spacemit.com/api/v4/projects/36/pa
 
 ### 安装依赖
 
-这里通过镜像地址指定使用适配RISCV的electron，请勿在`npm config`配置Electron和Electron-builder的镜像地址，否则命令指定的镜像地址将失效。  
-可以通过`npm config list`检查。
+这里通过镜像地址指定使用适配RISCV的electron，请勿在`npm config`配置Electron和electron-builder的镜像地址，否则命令指定的镜像地址将失效。可以通过`npm config list`检查。
 
 ```shell
 ELECTRON_MIRROR=http://archive.spacemit.com/electron/ electron_use_remote_checksums=1 npm install
@@ -333,8 +326,7 @@ sudo apt install ruby3.1
 sudo gem install fpm
 ```
 
-打包deb，可相应修改命令参数。  
-发布压缩包的压缩耗时较长，请耐心等待。
+打包deb，可相应修改命令参数。发布压缩包的压缩耗时较长，请耐心等待。
 
 ```shell
 mkdir tmp
@@ -374,6 +366,7 @@ cd build/linux-riscv64-unpacked/
 ```
 
 #### 以压缩包发布
+
 将压缩包解压，运行解压目录下的`electron-quick-start`。
 
 ```shell
@@ -384,6 +377,7 @@ cd electron-quick-start-1.0.0-riscv64
 ```
 
 #### 以deb包发布
+
 安装deb包，执行安装的应用。
 
 ```shell
