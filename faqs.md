@@ -28,5 +28,4 @@ sidebar_position: 5
 
    ![](static/tmpst8dy3yi.PNG)
 
-5. 按下键盘Ctrl + Alt + F1组合键，切回登录界面，使用新密码登录即可。
-
+6. 按下键盘Ctrl + Alt + F1组合键，切回登录界面，使用新密码登录即可。

@@ -33,7 +33,7 @@ info HTTP server listening on http://IP:PORT/
 info  Session server listening on ~/.local/share/code-server/code-server-ipc.sock
 ```
 
-在任何电脑、平板上打开浏览器，访问http://IP:PORT，即可打开远程的文件夹和文件。
+在任何电脑、平板上打开浏览器，访问`http://IP:PORT`，即可打开远程的文件夹和文件。
 
 ![code-server](./static/code-server.png)
 
