@@ -37,7 +37,7 @@ docker ce 安装可参考 [https://docs.docker.com/engine/install/](https://docs
 4. 注册 qemu-user-static 到内核，这样整个系统范围（含容器）均可以直接执行 riscv 的二进制文件
 
    ```shell
-   sudo systemctl start systemd-binfmt.service
+   sudo systemctl restart systemd-binfmt.service
    ```
 
 5. 验证 qemu-user-static 是否注册成功
