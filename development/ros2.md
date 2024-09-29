@@ -129,21 +129,21 @@ sudo apt-get install -y \
 * 解压软件包
 
 ```shell
-mkdir -p ~/ros2_jazzy
-cd ~/ros2_jazzy
-tar -xzvf ~/ros2-jazzy-linux-riscv64-20240920.tar.gz
+sudo mkdir -p /opt/ros2/jazzy_prebuild
+cd /opt/ros2/jazzy_prebuild
+sudo tar -xzvf ~/ros2-jazzy-linux-riscv64-20240920.tar.gz
 ```
 
-这会将prebuilt包的文件安装到当前路径（ 在本例中是 ~/ros2_jazzy ）
+这会将prebuilt包的文件安装到当前路径（ 在本例中是 /opt/ros2/jazzy_prebuild ）
 
 **提示**
 
-> 当您使用其它 ROS2 的发行版时，例如 Humble，请将本示例中的 ros2_jazzy 替换为任何您喜欢的名字，注意不要同名，以免新的安装错误覆盖了之前的文件。
+> 当您使用其它 ROS2 的发行版时，例如 Humble，请将本示例中的 jazzy_prebuild 替换为任何您喜欢的名字，注意不要同名，以免新的安装错误覆盖了之前的文件。
 
 解压完成后的文件夹应该如下所示：
 
 ```shell
-➜  ros2_jazzy ls
+➜  jazzy_prebuild ls
 bin            include           local_setup.ps1           _local_setup_util_sh.py  setup.bash  setup.zsh  tools
 COLCON_IGNORE  lib               local_setup.sh            local_setup.zsh          setup.ps1   share
 etc            local_setup.bash  _local_setup_util_ps1.py  opt                      setup.sh    src
@@ -165,14 +165,14 @@ echo $0
 在任意位置打开一个终端，使用 source 命令更新 ROS2 的环境变量，然后运行 ​​C++ talker ：
 
 ```shell
-source ~/ros2_jazzy/local_setup.zsh
+source /opt/ros2/jazzy_prebuild/setup.zsh
 ros2 run demo_nodes_cpp talker
 ```
 
 在另一个终端中使用 source 命令更新 ROS2 的环境变量，然后运行 ​​Python listener ：
 
 ```shell
-source ~/ros2_jazzy/local_setup.zsh
+source /opt/ros2/jazzy_prebuild/setup.zsh
 ros2 run demo_nodes_py listener
 ```
 
@@ -182,11 +182,11 @@ ros2 run demo_nodes_py listener
 
 **提示**
 
-> 当如果当前终端已经执行：source ~/ros2_jazzy/local_setup.zsh，则不必重复执行
+> 当如果当前终端已经执行：source /opt/ros2/jazzy_prebuild/setup.zsh，则不必重复执行
 
 ### 小海龟
 
-如果您新打开了一个终端，不要忘记执行：source ~/ros2_jazzy/local_setup.zsh
+如果您新打开了一个终端，不要忘记执行：source /opt/ros2/jazzy_prebuild/setup.zsh
 
 本示例请在桌面中启动终端运行，使用 ssh 连接的终端无法拉起 turtlesim 的界面
 
