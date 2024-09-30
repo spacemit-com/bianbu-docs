@@ -89,8 +89,10 @@ Linux 内核负责管理处理器和其他硬件资源，提供用户和应用�
 
 版本：6.1和6.6。
 
-- 6.1源码：[https://gitee.com/bianbu-linux/linux-6.1](https://gitee.com/bianbu-linux/linux-6.1)
-- 6.6源码：[https://gitee.com/bianbu-linux/linux-6.6](https://gitee.com/bianbu-linux/linux-6.6) (LTS)
+源码：
+
+- [https://gitee.com/bianbu-linux/linux-6.1](https://gitee.com/bianbu-linux/linux-6.1)
+- [https://gitee.com/bianbu-linux/linux-6.6](https://gitee.com/bianbu-linux/linux-6.6) (LTS)
 
 #### U-Boot
 
