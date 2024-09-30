@@ -28,7 +28,7 @@ Bianbu源中的Node.js默认版本为v18.13.0，若想使用特定版本的Node.
 
 #### 安装NVM
 
-根据 <https://github.com/nvm-sh/nvm> 提供的命令行下载并执行安装脚本，请根据该仓库替换最新的NVM版本号。
+根据 `https://github.com/nvm-sh/nvm` 提供的命令行下载并执行安装脚本，请根据该仓库替换最新的NVM版本号。
 
 使用curl：
 
@@ -53,7 +53,7 @@ $ nvm -v
 
 #### 安装Node.js
 
-目前官方源中的node尚未适配riscv，直接安装会导致错误，因此我们从unofficial-builds中下载已适配riscv的node。更多信息请参考 <https://github.com/nodejs/unofficial-builds/>
+目前官方源中的node尚未适配riscv，直接安装会导致错误，因此我们从unofficial-builds中下载已适配riscv的node。更多信息请参考 `https://github.com/nodejs/unofficial-builds/`
 
 ```shell
 NVM_NODEJS_ORG_MIRROR=https://unofficial-builds.nodejs.org/download/release nvm install 20.16.0
@@ -90,7 +90,7 @@ sudo apt install grunt
 grunt connect
 ```
 
-你可以看到如下输出，服务默认部署在<http://0.0.0.0:8001>，在浏览器中打开该网页进行体验。
+你可以看到如下输出，服务默认部署在`http://0.0.0.0:8001`，在浏览器中打开该网页进行体验。
 
 ```shell
 $ grunt connect
