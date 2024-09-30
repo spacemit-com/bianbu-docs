@@ -298,7 +298,7 @@ pyenv: 3.10.0 uninstalled
 
 1. 安装 PyPI 包
 
-<package_name> 是包名。
+`<package_name>` 是包名。
 
 ```shell
 pip install --index-url https://git.spacemit.com/api/v4/projects/33/packages/pypi/simple <package_name>
