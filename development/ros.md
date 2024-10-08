@@ -161,7 +161,7 @@ export QT_QPA_PLATFORM=xcb
 ```shell
 sudo mkdir -p /opt/ros/noetic
 cd /opt/ros/noetic
-sudo tar -xzvf ~/ros-noetic-desktop-linux-riscv64-20240925.tar.gz
+sudo tar -xzvf ~/ros-noetic-desktop-full-linux-riscv64-20240930.tar.gz
 ```
 
 这会将prebuilt包的文件安装到 /opt/ros/noetic 。建议安装到 /opt/ros/noetic 路径下，使用其他路径会出现一些问题。
