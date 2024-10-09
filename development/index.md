@@ -15,3 +15,4 @@ slug: /development
 - [ROS2使用指南](ros2.md)
 - [远程开发](remote_development.md)
 - [Coredump](coredump.md)
+- [Perf使用注意事项](perf.md)
