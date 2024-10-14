@@ -197,6 +197,7 @@ ros2 run turtlesim turtlesim_node
 ```
 
 您应该可以看到模拟器窗口弹出，中间有一只随机的海龟
+
 ![alt text](static/ROS2-turtlesim.png)
 
 在终端中的命令下，您将看到来自节点的消息：
