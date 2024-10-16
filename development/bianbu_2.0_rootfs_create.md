@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Bianbu 1.0 ROOTFS制作
+# Bianbu 2.0 ROOTFS制作
 
 ## 环境要求
 
@@ -66,7 +66,7 @@ docker ce 安装可参考 [https://docs.docker.com/engine/install/](https://docs
 2. 创建并启动容器
 
    ```shell
-   docker run --privileged -itd -v ~/bianbu-workspace:/mnt --name build-bianbu-rootfs ubuntu:24.04
+   docker run --privileged -itd -v ~/bianbu-workspace:/mnt --name build-bianbu-rootfs harbor.spacemit.com/bianbu/bianbu:latest
    ```
 
 3. 进入容器
@@ -85,7 +85,7 @@ docker ce 安装可参考 [https://docs.docker.com/engine/install/](https://docs
 5. 配置环境变量，方便后续命令使用
 
    ```shell
-   export BASE_ROOTFS_URL=https://archive.spacemit.com/bianbu-base/bianbu-base-23.10-base-riscv64.tar.gz
+   export BASE_ROOTFS_URL=https://archive.spacemit.com/bianbu-base/bianbu-base-24.04-base-riscv64.tar.gz
    export BASE_ROOTFS=$(basename "$BASE_ROOTFS_URL")
    export TARGET_ROOTFS=rootfs
    ```
@@ -118,65 +118,19 @@ docker ce 安装可参考 [https://docs.docker.com/engine/install/](https://docs
 1. 首先配置环境变量，方便后续命令使用
 
    ```shell
-   export DIST=mantic
-   export REPO="archive.spacemit.com/bianbu-ports"
-   export VERSION="v1.0.13"
+   export REPO="archive.spacemit.com/bianbu"
+   export VERSION="v2.0"
    ```
 
-2. 安装源的签名公钥
+2. 配置 bianbu.sources
 
    ```shell
-   wget -O $TARGET_ROOTFS/usr/share/keyrings/bianbu-archive-keyring-mantic.gpg https://archive.spacemit.com/bianbu-ports/bianbu-archive-keyring.gpg
-   wget -O $TARGET_ROOTFS/etc/apt/trusted.gpg.d/bianbu-archive-keyring-mantic.gpg https://archive.spacemit.com/bianbu-ports/bianbu-archive-keyring.gpg
-   ```
-
-3. 配置 sources.list
-
-   ```shell
-   cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list
-   # $DIST
-   deb https://$REPO/ $DIST/snapshots/$VERSION main universe multiverse restricted
-   # deb-src https://$REPO/ $DIST/snapshots/$VERSION main universe multiverse restricted
-   
-   # $DIST-security
-   deb https://$REPO/ $DIST-security/snapshots/$VERSION main universe multiverse restricted
-   # deb-src https://$REPO/ $DIST-security/snapshots/$VERSION main universe multiverse restricted
-   EOF
-   ```
-
-4. 配置 sources.list.d/bianbu.list
-
-   ```shell
-   cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.list
-   # $DIST-spacemit
-   deb https://$REPO/ $DIST-spacemit/snapshots/$VERSION main universe multiverse restricted
-   # deb-src https://$REPO/ $DIST-spacemit/snapshots/$VERSION main universe multiverse restricted
-   
-   # $DIST-porting
-   deb https://$REPO/ $DIST-porting/snapshots/$VERSION main universe multiverse restricted
-   # deb-src https://$REPO/ $DIST-porting/snapshots/$VERSION main universe multiverse restricted
-   
-   # $DIST-customization
-   deb https://$REPO/ $DIST-customization/snapshots/$VERSION main universe multiverse restricted
-   # deb-src https://$REPO/ $DIST-customization/snapshots/$VERSION main universe multiverse restricted
-   EOF
-   ```
-
-5. 配置源的优先级
-
-   ```shell
-   cat <<EOF | tee $TARGET_ROOTFS/etc/apt/preferences.d/bianbu
-   Package: *
-   Pin: release o=Spacemit, n=mantic-spacemit
-   Pin-Priority: 1200
-   
-   Package: *
-   Pin: release o=Spacemit, n=mantic-porting
-   Pin-Priority: 1100
-   
-   Package: *
-   Pin: release o=Spacemit, n=mantic-customization
-   Pin-Priority: 1100
+   cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.sources
+   Types: deb
+   URIs: https://$REPO/
+   Suites: noble/snapshots/$VERSION noble-security/snapshots/$VERSION noble-porting/snapshots/$VERSION noble-customization/snapshots/$VERSION
+   Components: main universe restricted multiverse
+   Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
    EOF
    ```
 
@@ -189,11 +143,10 @@ echo "nameserver 8.8.8.8" >$TARGET_ROOTFS/etc/resolv.conf
 ### 安装硬件相关的包
 
 ```shell
-chroot $TARGET_ROOTFS /bin/bash -c "apt-get -y install ca-certificates"
 chroot $TARGET_ROOTFS /bin/bash -c "apt-get update"
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades upgrade"
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install initramfs-tools"
-chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-esos img-gpu-powervr k1x-vpu-firmware k1x-cam spacemit-uart-bt spacemit-modules-usrload opensbi-spacemit u-boot-spacemit linux-image-6.1.15"
+chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-esos img-gpu-powervr k1x-vpu-firmware k1x-cam spacemit-uart-bt spacemit-modules-usrload opensbi-spacemit u-boot-spacemit linux-image-6.6.36"
 ```
 
 ### 安装元包
@@ -298,3 +251,7 @@ mke2fs -d $TARGET_ROOTFS -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4
 ```
 
 此时，在当前目录可以看到两个分区镜像，bootfs.ext4 和 rootfs.ext4，可使用 fastboot 烧写到板子中。
+
+## 制作固件
+
+见 [固件制作指南](image.md)
