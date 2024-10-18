@@ -135,7 +135,7 @@ Bianbu固件地址：[https://archive.spacemit.com/image/k1/version/bianbu/](htt
 
 `*.img.zip`是sdcard固件，解压后可以用dd命令或者[balenaEtcher](https://etcher.balena.io/)写入sdcard。
 
-`*.zip`适用于Titan Flasher，刷机参考[刷机工具使用手册](https://developer.spacemit.com/#/documentation?token=O6wlwlXcoiBZUikVNh2cczhin5d)，或者解压后用fastboot刷机。
+`*.zip`适用于Titan Flasher，刷机参考[刷机工具使用手册](https://developer.spacemit.com/documentation?token=O6wlwlXcoiBZUikVNh2cczhin5d)，或者解压后用fastboot刷机。
 
 固件 root 用户的密码：`bianbu`。
 

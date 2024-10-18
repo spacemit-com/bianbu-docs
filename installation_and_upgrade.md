@@ -12,7 +12,7 @@ Bianbu 固件可以通过 Titan Flasher 进行刷机，也可以直接通过 fas
 
 以 `.zip` 结尾的 zip 固件，适用于 Titan Flasher。
 
-步骤参考《[刷机工具使用手册](https://developer.spacemit.com/#/documentation?token=O6wlwlXcoiBZUikVNh2cczhin5d)》。
+步骤参考《[刷机工具使用手册](https://developer.spacemit.com/documentation?token=O6wlwlXcoiBZUikVNh2cczhin5d)》。
 
 ### 使用 fastboot 刷机
 
