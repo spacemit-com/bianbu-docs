@@ -9,6 +9,7 @@ slug: /development
 
 - [编译内核](kernel_compile.md)
 - [Bianbu 1.0 ROOTFS制作](bianbu_1.0_rootfs_create.md)
+- [Bianbu 2.0 ROOTFS制作](bianbu_2.0_rootfs_create.md)
 - [固件制作](image.md)
 - [Javascript使用指南](javascript.md)
 - [Python使用指南](python.md)

@@ -39,7 +39,7 @@ Bianbu Linux版本：[v2.0rc6](https://bianbu-linux.spacemit.com/release_notes/b
 
 ### 主要更新
 
-- 支持python3-gpiozero
+- 支持python3-gpiozerov
 - 支持code-server
 - 支持apport
 - gnome-initial-setup支持设置hostname
@@ -48,10 +48,24 @@ Bianbu Linux版本：[v2.0rc6](https://bianbu-linux.spacemit.com/release_notes/b
 
 发布日期：2024-9-30
 
-Bianbu Linux版本：[v2.0rc7](https://bianbu-linux.spacemit.com/release_notes/bl-v2.0.y/#v20rc7%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E%E5%BC%80%E5%8F%91%E4%B8%AD)
+Bianbu Linux版本：[v2.0rc7](https://bianbu-linux.spacemit.com/release_notes/bl-v2.0.y/#v20rc7%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ### 主要更新
 
 - 修复chromium播放视频崩溃的问题
 - 修复chromium cookie失效的问题
 - 更新box64，支持rvv，支持运行wps-office
+
+## v2.0
+
+发布日期：2024-10-22
+
+Bianbu Linux版本：[v2.0](https://bianbu-linux.spacemit.com/release_notes/bl-v2.0.y/#v20%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+
+### 主要更新
+
+- 修复首次启动提示 Failed to start plymouth-quit-wait 提示
+- 修复亮色主题状态栏颜色问题
+- LLVM 18 升级到 18.1.8
+- GCC 14 升级到 14.2
+- 更新 img-gpu-powervr ，修复 gnome-shell 编译报错的问题
