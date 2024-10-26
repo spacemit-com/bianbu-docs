@@ -1,3 +1,6 @@
+variables:
+  WEBSITE_NAME: "bianbu-website"
+
 default:
   image: "harbor.bianbu.xyz/gitlab/node:v1"
   before_script:
@@ -16,11 +19,11 @@ pages:
   stage: test
   variables:
     GIT_STRATEGY: none
-    BASE_URL: /-/bianbu-docs/-/jobs/$CI_JOB_ID/artifacts/public/
+    BASE_URL: /-/$CI_PROJECT_NAME/-/jobs/$CI_JOB_ID/artifacts/public/
   script:
     - echo "Downloading website code..."
-    - git clone --recurse-submodules git@gitlab.dc.com:bianbu/bianbu-website.git
-    - cd bianbu-website/submodules/bianbu-docs
+    - git clone --recurse-submodules git@gitlab.dc.com:bianbu/$WEBSITE_NAME.git
+    - cd $WEBSITE_NAME/submodules/$CI_PROJECT_NAME
     - git checkout $CI_COMMIT_SHORT_SHA
     - echo "Download complete."
     - echo "Compiling the code..."
