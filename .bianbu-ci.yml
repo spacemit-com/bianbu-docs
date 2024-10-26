@@ -1,0 +1,37 @@
+default:
+  image: "harbor.bianbu.xyz/gitlab/node:v1"
+  before_script:
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan gitlab.dc.com >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+
+stages:
+  - test
+
+pages:
+  stage: test
+  variables:
+    GIT_STRATEGY: none
+    BASE_URL: /-/bianbu-docs/-/jobs/$CI_JOB_ID/artifacts/public/
+  script:
+    - echo "Downloading website code..."
+    - git clone --recurse-submodules git@gitlab.dc.com:bianbu/bianbu-website.git
+    - cd bianbu-website/submodules/bianbu-docs
+    - git checkout $CI_COMMIT_SHORT_SHA
+    - echo "Download complete."
+    - echo "Compiling the code..."
+    - cd ../..
+    - npm --registry https://nexus.bianbu.xyz/repository/npmproxy/ install --no-strict-ssl
+    - bash prepare.sh
+    - npm run build
+    - echo "Compile complete."
+    - mv build ../public
+  artifacts:
+    paths:
+      - public/
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
