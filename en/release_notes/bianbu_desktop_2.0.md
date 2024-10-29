@@ -69,3 +69,13 @@ Bianbu Linux version: [v2.0](https://bianbu-linux.spacemit.com/en/release_notes/
 - Upgrade LLVM 18 to 18.1.8
 - Upgrade GCC 14 to 14.2
 - Update img-gpu-powervr to fix the gnome-shell compilation error
+
+## v2.0
+
+Release date: 2024-10-28
+
+Bianbu Linux version: [v2.0.1](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v201-release-note)
+
+### Major Updates
+
+- Update BSP related components

@@ -127,7 +127,7 @@ Latest version: v1.0.15
 
 ### Bianbu 2.0
 
-Development version: v2.0rc1
+Latest version: v2.0.1
 
 ## Image
 
