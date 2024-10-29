@@ -69,3 +69,13 @@ Bianbu Linux版本：[v2.0](https://bianbu-linux.spacemit.com/release_notes/bl-v
 - LLVM 18 升级到 18.1.8
 - GCC 14 升级到 14.2
 - 更新 img-gpu-powervr ，修复 gnome-shell 编译报错的问题
+
+## v2.0.1
+
+发布日期：2024-10-28
+
+Bianbu Linux版本：[v2.0.1](https://bianbu-linux.spacemit.com/release_notes/bl-v2.0.y/#v201%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+
+### 主要更新
+
+- 更新 BSP 相关组件
