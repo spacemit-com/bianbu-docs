@@ -18,3 +18,4 @@ slug: /development
 - [集成开发环境](ide.md)
 - [Coredump](coredump.md)
 - [Perf使用注意事项](perf.md)
+- [Qt使用指南](qt.md)

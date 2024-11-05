@@ -18,3 +18,4 @@ Below are some development guide:
 - [IDE](ide.md)
 - [Coredump](coredump.md)
 - [Perf Usage Note](perf.md)
+- [Qt User Guide](qt.md)
