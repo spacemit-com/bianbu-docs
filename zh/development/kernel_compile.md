@@ -14,11 +14,11 @@ git clone https://gitee.com/bianbu-linux/linux-6.6 ~/linux-6.6
 
 ## 交叉编译
 
-### 开发环境
+### 交叉开发环境
 
 参考Bianbu Linux的[开发环境](https://bianbu-linux.spacemit.com/download_and_build#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83)准备好交叉编译环境。
 
-### 编译器
+### 交叉编译器
 
 地址：[http://archive.spacemit.com/toolchain/](http://archive.spacemit.com/toolchain/)
 
@@ -36,7 +36,7 @@ git clone https://gitee.com/bianbu-linux/linux-6.6 ~/linux-6.6
    export PATH=/opt/spacemit-toolchain-linux-glibc-x86_64-v1.0.0/bin:$PATH
    ```
 
-### 编译软件包
+### 交叉编译内核
 
 进入内核源码目录：
 
@@ -102,7 +102,7 @@ sudo dpkg -i linux-image-6.6.36_6.6.36-*.deb
 sudo reboot
 ```
 
-### 编译模块
+### 交叉编译模块
 
 编译内核源码树外的模块，以rtl8852bs为例，一般命令如下：
 
@@ -119,7 +119,7 @@ make -j$(nproc) -C ~/linux-6.6 M=/path/to/rtl8852bs modules
 make -j$(nproc) -C ~/linux-6.6 M=/path/to/rtl8852bs clean
 ```
 
-### 编译设备树
+### 交叉编译设备树
 
 单独编译设备树：
 
@@ -131,15 +131,15 @@ make -j$(nproc) dtbs
 
 在Bianbu上可直接编译内核，以下是指南。
 
-### 开发环境
+### 本地开发环境
 
 安装依赖：
 
 ```shell
-sudo apt-get install flex bison libncurses-dev debhelper libssl-dev u-boot-tools libpfm4-dev libtraceevent-dev asciidoc bc rsync libelf-dev
+sudo apt-get install flex bison libncurses-dev debhelper libssl-dev u-boot-tools libpfm4-dev libtraceevent-dev asciidoc bc rsync libelf-dev devscripts
 ```
 
-### 编译软件包
+### 本地编译内核
 
 进入内核源码目录：
 
@@ -204,7 +204,7 @@ sudo dpkg -i linux-image-6.6.36_6.6.36-*.deb
 sudo reboot
 ```
 
-### 编译模块
+### 本地编译模块
 
 本地编译内核源码树外的模块，可以不依赖内核源码。
 
@@ -229,4 +229,57 @@ make -j$(nproc) -C /lib/modules/`uname -r`/build M=/path/to/rtl8852bs modules
 make -j$(nproc) -C /lib/modules/`uname -r`/build M=/path/to/rtl8852bs clean
 ```
 
+## 其他组件
 
+### u-boot
+
+下载源码：
+
+```shell
+git clone https://gitee.com/bianbu-linux/uboot-2022.10 ~/uboot-2022.10
+```
+
+交叉编译请先配置以下参数，本地编译忽略：
+
+```shell
+export PATH=/opt/spacemit-toolchain-linux-glibc-x86_64-v1.0.0/bin:$PATH
+export CROSS_COMPILE=riscv64-unknown-linux-gnu-
+export ARCH=riscv
+```
+
+编译debian软件包：
+
+```shell
+cd ~/uboot-2022.10
+VERSION=1~`git rev-parse --short HEAD`
+dch --create --package u-boot-spacemit -v ${VERSION} --distribution mantic-porting --force-distribution 'Bianbu Test'
+dpkg-buildpackage -us -uc -b
+```
+
+生成的debian软件包位于上一层目录，通过`dpkg`安装然后重启即可生效。
+
+### opensbi
+
+下载源码：
+
+```shell
+git clone https://gitee.com/bianbu-linux/opensbi ~/opensbi
+```
+
+交叉编译请先配置以下参数，本地编译忽略：
+
+```shell
+export PATH=/opt/spacemit-toolchain-linux-glibc-x86_64-v1.0.0/bin:$PATH
+export CROSS_COMPILE=riscv64-unknown-linux-gnu-
+```
+
+编译debian软件包：
+
+```shell
+cd ~/opensbi
+VERSION=1~`git rev-parse --short HEAD`
+dch --create --package opensbi-spacemit -v ${VERSION} --distribution mantic-porting --force-distribution 'Bianbu Test'
+dpkg-buildpackage -us -uc -b
+```
+
+生成的debian软件包位于上一层目录，通过`dpkg`安装然后重启即可生效。

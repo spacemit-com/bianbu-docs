@@ -14,11 +14,11 @@ git clone https://gitee.com/bianbu-linux/linux-6.6 ~/linux-6.6
 
 ## Cross Compilation
 
-### Development Environment
+### Cross Development Environment
 
 Refer to Bianbu Linux's [development environment](https://bianbu-linux.spacemit.com/download_and_build#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83) to prepare the cross-compilation environment.
 
-### Compiler
+### Cross Compiler
 
 URL: [http://archive.spacemit.com/toolchain/](http://archive.spacemit.com/toolchain/)
 
@@ -36,7 +36,7 @@ URL: [http://archive.spacemit.com/toolchain/](http://archive.spacemit.com/toolch
    export PATH=/opt/spacemit-toolchain-linux-glibc-x86_64-v1.0.0/bin:$PATH
    ```
 
-### Compile Packages
+### Cross Compile Kernel
 
 Enter the kernel source directory:
 
@@ -102,7 +102,7 @@ sudo dpkg -i linux-image-6.6.36_6.6.36-*.deb
 sudo reboot
 ```
 
-### Compile Modules
+### Cross Compile Modules
 
 To compile out-of-tree kernel modules, using rtl8852bs as an example, the general command is as follows:
 
@@ -119,7 +119,7 @@ Clean:
 make -j$(nproc) -C ~/linux-6.6 M=/path/to/rtl8852bs clean
 ```
 
-### Compile Device Tree
+### Cross Compile Device Tree
 
 To compile the device tree separately:
 
@@ -131,15 +131,15 @@ make -j$(nproc) dtbs
 
 You can directly compile the kernel on Bianbu, here is the guide.
 
-### Development Environment
+### Local Development Environment
 
 Install dependencies:
 
 ```shell
-sudo apt-get install flex bison libncurses-dev debhelper libssl-dev u-boot-tools libpfm4-dev libtraceevent-dev asciidoc bc rsync libelf-dev
+sudo apt-get install flex bison libncurses-dev debhelper libssl-dev u-boot-tools libpfm4-dev libtraceevent-dev asciidoc bc rsync libelf-dev devscripts
 ```
 
-### Compile Packages
+### Local Compile Kernel
 
 Enter the kernel source directory:
 
@@ -204,7 +204,7 @@ sudo dpkg -i linux-image-6.6.36_6.6.36-*.deb
 sudo reboot
 ```
 
-### Compile Modules
+### Local Compile Modules
 
 To compile out-of-tree kernel modules locally, you can do it without relying on the kernel source.
 
@@ -228,3 +228,58 @@ Clean:
 ```shell
 make -j$(nproc) -C /lib/modules/`uname -r`/build M=/path/to/rtl8852bs clean
 ```
+
+## Other Components
+
+### u-boot
+
+Download the source code:
+
+```shell
+git clone https://gitee.com/bianbu-linux/uboot-2022.10 ~/uboot-2022.10
+```
+
+For cross-compilation, configure the following parameters first. Ignore for local compilation:
+
+```shell
+export PATH=/opt/spacemit-toolchain-linux-glibc-x86_64-v1.0.0/bin:$PATH
+export CROSS_COMPILE=riscv64-unknown-linux-gnu-
+export ARCH=riscv
+```
+
+Compile the Debian package:
+
+```shell
+cd ~/uboot-2022.10
+VERSION=1~`git rev-parse --short HEAD`
+dch --create --package u-boot-spacemit -v ${VERSION} --distribution mantic-porting --force-distribution 'Bianbu Test'
+dpkg-buildpackage -us -uc -b
+```
+
+The generated Debian package is located in the parent directory. Install it using `dpkg` and reboot to take effect.
+
+### opensbi
+
+Download the source code:
+
+```shell
+git clone https://gitee.com/bianbu-linux/opensbi ~/opensbi
+```
+
+For cross-compilation, configure the following parameters first. Ignore for local compilation:
+
+```shell
+export PATH=/opt/spacemit-toolchain-linux-glibc-x86_64-v1.0.0/bin:$PATH
+export CROSS_COMPILE=riscv64-unknown-linux-gnu-
+```
+
+Compile the Debian package:
+
+```shell
+cd ~/opensbi
+VERSION=1~`git rev-parse --short HEAD`
+dch --create --package opensbi-spacemit -v ${VERSION} --distribution mantic-porting --force-distribution 'Bianbu Test'
+dpkg-buildpackage -us -uc -b
+```
+
+The generated Debian package is located in the parent directory. Install it using `dpkg` and reboot to take effect.

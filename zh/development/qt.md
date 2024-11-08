@@ -1,8 +1,8 @@
 ---
-sidebar_position: 8
+sidebar_position: 2
 ---
 
-# Qt使用指南
+# Qt 使用指南
 
 ## 安装Qt5开发环境
 

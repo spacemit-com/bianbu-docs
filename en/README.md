@@ -129,16 +129,6 @@ Latest version: v1.0.15
 
 Latest version: v2.0.1
 
-## Image
-
-Bianbu image URL：[https://archive.spacemit.com/image/k1/version/bianbu/](https://archive.spacemit.com/image/k1/version/bianbu/)
-
-`*.img.zip` is the sdcard image, which can be written to the sdcard using the dd command or [balenaEtcher](https://etcher.balena.io/) after unzipping。
-
-`*.zip` is suitable for Titan Flasher. Refer to the [Firmware Update Tool](https://developer.spacemit.com/documentation?token=B9JCwRM7RiBapHku6NfcPCstnqh) for flashing, or use fastboot to flash after unzipping.
-
-The password for the root user of the image: `bianbu`。
-
 ## Issue feedback
 
-[https://gitee.com/bianbu/docs-en/issues](https://gitee.com/bianbu/docs-en/issues)。
+[https://gitee.com/bianbu/bianbu-docs/issues](https://gitee.com/bianbu/bianbu-docs/issues).

@@ -76,6 +76,8 @@ Bianbu Linux版本：[v2.0](https://bianbu-linux.spacemit.com/release_notes/bl-v
 
 Bianbu Linux版本：[v2.0.1](https://bianbu-linux.spacemit.com/release_notes/bl-v2.0.y/#v201%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
+
+
 ### 主要更新
 
 - 更新 BSP 相关组件

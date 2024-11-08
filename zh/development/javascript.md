@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
-# JavaScript使用指南
+# JavaScript 使用指南
 
 ## Node.js使用指南
 
