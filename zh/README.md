@@ -39,7 +39,7 @@ Bianbu Desktop 是一个桌面操作系统，简洁、快速、安全，支持 R
 - U-Boot
 - OpenSBI
 
-Bianbu Desktop 通过 [APT 软件源](http://archive.spacemit.com/bianbu-ports/)管理这些组件的软件包，软件包是标准的 debian 软件包格式。
+Bianbu Desktop 通过 APT 软件源管理这些组件的软件包，软件包是标准的 debian 软件包格式。
 
 #### 应用
 
@@ -129,16 +129,6 @@ OpenSBI 是 RISC-V 架构处理器的监管程序接口的实现，运行在 M �
 
 最新版本：v2.0.1。
 
-## 固件
-
-Bianbu固件地址：[https://archive.spacemit.com/image/k1/version/bianbu/](https://archive.spacemit.com/image/k1/version/bianbu/)
-
-`*.img.zip`是sdcard固件，解压后可以用dd命令或者[balenaEtcher](https://etcher.balena.io/)写入sdcard。
-
-`*.zip`适用于Titan Flasher，刷机参考[刷机工具使用手册](https://developer.spacemit.com/documentation?token=O6wlwlXcoiBZUikVNh2cczhin5d)，或者解压后用fastboot刷机。
-
-固件 root 用户的密码：`bianbu`。
-
 ## 问题反馈
 
-[https://gitee.com/bianbu/docs/issues](https://gitee.com/bianbu/docs/issues)。
+[https://gitee.com/bianbu/bianbu-docs/issues](https://gitee.com/bianbu/bianbu-docs/issues)。
