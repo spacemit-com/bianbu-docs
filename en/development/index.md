@@ -14,3 +14,4 @@ Below are some development guide:
 - [IDE](ide.md)
 - [Coredump](coredump.md)
 - [Perf Usage Note](perf.md)
+- [AMD R600 Graphics Card Usage Guide](r600.md)
