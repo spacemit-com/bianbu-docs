@@ -298,3 +298,7 @@ mke2fs -d $TARGET_ROOTFS -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4
 ```
 
 At this point, you will have two partition images, `bootfs.ext4` and `rootfs.ext4`, which can be flashed to a board using `fastboot`.
+
+## Create Firmware
+
+See [Firmware Creation Guide](./image.md).

@@ -254,4 +254,4 @@ mke2fs -d $TARGET_ROOTFS -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4
 
 ## 制作固件
 
-见 [固件制作指南](image.md)
+见 [固件制作指南](./image.md)。

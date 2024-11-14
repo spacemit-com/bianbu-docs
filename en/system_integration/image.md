@@ -4,8 +4,6 @@ sidebar_position: 3
 
 # Image Creation Guide
 
-Prerequisite: [Bianbu 1.0 ROOTFS Creation](bianbu_1.0_rootfs_create.md)
-
 ## Titan Image
 
 1. Install dependencies

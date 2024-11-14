@@ -254,4 +254,4 @@ Now, you can see two partition images in the current directory, bootfs.ext4 and 
 
 ## Create Firmware
 
-See [Firmware Creation Guide](image.md)
+See [Firmware Creation Guide](./image.md).

@@ -298,3 +298,7 @@ mke2fs -d $TARGET_ROOTFS -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4
 ```
 
 此时，在当前目录可以看到两个分区镜像，bootfs.ext4 和 rootfs.ext4，可使用 fastboot 烧写到板子中。
+
+## 制作固件
+
+见 [固件制作指南](./image.md)。
