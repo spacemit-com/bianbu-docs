@@ -53,6 +53,7 @@ wget -P classification https://archive.spacemit.com/spacemit-ai/ModelZoo/classif
 import onnx
 import numpy as np
 import onnxruntime as ort
+import spacemit_ort
 from PIL import Image
 import cv2
 import matplotlib.pyplot as plt

@@ -53,6 +53,7 @@ Verify that all dependencies are installed using the cell below. Continue if no 
 import onnx
 import numpy as np
 import onnxruntime as ort
+import spacemit_ort
 from PIL import Image
 import cv2
 import matplotlib.pyplot as plt
