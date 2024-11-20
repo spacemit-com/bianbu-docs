@@ -119,8 +119,10 @@ docker ce 安装可参考 [https://docs.docker.com/engine/install/](https://docs
 
    ```shell
    export REPO="archive.spacemit.com/bianbu"
-   export VERSION="v2.0"
+   export VERSION="v2.0.2"
    ```
+
+   [点击查看最新VERSION](../release_notes/bianbu_desktop_2.0.md)
 
 2. 配置 bianbu.sources
 
@@ -156,6 +158,8 @@ chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --
 - Minimal：bianbu-minimal
 - Dekstop：bianbu-desktop bianbu-desktop-zh bianbu-desktop-en bianbu-desktop-minimal-en bianbu-standard bianbu-development
 - NAS：bianbu-nas
+
+Dekstop和NAS都是基于Minimal的，建议先安装Mnimal元包再安装Dekstop元包。
 
 这里以制作最小的 minimal 变体为例：
 
@@ -197,9 +201,9 @@ sed -i 's/^#NTP=.*/NTP=ntp.aliyun.com/' $TARGET_ROOTFS/etc/systemd/timesyncd.con
 chroot $TARGET_ROOTFS /bin/bash -c "echo root:bianbu | chpasswd"
 ```
 
-#### 配置网络（可选）
+#### 配置网络
 
-如果仅安装了 minimal（bianbu-minimal）元包，则需要使用 netplan 配置网络，
+- minimal
 
 ```shell
 cat <<EOF | tee $TARGET_ROOTFS/etc/netplan/01-netcfg.yaml
@@ -209,9 +213,25 @@ network:
     ethernets:
         end0:
             dhcp4: true
+        end1:
+            dhcp4: true
 EOF
 chroot $TARGET_ROOTFS /bin/bash -c "chmod 600 /etc/netplan/01-netcfg.yaml"
 ```
+
+- desktop
+
+```shell
+cat <<EOF | tee $TARGET_ROOTFS/etc/netplan/01-network-manager-all.yaml
+# Let NetworkManager manage all devices on this system
+network:
+version: 2
+renderer: NetworkManager
+EOF
+chroot $TARGET_ROOTFS /bin/bash -c "chmod 600 /etc/netplan/01-network-manager-all.yaml"
+```
+
+注意：不同变体只需要配置各自的文件即可。
 
 ## 生成分区镜像
 
