@@ -167,6 +167,12 @@ Here is an example for creating the minimal variant:
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
 ```
 
+Tip: After installing all packages, you can run the following command to clean up the cache and reduce the final firmware size.
+
+```shell
+chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get clean"
+```
+
 ## General Configuration
 
 #### Configure Locale

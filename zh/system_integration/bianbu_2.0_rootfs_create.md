@@ -167,6 +167,12 @@ Dekstop和NAS都是基于Minimal的，建议先安装Mnimal元包再安装Deksto
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
 ```
 
+提示：完成全部包的安装后可以执行如下命令清理一下缓存，以减少最终固件的大小
+
+```shell
+chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get clean"
+```
+
 ## 通用配置
 
 #### 配置地区
