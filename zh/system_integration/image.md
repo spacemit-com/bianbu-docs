@@ -4,8 +4,6 @@ sidebar_position: 3
 
 # 固件制作指南
 
-前置步骤：[Bianbu 1.0 ROOTFS制作](bianbu_1.0_rootfs_create.md)
-
 ## Titan固件
 
 1. 安装依赖
@@ -34,10 +32,10 @@ sidebar_position: 3
 3. 下载参考分区表
 
    ```shell
-   wget -P $TMP https://gitee.com/bianbu/firmware-config/raw/main/fastboot.yaml
-   wget -P $TMP https://gitee.com/bianbu/firmware-config/raw/main/partition_2M.json
-   wget -P $TMP https://gitee.com/bianbu/firmware-config/raw/main/partition_flash.json
-   wget -P $TMP https://gitee.com/bianbu/firmware-config/raw/main/partition_universal.json
+   wget -P $TMP https://gitee.com/bianbu/image-config/raw/main/fastboot.yaml
+   wget -P $TMP https://gitee.com/bianbu/image-config/raw/main/partition_2M.json
+   wget -P $TMP https://gitee.com/bianbu/image-config/raw/main/partition_flash.json
+   wget -P $TMP https://gitee.com/bianbu/image-config/raw/main/partition_universal.json
    ```
 
 4. 打包
@@ -79,7 +77,7 @@ sidebar_position: 3
 2. 下载参考分区表
 
    ```shell
-   wget -P $TMP https://gitee.com/bianbu/firmware-config/raw/main/partition_universal.json
+   wget -P $TMP https://gitee.com/bianbu/image-config/raw/main/partition_universal.json
    ```
 
 3. 下载生成genimage.cfg的脚本，并生成genimage.cfg

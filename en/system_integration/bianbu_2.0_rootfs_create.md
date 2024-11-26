@@ -119,8 +119,10 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
 
    ```shell
    export REPO="archive.spacemit.com/bianbu"
-   export VERSION="v2.0"
+   export VERSION="v2.0.2"
    ```
+
+   [Click here to see the latest VERSION](../release_notes/bianbu_desktop_2.0.md)
 
 2. Configure bianbu.sources
 
@@ -157,10 +159,18 @@ Different variants come with different metapackages:
 - Desktop: bianbu-desktop bianbu-desktop-zh bianbu-desktop-en bianbu-desktop-minimal-en bianbu-standard bianbu-development
 - NAS: bianbu-nas
 
+Both Desktop and NAS are based on Minimal. It is recommended to install the Minimal metapackage first, and then install the Desktop metapackage.
+
 Here is an example for creating the minimal variant:
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
+```
+
+Tip: After installing all packages, you can run the following command to clean up the cache and reduce the final firmware size.
+
+```shell
+chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get clean"
 ```
 
 ## General Configuration
@@ -197,9 +207,9 @@ sed -i 's/^#NTP=.*/NTP=ntp.aliyun.com/' $TARGET_ROOTFS/etc/systemd/timesyncd.con
 chroot $TARGET_ROOTFS /bin/bash -c "echo root:bianbu | chpasswd"
 ```
 
-#### Configure Network (Optional)
+#### Configure Network
 
-If you only installed the minimal (bianbu-minimal) metapackage, use netplan to configure the network:
+- minimal
 
 ```shell
 cat <<EOF | tee $TARGET_ROOTFS/etc/netplan/01-netcfg.yaml
@@ -209,9 +219,25 @@ network:
     ethernets:
         end0:
             dhcp4: true
+        end1:
+            dhcp4: true
 EOF
 chroot $TARGET_ROOTFS /bin/bash -c "chmod 600 /etc/netplan/01-netcfg.yaml"
 ```
+
+- desktop
+
+```shell
+cat <<EOF | tee $TARGET_ROOTFS/etc/netplan/01-network-manager-all.yaml
+# Let NetworkManager manage all devices on this system
+network:
+version: 2
+renderer: NetworkManager
+EOF
+chroot $TARGET_ROOTFS /bin/bash -c "chmod 600 /etc/netplan/01-network-manager-all.yaml"
+```
+
+Note: Different variants only need to configure their respective files.
 
 ## Generate Partition Images
 
@@ -254,4 +280,4 @@ Now, you can see two partition images in the current directory, bootfs.ext4 and 
 
 ## Create Firmware
 
-See [Firmware Creation Guide](image.md)
+See [Firmware Creation Guide](./image.md).

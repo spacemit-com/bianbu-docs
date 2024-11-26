@@ -20,41 +20,28 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 `<version>`要替换成版本号，例如v2.0beta2。如需下载源码，请将`Types: deb`改成`Types: deb deb-src`。
 
-## v2.0beta2
+## v2.0.2
 
-发布日期：2024-9-2
+发布日期：2024-11-11
 
-Bianbu Linux版本：[v2.0rc5](https://bianbu-linux.spacemit.com/release_notes/bl-v2.0.y/#v20rc5%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E%E5%BC%80%E5%8F%91%E4%B8%AD)
-
-### 主要更新
-
-- 修复HDMI作为主屏时，没接导致串口无法登录的问题
-- 修复ssh不支持压缩的问题
-
-## v2.0rc1
-
-发布日期：2024-9-7
-
-Bianbu Linux版本：[v2.0rc6](https://bianbu-linux.spacemit.com/release_notes/bl-v2.0.y/#v20rc6%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+Bianbu Linux版本：[v2.0.2](https://bianbu-linux.spacemit.com/release_notes/bl-v2.0.y/#v202%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ### 主要更新
 
-- 支持python3-gpiozerov
-- 支持code-server
-- 支持apport
-- gnome-initial-setup支持设置hostname
+- systemd 支持 wakeup count
+- mesa 支持 AMD R600 驱动
+- 修复 GDB vector 调试相关问题
+- 修复 mutter 内外置显卡兼容性问题
 
-## v2.0rc2
+## v2.0.1
 
-发布日期：2024-9-30
+发布日期：2024-10-28
 
-Bianbu Linux版本：[v2.0rc7](https://bianbu-linux.spacemit.com/release_notes/bl-v2.0.y/#v20rc7%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+Bianbu Linux版本：[v2.0.1](https://bianbu-linux.spacemit.com/release_notes/bl-v2.0.y/#v201%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ### 主要更新
 
-- 修复chromium播放视频崩溃的问题
-- 修复chromium cookie失效的问题
-- 更新box64，支持rvv，支持运行wps-office
+- 更新 BSP 相关组件
 
 ## v2.0
 
@@ -70,14 +57,38 @@ Bianbu Linux版本：[v2.0](https://bianbu-linux.spacemit.com/release_notes/bl-v
 - GCC 14 升级到 14.2
 - 更新 img-gpu-powervr ，修复 gnome-shell 编译报错的问题
 
-## v2.0.1
+## v2.0rc2
 
-发布日期：2024-10-28
+发布日期：2024-9-30
 
-Bianbu Linux版本：[v2.0.1](https://bianbu-linux.spacemit.com/release_notes/bl-v2.0.y/#v201%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
-
-
+Bianbu Linux版本：[v2.0rc7](https://bianbu-linux.spacemit.com/release_notes/bl-v2.0.y/#v20rc7%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ### 主要更新
 
-- 更新 BSP 相关组件
+- 修复chromium播放视频崩溃的问题
+- 修复chromium cookie失效的问题
+- 更新box64，支持rvv，支持运行wps-office
+
+## v2.0rc1
+
+发布日期：2024-9-7
+
+Bianbu Linux版本：[v2.0rc6](https://bianbu-linux.spacemit.com/release_notes/bl-v2.0.y/#v20rc6%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+
+### 主要更新
+
+- 支持python3-gpiozerov
+- 支持code-server
+- 支持apport
+- gnome-initial-setup支持设置hostname
+
+## v2.0beta2
+
+发布日期：2024-9-2
+
+Bianbu Linux版本：[v2.0rc5](https://bianbu-linux.spacemit.com/release_notes/bl-v2.0.y/#v20rc5%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E%E5%BC%80%E5%8F%91%E4%B8%AD)
+
+### 主要更新
+
+- 修复HDMI作为主屏时，没接导致串口无法登录的问题
+- 修复ssh不支持压缩的问题

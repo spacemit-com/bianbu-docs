@@ -14,3 +14,4 @@ slug: /development
 - [集成开发环境](ide.md)
 - [Coredump](coredump.md)
 - [Perf使用注意事项](perf.md)
+- [AMD R600显卡使用指南](r600.md)

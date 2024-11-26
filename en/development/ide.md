@@ -6,9 +6,14 @@ sidebar_position: 5
 
 ## VScodium
 
-[VSCodium](https://vscodium.com/) is the open-source version of VS Code, which can be downloaded from the VSCodium [release page](https://github.com/VSCodium/vscodium/releases).
+[VSCodium](https://vscodium.com/) is the open-source version of VS Code and can be installed from the Bianbu repository (only for versions after 2.0.2).
 
-For example, download `1.94.2.24286`:
+```shell
+sudo apt-get update
+sudo apt-get install -y codium
+```
+
+Or download and install from the VSCodium [release page](https://github.com/VSCodium/vscodium/releases). For example, download `1.94.2.24286`:
 
 ```shell
 wget https://github.com/VSCodium/vscodium/releases/download/1.94.2.24286/VSCodium-linux-riscv64-1.94.2.24286.tar.gz
@@ -34,13 +39,14 @@ Create a desktop shortcut:
    Type=Application
    ```
 
+   Note, the installation path from the Bianbu repository is `/usr/share/codium`, please replace `/opt/vscodium` above.
+
 2. After saving, you will see a new VSCodium shortcut on the desktop. Right-click it and select `Allow Launching`.
 3. Double-click to run.
 
 Known issues:
 
 - Interaction smoothness is suboptimal
-- APT installation is not supported yet
 
 ## Remote Development
 

@@ -6,9 +6,14 @@ sidebar_position: 5
 
 ## VScodium
 
-[VSCodium](https://vscodium.com/)是 VS Code 的开源版本，可以从 VSCodium [发布页面](https://github.com/VSCodium/vscodium/releases)下载。
+[VSCodium](https://vscodium.com/)是 VS Code 的开源版本，可以从 Bianbu 源（仅限 2.0.2 之后的版本）安装。
 
-例如下载`1.94.2.24286`：
+```shell
+sudo apt-get update
+sudo apt-get install -y codium
+```
+
+或者从 VSCodium [发布页面](https://github.com/VSCodium/vscodium/releases)下载、安装。例如下载`1.94.2.24286`：
 
 ```shell
 wget https://github.com/VSCodium/vscodium/releases/download/1.94.2.24286/VSCodium-linux-riscv64-1.94.2.24286.tar.gz
@@ -34,13 +39,14 @@ sudo tar xf VSCodium-linux-riscv64-1.94.2.24286.tar.gz -C /opt/vscodium
    Type=Application
    ```
 
+   注意，从 Bianbu 源安装的路径为 `/usr/share/codium`，请替换上面的 `/opt/vscodium`。
+
 2. 保存后即可在桌面看到一个新的 VSCodium 快捷方式，右键点击，选择`允许运行`。
 3. 双击即可运行。
 
 已知问题：
 
 - 交互流畅度欠佳
-- 暂不支持 apt 安装
 
 ## 远程开发
 

@@ -4,7 +4,121 @@ sidebar_position: 4
 
 # ROS2使用指南
 
-目前我们仅提供prebuilt的tar包。
+目前我们提供ROS2 Jazzy 和 ROS2 Humble 两个版本的prebuilt包，以及 ROS2 Jazzy 版本的deb安装包。如果您使用Jazzy版本，请从 deb 方式安装，Humble 版本请参考[安装prebuilt包](##使用prebuilt包)
+
+## 从 deb 包安装
+
+ROS2 Jazzy Jalisco 的 Deb 软件包目前可用于 Bianbu Destop 2.0
+
+### 环境准备
+
+#### 设置语言环境
+
+确保您有一个支持UTF-8的区域设置
+
+```shell
+locale  # check for UTF-8
+
+sudo apt update && sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+locale  # verify settings
+```
+
+#### 启用所需的存储库
+
+您需要将 ROS2 apt 存储库添加到您的系统中。
+
+```shell
+sudo vim /etc/apt/sources.list.d/bianbu.sources
+```
+
+将 noble-ros 添加到Suites末尾，如下所示
+
+```shell
+Types: deb
+URIs: http://archive.spacemit.com/bianbu/
+Suites: noble/snapshots/v2.0rc2 noble-security/snapshots/v2.0rc2 noble-porting/snapshots/v2.0rc2 noble-customization/snapshots/v2.0rc2 noble-ros
+Components: main universe restricted multiverse
+Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
+```
+
+保存、退出。
+
+#### 安装开发工具（可选）
+
+如果您要构建ROS包或以其他方式进行开发，您还可以安装开发工具：
+
+```shell
+sudo apt update && sudo apt install ros-dev-tools
+```
+
+### 安装 ROS2
+
+设置存储库后更新 apt 存储库缓存
+
+```shell
+sudo apt update
+```
+
+ROS2 软件包构建在经常更新的 Bianbu 系统上。始终建议您在安装新软件包之前确保系统是最新的
+
+```shell
+sudo apt upgrade
+```
+
+桌面安装（推荐），包含：ROS、RViz、demo、教程包等
+
+```shell
+sudo apt install ros-jazzy-desktop
+```
+
+ROS-Base 安装，包含：通信库、消息包、命令行工具。没有 GUI 工具
+
+```shell
+sudo apt install ros-jazzy-ros-base
+```
+
+安装额外的 RMW 实现（可选）
+
+ROS2 使用的默认中间件是Fast DDS ，但可以在运行时替换中间件（RMW）。请参阅有关如何使用多个 RMW 的[指南](https://docs.ros.org/en/jazzy/How-To-Guides/Working-with-multiple-RMW-implementations.html)
+
+### 设置环境
+
+通过 source 以下文件来设置您的 ROS2 环境
+
+```shell
+source /opt/ros/jazzy/setup.zsh
+```
+
+如果您使用 bash ，请将 setup.zsh 替换成 setup.bash
+
+### 尝试一些例子
+
+如果您在上面安装了ros-jazzy-desktop ，您可以尝试一些示例
+
+在一个终端中，source /opt/ros/jazzy/setup.zsh ，然后运行 ​​C++ talker
+
+```shell
+source /opt/ros/jazzy/setup.zsh
+ros2 run demo_nodes_cpp talker
+```
+
+在另一个终端中，source /opt/ros/jazzy/setup.zsh，然后运行 ​​Python listener ：
+
+```shell
+source /opt/ros/jazzy/setup.zsh
+ros2 run demo_nodes_py listener
+```
+
+您应该看到talker说它正在Publishing消息，而listener说I heard这些消息。这验证了 C++ 和 Python API 是否正常工作。
+
+### 后续步骤
+
+现在，您可以继续学习[官方教程和演示](https://docs.ros.org/en/jazzy/Tutorials.html)来配置您的环境，创建您自己的工作区和包，并学习 ROS 2 核心概念。
+
 
 ## 使用prebuilt包
 

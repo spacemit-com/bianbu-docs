@@ -8,7 +8,7 @@ Build from Ubuntu 24.04 sources.
 
 Current status: in development.
 
-Bianbu 1.0 source：
+Bianbu 2.0 source：
 
 ```
 Types: deb
@@ -20,41 +20,28 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 `<version>` should be replaced with a version number, such as v2.0beta2. If you need to download the source code, please change `Types: deb` to Types: `deb deb-src`.
 
-## v2.0beta2
+## v2.0.2
 
-Release date: 2024-9-2
+Release date: 2024-11-11
 
-Bianbu Linux version: [v2.0rc5](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v20rc5-release-note)
-
-### Major Updates
-
-- Fix serial can not login when HDMI as primary screen and not connected
-- Fix ssh unsupport compress issue
-
-## v2.0rc1
-
-Release date: 2024-9-7
-
-Bianbu Linux version: [v2.0rc6](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v20rc6-release-note)
+Bianbu Linux version: [v2.0.2](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v202-release-note)
 
 ### Major Updates
 
-- Support python3-gpiozero
-- Support code-server
-- Support apport
-- gnome-initial-setup support set hostname
+- systemd supports wakeup count
+- mesa supports AMD R600 driver
+- Fixed GDB vector debugging issues
+- Fixed mutter compatibility issues with internal and external graphics cards
 
-## v2.0rc2
+## v2.0.1
 
-Release date: 2024-9-30
+Release date: 2024-10-28
 
-Bianbu Linux version: [v2.0rc7](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v20rc7-release-note)
+Bianbu Linux version: [v2.0.1](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v201-release-note)
 
 ### Major Updates
 
-- Fix the issue of Chromium crashing when playing videos
-- Fix the issue of Chromium cookies becoming invalid
-- Update box64 to support RVV and running WPS Office
+- Update BSP related components
 
 ## v2.0
 
@@ -70,12 +57,38 @@ Bianbu Linux version: [v2.0](https://bianbu-linux.spacemit.com/en/release_notes/
 - Upgrade GCC 14 to 14.2
 - Update img-gpu-powervr to fix the gnome-shell compilation error
 
-## v2.0
+## v2.0rc2
 
-Release date: 2024-10-28
+Release date: 2024-9-30
 
-Bianbu Linux version: [v2.0.1](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v201-release-note)
+Bianbu Linux version: [v2.0rc7](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v20rc7-release-note)
 
 ### Major Updates
 
-- Update BSP related components
+- Fix the issue of Chromium crashing when playing videos
+- Fix the issue of Chromium cookies becoming invalid
+- Update box64 to support RVV and running WPS Office
+
+## v2.0rc1
+
+Release date: 2024-9-7
+
+Bianbu Linux version: [v2.0rc6](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v20rc6-release-note)
+
+### Major Updates
+
+- Support python3-gpiozero
+- Support code-server
+- Support apport
+- gnome-initial-setup support set hostname
+
+## v2.0beta2
+
+Release date: 2024-9-2
+
+Bianbu Linux version: [v2.0rc5](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v20rc5-release-note)
+
+### Major Updates
+
+- Fix serial can not login when HDMI as primary screen and not connected
+- Fix ssh unsupport compress issue
