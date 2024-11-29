@@ -135,12 +135,12 @@ docker ce 安装可参考 [https://docs.docker.com/engine/install/](https://docs
    ```shell
    cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list
    # $DIST
-   deb https://$REPO/ $DIST/snapshots/$VERSION main universe multiverse restricted
-   # deb-src https://$REPO/ $DIST/snapshots/$VERSION main universe multiverse restricted
+   deb [trusted=yes] https://$REPO/ $DIST/snapshots/$VERSION main universe multiverse restricted
+   # deb-src [trusted=yes] https://$REPO/ $DIST/snapshots/$VERSION main universe multiverse restricted
    
    # $DIST-security
-   deb https://$REPO/ $DIST-security/snapshots/$VERSION main universe multiverse restricted
-   # deb-src https://$REPO/ $DIST-security/snapshots/$VERSION main universe multiverse restricted
+   deb [trusted=yes] https://$REPO/ $DIST-security/snapshots/$VERSION main universe multiverse restricted
+   # deb-src [trusted=yes] https://$REPO/ $DIST-security/snapshots/$VERSION main universe multiverse restricted
    EOF
    ```
 
@@ -149,16 +149,16 @@ docker ce 安装可参考 [https://docs.docker.com/engine/install/](https://docs
    ```shell
    cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.list
    # $DIST-spacemit
-   deb https://$REPO/ $DIST-spacemit/snapshots/$VERSION main universe multiverse restricted
-   # deb-src https://$REPO/ $DIST-spacemit/snapshots/$VERSION main universe multiverse restricted
+   deb [trusted=yes] https://$REPO/ $DIST-spacemit/snapshots/$VERSION main universe multiverse restricted
+   # deb-src [trusted=yes] https://$REPO/ $DIST-spacemit/snapshots/$VERSION main universe multiverse restricted
    
    # $DIST-porting
-   deb https://$REPO/ $DIST-porting/snapshots/$VERSION main universe multiverse restricted
-   # deb-src https://$REPO/ $DIST-porting/snapshots/$VERSION main universe multiverse restricted
+   deb [trusted=yes] https://$REPO/ $DIST-porting/snapshots/$VERSION main universe multiverse restricted
+   # deb-src [trusted=yes] https://$REPO/ $DIST-porting/snapshots/$VERSION main universe multiverse restricted
    
    # $DIST-customization
-   deb https://$REPO/ $DIST-customization/snapshots/$VERSION main universe multiverse restricted
-   # deb-src https://$REPO/ $DIST-customization/snapshots/$VERSION main universe multiverse restricted
+   deb [trusted=yes] https://$REPO/ $DIST-customization/snapshots/$VERSION main universe multiverse restricted
+   # deb-src [trusted=yes] https://$REPO/ $DIST-customization/snapshots/$VERSION main universe multiverse restricted
    EOF
    ```
 

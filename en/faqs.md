@@ -29,3 +29,25 @@ If a regular user forgets their password, it can be changed by the root user. He
    ![](static/tmpst8dy3yi.PNG)
 
 6. Press the Ctrl + Alt + F1 key combination to switch back to the login screen and log in with the new password.
+
+## Update
+
+### Bianbu 1.0 apt update error: invalid: EXPKEYSIG 0C1C275F85F3A22A Bianbu Repo Signing Key
+
+The detailed error is as follows,
+
+```shell
+W: GPG error: https://archive.bianbu.xyz/bianbu-ports mantic-porting InRelease: The following signatures were invalid: EXPKEYSIG 0C1C275F85F3A22A Bianbu Repo Signing Key <bianbu@spacemit.com>
+
+E: The repository 'https://archive.bianbu.xyz/bianbu-ports mantic-porting InRelease' is not signed.
+```
+
+Since the signature of the Bianbu 1.0 source expired on November 27, 2024, you need to modify the /etc/apt/sources.list.d/bianbu.list file and add `[trusted=yes]`.
+
+```shell
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-security/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-spacemit/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-porting/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-customization/snapshots/<version> main multiverse restricted universe
+```

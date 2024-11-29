@@ -29,3 +29,25 @@ sidebar_position: 9
    ![](static/tmpst8dy3yi.PNG)
 
 6. 按下键盘Ctrl + Alt + F1组合键，切回登录界面，使用新密码登录即可。
+
+## 更新
+
+### Bianbu 1.0 apt update时报错 invalid: EXPKEYSIG 0C1C275F85F3A22A Bianbu Repo Signing Key
+
+详细报错如下，
+
+```shell
+W: GPG error: https://archive.bianbu.xyz/bianbu-ports mantic-porting InRelease: The following signatures were invalid: EXPKEYSIG 0C1C275F85F3A22A Bianbu Repo Signing Key <bianbu@spacemit.com>
+
+E: The repository 'https://archive.bianbu.xyz/bianbu-ports mantic-porting InRelease' is not signed.
+```
+
+由于Bianbu 1.0 源的签名已于2024年11月27日过期,故需修改/etc/apt/sources.list.d/bianbu.list文件,追加`[trusted=yes]`。
+
+```shell
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-security/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-spacemit/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-porting/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-customization/snapshots/<version> main multiverse restricted universe
+```

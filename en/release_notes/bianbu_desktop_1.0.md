@@ -9,14 +9,16 @@ Build from Ubuntu 23.10 sources.
 Bianbu 1.0 source：
 
 ```
-deb https://archive.spacemit.com/bianbu-ports/ mantic/snapshots/<version> main multiverse restricted universe
-deb https://archive.spacemit.com/bianbu-ports/ mantic-security/snapshots/<version> main multiverse restricted universe
-deb https://archive.spacemit.com/bianbu-ports/ mantic-spacemit/snapshots/<version> main multiverse restricted universe
-deb https://archive.spacemit.com/bianbu-ports/ mantic-porting/snapshots/<version> main multiverse restricted universe
-deb https://archive.spacemit.com/bianbu-ports/ mantic-customization/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-security/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-spacemit/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-porting/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-customization/snapshots/<version> main multiverse restricted universe
 ```
 
 `<version>` should be replaced with a version number, such as v1.0.
+
+**Note:** Due to the expiration of the public key for version 1.0 sources, it is necessary to configure `[trusted=yes]`.
 
 ## v1.0 release note
 
