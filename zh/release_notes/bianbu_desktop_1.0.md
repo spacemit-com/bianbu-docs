@@ -9,14 +9,16 @@ sidebar_position: 1
 Bianbu 1.0源：
 
 ```
-deb https://archive.spacemit.com/bianbu-ports/ mantic/snapshots/<version> main multiverse restricted universe
-deb https://archive.spacemit.com/bianbu-ports/ mantic-security/snapshots/<version> main multiverse restricted universe
-deb https://archive.spacemit.com/bianbu-ports/ mantic-spacemit/snapshots/<version> main multiverse restricted universe
-deb https://archive.spacemit.com/bianbu-ports/ mantic-porting/snapshots/<version> main multiverse restricted universe
-deb https://archive.spacemit.com/bianbu-ports/ mantic-customization/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-security/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-spacemit/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-porting/snapshots/<version> main multiverse restricted universe
+deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-customization/snapshots/<version> main multiverse restricted universe
 ```
 
 `<version>`要替换成版本号，例如v1.0。
+
+注意：由于1.0源的公钥已过期，故需配置[trusted=yes]
 
 ## v1.0更新说明
 
