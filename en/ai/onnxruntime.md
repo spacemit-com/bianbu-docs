@@ -10,7 +10,7 @@ sidebar_position: 1
 
 ```shell
 sudo apt-get update
-sudo apt-get install -y onnxruntime python3-spacemit-ort
+sudo apt-get install -y onnxruntime python3-spacemit-ort libopencv-dev
 ```
 
 Verify the installation:
@@ -31,7 +31,7 @@ The final output `['SpaceMITExecutionProvider', 'CPUExecutionProvider']` indicat
 ### Prerequisites
 
 ```shell
-sudo apt-get install -y python3-onnx python3-pillow python3-matplotlib
+sudo apt-get install -y python3-onnx python3-pillow python3-matplotlib python3-opencv
 ```
 
 ### Prepare model, label and image
