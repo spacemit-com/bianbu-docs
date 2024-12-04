@@ -10,7 +10,7 @@ sidebar_position: 1
 
 ```shell
 sudo apt-get update
-sudo apt-get install -y onnxruntime python3-spacemit-ort
+sudo apt-get install -y onnxruntime python3-spacemit-ort libopencv-dev
 ```
 
 验证是否安装成功：
@@ -31,7 +31,7 @@ python
 ### 安装依赖
 
 ```shell
-sudo apt-get install -y python3-onnx python3-pillow python3-matplotlib
+sudo apt-get install -y python3-onnx python3-pillow python3-matplotlib python3-opencv
 ```
 
 ### 下载模型、标签和图片
