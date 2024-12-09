@@ -42,11 +42,18 @@ W: GPG error: https://archive.bianbu.xyz/bianbu-ports mantic-porting InRelease: 
 E: The repository 'https://archive.bianbu.xyz/bianbu-ports mantic-porting InRelease' is not signed.
 ```
 
-Since the signature of the Bianbu 1.0 source expired on November 27, 2024, you need to modify the /etc/apt/sources.list.d/bianbu.list file and add `[trusted=yes]`.
+Since the signature of the Bianbu 1.0 source expired on November 27, 2024, you need to modify the /etc/apt/sources.list and /etc/apt/sources.list.d/bianbu.list files and add `[trusted=yes]`.
+
+/etc/apt/sources.list
 
 ```shell
 deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic/snapshots/<version> main multiverse restricted universe
 deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-security/snapshots/<version> main multiverse restricted universe
+```
+
+/etc/apt/sources.list.d/bianbu.list
+
+```shell
 deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-spacemit/snapshots/<version> main multiverse restricted universe
 deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-porting/snapshots/<version> main multiverse restricted universe
 deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-customization/snapshots/<version> main multiverse restricted universe
