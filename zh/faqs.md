@@ -58,3 +58,11 @@ deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-spacemit/sna
 deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-porting/snapshots/<version> main multiverse restricted universe
 deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-customization/snapshots/<version> main multiverse restricted universe
 ```
+
+删除之前的包索引缓存
+
+```shell
+sudo rm -r /var/lib/apt/lists
+```
+
+至此可以正常apt update，warning可以忽略

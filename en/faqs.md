@@ -58,3 +58,11 @@ deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-spacemit/sna
 deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-porting/snapshots/<version> main multiverse restricted universe
 deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-customization/snapshots/<version> main multiverse restricted universe
 ```
+
+Delete the previous package index cache
+
+```shell
+sudo rm -r /var/lib/apt/lists
+```
+
+At this point, you can run `apt update` normally. Warnings can be ignored.
