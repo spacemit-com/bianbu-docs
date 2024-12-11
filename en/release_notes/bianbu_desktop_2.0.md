@@ -20,6 +20,26 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 `<version>` should be replaced with a version number, such as v2.0beta2. If you need to download the source code, please change `Types: deb` to Types: `deb deb-src`.
 
+## v2.0.4
+
+Release date: 2024-12-11
+
+Bianbu Linux version: [v2.0.4](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v204-release-note)
+
+### Major Updates
+
+- Fixed the issue of Chromium crashing after long periods of online video playback
+- Fixed screen recording color issues
+- Fixed Remmina connection crashes
+- Upgraded LLVM to 18.1.8-11
+- Upgraded Mesa to 24.01
+- Optimized startup time
+- Optimized desktop animations and search services
+- Added support for VSCodium (codium)
+- Added support for Zed (spacemit-code-forge)
+- Added support for GRUB
+- Added support for Fcitx5 (default input method)
+
 ## v2.0.2
 
 Release date: 2024-11-11

@@ -20,6 +20,26 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 `<version>`要替换成版本号，例如v2.0beta2。如需下载源码，请将`Types: deb`改成`Types: deb deb-src`。
 
+## v2.0.4
+
+发布日期：2024-12-11
+
+Bianbu Linux版本：[v2.0.4](https://bianbu-linux.spacemit.com/release_notes/bl-v2.0.y/#v204%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+
+### 主要更新
+
+- 修复 chromium 在线视频长时间老化网页崩溃的问题
+- 修复录屏颜色异常
+- 修复 remmina 连接闪退的问题
+- LLVM 升级至 18.1.8-11
+- Mesa 升级至 24.01
+- 优化启动时间
+- 优化桌面动画和搜索服务
+- 支持 vscodium (codium)
+- 支持 zed (spacemit-code-forge)
+- 支持 GRUB
+- 支持 Fcitx5 （默认输入法）
+
 ## v2.0.2
 
 发布日期：2024-11-11
