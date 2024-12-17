@@ -34,35 +34,10 @@ If a regular user forgets their password, it can be changed by the root user. He
 
 ### Bianbu 1.0 apt update error: invalid: EXPKEYSIG 0C1C275F85F3A22A Bianbu Repo Signing Key
 
-The detailed error is as follows,
+Due to the expiration of the Bianbu 1.0 repository key on November 27, 2024,
+
+You can fix it by running the following command,
 
 ```shell
-W: GPG error: https://archive.bianbu.xyz/bianbu-ports mantic-porting InRelease: The following signatures were invalid: EXPKEYSIG 0C1C275F85F3A22A Bianbu Repo Signing Key <bianbu@spacemit.com>
-
-E: The repository 'https://archive.bianbu.xyz/bianbu-ports mantic-porting InRelease' is not signed.
+wget -O - https://archive.spacemit.com/tools/misc/fix_bianbu_key_expired.sh | bash
 ```
-
-Since the signature of the Bianbu 1.0 source expired on November 27, 2024, you need to modify the /etc/apt/sources.list and /etc/apt/sources.list.d/bianbu.list files and add `[trusted=yes]`.
-
-/etc/apt/sources.list
-
-```shell
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic/snapshots/<version> main multiverse restricted universe
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-security/snapshots/<version> main multiverse restricted universe
-```
-
-/etc/apt/sources.list.d/bianbu.list
-
-```shell
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-spacemit/snapshots/<version> main multiverse restricted universe
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-porting/snapshots/<version> main multiverse restricted universe
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-customization/snapshots/<version> main multiverse restricted universe
-```
-
-Delete the previous package index cache
-
-```shell
-sudo rm -r /var/lib/apt/lists
-```
-
-At this point, you can run `apt update` normally. Warnings can be ignored.

@@ -34,35 +34,10 @@ sidebar_position: 9
 
 ### Bianbu 1.0 apt update时报错 invalid: EXPKEYSIG 0C1C275F85F3A22A Bianbu Repo Signing Key
 
-详细报错如下，
+由于Bianbu 1.0 源的签名已于2024年11月27日过期
+
+可执行如下命令修复，
 
 ```shell
-W: GPG error: https://archive.bianbu.xyz/bianbu-ports mantic-porting InRelease: The following signatures were invalid: EXPKEYSIG 0C1C275F85F3A22A Bianbu Repo Signing Key <bianbu@spacemit.com>
-
-E: The repository 'https://archive.bianbu.xyz/bianbu-ports mantic-porting InRelease' is not signed.
+wget -O -  https://archive.spacemit.com/tools/misc/fix_bianbu_key_expired.sh | bash
 ```
-
-由于Bianbu 1.0 源的签名已于2024年11月27日过期，故需修改/etc/apt/sources.list和/etc/apt/sources.list.d/bianbu.list文件，追加`[trusted=yes]`。
-
-/etc/apt/sources.list
-
-```shell
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic/snapshots/<version> main multiverse restricted universe
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-security/snapshots/<version> main multiverse restricted universe
-```
-
-/etc/apt/sources.list.d/bianbu.list
-
-```shell
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-spacemit/snapshots/<version> main multiverse restricted universe
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-porting/snapshots/<version> main multiverse restricted universe
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-customization/snapshots/<version> main multiverse restricted universe
-```
-
-删除之前的包索引缓存
-
-```shell
-sudo rm -r /var/lib/apt/lists
-```
-
-至此可以正常apt update，warning可以忽略
