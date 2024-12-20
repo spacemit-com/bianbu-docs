@@ -6,13 +6,21 @@ sidebar_position: 3
 
 Bianbu Desktop/NAS 支持在线升级。
 
-## 通过命令行
+## 完全通过命令行
 
 ```bash
-sudo do-release-upgrade
+do-release-upgrade
 ```
 
 根据提示逐步完成，然后重启。
+
+## 通过命令行打开图形化升级界面(推荐)
+
+仅限 Bianbu Desktop。
+
+```bash
+do-release-upgrade -f DistUpgradeViewGtk3
+```
 
 ## 通过软件更新器
 

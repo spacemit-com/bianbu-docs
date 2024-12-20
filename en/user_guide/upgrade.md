@@ -6,12 +6,18 @@ sidebar_position: 3
 
 Bianbu Desktop/NAS supports online upgrades.
 
-## Via Command Line
-
-Run the following command:
+## Fully via Command Line
 
 ```bash
-sudo do-release-upgrade
+do-release-upgrade
+```
+
+Follow the prompts step by step, then restart.
+
+## Open Graphical Upgrade Interface via Command Line (Recommended, Bianbu Desktop Only)
+
+```bash
+do-release-upgrade -f DistUpgradeViewGtk3
 ```
 
 Follow the prompts to complete the process and then restart the device.
