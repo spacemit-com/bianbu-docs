@@ -41,3 +41,7 @@ You can fix it by running the following command,
 ```shell
 wget -O - https://archive.spacemit.com/tools/misc/fix_bianbu_key_expired.sh | bash
 ```
+
+### Bianbu 1.0 Software Updater Stuck
+
+Try running `apt update`. If you see the error invalid: EXPKEYSIG, refer to the previous issue for a fix.

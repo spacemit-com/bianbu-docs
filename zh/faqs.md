@@ -41,3 +41,7 @@ sidebar_position: 9
 ```shell
 wget -O -  https://archive.spacemit.com/tools/misc/fix_bianbu_key_expired.sh | bash
 ```
+
+### Bianbu 1.0 软件更新器卡住
+
+尝试执行`apt update`，如提示error invalid: EXPKEYSIG 可参考上一个问题修复。
