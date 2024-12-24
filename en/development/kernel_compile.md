@@ -16,7 +16,7 @@ git clone https://gitee.com/bianbu-linux/linux-6.6 ~/linux-6.6
 
 ### Cross Development Environment
 
-Refer to Bianbu Linux's [development environment](https://bianbu-linux.spacemit.com/download_and_build#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83) to prepare the cross-compilation environment.
+Refer to Bianbu Linux's [development environment](https://bianbu-linux.spacemit.com/source#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83) to prepare the cross-compilation environment.
 
 ### Cross Compiler
 
