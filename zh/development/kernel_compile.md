@@ -18,6 +18,12 @@ git clone https://gitee.com/bianbu-linux/linux-6.6 ~/linux-6.6
 
 参考Bianbu Linux的[开发环境](https://bianbu-linux.spacemit.com/source#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83)准备好交叉编译环境。
 
+然后安装以下依赖：
+
+```shell
+sudo apt-get install debhelper libpfm4-dev libtraceevent-dev asciidoc libelf-dev devscripts
+```
+
 ### 交叉编译器
 
 地址：[http://archive.spacemit.com/toolchain/](http://archive.spacemit.com/toolchain/)
