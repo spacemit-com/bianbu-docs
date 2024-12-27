@@ -33,11 +33,11 @@ If a regular user forgets their password, it can be changed by the root user. He
 ## Update Error
 
 ### Bianbu 1.0 apt update error: 
-> invalid: EXPKEYSIG 0C1C275F85F3A22A Bianbu Repo Signing Key
+> **invalid: EXPKEYSIG 0C1C275F85F3A22A Bianbu Repo Signing Key**
 
 This is due to Bianbu V1.0 is EOL， please upgrade to V2.0.
 
-### 1.Reflashing 
+### 1. Reflashing 
 This option is best for users who don’t need to keep any data and prefer a fresh installation of the new firmware.
 - Use the SpacemiT's fashing tool, Titan Flasher, to flash the complete system image. You can download the image here:
 https://archive.spacemit.com/image/k1/version/bianbu/
