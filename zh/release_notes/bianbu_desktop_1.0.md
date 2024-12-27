@@ -5,7 +5,7 @@ sidebar_position: 1
 # Bianbu Desktop 1.0更新说明
 
 ## Bianbu 1.0 停服公告
-Bianbu V1.0 基于Ubuntu 23.10构建，Ubuntu 社区已停止对23.10的维护与更新。进迭时空基于Ubutu 24.04，针对RISC-V深度优化发布Bianbu V2.0，最新版本迭代至V2.0.4，现计划对Bianbu V1.0进行停止维护（End of Life）。
+Bianbu V1.0 基于Ubuntu 23.10构建，Ubuntu 社区已停止对23.10的维护与更新。进迭时空基于Ubuntu 24.04，针对RISC-V深度优化发布Bianbu V2.0，最新版本迭代至V2.0.4，现已决定对Bianbu V1.0停止维护（End of Life）。建议用户更新Bianbu V2.0版本使用。
 
 | 版本  | 停止支持日期 | 延长生命周期（Extended Life-cycle Support, ELS）停止日期|
 | ------------ | -------- | -------- |
