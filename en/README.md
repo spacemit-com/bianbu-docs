@@ -121,7 +121,7 @@ Source code: [https://gitee.com/bianbu-linux/opensbi](https://gitee.com/bianbu-l
 
 ## Versions
 
-### Bianbu 1.0
+### Bianbu 1.0【EOL already】
 
 Latest version: v1.0.15
 
