@@ -4,21 +4,15 @@ sidebar_position: 1
 
 # Bianbu Desktop 1.0更新说明
 
-基于Ubuntu 23.10源码构建。
+## Bianbu 1.0 停服公告
+Bianbu V1.0 基于Ubuntu 23.10构建，Ubuntu 社区已停止对23.10的维护与更新。进迭时空基于Ubutu 24.04，针对RISC-V深度优化发布Bianbu V2.0，最新版本迭代至V2.0.4，现计划对Bianbu V1.0进行停止维护（End of Life）。
 
-Bianbu 1.0源：
+| 版本  | 停止支持日期 | 延长生命周期（Extended Life-cycle Support, ELS）停止日期|
+| ------------ | -------- | -------- |
+|    Bianbu 1.x.x    |   2024/12/31     | NO |
+|        |        |
 
-```
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic/snapshots/<version> main multiverse restricted universe
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-security/snapshots/<version> main multiverse restricted universe
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-spacemit/snapshots/<version> main multiverse restricted universe
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-porting/snapshots/<version> main multiverse restricted universe
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-customization/snapshots/<version> main multiverse restricted universe
-```
 
-`<version>`要替换成版本号，例如v1.0。
-
-注意：由于1.0源的公钥已过期，故需配置[trusted=yes]
 
 ## v1.0更新说明
 
