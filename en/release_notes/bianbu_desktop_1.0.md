@@ -4,21 +4,14 @@ sidebar_position: 1
 
 # Bianbu Desktop 1.0 Release Notes
 
-Build from Ubuntu 23.10 sources.
+## Bianbu 1.0 End of Life Announcement
 
-Bianbu 1.0 source：
+SpacemiT Bianbu V1.0, which was built on Ubuntu 23.10, is no longer supported or updated by the Ubuntu community. SpacemiT has now released Bianbu V2.0 (currently at version V2.0.4), which is based on Ubuntu 24.04 and includes deep optimizations for RISC-V. Please note that Bianbu V1.0 is no longer maintained and has reached its End of Life (EOL).
 
-```
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic/snapshots/<version> main multiverse restricted universe
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-security/snapshots/<version> main multiverse restricted universe
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-spacemit/snapshots/<version> main multiverse restricted universe
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-porting/snapshots/<version> main multiverse restricted universe
-deb [trusted=yes] https://archive.spacemit.com/bianbu-ports/ mantic-customization/snapshots/<version> main multiverse restricted universe
-```
+**Bianbu 1.0 End of Life (EOL) Time: 2024/12/31**
 
-`<version>` should be replaced with a version number, such as v1.0.
-
-**Note:** Due to the expiration of the public key for version 1.0 sources, it is necessary to configure `[trusted=yes]`.
+Please refer to the document for the Bianbu V2.0 upgrade：
+[user_guide-->upgrade](https://bianbu.spacemit.com/en/user_guide/upgrade)
 
 ## v1.0 release note
 

@@ -32,16 +32,53 @@ If a regular user forgets their password, it can be changed by the root user. He
 
 ## Update
 
-### Bianbu 1.0 apt update error: invalid: EXPKEYSIG 0C1C275F85F3A22A Bianbu Repo Signing Key
+### Bianbu 1.0 apt update error
 
-Due to the expiration of the Bianbu 1.0 repository key on November 27, 2024,
+`invalid: EXPKEYSIG 0C1C275F85F3A22A Bianbu Repo Signing Key`
 
-You can fix it by running the following command,
+This is due to Bianbu V1.0 is EOL， please upgrade to V2.0.
+
+#### 1. Reflashing
+
+This option is best for users who don’t need to keep any data and prefer a fresh installation of the new firmware.
+
+- Use the SpacemiT's fashing tool, Titan Flasher, to flash the complete system image. You can download the image here:
+https://archive.spacemit.com/image/k1/version/bianbu/
+- Please refer to Fashing Guide in our community platform for detailed instructions on using the this tool:
+https://developer.spacemit.com/documentation?token=O6wlwlXcoiBZUikVNh2cczhin5d
+
+#### 2. Graphical Upgrade Interface with Command Line / Terminal (Recommended)
+
+> Note:This method is only available for Bianbu Desktop users.
+
+To upgrade via the command line and access the graphical upgrade interface, run the following command:
 
 ```shell
-wget -O - https://archive.spacemit.com/tools/misc/fix_bianbu_key_expired.sh | bash
+do-release-upgrade -f DistUpgradeViewGtk3
 ```
 
-### Bianbu 1.0 Software Updater Stuck
+#### 3. Full Command Line / Terminal Upgrade
 
-Try running `apt update`. If you see the error invalid: EXPKEYSIG, refer to the previous issue for a fix.
+Follow the prompts step by step to complete the upgrade, then restart the system.
+
+To start the upgrade, run the command:
+
+```shell
+do-release-upgrade
+```
+
+#### 4. Upgrade via Software Updater
+
+Note: This method is only available for Bianbu Desktop users.
+
+- Ensure your device is connected to the internet
+- Open the "Software Updater" application
+- Wait while the updater checks for available updates
+- Click "Upgrade" if a new version is found
+- Follow the on-screen prompts to finish the upgrade
+- Restart your device once the upgrade is complete
+
+**Notes:**
+
+- It may take up to 2 hours for the major version upgrades (e.g., from 1.0.15 to Bianbu 2.0.x)
+- If you are running a version older than V1.0.15, the upgrade process will first update your system to V1.0.15. After that, and you’ll need to repeat the process to upgrade to V2.0.

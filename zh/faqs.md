@@ -32,16 +32,44 @@ sidebar_position: 9
 
 ## 更新
 
-### Bianbu 1.0 apt update时报错 invalid: EXPKEYSIG 0C1C275F85F3A22A Bianbu Repo Signing Key
+### Bianbu 1.0 apt update时报错
 
-由于Bianbu 1.0 源的签名已于2024年11月27日过期
+`invalid: EXPKEYSIG 0C1C275F85F3A22A Bianbu Repo Signing Key`
 
-可执行如下命令修复，
+**原因：** 由于Bianbu 1.0已EOL，先已停止更新和维护，强烈建议用户更新到Bianbu V2.0使用。
+
+**更新方法**
+
+可以参考进迭时空论坛链接：https://forum.spacemit.com/t/topic/250
+
+#### 1. 通过命令行打开图形化升级界面（推荐）
+
+> 注：仅限 Bianbu Desktop版本。
 
 ```shell
-wget -O -  https://archive.spacemit.com/tools/misc/fix_bianbu_key_expired.sh | bash
+do-release-upgrade -f DistUpgradeViewGtk3
 ```
 
-### Bianbu 1.0 软件更新器卡住
+#### 2. 完全通过命令行
 
-尝试执行`apt update`，如提示error invalid: EXPKEYSIG 可参考上一个问题修复。
+根据提示逐步完成，然后重启
+
+```shell
+do-release-upgrade
+```
+
+#### 3. 通过软件更新器
+
+> 注：仅限 Bianbu Desktop。
+
+* 设备联网；
+
+* 打开“软件更新器”；
+
+* 等待检查更新完成；
+
+* 发现新版本，点击升级；
+
+* 根据提示逐步完成；
+
+* 重启。
