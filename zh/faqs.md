@@ -30,31 +30,35 @@ sidebar_position: 9
 
 6. 按下键盘Ctrl + Alt + F1组合键，切回登录界面，使用新密码登录即可。
 
-## 更新Error
+## 更新
 
-### Bianbu 1.0 apt update时报错：
+### Bianbu 1.0 apt update时报错
+
 `invalid: EXPKEYSIG 0C1C275F85F3A22A Bianbu Repo Signing Key`
 
 **原因：** 由于Bianbu 1.0已EOL，先已停止更新和维护，强烈建议用户更新到Bianbu V2.0使用。
-### 更新方法如下
+
+**更新方法**
+
 可以参考进迭时空论坛链接：https://forum.spacemit.com/t/topic/250
-### 1. 通过命令行打开图形化升级界面（推荐）
+
+#### 1. 通过命令行打开图形化升级界面（推荐）
 
 > 注：仅限 Bianbu Desktop版本。
 
-```
+```shell
 do-release-upgrade -f DistUpgradeViewGtk3
 ```
 
-### 2. 完全通过命令行
+#### 2. 完全通过命令行
 
 根据提示逐步完成，然后重启
 
-```
+```shell
 do-release-upgrade
 ```
 
-### 3. 通过软件更新器
+#### 3. 通过软件更新器
 
 > 注：仅限 Bianbu Desktop。
 
@@ -69,4 +73,3 @@ do-release-upgrade
 * 根据提示逐步完成；
 
 * 重启。
-

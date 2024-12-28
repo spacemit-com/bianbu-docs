@@ -5,6 +5,7 @@ sidebar_position: 1
 # Bianbu Desktop 1.0 Release Notes
 
 ## Bianbu 1.0 End of Life Announcement
+
 SpacemiT Bianbu V1.0, which was built on Ubuntu 23.10, is no longer supported or updated by the Ubuntu community. SpacemiT has now released Bianbu V2.0 (currently at version V2.0.4), which is based on Ubuntu 24.04 and includes deep optimizations for RISC-V. Please note that Bianbu V1.0 is no longer maintained and has reached its End of Life (EOL).
 
 **Bianbu 1.0 End of Life (EOL) Time: 2024/12/31**
