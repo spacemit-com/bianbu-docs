@@ -64,6 +64,13 @@ Generate default configuration:
 make k1_defconfig
 ```
 
+If you need to compile the PREEMPT_RT real-time kernel for the bl-v2.0.y branch, please first update the source code to `3ac79a6dd update rt defconfig` or a later version, and then apply the patch and generate configuration, skip if not:
+
+```shell
+patch -p1 < rt-linux/*.patch
+make k1_rt_defconfig
+```
+
 Modify configuration, skip if not needed:
 
 ```shell
