@@ -64,7 +64,7 @@ export LOCALVERSION=""
 make k1_defconfig
 ```
 
-如果需要编译 bl-v2.0.y 分支的 PREEMPT_RT 实时内核，请先将源码更新到 `3ac79a6dd update rt defconfig`，或者之后的版本，然后打 Patch 再生成配置，否则跳过：
+如果需要编译 bl-v2.0.y 分支的 PREEMPT_RT 实时内核，请先将源码更新到提交 `3ac79a6dd update rt defconfig`，或者之后的版本，然后打 Patch 再生成配置，否则跳过：
 
 ```shell
 patch -p1 < rt-linux/*.patch
