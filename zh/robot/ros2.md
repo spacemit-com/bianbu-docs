@@ -4,11 +4,11 @@ sidebar_position: 4
 
 # ROS2使用指南
 
-目前我们提供ROS2 Jazzy 和 ROS2 Humble 两个版本的prebuilt包，以及 ROS2 Jazzy 版本的deb安装包。如果您使用Jazzy版本，请从 deb 方式安装，Humble 版本请参考[安装prebuilt包](##使用prebuilt包)
+目前我们提供ROS2 Jazzy 和 ROS2 Humble 两个版本的prebuilt包，以及 ROS2 Jazzy 版本的deb安装包。如果您使用Jazzy版本，强烈建议您从 deb 方式安装。如果您想使用 Humble 版本，请参考[从prebuilt包安装](##从prebuilt包安装)
 
 ## 从 deb 包安装
 
-ROS2 Jazzy Jalisco 的 Deb 软件包目前可用于 Bianbu Destop 2.0
+ROS2 Jazzy Jalisco 的 deb 软件包目前可用于 Bianbu Destop 2.0
 
 ### 环境准备
 
@@ -119,10 +119,9 @@ ros2 run demo_nodes_py listener
 
 现在，您可以继续学习[官方教程和演示](https://docs.ros.org/en/jazzy/Tutorials.html)来配置您的环境，创建您自己的工作区和包，并学习 ROS 2 核心概念。
 
+## 从prebuilt包安装
 
-## 使用prebuilt包
-
-我们支持的 ROS2 是在 Bianbu 2.0 上构建的，因此，为了避免不必要的环境问题，请您使用 Bianbu 2.0 来开发和使用。prebuilt仅包含了 ROS2 基础版本中的所有包，具体包含的包列表由此 [ros2.repos](https://github.com/ros2/ros2/blob/jazzy/ros2.repos) 文件中列出的仓库所描述。
+我们支持的 ROS2 是在 Bianbu 2.0 上构建的，因此，为了避免不必要的环境问题，请您使用 Bianbu 2.0 来开发和使用。prebuilt 仅包含了 ROS2 基础版本中的所有包，具体包含的包列表由此 [ros2.repos](https://github.com/ros2/ros2/blob/jazzy/ros2.repos) 文件中列出的仓库所描述。
 
 ### 环境准备
 
@@ -228,42 +227,42 @@ sudo apt-get install -y \
     python3-sip-dev
 ```
 
-### 下载prebuilt包
+### 下载 prebuilt 包
 
 * 进入[发布页面](https://archive.spacemit.com/ros2/prebuilt)
 
-* 下载 Bianbu OS ROS2 的最新软件包，在本示例中，它下载位于：~/ros2-jazzy-linux-riscv64-20240920.tar.gz
+* 下载 Bianbu OS ROS2 的最新软件包，在本示例中，它下载位于：~/humble_prebuild.tar.gz
 
 **提示**
 
 > 随着版本的迭代，可能有多个prebuilt包的下载选项，这可能会导致文件名不同。
 
-### 安装prebuilt包
+### 安装 prebuilt 包
 
 * 解压软件包
 
 ```shell
-sudo mkdir -p /opt/ros2/jazzy_prebuild
-cd /opt/ros2/jazzy_prebuild
-sudo tar -xzvf ~/ros2-jazzy-linux-riscv64-20240920.tar.gz
+sudo mkdir -p /opt/ros/
+cd /opt/ros
+sudo tar xzvf ~/humble_prebuild.tar.gz
 ```
 
-这会将prebuilt包的文件安装到当前路径（ 在本例中是 /opt/ros2/jazzy_prebuild ）
+这会将prebuilt包的文件安装到当前路径（ 在本例中是 /opt/ros/humble_prebuild ）
 
 **提示**
 
-> 当您使用其它 ROS2 的发行版时，例如 Humble，请将本示例中的 jazzy_prebuild 替换为任何您喜欢的名字，注意不要同名，以免新的安装错误覆盖了之前的文件。
+> 请严格按照上述的命令进行安装， 使用自定义的文件夹名会出现问题 。
 
 解压完成后的文件夹应该如下所示：
 
 ```shell
-➜  jazzy_prebuild ls
+➜  humble_prebuild ls
 bin            include           local_setup.ps1           _local_setup_util_sh.py  setup.bash  setup.zsh  tools
 COLCON_IGNORE  lib               local_setup.sh            local_setup.zsh          setup.ps1   share
 etc            local_setup.bash  _local_setup_util_ps1.py  opt                      setup.sh    src
 ```
 
-## 尝试一些例子
+### 尝试一些例子
 
 使用 echo $0 确定您使用的是zsh还是bash，本示例中使用的是 zsh。
 
@@ -274,19 +273,19 @@ echo $0
 -zsh # 这一行是输出，请不要执行
 ```
 
-### 基本话题通信
+#### 基本话题通信
 
 在任意位置打开一个终端，使用 source 命令更新 ROS2 的环境变量，然后运行 ​​C++ talker ：
 
 ```shell
-source /opt/ros2/jazzy_prebuild/setup.zsh
+source /opt/ros/humble_prebuild/setup.zsh
 ros2 run demo_nodes_cpp talker
 ```
 
 在另一个终端中使用 source 命令更新 ROS2 的环境变量，然后运行 ​​Python listener ：
 
 ```shell
-source /opt/ros2/jazzy_prebuild/setup.zsh
+source /opt/ros/humble_prebuild/setup.zsh
 ros2 run demo_nodes_py listener
 ```
 
@@ -296,11 +295,11 @@ ros2 run demo_nodes_py listener
 
 **提示**
 
-> 当如果当前终端已经执行：source /opt/ros2/jazzy_prebuild/setup.zsh，则不必重复执行
+> 当如果当前终端已经执行：source /opt/ros/humble_prebuild/setup.zsh，则不必重复执行
 
-### 小海龟
+#### 小海龟
 
-如果您新打开了一个终端，不要忘记执行：source /opt/ros2/jazzy_prebuild/setup.zsh
+如果您新打开了一个终端，不要忘记执行：source /opt/ros/humble_prebuild/setup.zsh
 
 本示例请在桌面中启动终端运行，使用 ssh 连接的终端无法拉起 turtlesim 的界面
 
@@ -329,9 +328,9 @@ ros2 run turtlesim turtle_teleop_key
 
 使用键盘上的方向键来控制乌龟。它会在屏幕上移动，用它附带的“笔”画出它到目前为止所经过的路径。
 
-### 小结
+#### 小结
 
-jazzy的更多的示例教程请参考[官方教程](https://docs.ros.org/en/jazzy/Tutorials.html)
+Humble的更多的示例教程请参考[官方教程](https://docs.ros.org/en/humble/Tutorials.html)
 
 由于使用的是预编译好的 ROS2 ，当您在官网教程中遇到安装 ROS2 的步骤时请先选择跳过。
 
