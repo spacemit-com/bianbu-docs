@@ -4,6 +4,9 @@ sidebar_position: 2
 
 # Qt User Guide
 
+## Introduction
+Qt is a cross platform C++ framework (C++ library) primarily used for developing graphical user interface (GUI) programs, as well as command line (CUI) programs without interfaces. OpenGL ES (OpenGL for Embedded Systems) is a cross platform 2D/3D graphics API interface suitable for rendering efficient 2D and 3D graphics on low power devices, which are tailored for embedded devices using OpenGL (Open Graphics Library). This Qt User Guide guides users to adapt Qt5's OpenGL ES hardware acceleration on the Spacemit Soc platform.
+
 ## Install Qt5 development environment
 
 ### Install C/C++ compilation environment
