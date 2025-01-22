@@ -24,6 +24,10 @@ Note: To upgrade from Bianbu 1.0.x to 2.0, you must first **update to 1.0.15 or 
 
 Note: Major version upgrades of Bianbu (e.g., from 1.0.15 to Bianbu 2.0.x) take a long time, approximately 2 hours, with multiple interactions in the last half hour. You can choose as needed (if unsure, select Next/Keep).
 
+Note: Major version upgrades of Bianbu (e.g., from 1.0.15 to Bianbu 2.0.x) take a long time, approximately 2 hours. During the last half hour, there will be multiple interactions while configuring packages. You can choose as needed (if unsure, select Next/Keep). When asked whether to remove obsolete packages, select **Remove**.
+
+If you encounter any issues during the upgrade, please refer to the [FAQs](../faqs.md#Update).
+
 ### Method 1: Open the Graphical Upgrade Interface via Command Line (Recommended)
 
 Only for Bianbu Desktop.
@@ -50,4 +54,3 @@ Only for Bianbu Desktop.
 4. When a new version is found, click upgrade;
 5. Follow the prompts to complete the process;
 6. Restart.
-

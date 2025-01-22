@@ -82,3 +82,30 @@ Note: This method is only available for Bianbu Desktop users.
 
 - It may take up to 2 hours for the major version upgrades (e.g., from 1.0.15 to Bianbu 2.0.x)
 - If you are running a version older than V1.0.15, the upgrade process will first update your system to V1.0.15. After that, and you’ll need to repeat the process to upgrade to V2.0.
+
+### Possible Issues During Bianbu 2.0.x Upgrade
+
+#### Prompt: `Please install all available updates for your release before upgrading`
+
+Reason: Some installed package versions do not match the versions in the software source.
+
+Solution:
+
+1. Run `sudo apt upgrade` to reinstall the versions from the source.
+
+2. Re-run `do-release-upgrade -f DistUpgradeViewGtk3`.
+
+If the prompt `Please install all available updates for your release before upgrading` still appears, run `apt list --upgradable` to check for available updates. The possible package list and handling methods are as follows:
+
+| Package Name                 | Handling Method                                      |
+| :--------------------------- | :--------------------------------------------------- |
+| thunderbird-local-zh-cn      | Temporarily uninstall with `sudo apt remove thunderbird-local-zh-cn` |
+| thunderbird-local-zh-cn-hans | Temporarily uninstall with `sudo apt remove thunderbird-local-zh-cn-hans` |
+
+## Feedback
+
+If you still have issues, you can provide feedback through any of the following channels:
+
+1. [Submit issues on Gitee](https://gitee.com/bianbu/bianbu-docs/issues)
+2. [Developer Forum](https://forum.spacemit.com/)
+3. [Submit a ticket](https://ticket.spacemit.com/projects/main/issues/new)
