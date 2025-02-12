@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Bianbu Desktop 1.0 Release Notes
+# Bianbu Desktop 1.0 Release Notes [End of Life]
 
 ## Bianbu 1.0 End of Life Announcement
 

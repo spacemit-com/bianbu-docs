@@ -91,7 +91,7 @@ Linux 内核负责管理处理器和其他硬件资源，提供用户和应用�
 
 源码：
 
-- [https://gitee.com/bianbu-linux/linux-6.1](https://gitee.com/bianbu-linux/linux-6.1)
+- [https://gitee.com/bianbu-linux/linux-6.1](https://gitee.com/bianbu-linux/linux-6.1) (EOL)
 - [https://gitee.com/bianbu-linux/linux-6.6](https://gitee.com/bianbu-linux/linux-6.6) (LTS)
 
 #### U-Boot
@@ -125,9 +125,9 @@ OpenSBI 是 RISC-V 架构处理器的监管程序接口的实现，运行在 M �
 
 最新版本：v1.0.15。
 
-### Bianbu 2.0
+### Bianbu 2.x
 
-最新版本：v2.0.1。
+最新版本：v2.1。
 
 ## 问题反馈
 

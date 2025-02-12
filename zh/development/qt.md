@@ -4,6 +4,9 @@ sidebar_position: 2
 
 # Qt 使用指南
 
+## 简介
+Qt 是一个跨平台的 C++ 框架（C++ 库），主要用来开发图形用户界面（Graphical User Interface，GUI）程序，也可以开发不带界面的命令行（Command User Interface，CUI）程序。OpenGL ES（OpenGL for Embedded Systems） 是一种跨平台2D/3D图形 API接口，其适用于低功耗设备上渲染高效的 2D 、 3D 图形，其由OpenGL（Open Graphics Library）针对嵌入式设备裁剪而来。本《Qt 使用指南》指导用户在Spacemit Soc平台适配Qt5的OpenGL ES硬件加速。
+
 ## 安装Qt5开发环境
 
 ### 安装C/C++编译环境

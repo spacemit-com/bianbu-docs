@@ -91,7 +91,7 @@ Version: 6.1 and 6.6。
 
 Source code:
 
-- [https://gitee.com/bianbu-linux/linux-6.1](https://gitee.com/bianbu-linux/linux-6.1)
+- [https://gitee.com/bianbu-linux/linux-6.1](https://gitee.com/bianbu-linux/linux-6.1) (EOL)
 - [https://gitee.com/bianbu-linux/linux-6.6](https://gitee.com/bianbu-linux/linux-6.6) (LTS)
 
 #### U-Boot
@@ -125,9 +125,9 @@ Source code: [https://gitee.com/bianbu-linux/opensbi](https://gitee.com/bianbu-l
 
 Latest version: v1.0.15
 
-### Bianbu 2.0
+### Bianbu 2.x
 
-Latest version: v2.0.1
+Latest version: v2.1
 
 ## Issue feedback
 

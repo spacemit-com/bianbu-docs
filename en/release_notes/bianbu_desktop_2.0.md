@@ -6,8 +6,6 @@ sidebar_position: 2
 
 Build from Ubuntu 24.04 sources.
 
-Current status: in development.
-
 Bianbu 2.0 source：
 
 ```
@@ -18,7 +16,7 @@ Components: main universe restricted multiverse
 Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 ```
 
-`<version>` should be replaced with a version number, such as v2.0beta2. If you need to download the source code, please change `Types: deb` to Types: `deb deb-src`.
+`<version>` should be replaced with a version number, such as v2.0.4. If you need to download the source code, please change `Types: deb` to Types: `deb deb-src`.
 
 ## v2.0.4
 
