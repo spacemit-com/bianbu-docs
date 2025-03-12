@@ -22,8 +22,7 @@ sudo apt install openwebui
 
 ## 制作模型（可选）
 
-该deb包由 openwebui 和 ollama 容器镜像组成。只需要进入 ollama 容器下载制作模型即可，下面是制作模型的一个示例：
-进入容器：
+该deb包由 openwebui 和 ollama 容器镜像组成。只需要进入 ollama 容器下载制作模型即可，下面是制作模型的一个示例，首先进入容器：
 ```shell
 sudo docker exec -it ollama bash
 ```

@@ -22,8 +22,7 @@ Right-click the openwebui desktop icon, select "Allow Execution" to launch the a
 
 ## Model Creation (Optional)
 
-This `.deb` package consists of the Open-WebUI and Ollama container images. To create a model, simply enter the Ollama container and follow the steps below. Here is an example of how to create a model:
-Access the container shell:
+This `.deb` package consists of the Open-WebUI and Ollama container images. To create a model, simply enter the Ollama container and follow the steps below. Here is an example of how to create a model. First of all, Access the container shell:
 ```shell
 sudo docker exec -it ollama bash
 ```
