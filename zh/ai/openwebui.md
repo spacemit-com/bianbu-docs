@@ -18,7 +18,7 @@ sudo apt install openwebui
 ## 使用
 
 右键点击 openwebui 桌面图标，点击允许运行，即可使用。
-![](static/openwebui.png)
+![](../static/openwebui.png)
 
 ## 制作模型（可选）
 

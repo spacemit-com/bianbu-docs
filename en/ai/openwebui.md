@@ -18,7 +18,7 @@ Wait for the installation to complete.
 ## Usage
 
 Right-click the openwebui desktop icon, select "Allow Execution" to launch the application.
-![](static/openwebui.png)
+![](../static/openwebui.png)
 
 ## Model Creation (Optional)
 
