@@ -2,23 +2,21 @@
 sidebar_position: 2
 ---
 
-# Bianbu 2.0 ROOTFS Creation
+# Bianbu 2.1 ROOTFS Creation
 
-It is recommended to use [Bianbu 2.1 ROOTFS Creation](./bianbu_2.1_rootfs_create.md).
+## Environment Requirements
 
-## Prerequisites
-
-The host machine is recommended to be Ubuntu 20.04/22.04, with docker CE and customized qemu-user-static (version 8.0.4, with Vector 1.0 support enabled by default) installed.
+Host machine should be Ubuntu 20.04/22.14, with docker ce and qemu-user-static (8.0.4, customized version with Vector 1.0 support enabled by default) installed.
 
 ### Docker
 
-For Docker CE installation, refer to [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/).
+For docker ce installation, refer to [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/).
 
 ### QEMU
 
 1. Uninstall binfmt-support
 
-   The customized qemu-user-static conflicts with binfmt-support since binfmt-support provides the `/etc/init.d/binfmt-support` SysVinit script, while the customized qemu-user-static provides a systemd service unit file `/lib/systemd/system/systemd-binfmt.service`. The `/etc/init.d/binfmt-support` script executes later than `/lib/systemd/system/systemd-binfmt.service`, causing it to overwrite the systemd settings.
+   The customized qemu-user-static conflicts with binfmt-support because `/etc/init.d/binfmt-support` provided by binfmt-support is a traditional SysVinit startup script, while `/lib/systemd/system/systemd-binfmt.service` provided by the customized qemu-user-static is a systemd service unit file. `/etc/init.d/binfmt-support` will execute after `/lib/systemd/system/systemd-binfmt.service`, overriding the systemd settings.
 
    ```shell
    sudo apt-get purge binfmt-support
@@ -36,13 +34,13 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
    sudo dpkg -i qemu-user-static_8.0.4+dfsg-1ubuntu3.23.10.1_amd64.deb
    ```
 
-4. Register qemu-user-static with the kernel to allow system-wide execution of riscv binaries (including within containers)
+4. Register qemu-user-static to the kernel so that riscv binary files can be executed directly throughout the system (including containers)
 
    ```shell
    sudo systemctl restart systemd-binfmt.service
    ```
 
-5. Verify the successful registration of qemu-user-static
+5. Verify if qemu-user-static is successfully registered
 
    ```shell
    wget https://archive.spacemit.com/qemu/rvv
@@ -50,14 +48,14 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
    ./rvv
    ```
 
-   Seeing the following output indicates successful registration.
+   If you see the following output, the registration is successful.
 
    ```
    helloworld
    spacemit
    ```
 
-## Prepare the Base ROOTFS
+## Prepare Base ROOTFS
 
 1. Create a working directory
 
@@ -65,7 +63,7 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
    mkdir ~/bianbu-workspace
    ```
 
-2. Create and start the container
+2. Create and start a container
 
    ```shell
    docker run --privileged -itd -v ~/bianbu-workspace:/mnt --name build-bianbu-rootfs harbor.spacemit.com/bianbu/bianbu:latest
@@ -84,7 +82,7 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
    apt-get -y install wget uuid-runtime
    ```
 
-5. Configure environment variables for later commands
+5. Configure environment variables for later use
 
    ```shell
    export BASE_ROOTFS_URL=https://archive.spacemit.com/bianbu-base/bianbu-base-24.04-base-riscv64.tar.gz
@@ -104,7 +102,7 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
    mkdir -p $TARGET_ROOTFS && tar -zxpf $BASE_ROOTFS -C $TARGET_ROOTFS
    ```
 
-8. Mount some system resources into the rootfs
+8. Mount some system resources to the rootfs
 
    ```shell
    mount -t proc /proc $TARGET_ROOTFS/proc
@@ -113,18 +111,17 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
    mount -o bind /dev/pts $TARGET_ROOTFS/dev/pts
    ```
 
-## Necessary Configuration
+## Essential Configurations
 
-### Configure Repository
+### Configure Repository Sources
 
-1. First, set environment variables for subsequent commands
+1. First, set up environment variables for later use
 
    ```shell
    export REPO="archive.spacemit.com/bianbu"
-   export VERSION="v2.0.4"
    ```
 
-   [Click here to see the latest VERSION](../release_notes/bianbu_desktop_2.0.md)
+   [Click to view release notes](../release_notes/bianbu_desktop_2.1.md)
 
 2. Configure bianbu.sources
 
@@ -132,11 +129,13 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
    cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.sources
    Types: deb
    URIs: https://$REPO/
-   Suites: noble/snapshots/$VERSION noble-security/snapshots/$VERSION noble-porting/snapshots/$VERSION noble-customization/snapshots/$VERSION
+   Suites: noble/snapshots/v2.1 noble-security/snapshots/v2.1 noble-updates/snapshots/v2.1 noble-porting/snapshots/v2.1 noble-customization/snapshots/v2.1 bianbu-v2.1-updates
    Components: main universe restricted multiverse
    Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
    EOF
    ```
+
+   Using this source allows you to install packages from subsequent 2.1.x (such as 2.1.1) releases, which are stored in bianbu-v2.1-updates.
 
 ### Configure DNS
 
@@ -144,38 +143,38 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
 echo "nameserver 8.8.8.8" >$TARGET_ROOTFS/etc/resolv.conf
 ```
 
-### Install Hardware-related Packages
+### Install Hardware-Related Packages
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "apt-get update"
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades upgrade"
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install initramfs-tools"
-chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-esos img-gpu-powervr k1x-vpu-firmware k1x-cam spacemit-uart-bt spacemit-modules-usrload opensbi-spacemit u-boot-spacemit linux-image-6.6.36"
+chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-esos img-gpu-powervr k1x-vpu-firmware k1x-cam spacemit-uart-bt spacemit-modules-usrload opensbi-spacemit u-boot-spacemit linux-generic"
 ```
 
-### Install Metapackages
+### Install Meta-Packages
 
-Different variants come with different metapackages:
+Different variants have different meta-packages:
 
 - Minimal: bianbu-minimal
 - Desktop: bianbu-desktop bianbu-desktop-zh bianbu-desktop-en bianbu-desktop-minimal-en bianbu-standard bianbu-development
 - NAS: bianbu-nas
 
-Both Desktop and NAS are based on Minimal. It is recommended to install the Minimal metapackage first, and then install the Desktop metapackage.
+Desktop and NAS are based on Minimal, so it's recommended to install the Minimal meta-package first and then the Desktop meta-package.
 
-Here is an example for creating the minimal variant:
+Here's an example of creating a minimal variant:
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
 ```
 
-Tip: After installing all packages, you can run the following command to clean up the cache and reduce the final firmware size.
+Tip: After installing all packages, you can clean up the cache to reduce the final firmware size:
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get clean"
 ```
 
-## General Configuration
+## Common Configurations
 
 #### Configure Locale
 
@@ -203,7 +202,7 @@ chroot $TARGET_ROOTFS /bin/bash -c "dpkg-reconfigure --frontend=noninteractive t
 sed -i 's/^#NTP=.*/NTP=ntp.aliyun.com/' $TARGET_ROOTFS/etc/systemd/timesyncd.conf
 ```
 
-#### Set Password
+#### Configure Password
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "echo root:bianbu | chpasswd"
@@ -239,11 +238,11 @@ EOF
 chroot $TARGET_ROOTFS /bin/bash -c "chmod 600 /etc/netplan/01-network-manager-all.yaml"
 ```
 
-Note: Different variants only need to configure their respective files.
+Note: Only configure the relevant file for your specific variant.
 
 ## Generate Partition Images
 
-Before finalizing, ensure to unmount!
+Note: After completing installation and configuration, unmount the filesystems first!
 
 ```shell
 mount | grep "$TARGET_ROOTFS/proc" > /dev/null && umount -l $TARGET_ROOTFS/proc
@@ -252,7 +251,7 @@ mount | grep "$TARGET_ROOTFS/dev/pts" > /dev/null && umount -l $TARGET_ROOTFS/de
 mount | grep "$TARGET_ROOTFS/dev" > /dev/null && umount -l $TARGET_ROOTFS/dev
 ```
 
-Generate UUID and write to /etc/fstab
+Generate UUIDs and write them to /etc/fstab
 
 ```shell
 UUID_BOOTFS=$(uuidgen)
@@ -264,21 +263,21 @@ UUID=$UUID_BOOTFS   /boot    ext4    defaults                           0      2
 EOF
 ```
 
-Move boot to a different directory, to separately create bootfs and rootfs partitions,
+Move boot to another directory to create bootfs and rootfs partitions separately
 
 ```shell
 mkdir -p bootfs
 mv $TARGET_ROOTFS/boot/* bootfs
 ```
 
-Create bootfs.ext4 and rootfs.ext4,
+Generate bootfs.ext4 and rootfs.ext4
 
 ```shell
 mke2fs -d bootfs -L bootfs -t ext4 -U $UUID_BOOTFS bootfs.ext4 "256M"
 mke2fs -d $TARGET_ROOTFS -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
 ```
 
-Now, you can see two partition images in the current directory, bootfs.ext4 and rootfs.ext4, which can be burned to the board using fastboot.
+Now, you should see two partition images in your current directory: bootfs.ext4 and rootfs.ext4, which can be flashed to the board using fastboot.
 
 ## Create Firmware
 

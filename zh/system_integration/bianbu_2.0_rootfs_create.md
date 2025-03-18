@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # Bianbu 2.0 ROOTFS制作
 
+建议使用 [bianbu 2.1 ROOTFS制作](./bianbu_2.1_rootfs_create.md)。
+
 ## 环境要求
 
 宿主机推荐 Ubuntu 20.04/22.04，且安装了 docker ce 和 qemu-user-static（8.0.4，定制版，默认开启了 Vector 1.0 支持）。
@@ -119,7 +121,7 @@ docker ce 安装可参考 [https://docs.docker.com/engine/install/](https://docs
 
    ```shell
    export REPO="archive.spacemit.com/bianbu"
-   export VERSION="v2.0.2"
+   export VERSION="v2.0.4"
    ```
 
    [点击查看最新VERSION](../release_notes/bianbu_desktop_2.0.md)

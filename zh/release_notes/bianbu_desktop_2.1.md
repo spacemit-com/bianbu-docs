@@ -11,12 +11,26 @@ Bianbu 2.1源：
 ```
 Types: deb
 URIs: https://archive.spacemit.com/bianbu/
-Suites: noble/snapshots/<version> noble-security/snapshots/<version> noble-porting/snapshots/<version> noble-customization/snapshots/<version>
+Suites: noble/snapshots/v2.1 noble-security/snapshots/v2.1 noble-updates/snapshots/v2.1 noble-porting/snapshots/v2.1 noble-customization/snapshots/v2.1 bianbu-v2.1-updates
 Components: main universe restricted multiverse
 Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 ```
 
-`<version>`要替换成版本号，例如v2.1。如需下载源码，请将`Types: deb`改成`Types: deb deb-src`。
+使用此源即可安装到后续的2.1.x（如2.1.1）发布的包，其存放在bianbu-v2.1-updates。
+如需下载源码，请将`Types: deb`改成`Types: deb deb-src`。
+
+## v2.1.1
+
+发布日期：2025-3-13
+
+对应的Bianbu Linux版本仍为[v2.1](https://bianbu-linux.spacemit.com/release_notes/bl-v2.1.y#v21%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+
+### 主要更新
+
+**AI**
+
+- openwebui：支持deepseek
+- spacemit-ollama-toolkit：支持deepseek
 
 ## v2.1
 

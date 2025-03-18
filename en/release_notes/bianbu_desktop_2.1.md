@@ -2,21 +2,36 @@
 sidebar_position: 2
 ---
 
-# Bianbu Desktop 2.0 Release Notes
+# Bianbu Desktop 2.1 Release Notes
 
 Build from Ubuntu 24.04.1 sources.
 
-Bianbu 2.1 source：
+Bianbu 2.1 source:
 
 ```
 Types: deb
 URIs: https://archive.spacemit.com/bianbu/
-Suites: noble/snapshots/<version> noble-security/snapshots/<version> noble-porting/snapshots/<version> noble-customization/snapshots/<version>
+Suites: noble/snapshots/v2.1 noble-security/snapshots/v2.1 noble-updates/snapshots/v2.1 noble-porting/snapshots/v2.1 noble-customization/snapshots/v2.1 bianbu-v2.1-updates
 Components: main universe restricted multiverse
 Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 ```
 
-`<version>` should be replaced with a version number, such as v2.1. If you need to download the source code, please change `Types: deb` to Types: `deb deb-src`.
+Using this source allows you to install packages up to subsequent 2.1.x (such as 2.1.1) releases, which are stored in bianbu-v2.1-updates.
+If you need to download source code, change `Types: deb` to `Types: deb deb-src`.
+
+## v2.1.1
+
+Release date: 2025-3-13
+
+Corresponding Bianbu Linux version: [v2.1](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.1.y#v21-release-note)
+
+### Major Updates
+
+**AI**
+
+- openwebui: Support for deepseek
+- spacemit-ollama-toolkit: Support for deepseek
+
 
 ## v2.1
 
