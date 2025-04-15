@@ -26,7 +26,7 @@ Note: Major version upgrades of Bianbu (e.g., from 1.0.15 to Bianbu 2.0.x) take 
 
 Note: Major version upgrades of Bianbu (e.g., from 1.0.15 to Bianbu 2.0.x) take a long time, approximately 2 hours. During the last half hour, there will be multiple interactions while configuring packages. You can choose as needed (if unsure, select Next/Keep). When asked whether to remove obsolete packages, select **Remove**.
 
-If you encounter any issues during the upgrade, please refer to the [FAQs](../faqs.md#Update).
+If you encounter any issues during the upgrade, please refer to the [FAQs](../faqs.md#update).
 
 ### Method 1: Open the Graphical Upgrade Interface via Command Line (Recommended)
 

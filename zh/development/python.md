@@ -355,28 +355,50 @@ thonny
 
 ### 设备引脚布局
 
-### MUSE Pi
+#### MUSE Pi
 
 ![alt text](static/MUSE-Pi-GPIO.png)
 
-### BPI-F3
+#### BPI-F3
 
 ![alt text](static/BPI-F3-GPIO.png)
 
-### MUSE BOOK
+#### MUSE BOOK
 
 ![alt text](static/MUSE-Book-GPIO.png)
 
-### MUSE Card
+#### MUSE Card
 
 ![alt text](static/MUSE-Card-GPIO.png)
 
+#### MUSE Pi Pro
+
+![](./static/MUSE-Pi-Pro-GPIO.png)
+
+#### RV4B
+
+![](./static/RV4B-GPIO.png)
+
+输入表示引脚可以识别电平变化，常用于 gpiozero 读取按钮状态
+
+输出表示引脚可以控制输出电平为0v或者3.3v，常用于gpiozero LED灯的控制
+
+PWM表示引脚可以输出PWM波，可以用于 gpiozero 实现呼吸灯以及控制舵机等
+
 ### 安装并配置环境
 
-执行以下命令安装库：
+执行以下命令安装库
+
+主环境：
 
 ```shell
 sudo apt install python3-gpiozero
+```
+
+虚拟环境：
+
+```
+pip install --index-url https://git.spacemit.com/api/v4/projects/33/packages/pypi/simple gpiozero
 ```
 
 赋予权限：
