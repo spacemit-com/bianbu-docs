@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Bianbu Desktop 1.0更新说明 [已停服]
+# Bianbu 1.0更新说明 [已停服]
 
 ## Bianbu 1.0 停服公告
 

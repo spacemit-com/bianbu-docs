@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # 简介
 
-Bianbu是一个针对RISC-V架构的处理器做了深度优化的操作系统，基于Ubuntu社区源码构建，有Bianbu Desktop和Bianbu NAS等版本，适用于不同的产品领域。
+Bianbu是一个针对RISC-V架构的处理器做了深度优化的操作系统，基于Ubuntu社区源码构建，针对不同产品领域，开发了Bianbu Star，Bianbu NAS等版本。
 
 ## 为什么做Bianbu
 
@@ -19,7 +19,7 @@ Bianbu是一个针对RISC-V架构的处理器做了深度优化的操作系统�
 
 ## Bianbu Desktop
 
-Bianbu Desktop 是一个桌面操作系统，简洁、快速、安全，支持 RISC-V 单板电脑、笔记本和台式机等。
+Bianbu Desktop 是基于Bianbu提供的桌面系统版本，简洁、快速、安全，支持 RISC-V 单板电脑、笔记本和台式机等，帮助用户快速预览Bianbu系统功能和组件；
 
 ![](static/MQ8zbksT2oLR9vxbaE3c0JGznQg.png)
 
