@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Bianbu Desktop 2.1更新说明
+# Bianbu 2.1更新说明
 
 基于Ubuntu 24.04.1源码构建。
 

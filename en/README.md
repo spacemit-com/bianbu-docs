@@ -5,7 +5,14 @@ sidebar_position: 1
 
 # Intro
 
-Bianbu is an operating system deeply optimized for RISC-V architecture processors, built from Ubuntu community source code. It has versions like Bianbu Desktop and Bianbu NAS, suitable for different product fields.
+Bianbu is an operating system deeply optimized for RISC-V architecture processors, built from Ubuntu community source code, and suitable for various product domains.
+
+Bianbu provides the following images for developers and customers for learning and evaluation:
+
+- Bianbu minimal: Command-line version
+- Bianbu Desktop: GNOME desktop version
+- Bianbu Desktop Lite: LXQt desktop version
+- Bianbu NAS: OMV version
 
 ## Why Bianbu
 
@@ -17,19 +24,13 @@ Bianbu is an operating system deeply optimized for RISC-V architecture processor
 
 Let our technology and services spread across various industries, around the world, serving everyone in need.
 
-## Bianbu Desktop
-
-Bianbu Desktop is a desktop operating system that is simple, fast, and secure, supporting RISC-V single-board computers, laptops, and desktops.
-
-![](static/MQ8zbksT2oLR9vxbaE3c0JGznQg.png)
-
-### System Architecture
+## System Architecture
 
 ![](static/N9yUb4TBXolid0xduMfcixvcneh.png)
 
-### Software Components
+## Software Components
 
-The components of Bianbu Desktop are as follows:
+The components of Bianbu are as follows:
 
 - Applications
 - Frameworks
@@ -39,9 +40,9 @@ The components of Bianbu Desktop are as follows:
 - U-Boot
 - OpenSBI
 
-Bianbu Desktop manages the packages of these components through the [APT source](http://archive.spacemit.com/bianbu-ports/), and the packages are in standard Debian package format.
+Bianbu manages the packages of these components through the [APT source](http://archive.spacemit.com/bianbu-ports/), and the packages are in standard Debian package format.
 
-#### Applications
+### Applications
 
 - GNOME desktop and its common applications
 - Remote desktop
@@ -50,32 +51,32 @@ Bianbu Desktop manages the packages of these components through the [APT source]
 - Visual Studio Code
 - Docker
 
-#### Frameworks
+### Frameworks
 
-**Application Frameworks**
+#### Application Frameworks
 
 - Electron
 - GTK
 - QT
 
-**Multimedia Frameworks**
+#### Multimedia Frameworks
 
 - FFmpeg (with Hardware Accelerated)
 - GStreamer (with Hardware Accelerated)
 - PipeWire
 
-**Inference Frameworks**
+#### Inference Frameworks
 
 - onnxruntime (with Hardware Accelerated)
 
-#### Runtimes
+### Runtimes
 
 - Python
 - Java
 - Node.js
 - Rust
 
-#### Libraries
+### Libraries
 
 - OpenCV (with RVV Accelerated)
 - OpenSSL (with Hardware Accelerated)
@@ -83,7 +84,7 @@ Bianbu Desktop manages the packages of these components through the [APT source]
 - Mesa 3D
 - OpenGLES/Vulkan/OpenCL
 
-#### Linux Kernel
+### Linux Kernel
 
 The Linux kernel is responsible for managing the processor and other hardware resources, providing an interface between users and applications and the hardware. Its main functions include interrupt and clock management, process management, memory management, file system management, device driver management, and network protocol stack.
 
@@ -94,7 +95,7 @@ Source code:
 - [https://gitee.com/bianbu-linux/linux-6.1](https://gitee.com/bianbu-linux/linux-6.1) (EOL)
 - [https://gitee.com/bianbu-linux/linux-6.6](https://gitee.com/bianbu-linux/linux-6.6) (LTS)
 
-#### U-Boot
+### U-Boot
 
 U-Boot is a bootloader responsible for initializing specific hardware and loading the Linux kernel image, device tree, and initial RAM filesystem from media (such as SD card, eMMC, SPI Flash, SSD, network).
 
@@ -102,7 +103,7 @@ Version: u-boot-2022.10。
 
 Source code: [https://gitee.com/bianbu-linux/uboot-2022.10](https://gitee.com/bianbu-linux/uboot-2022.10)
 
-#### OpenSBI
+### OpenSBI
 
 OpenSBI is an implementation of the Supervisor Binary Interface for RISC-V architecture processors, running in M-mode firmware, providing interfaces for bootloaders, hypervisors, and operating systems to access hardware.
 
@@ -110,12 +111,13 @@ Version: 1.3。
 
 Source code: [https://gitee.com/bianbu-linux/opensbi](https://gitee.com/bianbu-linux/opensbi)
 
-### Supported Devices
+## Supported Devices
 
 - BPI-F3
 - Milk-V Jupiter
 - MUSE Card
 - MUSE Pi
+- MUSE Pi pro
 - MUSE Box
 - MUSE Book
 
