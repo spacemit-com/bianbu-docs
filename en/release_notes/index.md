@@ -5,8 +5,8 @@ slug: /release_notes
 
 # Release Notes
 
-Below are the release notes for various versions of Bianbu Desktop:
+Below are the release notes for various versions of Bianbu:
 
-- [Bianbu Desktop 1.0 Release Notes](bianbu_desktop_1.0.md) [End of Life]
-- [Bianbu Desktop 2.0 Release Notes](bianbu_desktop_2.0.md)
-- [Bianbu Desktop 2.1 Release Notes](bianbu_desktop_2.1.md)
+- [Bianbu 1.0 Release Notes](bianbu_1.0.md) [End of Life]
+- [Bianbu 2.0 Release Notes](bianbu_2.0.md)
+- [Bianbu 2.1 Release Notes](bianbu_2.1.md)

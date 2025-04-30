@@ -124,7 +124,7 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
    export VERSION="v2.0.4"
    ```
 
-   [Click here to see the latest VERSION](../release_notes/bianbu_desktop_2.0.md)
+   [Click here to see the latest VERSION](../release_notes/bianbu_2.0.md)
 
 2. Configure bianbu.sources
 

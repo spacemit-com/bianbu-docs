@@ -121,7 +121,7 @@ For docker ce installation, refer to [https://docs.docker.com/engine/install/](h
    export REPO="archive.spacemit.com/bianbu"
    ```
 
-   [Click to view release notes](../release_notes/bianbu_desktop_2.1.md)
+   [Click to view release notes](../release_notes/bianbu_2.1.md)
 
 2. Configure bianbu.sources
 
