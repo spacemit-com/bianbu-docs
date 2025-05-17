@@ -129,7 +129,7 @@ Latest version: v1.0.15
 
 ### Bianbu 2.x
 
-Latest version: v2.1
+Latest version: v2.2
 
 ## Issue feedback
 
