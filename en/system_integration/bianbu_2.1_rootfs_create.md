@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Bianbu 2.1 ROOTFS Creation
+# Bianbu 2.1/2.2 ROOTFS Creation
 
 ## Environment Requirements
 
@@ -121,9 +121,13 @@ For docker ce installation, refer to [https://docs.docker.com/engine/install/](h
    export REPO="archive.spacemit.com/bianbu"
    ```
 
-   [Click to view release notes](../release_notes/bianbu_2.1.md)
+   [Click to view v2.1 release notes](../release_notes/bianbu_2.1.md)
+
+   [Click to view v2.2 release notes](../release_notes/bianbu_2.2.md)
 
 2. Configure bianbu.sources
+
+   - For version 2.1
 
    ```shell
    cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.sources
@@ -135,7 +139,17 @@ For docker ce installation, refer to [https://docs.docker.com/engine/install/](h
    EOF
    ```
 
-   Using this source allows you to install packages from subsequent 2.1.x (such as 2.1.1) releases, which are stored in bianbu-v2.1-updates.
+   - For version 2.2
+
+   ```shell
+   cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.sources
+   Types: deb
+   URIs: https://$REPO/
+   Suites: noble/snapshots/v2.2 noble-security/snapshots/v2.2 noble-updates/snapshots/v2.2 noble-porting/snapshots/v2.2 noble-customization/snapshots/v2.2 bianbu-v2.2-updates
+   Components: main universe restricted multiverse
+   Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
+   EOF
+   ```
 
 ### Configure DNS
 
@@ -159,13 +173,38 @@ Different variants have different meta-packages:
 - Minimal: bianbu-minimal
 - Desktop: bianbu-desktop bianbu-desktop-zh bianbu-desktop-en bianbu-desktop-minimal-en bianbu-standard bianbu-development
 - NAS: bianbu-nas
+- Desktop Lite：bianbu-desktop-lite
 
-Desktop and NAS are based on Minimal, so it's recommended to install the Minimal meta-package first and then the Desktop meta-package.
+Desktop, Desktop Lite, and NAS variants are all based on Minimal. It is recommended to install the Minimal meta-package first, then install the corresponding meta-packages.
 
-Here's an example of creating a minimal variant:
+- Minimal variant:
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
+```
+
+- Desktop variant:
+
+```shell
+chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
+chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-desktop bianbu-desktop-zh bianbu-desktop-en bianbu-desktop-minimal-en bianbu-standard bianbu-development"
+```
+
+- Desktop Lite variant:
+
+Since the user setup program is not yet fully adapted, you need to manually create a user to enter the desktop environment.
+
+Note: This variant is only supported in Bianbu 2.2.
+
+```shell
+chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
+
+chroot $TARGET_ROOTFS /bin/bash -c "apt-get -y install adduser"
+chroot $TARGET_ROOTFS /bin/bash -c "adduser --gecos \"\" --disabled-password bianbu"
+chroot $TARGET_ROOTFS /bin/bash -c "echo bianbu:bianbu | chpasswd"
+chroot $TARGET_ROOTFS /bin/bash -c "usermod -aG adm,cdrom,sudo,plugdev bianbu"
+
+chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-desktop-lite"
 ```
 
 Tip: After installing all packages, you can clean up the cache to reduce the final firmware size:
@@ -226,7 +265,7 @@ EOF
 chroot $TARGET_ROOTFS /bin/bash -c "chmod 600 /etc/netplan/01-netcfg.yaml"
 ```
 
-- desktop
+- desktop/desktop-lite
 
 ```shell
 cat <<EOF | tee $TARGET_ROOTFS/etc/netplan/01-network-manager-all.yaml

@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Bianbu 2.0 ROOTFS制作
 
-建议使用 [bianbu 2.1 ROOTFS制作](./bianbu_2.1_rootfs_create.md)。
+建议使用 [bianbu 2.1/2.2 ROOTFS制作](./bianbu_2.1_rootfs_create.md)。
 
 ## 环境要求
 
