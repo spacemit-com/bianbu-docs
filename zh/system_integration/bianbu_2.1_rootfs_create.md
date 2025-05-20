@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Bianbu 2.1 ROOTFS制作
+# Bianbu 2.1/2.2 ROOTFS制作
 
 ## 环境要求
 
@@ -121,9 +121,13 @@ docker ce 安装可参考 [https://docs.docker.com/engine/install/](https://docs
    export REPO="archive.spacemit.com/bianbu"
    ```
 
-   [点击查看版本发布说明](../release_notes/bianbu_2.1.md)
+   [点击查看2.1版本发布说明](../release_notes/bianbu_2.1.md)
+
+   [点击查看2.2版本发布说明](../release_notes/bianbu_2.2.md)
 
 2. 配置 bianbu.sources
+
+   - 2.1 版本
 
    ```shell
    cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.sources
@@ -135,7 +139,17 @@ docker ce 安装可参考 [https://docs.docker.com/engine/install/](https://docs
    EOF
    ```
 
-   使用此源即可安装到后续的2.1.x（如2.1.1）发布的包，其存放在bianbu-v2.1-updates。
+   - 2.2 版本
+
+   ```shell
+   cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.sources
+   Types: deb
+   URIs: https://$REPO/
+   Suites: noble/snapshots/v2.2 noble-security/snapshots/v2.2 noble-updates/snapshots/v2.2 noble-porting/snapshots/v2.2 noble-customization/snapshots/v2.2 bianbu-v2.2-updates
+   Components: main universe restricted multiverse
+   Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
+   EOF
+   ```
 
 ### 配置 DNS
 
@@ -159,13 +173,38 @@ chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --
 - Minimal：bianbu-minimal
 - Dekstop：bianbu-desktop bianbu-desktop-zh bianbu-desktop-en bianbu-desktop-minimal-en bianbu-standard bianbu-development
 - NAS：bianbu-nas
+- Desktop Lite：bianbu-desktop-lite
 
-Dekstop和NAS都是基于Minimal的，建议先安装Mnimal元包再安装Dekstop元包。
+Dekstop,Desktop Lite和NAS都是基于Minimal的，建议先安装Mnimal元包再安装相应元包。
 
-这里以制作最小的 minimal 变体为例：
+- minimal 变体：
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
+```
+
+- Desktop 变体：
+
+```shell
+chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
+chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-desktop bianbu-desktop-zh bianbu-desktop-en bianbu-desktop-minimal-en bianbu-standard bianbu-development"
+```
+
+- Desktop Lite变体：
+
+由于用户引导程序暂未适配完毕，需要手动创建一个用户以便进入桌面
+
+注意，Bianbu 2.2才支持此变体
+
+```shell
+chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
+
+chroot $TARGET_ROOTFS /bin/bash -c "apt-get -y install adduser"
+chroot $TARGET_ROOTFS /bin/bash -c "adduser --gecos \"\" --disabled-password bianbu"
+chroot $TARGET_ROOTFS /bin/bash -c "echo bianbu:bianbu | chpasswd"
+chroot $TARGET_ROOTFS /bin/bash -c "usermod -aG adm,cdrom,sudo,plugdev bianbu"
+
+chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-desktop-lite"
 ```
 
 提示：完成全部包的安装后可以执行如下命令清理一下缓存，以减少最终固件的大小
@@ -226,7 +265,7 @@ EOF
 chroot $TARGET_ROOTFS /bin/bash -c "chmod 600 /etc/netplan/01-netcfg.yaml"
 ```
 
-- desktop
+- desktop/desktop-lite
 
 ```shell
 cat <<EOF | tee $TARGET_ROOTFS/etc/netplan/01-network-manager-all.yaml

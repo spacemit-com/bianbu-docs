@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Bianbu 2.0 ROOTFS Creation
 
-It is recommended to use [Bianbu 2.1 ROOTFS Creation](./bianbu_2.1_rootfs_create.md).
+It is recommended to use [Bianbu 2.1/2.2 ROOTFS Creation](./bianbu_2.1_rootfs_create.md).
 
 ## Prerequisites
 
