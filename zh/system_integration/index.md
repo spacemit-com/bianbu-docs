@@ -9,4 +9,5 @@ slug: /system_integration
 
 - [Bianbu 1.0 ROOTFS制作](bianbu_1.0_rootfs_create.md)
 - [Bianbu 2.0 ROOTFS制作](bianbu_2.0_rootfs_create.md)
+- [单应用 ROOTFS 制作](single_app_rootfs_create.md)
 - [固件制作](./image.md)
