@@ -4,9 +4,9 @@ sidebar_position: 4
 
 # llama.cpp
 
-llama.cpp is an open source inference framework written in pure C/C++. It is designed to enable large language models in GGUF/GGML format such as Llama to run quickly on local CPU/GPU (laptop, mobile phone, `muse pi` or even browser) without relying on heavyweight frameworks.
+**llama.cpp** is an open-source inference framework written purely in C/C++, designed to efficiently run large language models like Llama in GGUF/GGML format locally on CPUs/GPUs (laptops, mobile devices, Raspberry Pi, or even browsers), without relying on heavyweight frameworks.
 
-## Installation
+## Download
 
 Download the compressed file `spacemit-llama.cpp` and unzip it
 
@@ -17,8 +17,12 @@ tar -xzvf ~/spacemit-llama.cpp.riscv64.0.0.4.tar.gz -C ~/
 
 ## Download model
 
-spacemit-llama.cpp currently supports accelerating models in three quantization formats: Q4_K_M, Q4_0, and Q4_1.   
-Here is an example to illustrate how to use it quickly:
+`spacemit-llama.cpp` currently supports accelerated models in the following quantization formats:
+- Q4_K_M
+- Q4_0
+- Q4_1
+
+The following example demonstrates how to download a model:
 
 ```bash
 wget https://modelscope.cn/models/unsloth/Qwen3-0.6B-GGUF/resolve/master/Qwen3-0.6B-Q4_0.gguf -P ～/
@@ -49,20 +53,20 @@ cd ~/spacemit-llama.cpp.riscv64.0.0.4/bin
 
 ### Browser usage
 
-Search `http://localhost:9090` in the browser to open the llama server and use llama.cpp directly in the browser
+Open a browser and navigate to `http://localhost:9090` to access the llama server and interact with `llama.cpp` directly in the browser.
 
 ![](../static/llama-serve.png)
 
 ### Local API Requests
 
-For example:
+Example:
 ```bash
 curl -X POST http://127.0.0.1:9090/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
         "model": "Qwen3-0.6B",
         "messages": [
-          { "role": "user", "content": "介绍一下自己" }
+          { "role": "user", "content": "introduce yourself" }
         ],
         "stream": false
       }'

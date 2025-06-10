@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Environment Requirements
 
-The host machine is recommended to be Ubuntu 20.04/22.04 with Docker CE and a custom version of qemu-user-static (8.0.4) installed, which has Vector 1.0 support enabled by default.
+It is recommended to use Ubuntu 20.04/22.04 as the host system, with Docker CE and a customized version of `qemu-user-static` (version 8.0.4, with Vector 1.0 support enabled by default) installed.
 
 ### Docker
 
@@ -14,33 +14,39 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
 
 ### QEMU
 
-1. Remove `binfmt-support`
+1. **Remove `binfmt-support`**
+   
+   The customized `qemu-user-static` conflicts with `binfmt-support` due to:
+   - `binfmt-support` uses a legacy SysVinit script: `/etc/init.d/binfmt-support`
+   - The customized `qemu-user-static` relies on a systemd unit: `/lib/systemd/system/systemd-binfmt.service`
 
-   The custom version of `qemu-user-static` conflicts with `binfmt-support` because `binfmt-support` provides a traditional SysVinit startup script `/etc/init.d/binfmt-support`, whereas the custom `qemu-user-static` provides a systemd unit file `/lib/systemd/system/systemd-binfmt.service`. The `/etc/init.d/binfmt-support` runs later, overriding the systemd settings.
+   Since the SysVinit script runs after the systemd service, it can override the systemd settings, causing conflicts.
 
+   To avoid this, remove `binfmt-support`:
+   
    ```shell
    sudo apt-get purge binfmt-support
    ```
 
-2. Download the custom qemu
+2. **Download the customized qemu**
 
    ```shell
    wget https://archive.spacemit.com/qemu/qemu-user-static_8.0.4%2Bdfsg-1ubuntu3.23.10.1_amd64.deb
    ```
 
-3. Install the custom qemu
+3. **Install the customized qemu**
 
    ```shell
    sudo dpkg -i qemu-user-static_8.0.4+dfsg-1ubuntu3.23.10.1_amd64.deb
    ```
 
-4. Register qemu-user-static with the kernel so that RISC-V binaries can be executed system-wide, including inside containers.
+4. **Register `qemu-user-static` with the kernel**, so the system (including containers) can directly execute RISC-V binaries:
 
    ```shell
    sudo systemctl restart systemd-binfmt.service
    ```
 
-5. Verify if qemu-user-static is registered successfully
+5. **Verify** if `qemu-user-static` is registered successfully
 
    ```shell
    wget https://archive.spacemit.com/qemu/rvv
@@ -48,7 +54,7 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
    ./rvv
    ```
 
-   If you see the following output, registration is successful:
+   Output like the following indicates success:
 
    ```
    helloworld
@@ -57,32 +63,32 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
 
 ## Prepare the Base RootFS
 
-1. Create a working directory
+1. **Create a working directory**
 
    ```shell
    mkdir ~/bianbu-workspace
    ```
 
-2. Create and start a container
+2. **Create and start a container**
 
    ```shell
    docker run --privileged -itd -v ~/bianbu-workspace:/mnt --name build-bianbu-rootfs ubuntu:24.04
    ```
 
-3. Enter the container
+3. **Enter the container**
 
    ```shell
    docker exec -it -w /mnt build-bianbu-rootfs bash
    ```
 
-4. Install basic tools
+4. **Install basic tools**
 
    ```shell
    apt-get update
    apt-get -y install wget uuid-runtime
    ```
 
-5. Set environment variables for ease of use in subsequent commands
+5. **Set environment variables**
 
    ```shell
    export BASE_ROOTFS_URL=https://archive.spacemit.com/bianbu-base/bianbu-base-23.10-base-riscv64.tar.gz
@@ -90,19 +96,19 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
    export TARGET_ROOTFS=rootfs
    ```
 
-6. Download
+6. **Download the base rootfs**
 
    ```shell
    wget $BASE_ROOTFS_URL
    ```
 
-7. Extract to a specified directory
+7. **Extract to a specified directory**
 
    ```shell
    mkdir -p $TARGET_ROOTFS && tar -zxpf $BASE_ROOTFS -C $TARGET_ROOTFS
    ```
 
-8. Mount system resources into the rootfs
+8. **Mount system resources into the rootfs**
 
    ```shell
    mount -t proc /proc $TARGET_ROOTFS/proc
@@ -111,11 +117,11 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
    mount -o bind /dev/pts $TARGET_ROOTFS/dev/pts
    ```
 
-## Necessary Configuration
+## Essential Configuration
 
 ### Configure the Source Repositories
 
-1. Set environment variables for ease of use in subsequent commands
+1. **Set environment variables** 
 
    ```shell
    export DIST=mantic
@@ -123,14 +129,14 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
    export VERSION="v1.0.13"
    ```
 
-2. Install the repository's GPG key
+2. **Install the repository GPG keys**
 
    ```shell
    wget -O $TARGET_ROOTFS/usr/share/keyrings/bianbu-archive-keyring-mantic.gpg https://archive.spacemit.com/bianbu-ports/bianbu-archive-keyring.gpg
    wget -O $TARGET_ROOTFS/etc/apt/trusted.gpg.d/bianbu-archive-keyring-mantic.gpg https://archive.spacemit.com/bianbu-ports/bianbu-archive-keyring.gpg
    ```
 
-3. Configure `sources.list`
+3. **Configure `sources.list`**
 
    ```shell
    cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list
@@ -144,7 +150,7 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
    EOF
    ```
 
-4. Configure `sources.list.d/bianbu.list`
+4. **Configure `sources.list.d/bianbu.list`**
 
    ```shell
    cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.list
@@ -162,7 +168,7 @@ For Docker CE installation, refer to [https://docs.docker.com/engine/install/](h
    EOF
    ```
 
-5. Set package source priorities
+5. **Configure package source priority**
 
    ```shell
    cat <<EOF | tee $TARGET_ROOTFS/etc/apt/preferences.d/bianbu
@@ -196,7 +202,7 @@ chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-esos img-gpu-powervr k1x-vpu-firmware k1x-cam spacemit-uart-bt spacemit-modules-usrload opensbi-spacemit u-boot-spacemit linux-image-6.1.15"
 ```
 
-### Install Metapackage
+### Install Metapackages
 
 Different variants have different metapackages:
 
@@ -212,7 +218,7 @@ chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --
 
 ## General Configuration
 
-#### Configure Locale
+#### Set Locale
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "apt-get -y install locales"
@@ -222,7 +228,7 @@ chroot $TARGET_ROOTFS /bin/bash -c "sed -i 's/^# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 U
 chroot $TARGET_ROOTFS /bin/bash -c "dpkg-reconfigure --frontend=noninteractive locales"
 ```
 
-#### Configure Time Zone
+#### Set Time Zone
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "echo 'tzdata tzdata/Areas select Asia' | debconf-set-selections"
@@ -232,7 +238,7 @@ chroot $TARGET_ROOTFS /bin/bash -c "rm /etc/localtime"
 chroot $TARGET_ROOTFS /bin/bash -c "dpkg-reconfigure --frontend=noninteractive tzdata"
 ```
 
-#### Configure NTP Server
+#### Set NTP Server
 
 ```shell
 sed -i 's/^#NTP=.*/NTP=ntp.aliyun.com/' $TARGET_ROOTFS/etc/systemd/timesyncd.conf
@@ -246,7 +252,7 @@ chroot $TARGET_ROOTFS /bin/bash -c "echo root:bianbu | chpasswd"
 
 #### Configure Network (Optional)
 
-If you only installed the minimal (`bianbu-minimal`) metapackage, network configuration should be done using Netplan:
+If only the `bianbu-minimal` package is installed, configure networking via Netplan:
 
 ```shell
 cat <<EOF | tee $TARGET_ROOTFS/etc/netplan/01-netcfg.yaml
@@ -262,7 +268,7 @@ chroot $TARGET_ROOTFS /bin/bash -c "chmod 600 /etc/netplan/01-netcfg.yaml"
 
 ## Generate Partition Images
 
-Before proceeding to create the images, make sure to unmount all mounts:
+**Note:** After installation and configuration are complete, make sure to unmount first!
 
 ```shell
 mount | grep "$TARGET_ROOTFS/proc" > /dev/null && umount -l $TARGET_ROOTFS/proc

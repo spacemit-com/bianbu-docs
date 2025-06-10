@@ -4,20 +4,17 @@ sidebar_position: 2
 
 # Package Management
 
-**Software Packages**
-
+- **Packages**
 Bianbu software packages follow the Debian package standards and are managed using `apt`.
 
-**Software Sources**
+- **Repositories**
+Bianbu provides the following official APT package repositories:
+  - **Bianbu 1.0**  (End of Life) : [http://archive.spacemit.com/bianbu-ports/](http://archive.spacemit.com/bianbu-ports/)
+  - **Bianbu 2.0** (Current Release): [http://archive.spacemit.com/bianbu/](http://archive.spacemit.com/bianbu/)
 
-The software sources for Bianbu packages are:
+## Update Package
 
-- Bianbu 1.0: [http://archive.spacemit.com/bianbu-ports/](http://archive.spacemit.com/bianbu-ports/)
-- Bianbu 2.0: [http://archive.spacemit.com/bianbu/](http://archive.spacemit.com/bianbu/)
-
-## Update Software Sources
-
-Use the following command to update the package list:
+To refresh the local package, run the following command in the terminal:
 
 ```shell
 apt-get update
@@ -25,7 +22,7 @@ apt-get update
 
 ## Install or Update a Package
 
-For example, to install or update the package `hello`, use:
+To install or upgrade a specific package — for example,  `hello` — run the following command:
 
 ```shell
 apt-get install hello
@@ -33,13 +30,13 @@ apt-get install hello
 
 ## Remove a Package
 
-To uninstall a package, for example, `hello`, use:
+To uninstall a package while preserving its configuration files — for example, `hello`, run the following command::
 
 ```shell
 apt-get remove hello
 ```
 
-If you also want to remove related configuration files, use:
+To completely remove a package along with its configuration files, run the following command::
 
 ```shell
 apt-get purge hello

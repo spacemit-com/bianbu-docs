@@ -5,7 +5,10 @@ sidebar_position: 2
 # Qt User Guide
 
 ## Introduction
-Qt is a cross platform C++ framework (C++ library) primarily used for developing graphical user interface (GUI) programs, as well as command line (CUI) programs without interfaces. OpenGL ES (OpenGL for Embedded Systems) is a cross platform 2D/3D graphics API interface suitable for rendering efficient 2D and 3D graphics on low power devices, which are tailored for embedded devices using OpenGL (Open Graphics Library). This Qt User Guide guides users to adapt Qt5's OpenGL ES hardware acceleration on the Spacemit Soc platform.
+
+**Qt** is a cross-platform C++ framework (C++ library) primarily used for developing graphical user interface (GUI) programs. It can also be used to develop command-line interface (CUI) programs without a GUI. 
+**OpenGL ES** (OpenGL for Embedded Systems) is a cross-platform 2D/3D graphics API designed for rendering efficient 2D and 3D graphics on low-power devices. It is a subset of OpenGL (Open Graphics Library) tailored for embedded systems.  
+This guide provides instructions for adapting Qt5 with OpenGL ES hardware acceleration on the SpacemiT SoC platform.
 
 ## Install Qt5 development environment
 
@@ -22,7 +25,7 @@ $ sudo apt-get install build-essential
 $ sudo apt-get install qtbase5-gles-dev qtchooser qt5-qmake qtbase5-dev-tools
 ```
 
-Check the installation of Qt version.
+Check the installed Qt version.
 
 ```shell
 $ qmake -v
@@ -36,15 +39,15 @@ Using Qt version 5.15.13 in /usr/lib/riscv64-linux-gnu
 $ sudo apt-get install qtwayland5
 ```
 
-### Configure Qt5 backend display service
+### Configure the Qt5 backend display service
 
 ```shell
 $ export QT_QPA_PLATFORM=wayland
 ```
 
-## Build and run Qt5 program
+## Building and running Qt5 program
 
-### Download base-opensource-src-gles
+### Download `base-opensource-src-gles`
 
 ```shell
 $ apt-get source qtbase-opensource-src-gles
@@ -80,7 +83,7 @@ qtbase-opensource-src-gles-5.15.13+dfsg
 └── util
 ```
 
-### Build qtbase-opensource-src-gles
+### Build `qtbase-opensource-src-gles`
 
 #### Install dependencies
 
@@ -88,13 +91,13 @@ qtbase-opensource-src-gles-5.15.13+dfsg
 $ sudo apt-get build-dep qtbase-opensource-src-gles
 ```
 
-#### Build
+#### Compile
 
 ```shell
 $ dpkg-buildpackage -us -uc -nc -b -j4
 ```
 
-### Build examples
+### Build the example projects
 
 #### Generate Makefile using qmake
 
@@ -109,7 +112,7 @@ $ qmake
 $ make
 ```
 
-### Run examples
+### Run the examples
 
 ```shell
 $ ./animatedtiles

@@ -6,22 +6,20 @@ sidebar_position: 1.2
 
 Currently, Bianbu provides two formats of images:
 
-- sdcard raw image
+- **SD Card Raw Images**
 
-  Ends with `*.img.zip`, can be written to sdcard using [balenaEtcher](https://etcher.balena.io/), or unzipped and written to sdcard using the `dd` command.
+  Files ending with `*.img.zip`. These can be written to an SD card using [balenaEtcher](https://etcher.balena.io/), or by extracting the file and using the `dd` command.
 
-- Custom image
+- **Custom Images**
 
-  Ends with `.zip`, can be flashed using Titan Flasher, or unzipped and flashed using `fastboot`.
+  Files ending with `.zip`. These can be flashed using **Titan Flasher**, or manually using `fastboot` after extracting the contents.
 
-The password of root: `bianbu`.
+Default root password: `bianbu`
 
 ## Download
 
 URL：[Bianbu Image](https://archive.spacemit.com/image/k1/version/bianbu/)
 
-固件 root 用户的密码：`bianbu`。
-
 ## Flashing
 
-Refer to the [Flashing Tool User Manual](https://developer.spacemit.com/documentation?token=O6wlwlXcoiBZUikVNh2cczhin5d) for flashing via Titan Flasher.
+Refer to the [Flashing Tool User Manual](https://developer.spacemit.com/documentation?token=B9JCwRM7RiBapHku6NfcPCstnqh) for flashing via Titan Flasher.

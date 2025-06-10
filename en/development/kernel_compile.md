@@ -4,45 +4,48 @@ sidebar_position: 1
 
 # Kernel Compile
 
-Using `linux-6.6` as an example, we introduce how to compile your own kernel for Bianbu, supporting cross-compilation (fast) and local compilation (convenient).
+This guide details how to compile the kernel for Bianbu Linux (using `linux-6.6` as an example). Two compilation methods are supported:
 
-## Download Source Code
+- Cross-compilation – faster build time
+- Native compilation – more convenient to operate directly on the target system
+
+## Download Kernel Source Code
 
 ```shell
 git clone https://gitee.com/bianbu-linux/linux-6.6 ~/linux-6.6
 ```
 
-## Cross Compilation
+## Cross-Compilation Method
 
-### Cross Development Environment
+### Prepare Cross-Development Environment
 
-Refer to Bianbu Linux's [development environment](https://bianbu-linux.spacemit.com/source#development-environment) to prepare the cross-compilation environment.
+1. Refer to Bianbu Linux's [Development Environment](https://bianbu-linux.spacemit.com/source#development-environment) to set up the cross-compiler.
 
-Then install the following dependencies:
+2. Install required build dependencies with:
 
-```shell
-sudo apt-get install debhelper libpfm4-dev libtraceevent-dev asciidoc libelf-dev devscripts
-```
+    ```shell
+    sudo apt-get install debhelper libpfm4-dev libtraceevent-dev asciidoc libelf-dev devscripts
+    ```
 
-### Cross Compiler
+### Install Cross-Compiler Toolchain
 
-URL: [http://archive.spacemit.com/toolchain/](http://archive.spacemit.com/toolchain/)
+Please visit Toolchain download link: [http://archive.spacemit.com/toolchain/](http://archive.spacemit.com/toolchain/)
 
-1. Download the cross-compiler, for example `spacemit-toolchain-linux-glibc-x86_64-v1.0.0.tar.xz`:
+1. Download a toolchain archive, e.g., `spacemit-toolchain-linux-glibc-x86_64-v1.0.0.tar.xz`:
 
-2. Extract:
+2. Extract the toolchain with:
 
    ```shell
    sudo tar -Jxf /path/to/spacemit-toolchain-linux-glibc-x86_64-v1.0.0.tar.xz -C /opt
    ```
 
-3. Set the cross-compiler environment variables:
+3. Set the cross-compiler environment variables with:
 
    ```shell
    export PATH=/opt/spacemit-toolchain-linux-glibc-x86_64-v1.0.0/bin:$PATH
    ```
 
-### Cross Compile Kernel
+### Cross-Compile the Kernel
 
 Enter the kernel source directory:
 
@@ -58,26 +61,26 @@ export ARCH=riscv
 export LOCALVERSION=""
 ```
 
-Generate default configuration:
+Generate the default configuration:
 
 ```shell
 make k1_defconfig
 ```
 
-If you need to compile the PREEMPT_RT real-time kernel for the bl-v2.0.y branch, please first update the source code to commit `3ac79a6dd update rt defconfig` or a later version, and then apply the patch and generate configuration, skip if not:
+If you need to build the **PREEMPT_RT real-time kernel** for the `bl-v2.0.y` branch, first update the source tree to commit `3ac79a6dd update rt defconfig` or any later version. Then apply the RT patch and generate the configuration. If not required, you can skip this step:
 
 ```shell
 patch -p1 < rt-linux/*.patch
 make k1_rt_defconfig
 ```
 
-Modify configuration, skip if not needed:
+Modify the configuration if needed; otherwise, you may skip this step:
 
 ```shell
 make menuconfig
 ```
 
-To save the modified configuration:
+Save the modified configuration:
 
 ```shell
 make savedefconfig
@@ -90,7 +93,7 @@ Compile the Debian package:
 make -j$(nproc) bindeb-pkg
 ```
 
-When you see the following information, the compilation is successful.
+If you see the following messages, the build has completed successfully.
 
 ```
 dpkg-genchanges: info: binary-only upload (no source code included)
@@ -98,17 +101,13 @@ dpkg-genchanges: info: binary-only upload (no source code included)
 dpkg-buildpackage: info: binary-only upload (no source included)
 ```
 
-The packages are located in the parent directory, commonly used packages:
+The resulting `.deb` packages are located in the parent directory. The key packages are:
 
-- linux-image-6.6.36_6.6.36-*.deb
+- `linux-image-6.6.36_6.6.36-*.deb` - Kernel Image package.
 
-  Kernel Image package.
+- `linux-tools-6.6.36_6.6.36-*.deb` - `perf` and other tool packages.
 
-- linux-tools-6.6.36_6.6.36-*.deb
-
-  `perf` and other tool packages.
-
-Copy to the device, install, and then reboot:
+Copy the packages to the device, install, and then reboot:
 
 ```shell
 sudo dpkg -i linux-image-6.6.36_6.6.36-*.deb
@@ -117,16 +116,16 @@ sudo reboot
 
 ### Cross Compile Modules
 
-To compile out-of-tree kernel modules, using rtl8852bs as an example, the general command is as follows:
+To compile out-of-tree kernel modules, rtl8852bs is the example below, run the command as:
 
 ```shell
 cd /path/to/rtl8852bs
 make -j$(nproc) -C ~/linux-6.6 M=/path/to/rtl8852bs modules
 ```
 
-- Replace `/path/to/rtl8852bs` with your path
+- Replace `/path/to/rtl8852bs` with actual module path
 
-Clean:
+Clean command:
 
 ```shell
 make -j$(nproc) -C ~/linux-6.6 M=/path/to/rtl8852bs clean
@@ -140,21 +139,21 @@ To compile the device tree separately:
 make -j$(nproc) dtbs
 ```
 
-## Local Compilation
+## Native Compilation
 
 You can directly compile the kernel on Bianbu, here is the guide.
 
 ### Local Development Environment
 
-Install dependencies:
+Install the dependencies:
 
 ```shell
 sudo apt-get install flex bison libncurses-dev debhelper libssl-dev u-boot-tools libpfm4-dev libtraceevent-dev asciidoc bc rsync libelf-dev devscripts
 ```
 
-### Local Compile Kernel
+### Native Compile Kernel
 
-Enter the kernel source directory:
+Navigate to  the kernel source directory:
 
 ```shell
 cd ~/linux-6.6
@@ -173,7 +172,7 @@ Generate default configuration:
 make k1_defconfig
 ```
 
-Modify configuration, skip if not needed:
+Modify the configuration if needed; otherwise, you may skip this step:
 
 ```shell
 make menuconfig
@@ -192,7 +191,7 @@ Compile the Debian package:
 make -j$(nproc) bindeb-pkg
 ```
 
-When you see the following information, the compilation is successful.
+If you see the following messages, the build has completed successfully.
 
 ```
 dpkg-genchanges: info: binary-only upload (no source code included)
@@ -200,15 +199,11 @@ dpkg-genchanges: info: binary-only upload (no source code included)
 dpkg-buildpackage: info: binary-only upload (no source included)
 ```
 
-The packages are located in the parent directory, commonly used packages:
+The resulting `.deb` packages are located in the parent directory. The key packages are:
 
-- linux-image-6.6.36_6.6.36-*.deb
+- `linux-image-6.6.36_6.6.36-*.deb` - Kernel Image package.
 
-  Kernel Image package.
-
-- linux-tools-6.6.36_6.6.36-*.deb
-
-  `perf` and other tool packages.
+- `linux-tools-6.6.36_6.6.36-*.deb` - `perf` and other tool packages.
 
 Install and then reboot:
 
@@ -217,7 +212,7 @@ sudo dpkg -i linux-image-6.6.36_6.6.36-*.deb
 sudo reboot
 ```
 
-### Local Compile Modules
+### Native Module Compilation
 
 To compile out-of-tree kernel modules locally, you can do it without relying on the kernel source.
 
@@ -234,15 +229,15 @@ cd /path/to/rtl8852bs
 make -j$(nproc) -C /lib/modules/`uname -r`/build M=/path/to/rtl8852bs modules
 ```
 
-- Replace `/path/to/rtl8852bs` with your path
+- Replace `/path/to/rtl8852bs` with your actual module path
 
-Clean:
+Clean command:
 
 ```shell
 make -j$(nproc) -C /lib/modules/`uname -r`/build M=/path/to/rtl8852bs clean
 ```
 
-## Other Components
+## Build Other Components
 
 ### u-boot
 
@@ -252,7 +247,7 @@ Download the source code:
 git clone https://gitee.com/bianbu-linux/uboot-2022.10 ~/uboot-2022.10
 ```
 
-For cross-compilation, configure the following parameters first. Ignore for local compilation:
+For cross-compilation, configure the following parameters first. Skip for native compilation:
 
 ```shell
 export PATH=/opt/spacemit-toolchain-linux-glibc-x86_64-v1.0.0/bin:$PATH
@@ -269,7 +264,7 @@ dch --create --package u-boot-spacemit -v ${VERSION} --distribution mantic-porti
 dpkg-buildpackage -us -uc -b
 ```
 
-The generated Debian package is located in the parent directory. Install it using `dpkg` and reboot to take effect.
+The generated Debian package is located in the parent directory. Install it with `dpkg` and reboot to take effect.
 
 ### opensbi
 
@@ -279,7 +274,7 @@ Download the source code:
 git clone https://gitee.com/bianbu-linux/opensbi ~/opensbi
 ```
 
-For cross-compilation, configure the following parameters first. Ignore for local compilation:
+For cross-compilation, configure the following parameters first. Skip for native compilation:
 
 ```shell
 export PATH=/opt/spacemit-toolchain-linux-glibc-x86_64-v1.0.0/bin:$PATH
@@ -295,4 +290,4 @@ dch --create --package opensbi-spacemit -v ${VERSION} --distribution mantic-port
 dpkg-buildpackage -us -uc -b
 ```
 
-The generated Debian package is located in the parent directory. Install it using `dpkg` and reboot to take effect.
+The generated Debian package is located in the parent directory. Install it with `dpkg` and reboot to take effect.

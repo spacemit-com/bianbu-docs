@@ -14,7 +14,7 @@ sidebar_position: 2
 
   以 `.zip` 结尾，可以用 Titan Flasher 刷机，或者解压后用 `fastboot` 刷机。
 
-固件 root 用户的密码：`bianbu`。
+固件 root 用户的密码：`bianbu`
 
 ## 下载
 

@@ -4,15 +4,21 @@ sidebar_position: 2
 
 # ROS2 User Guide
 
-Currently we only provide prebuilt tarballs.
+Bianbu OS supports ROS2 **Humble** and **Jazzy** via `.deb` packages. Currently, **ROS2 Humble** is better supported and actively maintained. We recommend using **Humble** as your primary version.
 
-## Use the prebuilt package
+> **Note:** Please avoid installing both **Humble** and **Jazzy** on the same system to prevent potential conflicts.
 
-ROS2 we support is built on Bianbu 2.0, so to avoid unnecessary environment issues, please use Bianbu 2.0 to develop and use. prebuilt includes only all packages in the base version of ROS2, as described by the repository listed in the [ros2.repos](https://github.com/ros2/ros2/blob/jazzy/ros2.repos) file.
+## Install Humble deb package
+
+### Supported Firmware Versions
+
+- Firmware list: [Bianbu Firmware](https://archive.spacemit.com/image/k1/version/bianbu/)
+- Both **Desktop** and **Minimal** images **version 2.0.4 and above** are supported.
+- It is recommended to use **Desktop v2.1+**.
 
 ### Environment preparation
 
-#### Setting the locale
+#### Set locale
 
 Make sure you have a locale that supports UTF-8
 
@@ -27,200 +33,254 @@ export LANG=en_US.UTF-8
 locale  # verify settings
 ```
 
-#### Installation Prerequisites
+#### Enable Required Repositories
 
-* Install ROS2 dependencies
-
-```shell
-sudo apt-get install -y \
-    libxml2-utils \
-    libxrandr-dev \
-    libyaml-cpp-dev \
-    libyaml-dev \
-    libassimp-dev \
-    libbenchmark-dev \
-    libzstd-dev \
-    lttng-tools \
-    pybind11-dev \
-    pydocstyle \
-    pyflakes3 \
-    pyqt5-dev \
-    shiboken2 \
-    tango-icon-theme \
-    uncrustify \
-    liborocos-kdl-dev \
-    libbullet-dev \
-    libcurl4-openssl-dev \
-    libeigen3-dev \
-    libfreetype-dev \
-    libgl1-mesa-dev \
-    libglu1-mesa-dev \
-    libgtest-dev \
-    graphviz \
-    libacl1-dev \
-    libasio-dev \
-    clang-format \
-    google-mock \
-    libsqlite3-dev \
-    libssl-dev \
-    libqt5svg5-dev \
-    libshiboken2-dev \
-    libpyside2-dev \
-    liblttng-ctl-dev \
-    liblttng-ust-dev \
-    liblz4-dev \
-    libxaw7-dev \
-    curl \
-    cppcheck \
-    clang-format \
-    libspdlog-dev \
-    qt5-qmake \
-    qtbase5-dev \
-    libconsole-bridge-dev \
-    libtinyxml2-dev \
-    libopencv-dev
-```
-
-* Install the system Python libraries
+Add the ROS2 `apt` repository to your system:
 
 ```shell
-sudo apt-get install -y \
-    python3-argcomplete \
-    python3-babeltrace \
-    python3-catkin-pkg \
-    python3-empy \
-    python3-flake8 \
-    python3-flake8-builtins \
-    python3-flake8-comprehensions \
-    python3-flake8-docstrings \
-    python3-flake8-import-order \
-    python3-flake8-quotes \
-    python3-jsonschema \
-    python3-lark \
-    python3-matplotlib \
-    python3-mypy \
-    python3-psutil \
-    python3-pycodestyle \
-    python3-pydot \
-    python3-pygraphviz \
-    python3-pykdl \
-    python3-pyqt5 \
-    python3-pyqt5.qtsvg \
-    python3-pyside2.qtsvg \
-    python3-pytest \
-    python3-pytest-cov \
-    python3-pytest-mock \
-    python3-pytest-timeout \
-    python3-sip-dev
+sudo sed -i '/^Suites:/s/$/ noble-ros/' /etc/apt/sources.list.d/bianbu.sources
 ```
 
-### Download the prebuilt package
+#### Install Development Tools (Recommended)
 
-* Go to [Publishing page](https://archive.spacemit.com/ros2/prebuilt)
-
-* Download the latest package for Bianbu OS ROS2, in this case it is located at: ~/ros2-jazzy-linux-riscv64-20240920.tar.gz
-
-**Tips**
-
-> As versions iterate, there may be multiple download options for prebuilt packages, which may result in different filenames.
-
-### Install the prebuilt package
-
-* Decompressing packages
+If you plan to build ROS packages or do further development, install the dev tools:
 
 ```shell
-sudo mkdir -p /opt/ros2/jazzy_prebuild
-cd /opt/ros2/jazzy_prebuild
-sudo tar -xzvf ~/ros2-jazzy-linux-riscv64-20240920.tar.gz
+sudo apt update && sudo apt install ros-dev-tools
 ```
 
-This will install the prebuilt package's files to the current path (in this case /opt/ros2/jazzy_prebuild).
+### Install ROS2
 
-**Tips**
+1. Update the `apt` cache after setting up the repository:
 
-> When you use another ROS2 distribution, such as Humble, replace jazzy_prebuild with humble_prebuild in this example
+    ```shell
+    sudo apt update
+    ```
 
-The unzipped folder should look like this:
+   It is recommended keeping your system is up-to-date before installing new packages:
+
+    ```shell
+    sudo apt upgrade
+    ```
+
+2. Install (the recommended) desktop version (includes ROS, RViz, demos, and tutorials):
+
+    ```shell
+    sudo apt install ros-humble-desktop
+    ```
+
+   Or install the minimal ROS base (CLI tools, libraries, and messages — no GUI tools):
+
+   ```shell
+   sudo apt install ros-humble-ros-base
+   ```
+
+3. （Optional）Install additional RMW implementations
+   ROS2 uses **Fast DDS** by default. You can switch to other RMW implementations at runtime. See the [multi-RMW guide](https://docs.ros.org/en/humble/How-To-Guides/Working-with-multiple-RMW-implementations.html) for more details.
+
+### Setup the ROS2 Environment
+
+Set up ROS2 environment by sourcing the following file:
 
 ```shell
-➜  jazzy_prebuild ls
-bin            include           local_setup.ps1           _local_setup_util_sh.py  setup.bash  setup.zsh  tools
-COLCON_IGNORE  lib               local_setup.sh            local_setup.zsh          setup.ps1   share
-etc            local_setup.bash  _local_setup_util_ps1.py  opt                      setup.sh    src
+source /opt/ros/humble/setup.zsh
 ```
 
-## Try some examples
+> If you use **bash**, replace `setup.zsh` with `setup.bash`.
 
-Use echo $0 to determine whether you're using zsh or bash, zsh is used in this example.
+### Try out some examples
 
-If you're using bash, replace all zsh with bash in the following examples, or you might get some runtime errors.
+#### Identify Your Shell
+
+Use `echo $0` to check whether your shell is `zsh` or `bash`. 
+`zsh` is used for all the examples here.
 
 ```shell
 echo $0
 -zsh # This line is output, please do not execute it
 ```
 
-### Basic topic communication
+If you're using `bash`, replace `zsh` with `bash` in all source commands, or some runtime errors might occur.
 
-Open a terminal anywhere, update ROS2's environment variables using the source command, and run the C++ talker:
+#### Example 1: Basic topic communication
+
+Open **Terminal 1**， update ROS2's environment variables using the source command, and run the C++ talker:
 
 ```shell
 source /opt/ros2/jazzy_prebuild/setup.zsh
 ros2 run demo_nodes_cpp talker
 ```
 
-In another terminal, update ROS2's environment variables using the source command, and then run Python listener:
+Open **Terminal 2**， update ROS2's environment variables using the source command, and then run Python listener:
 
 ```shell
 source /opt/ros2/jazzy_prebuild/setup.zsh
 ros2 run demo_nodes_py listener
 ```
 
-You should see that the talker says it's Publishing messages, and the listener says I heard those messages.
+You should see messages indicating that
 
-This verifies that the C++ and Python apis are working correctly. Hooray!
+- the talker is *publishing*
+- and, the listener is saying *I heard*.
 
-**Tips**
+This confirms that both the C++ and Python APIs are working.
 
-> This does not have to be repeated if: source /opt/ros2/jazzy_prebuild/setup.zsh is already executed in the current terminal
+> **Tip**: If you've already sourced the environment in a terminal with `source /opt/ros2/jazzy_prebuild/setup.zsh`, no need to re-source unless openning a new one.
 
-### Start turtlesim
+#### Example 2: Turtlesim
 
-If you've opened a new terminal, don't forget to run: source /opt/ros2/jazzy_prebuild/setup.zsh
+If you're using a new terminal, don't forget to:
 
-For this example, please launch the terminal from the desktop. The terminal connected with ssh will not pull up the turtlesim interface
+```shell
+source /opt/ros/humble/setup.zsh
+```
 
-To launch turtlesim, enter the following command into your terminal:
+This example needs to run in a graphical desktop terminal. It will not work via SSH.
+
+To launch turtlesim, enter the following command into the terminal:
 
 ```shell
 ros2 run turtlesim turtlesim_node
 ```
 
-You should see the simulator window pop up with a random turtle in the middle
+You should see a simulator window with a turtle in the center.
 
 ![alt text](static/ROS2-turtlesim.png)
 
-In the terminal, under the command, you will see messages from the node:
+You’ll also see log messages (under the command) in the terminal:
 
 ```shell
 [INFO] [1726820259.299762059] [turtlesim]: Starting turtlesim with node name /turtlesim
 [INFO] [1726820259.366410375] [turtlesim]: Spawning turtle [turtle1] at x=[5.544445], y=[5.544445], theta=[0.000000]
 ```
 
-Open a new terminal and source ROS 2 again.
+Open another terminal, and source ROS2 environment again.
 
-Now you will run a new node to control the turtle in the first node:
+Now, you will run a new node to control the turtle in the first node:
 
 ```shell
 ros2 run turtlesim turtle_teleop_key
 ```
 
-Use the arrow keys on your keyboard to control the turtle. It will move around the screen, using its attached “pen” to draw the path it followed so far.
+Use the arrow keys on your keyboard to move the turtle. As it moves, it draws a trail with its virtual "pen".
 
-### Summary
+### Summary (For Humble)
 
-See jazzy for more example tutorials[The Official Tutorial](https://docs.ros.org/en/jazzy/Tutorials.html)
+You're now ready to explore more [official tutorials and demos](https://docs.ros.org/en/humble/Tutorials.html), set up your own workspace, create packages, and understand core ROS2 concepts.
 
-Since you are using pre-compiled ROS2, please skip the steps to install ROS2 when you come across them.
+To install additional packages when needed:
 
-If you are prompted for a missing package, consider compiling from the source package or contact us.
+```shell
+sudo apt install ros-humble-package_name
+```
+
+This ensures your system stays lean without installing unnecessary tools.
+
+## Installing Jazzy deb Package
+
+### Supported Firmware Versions
+
+- Firmware list: [Bianbu Firmware](https://archive.spacemit.com/image/k1/version/bianbu/)
+- Both **Desktop** and **Minimal** images **version 2.0.4 and above** are supported.
+- It is recommended to use **Desktop V2.1+**.
+
+### Environment Setup
+
+#### Set Locale
+
+Make sure your system supports UTF-8 locale:
+
+```shell
+locale  # check for UTF-8
+
+sudo apt update && sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+locale  # verify settings
+```
+
+#### Enable Required Repositories
+
+Add the ROS2 `apt` repository to your system:
+
+```shell
+sudo sed -i '/^Suites:/s/$/ noble-ros/' /etc/apt/sources.list.d/bianbu.sources
+```
+
+#### Install Development Tools (Optional)
+
+If you plan to build ROS packages or do further development, install the dev tools:
+
+```shell
+sudo apt update && sudo apt install ros-dev-tools
+```
+
+### Install ROS2
+
+1. Update the `apt` cache after setting up the repository:
+
+   ```shell
+   sudo apt update
+   ```
+
+   It is recommended keeping your system is up-to-date before installing new packages:
+
+   ```shell
+   sudo apt upgrade
+   ```
+
+2. Install (the recommended) desktop version (includes ROS, RViz, demos, and tutorials):
+
+   ```shell
+   sudo apt install ros-jazzy-desktop
+   ```
+
+   Or install the minimal ROS base (CLI tools, libraries, and messages — no GUI tools):
+
+   ```shell
+   sudo apt install ros-jazzy-ros-base
+   ```
+
+3. (Optional) Install additional RMW implementations
+ROS2 uses **Fast DDS** by default. You can switch to other RMW implementations at runtime. See the [multi-RMW guide](https://docs.ros.org/en/humble/How-To-Guides/Working-with-multiple-RMW-implementations.html) for more details.
+
+### Set the ROS2 Environment
+
+Set up your ROS2 environment by sourcing the following file:
+
+```shell
+source /opt/ros/jazzy/setup.zsh
+```
+
+> If you use **bash**, replace `setup.zsh` with `setup.bash`.
+
+### Try out some examples
+
+If you've installed `ros-jazzy-desktop`, you can try out the example below.
+
+**Terminal 1** (C++ talker):
+
+```shell
+source /opt/ros/jazzy/setup.zsh
+ros2 run demo_nodes_cpp talker
+```
+
+**Terminal 2** (Python listener):
+
+```shell
+source /opt/ros/jazzy/setup.zsh
+ros2 run demo_nodes_py listener
+```
+
+You should see messages indicating that
+
+- the talker is *publishing*
+- and, the listener is saying *I heard*.
+
+This confirms that both the C++ and Python APIs are working. Hooray!
+
+### What’s Next?
+
+Continue learning with the [official tutorials and demos](https://docs.ros.org/en/jazzy/Tutorials.html) to set up your environment, create workspaces and packages, and explore ROS2 fundamentals.
