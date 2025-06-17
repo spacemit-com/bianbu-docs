@@ -4,17 +4,19 @@ sidebar_position: 1
 
 # ROS User Guide
 
-目前我们仅提供ROS Noetic的Prebuilt包。
+## Introduction
 
-## 使用ROS Prebuilt包
+Currently, SpacemiT only provide prebuilt packages for ROS Noetic.
 
-我们支持的 ROS Noetic 是在 Bianbu 2.0 上构建的，因此，为了避免不必要的环境问题，请您使用 Bianbu 2.0 来开发和使用。prebuilt包含了 ros-noetic-desktop-full 中的所有包。
+## Using ROS Prebuilt Packages
 
-### 环境准备
+SpacemiT's supported ROS Noetic is built on Bianbu 2.0. To avoid unnecessary environment issues, please use Bianbu 2.0 for development and usage. The prebuilt package includes all packages in `ros-noetic-desktop-full`.
 
-#### 设置语言环境
+### Environment Preparation
 
-确保您有一个支持UTF-8的区域设置
+#### Setting Up the Locale
+
+Ensure to have a locale that supports UTF-8.
 
 ```shell
 locale  # check for UTF-8
@@ -27,9 +29,9 @@ export LANG=en_US.UTF-8
 locale  # verify settings
 ```
 
-#### 安装先决条件
+#### Installing Prerequisites
 
-* 安装 ROS Noetic 的依赖库
+Install dependencies for ROS Noetic:
 
 ```shell
 sudo apt-get install -y \
@@ -105,7 +107,7 @@ sudo apt-get install -y \
     libsdl-image1.2-dev
 ```
 
-* 安装系统Python的依赖库
+Install dependencies for system Python:
 
 ```shell
 sudo apt-get install -y \
@@ -138,25 +140,23 @@ sudo apt-get install -y \
     python3-sip-dev
 ```
 
-如果您想使用rviz，请设置环境变量：
+If planning to use rviz, set the environment variable:
 
 ```shell
 export QT_QPA_PLATFORM=xcb
 ```
 
-### 下载prebuilt包
+### Downloading the Prebuilt Package
 
-* 进入[发布页面](https://archive.spacemit.com/ros/prebuilt)
+- Go to the [release page](https://archive.spacemit.com/ros/prebuilt)
 
-* 下载 Bianbu OS ROS 的最新软件包，在本示例中，它下载位于：~/ros-noetic-desktop-full-linux-riscv64-20240930.tar.gz
+- Download the latest Bianbu OS ROS package. In this example, it is located at: `~/ros-noetic-desktop-full-linux-riscv64-20240930.tar.gz`
 
-**提示**
+**Note:** As versions are iterated, there may be multiple prebuilt package download options, which may result in different filenames.
 
-> 随着版本的迭代，可能有多个prebuilt包的下载选项，这可能会导致文件名不同。
+### Installing the Prebuilt Package
 
-### 安装prebuilt包
-
-* 解压软件包
+Extract the package
 
 ```shell
 sudo mkdir -p /opt/ros/noetic
@@ -164,50 +164,49 @@ cd /opt/ros/noetic
 sudo tar -xzvf ~/ros-noetic-desktop-full-linux-riscv64-20240930.tar.gz
 ```
 
-这会将prebuilt包的文件安装到 /opt/ros/noetic 。建议安装到 /opt/ros/noetic 路径下，使用其他路径会出现一些问题。
+This will install the prebuilt package files to `/opt/ros/noetic`. It is recommended to install it under `/opt/ros/noetic`, as using other paths may cause issues.
 
-
-解压完成后的文件夹应该如下所示：
+After extraction, the directory should look like this:
 
 ```shell
 ➜  ~ ls /opt/ros/noetic
 bin  env.sh  etc  include  lib  local_setup.bash  local_setup.sh  local_setup.zsh  setup.bash  setup.sh  _setup_util.py  setup.zsh  share
 ```
 
-## 尝试一些例子
+## Trying Some Examples
 
-使用 echo $0 确定您使用的是zsh还是bash，本示例中使用的是 zsh。
+Use `echo $0` to determine whether using `zsh` or `bash`. In this example, `zsh` is used.
 
-如果您使用的是 bash，后续示例中的所有 zsh 请替换成 bash ，否则可能导致一些运行时错误。
+If using bash, replace all occurrences of `zsh` in the following examples with `bash`, otherwise runtime errors might occur.
 
 ```shell
 echo $0
--zsh # 这一行是输出，请不要执行
+-zsh # This is the output, do not execute
 ```
 
-当您在任意位置打开一个终端时，请使用 source /opt/ros/noetic/setup.zsh 命令更新 ROS 的环境变量。或者将其追加到 ~/.zshrc 文件末尾。
+When opening a terminal in any location, use the `source /opt/ros/noetic/setup.zsh` command to update the ROS environment variables. Alternatively, append it to the end of the `~/.zshrc` file.
 
 ```shell
 echo "source /opt/ros/noetic/setup.zsh" >> ~/.zshrc
 ```
 
-以下示例默认执行了该语句。
+The following examples assume this statement has been executed.
 
-### 小海龟
+### TurtleSim
 
-本示例请在桌面中启动终端运行，使用 ssh 连接的终端无法拉起 turtlesim 的界面
+This example should be run in a terminal on the desktop. Terminals connected via SSH will not be able to launch the TurtleSim GUI.
 
-要启动turtlesim，请在终端中输入以下命令：
+To start TurtleSim, enter the following command in the terminal:
 
 ```shell
 rosrun turtlesim turtlesim_node
 ```
 
-您应该可以看到模拟器窗口弹出，中间有一只随机的海龟
+User should see a simulator window pop up with a random turtle in the middle.
 
 ![alt text](static/ROS-turtlesim.png)
 
-在终端中的命令下，您将看到来自节点的消息：
+In the terminal, user will see messages from the node:
 
 ```shell
 QSocketNotifier: Can only be used with threads started with QThread
@@ -215,17 +214,17 @@ QSocketNotifier: Can only be used with threads started with QThread
 [INFO] [1727264504.918640500]: Spawning turtle [turtle1] at x=[5.544445], y=[5.544445], theta=[0.000000]
 ```
 
-在另一个终端运行一个新节点来控制第一个节点中的海龟：
+In another terminal, run a new node to control the turtle in the first node:
 
 ```shell
 rosrun turtlesim turtle_teleop_key
 ```
 
-使用键盘上的方向键来控制乌龟。它会在屏幕上移动，用它附带的“笔”画出它到目前为止所经过的路径。
+Use the arrow keys on your keyboard to control the turtle. It will move on the screen and draw its path with the attached "pen".
 
-### 编译自己的包--基本话题通信
+### Building user's package - Basic topic communication
 
-#### 1、创建并初始化自己的工作空间
+#### 1. Creating & initializing user's workspace
 
 ```shell
 mkdir -p ~/catkin_ws/src
@@ -233,60 +232,60 @@ cd ~/catkin_ws/src
 catkin_init_workspace
 ```
 
-您应该可以看到类似如下输出：
+User should see output similar to the following:
 
 ```shell
 Creating symlink "/home/zq-pi2/catkin_ws/src/CMakeLists.txt" pointing to "/opt/ros/noetic/share/catkin/cmake/toplevel.cmake"
 ```
 
-执行一次 catkin_make 以验证：
+Run `catkin_make` once to verify:
 
 ```shell
 cd ~/catkin_ws
 catkin_make
 ```
 
-完成后，~/catkin_ws 目录的内容如下：
+After completion, the contents of the `~/catkin_ws` directory should be:
 
 ```shell
 ➜  catkin_ws ls
 build  devel  src
 ```
 
-#### 2、创建一个示例包
+#### 2. Creating a sample package
 
 ```shell
 cd ~/catkin_ws/src
 catkin_create_pkg beginner_tutorials std_msgs rospy roscpp
 ```
 
-std_msgs rospy roscpp 是 beginner_tutorials 依赖的包。
+`std_msgs`, `rospy`, and `roscpp` are the dependencies of `beginner_tutorials`.
 
-这将在 src 下创建一个名为 beginner_tutorials 的标准 ROS 包，其初始包含内容如下：
+This will create a standard ROS package named `beginner_tutorials` under `src`, with the initial contents:
 
 ```shell
 ➜  beginner_tutorials ls
 CMakeLists.txt  include  package.xml  src
 ```
 
-关于包的更多信息，请参考[创建ROS包](https://wiki.ros.org/ROS/Tutorials/CreatingPackage)
+For more information about packages, refer to [Creating a ROS Package](https://wiki.ros.org/ROS/Tutorials/CreatingPackage).
 
-#### 3、构建包
+#### 3. Building the Package
 
-首先确保环境变量已经被设置：
+First, make sure that the environment variables are set:
 
 ```shell
 source /opt/ros/noetic/setup.zsh
 ```
 
-使用 catkin_make 构建包:
+Build the package using `catkin_make`:
 
 ```shell
 cd ~/catkin_ws
 catkin_make
 ```
 
-您应该看到 cmake 和 make 的大量输出：
+User should see a lot of output from `cmake` and `make`:
 
 ```shell
 ➜  catkin_ws catkin_make
@@ -353,9 +352,9 @@ CMake Deprecation Warning at beginner_tutorials/CMakeLists.txt:1 (cmake_minimum_
 ####
 ```
 
-如果您想了解更多的包构建知识，请参考[ROS 包构建](https://wiki.ros.org/ROS/Tutorials/BuildingPackages)
+To learn more about package building, please refer to [ROS Package Building](https://wiki.ros.org/ROS/Tutorials/BuildingPackages).
 
-#### 4、编写一个 Python 的发布者
+#### 4. Writing a Python Publisher
 
 ```shell
 cd ~/catkin_ws/src/beginner_tutorials
@@ -367,39 +366,38 @@ cd scripts
 vim talker.py
 ```
 
-粘贴如下内容：
+Paste the following content:
 
-```shell
+```python
 #!/usr/bin/env python3
 
-import rospy  # 导入 ROS Python 客户端库
-from std_msgs.msg import String  # 从标准消息库导入 String 消息类型
+import rospy  # Import the ROS Python client library
+from std_msgs.msg import String  # Import the String message type from the standard message library
 
-def talker():  # 定义 talker 函数
-    pub = rospy.Publisher('chatter', String, queue_size=10)  # 创建一个发布者，发布到话题 'chatter'，消息类型为 String，队列大小为 10
-    rospy.init_node('talker', anonymous=True)  # 初始化 ROS 节点，节点名称为 'talker'，anonymous=True 表示 ROS 会自动为节点名添加唯一后缀
-    rate = rospy.Rate(10) # 10hz  # 设置发布频率为 10 Hz，即每秒发布 10 次
-    while not rospy.is_shutdown():  # 当 ROS 节点未关闭时持续执行
-        hello_str = f"Publishing hello world ! {rospy.get_time()}"  # 创建一个字符串，包含当前时间
-        rospy.loginfo(hello_str)  # 打印日志信息到控制台，信息内容为 hello_str
-        pub.publish(hello_str)  # 发布 hello_str 消息到 'chatter' 话题
-        rate.sleep()  # 根据设定的频率暂停，使得发布频率为 10 Hz
+def talker():  # Define the talker function
+    pub = rospy.Publisher('chatter', String, queue_size=10)  # Create a publisher that publishes to the 'chatter' topic with a message type of String and a queue size of 10
+    rospy.init_node('talker', anonymous=True)  # Initialize the ROS node with the name 'talker'. anonymous=True allows ROS to automatically append a unique suffix to the node name.
+    rate = rospy.Rate(10) # 10hz  # Set the publishing frequency to 10 Hz, i.e., 10 times per second
+    while not rospy.is_shutdown():  # Continue executing while the ROS node is not shut down
+        hello_str = f"Publishing hello world ! {rospy.get_time()}"  # Create a string containing the current time
+        rospy.loginfo(hello_str)  # Print the log information to the console with the content of hello_str
+        pub.publish(hello_str)  # Publish the hello_str message to the 'chatter' topic
+        rate.sleep()  # Pause according to the set frequency to ensure a publishing rate of 10 Hz
 
 if __name__ == '__main__':
     try:
-        talker()  # 调用 talker 函数
-    except rospy.ROSInterruptException:  # 捕获 ROS 中断异常
-        pass  # 如果发生中断异常，直接忽略并退出
-
+        talker()  # Call the talker function
+    except rospy.ROSInterruptException:  # Catch the ROS interrupt exception
+        pass  # If an interrupt exception occurs, simply ignore it and exit
 ```
 
-对于使用 Python 编写的节点，请赋予可执行权限，否则可能出现 rosrun 找不到可执行程序的问题。
+For nodes written in Python, make sure to grant executable permissions; otherwise issues might occur where `rosrun` cannot find the executable.
 
 ```shell
 chmod +x talker.py
 ```
 
-#### 5、编写一个 Python 的订阅者
+#### 5. Writing a Python Subscriber
 
 ```shell
 cd ~/catkin_ws/src/beginner_tutorials
@@ -411,68 +409,68 @@ cd scripts
 vim listener.py
 ```
 
-粘贴如下内容：
+Paste the following content:
 
-```shell
+```python
 #!/usr/bin/env python3
-import rospy  # 导入 ROS 的 Python 客户端库
-from std_msgs.msg import String  # 从 std_msgs 消息库中导入 String 消息类型
+import rospy  # Import the ROS Python client library
+from std_msgs.msg import String  # Import the String message type from the std_msgs message library
 
-def callback(data):  # 定义一个回调函数，用于处理接收到的消息
-    rospy.loginfo(f"{rospy.get_caller_id()} I heard {data.data}")  # 使用 f-string 打印日志信息，包含节点 ID 和接收到的消息内容
+def callback(data):  # Define a callback function to process received messages
+    rospy.loginfo(f"{rospy.get_caller_id()} I heard {data.data}")  # Use f-string to print log information, including the node ID and the content of the received message
 
-def listener():  # 定义 listener 函数，设置节点并订阅话题
+def listener():  # Define the listener function to set up the node and subscribe to the topic
 
-    # 在 ROS 中，节点有唯一的名称。如果有两个节点使用相同的名字启动，前一个节点会被踢下线。
-    # anonymous=True 表示 rospy 将为该节点选择一个唯一的名字，这样可以让多个 listener 节点同时运行。
-    rospy.init_node('listener', anonymous=True)  # 初始化名为 'listener' 的节点，anonymous=True 确保其名称唯一
+    # In ROS, nodes must have unique names. If two nodes with the same name are started, the first one will be kicked offline.
+    # anonymous=True allows rospy to choose a unique name for this node, enabling multiple listener nodes to run simultaneously.
+    rospy.init_node('listener', anonymous=True)  # Initialize a node named 'listener' with anonymous=True to ensure its name is unique
 
-    rospy.Subscriber("chatter", String, callback)  # 订阅 'chatter' 话题，消息类型为 String，并调用 callback 函数处理消息
+    rospy.Subscriber("chatter", String, callback)  # Subscribe to the 'chatter' topic with a message type of String and call the callback function to process messages
 
-    # spin() 函数可以保持 Python 程序不退出，直到该节点停止运行
-    rospy.spin()  # 进入循环等待，直到节点被关闭
+    # The spin() function keeps the Python program from exiting until the node is shut down.
+    rospy.spin()  # Enter a loop and wait until the node is closed
 
 if __name__ == '__main__':
-    listener()  # 调用 listener 函数，启动监听器
+    listener()  # Call the listener function to start the listener
 ```
 
 ```shell
 chmod +x listener.py
 ```
 
-#### 6、构建编写好的节点
+#### 6. Building the Nodes
 
 ```shell
 cd ~/catkin_ws
 catkin_make
 ```
 
-#### 7、演示发布者和订阅者
+#### 7. Demonstrating the Publisher & Subscriber
 
-首先确保 roscre 已经被运行。以下示例默认已经执行了 source /opt/ros/noetic/setup.zsh 来加载 ROS 环境。
+First, ensure that `roscore` is running. The following examples assume that `source /opt/ros/noetic/setup.zsh` has been executed to load the ROS environment.
 
-打开一个终端，执行：
+Open a terminal and run:
 
 ```shell
 source ~/catkin_ws/devel/setup.zsh
 rosrun beginner_tutorials talker.py
 ```
 
-打开另一个终端，执行：
+Open another terminal and run:
 
 ```shell
 source ~/catkin_ws/devel/setup.zsh
 rosrun beginner_tutorials listener.py
 ```
 
-您应该可以看到 talker 说它正在 Publishing 消息，而 listener 说 I heard 这些消息。这验证了 Python API 是否正常工作。
+User should see the `talker` node publishing messages and the `listener` node receiving and logging these messages "I heard ...". This confirms that the Python API is working correctly.
 
-关于编写简单的 C++ 发布者和订阅者，请参考[创建C++的简单发布者和订阅者](https://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29)
+For writing simple C++ publishers and subscribers, refer to [Creating a Simple Publisher and Subscriber in C++](https://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29).
 
-### 小结
+### Summary
 
-ros-noetic 的更多的示例教程请参考[官方教程](https://wiki.ros.org/ROS/Tutorials)
+For more examples and tutorials on ROS Noetic, refer to the [official tutorials](https://wiki.ros.org/ROS/Tutorials).
 
-由于使用的是预编译好的 ROS ，当您在官网教程中遇到安装 ROS 包的步骤时请先选择跳过。
+Since user is using precompiled ROS, when encountering the steps to install ROS packages in the official tutorials, please skip them first.
 
-如果提示缺少包，考虑从源码包编译或者联系我们。
+If user encounter missing packages, please consider building from source or contacting SpacemiT.

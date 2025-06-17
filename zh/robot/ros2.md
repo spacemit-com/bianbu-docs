@@ -4,17 +4,17 @@ sidebar_position: 4
 
 # ROS2使用指南
 
-Bianbu OS 支持了 ROS2 Humble 和 ROS2 Jazzy 两个版本的 deb 包。目前 ROS2 Humble 的支持较为完善，我们当前主要维护 Humble 版本，因此建议您优先安装和使用 ROS2 Humble。
+Bianbu OS 支持了 **ROS2 Humble** 和 **ROS2 Jazzy** 两个版本的 deb 包。目前 ROS2 Humble 的支持较为完善，我们当前主要维护 Humble 版本，因此建议您优先安装和使用 ROS2 Humble。
 
-注意不要同时安装 Humble 和 Jazzy 到您的系统，以免引起不必要的问题。
+**注意:** 不要同时安装 Humble 和 Jazzy 到您的系统，以免引起不必要的问题。
 
 ## Humble deb 包安装
 
 ### 支持的固件版本
 
-固件列表：[Bianbu固件](https://archive.spacemit.com/image/k1/version/bianbu/)
-Desktop 或者 minimal 固件版本大于 2.0.4 均可
-建议使用 v2.1 以上的 Desktop 版本
+- 固件列表：[Bianbu固件](https://archive.spacemit.com/image/k1/version/bianbu/)
+- Desktop 或者 minimal 固件版本大于 2.0.4 均可
+- 建议使用 V2.1 以上的 Desktop 版本
 
 ### 环境准备
 
@@ -100,7 +100,7 @@ echo $0
 -zsh # 这一行是输出，请不要执行
 ```
 
-#### 基本话题通信
+#### 例子1: 基本话题通信
 
 在任意位置打开一个终端，使用 source 命令更新 ROS2 的环境变量，然后运行 ​​C++ talker ：
 
@@ -124,7 +124,7 @@ ros2 run demo_nodes_py listener
 
 > 当如果当前终端已经执行：source /opt/ros/humble/setup.zsh，则不必重复执行
 
-#### 小海龟
+#### 例子2: 小海龟
 
 如果您新打开了一个终端，不要忘记执行：source /opt/ros/humble/setup.zsh
 
@@ -155,8 +155,8 @@ ros2 run turtlesim turtle_teleop_key
 
 使用键盘上的方向键来控制乌龟。它会在屏幕上移动，用它附带的“笔”画出它到目前为止所经过的路径。
 
-### 小结
-现在，您可以继续学习[官方教程和演示](https://docs.ros.org/en/humble/Tutorials.html)来配置您的环境，创建您自己的工作区和包，并学习 ROS 2 核心概念。
+### 小结 (Humble 版本)
+现在，您可以继续学习[官方教程和演示](https://docs.ros.org/en/humble/Tutorials.html)来配置您的环境，创建您自己的工作区和包，并学习 ROS2 核心概念。
 
 如果在开发过程中需要其他功能包，可以使用sudo apt install ros-humble-package_name 来进行安装，这样，可以避免未使用到的功能包占用系统的存储空间。
 
@@ -263,6 +263,4 @@ ros2 run demo_nodes_py listener
 
 ### 后续步骤
 
-现在，您可以继续学习[官方教程和演示](https://docs.ros.org/en/jazzy/Tutorials.html)来配置您的环境，创建您自己的工作区和包，并学习 ROS 2 核心概念。
-
-
+现在，您可以继续学习[官方教程和演示](https://docs.ros.org/en/jazzy/Tutorials.html)来配置您的环境，创建您自己的工作区和包，并学习 ROS2 核心概念。

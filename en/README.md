@@ -3,18 +3,18 @@ slug: /
 sidebar_position: 1
 ---
 
-# Intro
+# Overview
 
-Bianbu is an operating system deeply optimized for RISC-V architecture processors, built from Ubuntu community source code, and suitable for various product domains.
+**Bianbu** is a RISC-V optimized operating system based on **Ubuntu** community sources. It is designed for a wide range of product applications and delivers enhanced performance on RISC-V processors.
 
-Bianbu provides the following images for developers and customers for learning and evaluation:
+We provide the following Bianbu images for developers and customers to learn, test, and evaluate:
 
-- Bianbu minimal: Command-line version
-- Bianbu Desktop: GNOME desktop version
-- Bianbu Desktop Lite: LXQt desktop version
-- Bianbu NAS: OMV version
+- **Bianbu Minimal**: Command-line version  
+- **Bianbu Desktop**: GNOME desktop environment  
+- **Bianbu Desktop Lite**: LXQt desktop environment  
+- **Bianbu NAS**: OMV (OpenMediaVault) based NAS image
 
-## Why Bianbu
+## Why Bianbu?
 
 - Provide developers with an operating system deeply optimized for RISC-V architecture processors
 - Provide customers with system solutions to accelerate product mass production
@@ -22,15 +22,15 @@ Bianbu provides the following images for developers and customers for learning a
 
 ## Vision
 
-Let our technology and services spread across various industries, around the world, serving everyone in need.
+To empower every individual and every industry around the world with our technology and services.
 
 ## System Architecture
 
-![](static/N9yUb4TBXolid0xduMfcixvcneh.png)
+![](static/systemarch.png)
 
 ## Software Components
 
-The components of Bianbu are as follows:
+Bianbu is composed of the following key components:
 
 - Applications
 - Frameworks
@@ -40,7 +40,7 @@ The components of Bianbu are as follows:
 - U-Boot
 - OpenSBI
 
-Bianbu manages the packages of these components through the [APT source](http://archive.spacemit.com/bianbu-ports/), and the packages are in standard Debian package format.
+Bianbu manages the packages of these components through the [APT source](http://archive.spacemit.com/bianbu-ports/), and follow the standard Debian package format.
 
 ### Applications
 
@@ -57,7 +57,7 @@ Bianbu manages the packages of these components through the [APT source](http://
 
 - Electron
 - GTK
-- QT
+- Qt
 
 #### Multimedia Frameworks
 
@@ -80,36 +80,38 @@ Bianbu manages the packages of these components through the [APT source](http://
 
 - OpenCV (with RVV Accelerated)
 - OpenSSL (with Hardware Accelerated)
-- MPP, multimedia processing platform with C API and samples
+- MPP (multimedia processing platform with C API and samples)
 - Mesa 3D
 - OpenGLES/Vulkan/OpenCL
 
 ### Linux Kernel
 
-The Linux kernel is responsible for managing the processor and other hardware resources, providing an interface between users and applications and the hardware. Its main functions include interrupt and clock management, process management, memory management, file system management, device driver management, and network protocol stack.
+The Linux kernel is responsible for managing the processor and other hardware resources, providing an interface between users and applications and the hardware. Its main functions include: 
+- Interrupt and clock management
+- Process scheduling
+- Memory management
+- File system management
+- Device driver management
+- Network protocol stack
 
-Version: 6.1 and 6.6。
+Supported versions:
 
-Source code:
-
-- [https://gitee.com/bianbu-linux/linux-6.1](https://gitee.com/bianbu-linux/linux-6.1) (EOL)
-- [https://gitee.com/bianbu-linux/linux-6.6](https://gitee.com/bianbu-linux/linux-6.6) (LTS)
+- **6.1**: [https://gitee.com/bianbu-linux/linux-6.1](https://gitee.com/bianbu-linux/linux-6.1) (EOL)
+- **6.6**:  [https://gitee.com/bianbu-linux/linux-6.6](https://gitee.com/bianbu-linux/linux-6.6) (LTS)
 
 ### U-Boot
 
 U-Boot is a bootloader responsible for initializing specific hardware and loading the Linux kernel image, device tree, and initial RAM filesystem from media (such as SD card, eMMC, SPI Flash, SSD, network).
 
-Version: u-boot-2022.10。
-
-Source code: [https://gitee.com/bianbu-linux/uboot-2022.10](https://gitee.com/bianbu-linux/uboot-2022.10)
+- Version: u-boot-2022.10
+- Source code: [https://gitee.com/bianbu-linux/uboot-2022.10](https://gitee.com/bianbu-linux/uboot-2022.10)
 
 ### OpenSBI
 
 OpenSBI is an implementation of the Supervisor Binary Interface for RISC-V architecture processors, running in M-mode firmware, providing interfaces for bootloaders, hypervisors, and operating systems to access hardware.
 
-Version: 1.3。
-
-Source code: [https://gitee.com/bianbu-linux/opensbi](https://gitee.com/bianbu-linux/opensbi)
+- Version: 1.3
+- Source code: [https://gitee.com/bianbu-linux/opensbi](https://gitee.com/bianbu-linux/opensbi)
 
 ## Supported Devices
 
@@ -121,16 +123,15 @@ Source code: [https://gitee.com/bianbu-linux/opensbi](https://gitee.com/bianbu-l
 - MUSE Box
 - MUSE Book
 
-## Versions
+## Release Information
 
-### Bianbu 1.0 [EOL already]
+- **Bianbu 1.0** (End of Life)  
+  Latest version: v1.0.15
 
-Latest version: v1.0.15
+- **Bianbu 2.x**  
+  Latest version: v2.2
 
-### Bianbu 2.x
+## Feedback & Issues
 
-Latest version: v2.2
-
-## Issue feedback
-
+Please report issues and suggestions via:  
 [https://gitee.com/bianbu/bianbu-docs/issues](https://gitee.com/bianbu/bianbu-docs/issues).

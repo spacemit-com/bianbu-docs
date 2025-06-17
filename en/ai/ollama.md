@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Ollama
 
-‌Ollama‌ is an open-source, cross-platform tool for local deployment of large language models (LLMs), engineered to simplify the execution, management, and inference workflows of LLMs in on-premises environments. It empowers users to deploy and invoke pre-trained models (e.g., LLaMA, DeepSeek) directly on personal devices (including PCs and edge servers) via simple CLI commands, eliminating dependencies on cloud services or high-end GPU hardware.
+**‌Ollama‌** is an open-source, cross-platform tool for local deployment of large language models (LLMs), engineered to simplify the execution, management, and inference workflows of LLMs in on-premises environments. It empowers users to deploy and invoke pre-trained models (e.g., LLaMA, DeepSeek) directly on personal devices (including PCs and edge servers) via simple CLI commands, eliminating dependencies on cloud services or high-end GPU hardware.
 
 ## Installation
 

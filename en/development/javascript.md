@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ## Node.js user guide
 
-### Install Node.js with apt
+### Install Node.js with `apt`
 
 ```shell
 sudo apt-get update
@@ -28,7 +28,8 @@ The default version of Node.js in Bianbu source is v18.13.0. Specific version ha
 
 #### Install NVM
 
-Download and run shell script according to `https://github.com/nvm-sh/nvm`, please replace the latest NVM version number based on the repository.
+Download and run shell script according to from [https://github.com/nvm-sh/nvm](https://github.com/nvm-sh/nvm). Please replace the latest NVM version number based on the repository.
+
 
 With curl：
 
@@ -53,7 +54,7 @@ $ nvm -v
 
 #### Install Node.js
 
-The official build of node has not been adapted for RISC-V which causes errors. Insteadly, we download adapted Node.js form unofficial-builds. For more, please refer to `https://github.com/nodejs/unofficial-builds/`.
+The official source has not yet provided Node.js builds for RISC-V. Installing from there may cause errors. Instead, use the RISC-V compatible version from unofficial builds. For more details, refer to [https://github.com/nodejs/unofficial-builds/](https://github.com/nodejs/unofficial-builds/)
 
 ```shell
 NVM_NODEJS_ORG_MIRROR=https://unofficial-builds.nodejs.org/download/release nvm install 20.16.0
@@ -70,7 +71,7 @@ v20.16.0
 
 #### clumsy-bird
 
-Clone project.
+Clone the demo project:
 
 ```shell
 git clone https://github.com/ellisonleao/clumsy-bird
@@ -84,13 +85,14 @@ npm install
 sudo apt install grunt
 ```
 
-Run service.
+Run the service.
 
 ```shell
 grunt connect
 ```
 
-You can see the following output. The service is deployed at `http://0.0.0.0:8001`. Open this URL in your browser to start.
+You should see output like the following. The service is deployed by default at `http://0.0.0.0:8001`. Open this URL in a browser to start.
+
 
 ```shell
 $ grunt connect
@@ -101,7 +103,7 @@ Started connect web server on http://0.0.0.0:8001
 
 ## Electron user guide
 
-### Prepare
+### Preparation
 
 Please install Node.js first.
 
@@ -113,26 +115,27 @@ Clone [electron-quick-start](https://github.com/electron/electron-quick-start.gi
 git clone https://github.com/electron/electron-quick-start.git ~/electron-quick-start
 ```
 
-Install RISC-V adapted Electron from SpacemiT with npm.
+Install RISC-V adapted Electron from SpacemiT with `npm`.
 
 ```shell
 cd ~/electron-quick-start
 ELECTRON_MIRROR=http://archive.spacemit.com/electron/ electron_use_remote_checksums=1 npm install electron@29.3.1
 ```
 
-Start demo.
+Start the demo.
 
 ```shell
 npm start
 ```
 
-Seeing the following screen indicates success.
+If you see the following window, it means the setup was successful:
 
 ![electron-quick-start](./static/electron-quick-start.png)
 
 ## Electron-builder user guide
 
-Electron-builder is a complete solution to package and build a ready for distribution Electron Native app for macOS, Windows and Linux with "auto update" support. The official electron-builder and related components have not been adapted to RISC-V. Therefore, we use RISC-V adapted electron-builder from SpacemiT. [Electron-quick-start](https://github.com/electron/electron-quick-start) is the project to be packaged.
+**Electron-builder** is a complete solution to package and build a ready for distribution Electron Native app for macOS, Windows and Linux with "auto update" support. The official electron-builder and related components have not been adapted to RISC-V. Therefore, we use RISC-V adapted electron-builder from SpacemiT. [Electron-quick-start](https://github.com/electron/electron-quick-start) is the project to be packaged.
+
 
 ### Prepare
 
@@ -145,13 +148,13 @@ git clone https://github.com/electron/electron-quick-start.git
 cd electron-quick-start
 ```
 
-### Configure package.json
+### Configure `package.json`
 
 ```shell
 vim package.json
 ```
 
-Add package commands under "scripts", we use RISC-V adapted Electron from SpacemiT here.
+Add package commands under `scripts`, we use RISC-V adapted Electron from SpacemiT here.
 
 ```json
   "scripts": {
@@ -174,7 +177,7 @@ Add packaging configurations.
   },
 ```
 
-Add development dependencies. Please indicate source repository with @repository_name/package_name. The following `@electron` is [SpacemiT Node.js package repository](https://git.spacemit.com/electron/electron-builder/-/packages).
+Add development dependencies. Please indicate source repository with `@repository_name/package_name`. The following `@electron` is [SpacemiT Node.js package repository](https://git.spacemit.com/electron/electron-builder/-/packages).
 
 ```json
   "devDependencies": {
@@ -183,7 +186,7 @@ Add development dependencies. Please indicate source repository with @repository
   }
 ```
 
-Finally, your package.json should be like:
+Your final `package.json` should look like this:
 
 ```json
 {
@@ -222,7 +225,7 @@ Finally, your package.json should be like:
 }
 ```
 
-### Set repository URL
+### Configure repository URL
 
 ```shell
 npm config set @electron:registry https://git.spacemit.com/api/v4/projects/36/packages/npm/
@@ -230,7 +233,7 @@ npm config set @electron:registry https://git.spacemit.com/api/v4/projects/36/pa
 
 ### Install dependencies
 
-We set `ELECTRON_MIRROR` for RISC-V adapted Electron. Do not set mirror URL of Electron and electron-builder with `npm config`, otherwise the mirror URL specified by the command line will be invalid. Check by `npm config list`.
+We set `ELECTRON_MIRROR` for RISC-V adapted Electron. **Do not** set the Electron and electron-builder mirror URL via `npm config`, otherwise it will override the command-line mirror setting. Use `npm config list` to verify.
 
 ```shell
 ELECTRON_MIRROR=http://archive.spacemit.com/electron/ electron_use_remote_checksums=1 npm install
@@ -244,7 +247,7 @@ ELECTRON_MIRROR=http://archive.spacemit.com/electron/ electron_use_remote_checks
 npm run pack-dir
 ```
 
-This command makes folder `linux-riscv64-unpacked` in output dir `build`.
+This command will generate a `linux-riscv64-unpacked` folder under the output directory (in this case, `build`).
 
 ```shell
 bianbu@k1:~/electron-quick-start$ tree build/linux-riscv64-unpacked/ -L 1
@@ -278,7 +281,7 @@ build/linux-riscv64-unpacked/
 npm run pack-tgz
 ```
 
-This command makes compressed package `electron-quick-start-1.0.0-riscv64.tar.gz` in output dir `build`.
+This command generates a compressed package named `electron-quick-start-1.0.0-riscv64.tar.gz` in the output directory `build`.
 
 ```shell
 bianbu@k1:~/electron-quick-start$ tar -ztf build/electron-quick-start-1.0.0-riscv64.tar.gz 
@@ -307,9 +310,9 @@ electron-quick-start-1.0.0-riscv64/resources/app-update.yml
 electron-quick-start-1.0.0-riscv64/resources/app.asar
 ```
 
-#### Distribute in deb
+#### Distribute in `.deb`
 
-Deb packaging requires extra information, please add `author`, `email` and `homepage` in package.json.
+Deb packaging requires extra information, please add `author`, `email` and `homepage` in `package.json`.
 
 ```json
   "author": "lff <junzhao.liang@spacemit.com>",
@@ -324,7 +327,7 @@ sudo apt install ruby3.1
 sudo gem install fpm
 ```
 
-FPM packaging command. Parameters can be customized. It takes a while for compressing deb package, please be patient.
+FPM packaging command. Parameters can be customized. It takes a while for compressing `.deb` package, please be patient.
 
 ```shell
 mkdir tmp
@@ -344,13 +347,13 @@ fpm -s dir --force -t deb -d libgtk-3-0 -d libnotify4 -d libnss3 -d libxss1 -d l
 ./tmp=/usr/share/applications/electron-quick-start.desktop
 ```
 
-Add the following parameters to the packaging command of fpm to set the application icon.
+Add the following parameters to the packaging command of `fpm` to set the application icon.
 
 ```shell
 /home/bianbu/electron-quick-start/node_modules/@electron/app-builder-lib/templates/icons/electron-linux/16x16.png=/usr/share/icons/hicolor/16x16/apps/electron-quick-start.png
 ```
 
-This command makes deb package `electron-quick-start-1.0.0-riscv64.deb` in output dir `build`.
+This command makes `.deb` package `electron-quick-start-1.0.0-riscv64.deb` in output dir `build`.
 
 ### Run app
 
@@ -376,7 +379,7 @@ cd electron-quick-start-1.0.0-riscv64
 
 #### Distribute in deb
 
-Install deb and run application.
+Install `.deb` and run the application.
 
 ```shell
 cd build

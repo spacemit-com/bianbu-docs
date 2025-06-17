@@ -4,33 +4,36 @@ sidebar_position: 1
 
 # 内核编译
 
-下面以`linux-6.6`为例，介绍如何为Bianbu编译自己的内核，支持交叉编译（快）和本地编译（方便）。
+本指南介绍如何为 Bianbu Linux 编译内核(以`linux-6.6`为例)，支持两种方式：
 
-## 下载源码
+- **交叉编译**：速度快
+- **本地编译**：操作方便
+
+## 下载内核源码
 
 ```shell
 git clone https://gitee.com/bianbu-linux/linux-6.6 ~/linux-6.6
 ```
 
-## 交叉编译
+## 交叉编译方式
 
-### 交叉开发环境
+### 准备交叉开发环境
 
-参考Bianbu Linux的[开发环境](https://bianbu-linux.spacemit.com/source#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83)准备好交叉编译环境。
+1. 请参考 Bianbu Linux 的 [开发环境](https://bianbu-linux.spacemit.com/source#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83) 准备好交叉编译环境。
 
-然后安装以下依赖：
+2. 然后安装以下编译依赖：
 
 ```shell
 sudo apt-get install debhelper libpfm4-dev libtraceevent-dev asciidoc libelf-dev devscripts
 ```
 
-### 交叉编译器
+### 安装交叉编译器
 
-地址：[http://archive.spacemit.com/toolchain/](http://archive.spacemit.com/toolchain/)
+工具链下载地址：[http://archive.spacemit.com/toolchain/](http://archive.spacemit.com/toolchain/)
 
 1. 下载交叉编译器，例如`spacemit-toolchain-linux-glibc-x86_64-v1.0.0.tar.xz`：
 
-2. 解压：
+2. 解压工具链：
 
    ```shell
    sudo tar -Jxf /path/to/spacemit-toolchain-linux-glibc-x86_64-v1.0.0.tar.xz -C /opt
@@ -64,7 +67,7 @@ export LOCALVERSION=""
 make k1_defconfig
 ```
 
-如果需要编译 bl-v2.0.y 分支的 PREEMPT_RT 实时内核，请先将源码更新到提交 `3ac79a6dd update rt defconfig`，或者之后的版本，然后打 Patch 再生成配置，否则跳过：
+如果需要编译 `bl-v2.0.y` 分支的 PREEMPT_RT 实时内核，请先将源码更新到提交 `3ac79a6dd update rt defconfig`，或者之后的版本，然后打 Patch 再生成配置，否则跳过：
 
 ```shell
 patch -p1 < rt-linux/*.patch
@@ -100,15 +103,11 @@ dpkg-buildpackage: info: binary-only upload (no source included)
 
 软件包位于上一层目录，常用包：
 
-- linux-image-6.6.36_6.6.36-*.deb
+- `linux-image-6.6.36_6.6.36-*.deb` - 内核Image软件包。
 
-  内核Image软件包。
+- `linux-tools-6.6.36_6.6.36-*.deb` - `perf`等工具软件包。
 
-- linux-tools-6.6.36_6.6.36-*.deb
-
-  `perf`等工具软件包。
-
-拷贝到设备，安装然后重启即可：
+拷贝到设备，安装，然后重启即可：
 
 ```shell
 sudo dpkg -i linux-image-6.6.36_6.6.36-*.deb
@@ -117,7 +116,7 @@ sudo reboot
 
 ### 交叉编译模块
 
-编译内核源码树外的模块，以rtl8852bs为例，一般命令如下：
+编译内核源码树外的模块，以rtl8852bs为例，输入命令如下：
 
 ```shell
 cd /path/to/rtl8852bs
@@ -242,7 +241,7 @@ make -j$(nproc) -C /lib/modules/`uname -r`/build M=/path/to/rtl8852bs modules
 make -j$(nproc) -C /lib/modules/`uname -r`/build M=/path/to/rtl8852bs clean
 ```
 
-## 其他组件
+## 其他组件的编译
 
 ### u-boot
 

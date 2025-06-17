@@ -4,22 +4,25 @@ sidebar_position: 2
 
 # Single Application ROOTFS Creation
 
-This document describes how to customize a rootfs based on Bianbu minimal to run a single application based on the labwc display server.
+This document outlines the steps to customize a ROOTFS based on **Bianbu Minimal** for running a single application using the **labwc** display server.
+
 
 ## Environmental requirements and basic ROOTFS creation
 
-For host environment preparation and basic ROOTFS creation, see [bianbu 2.1/2.2 ROOTFS creation](./bianbu_2.1_rootfs_create.md). After completing the basic configuration of ROOTFS (essential configuration and common configuration), you can proceed to the following Labwc configuration.
+To prepare the host environment and generate a basic ROOTFS, refer to [Bianbu 2.1/2.2 ROOTFS Creation](./bianbu_2.1_rootfs_create.md). Once the essential and common configurations are complete, proceed with the Labwc-specific setup below.
 
-## Configure Labwc
+## Labwc Configuration
 
-When the desktop login manager is not needed, you can directly start labwc to provide the wayland display environment. The specific process is as follows:
+When a desktop login manager is not required, you can directly launch Labwc to provide a Wayland display environment. The process is as follows:
 
-1. Install labwc;
-2. Configure getty@tty1.service to automatically log in to the specified user when the system starts;
-3. Configure .bashrc / .zshrc in the user directory to start labwc after the user logs in;
-4. Configure the autostart file in the labwc config folder to automatically start the application.
+1. Install labwc
+2. Configure `getty@tty1.service` to automatically log in to the specified user when the system starts
+3. Configure `.bashrc` or `.zshrc` in the user directory to start start Labwc upon login  
+4. Configure the `autostart` file in the Labwc configuration directory to start the application automatically  
 
 ### Install labwc
+
+Run the following commands to update and install labwc in the chroot environment:
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "apt-get update"
@@ -29,7 +32,7 @@ chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --
 
 ### Configure getty@tty1.service
 
-By modifying the configuration of getty@tty1.service, you can achieve automatic login of the specified user when the system starts. First, you need to modify the ExecStart of getty@tty1.service:
+By modifying the configuration of `getty@tty1.service`, you can enable automatic login for the specified user at system startup. First, update the `ExecStart` setting of the service:
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "mkdir -p /usr/lib/systemd/system/getty@tty1.service.d"
@@ -40,27 +43,27 @@ ExecStart=-/sbin/agetty --noclear --autologin root %I \$TERM
 EOF"
 ```
 
-### Configure .bashrc to automatically start labwc
+### Configure `.bashrc` to automatically start Labwc
 
-By modifying the root user's shell (the default for the root user is bash) configuration file, labwc can be automatically started after the user logs in.
+Modify the shell configuration file of the root user (the default shell is bash) to start Labwc automatically after login.
 
-Add the labwc startup command at the end of /root/.bashrc and specify the labwc configuration folder as /root/.config/labwc:
+Append the Labwc startup command at the end of `/root/.bashrc`, and specify the configuration directory as `/root/.config/labwc`:
 
 ```shell
 chroot "$TARGET_ROOTFS" /bin/bash -c "echo 'labwc -C /root/.config/labwc' >> /root/.bashrc"
 ```
 
-### Configure autostart
+### Configure `autostart`
 
-Here we take the self-starting glmark2-es2-wayland as an example.
+Take `glmark2-es2-wayland` as an example of an application to start automatically.
 
-First install glmark2-es2-wayland:
+First, install `glmark2-es2-wayland`:
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install glmark2-es2-wayland"
 ```
 
-Then modify the /root/.config/labwc/autostart file:
+Then create or modify the `/root/.config/labwc/autostart` file:
 
 ```shell
 chroot "$TARGET_ROOTFS" /bin/bash -c "mkdir -p /root/.config/labwc"
@@ -68,22 +71,24 @@ chroot "$TARGET_ROOTFS" /bin/bash -c "touch /root/.config/labwc/autostart"
 chroot "$TARGET_ROOTFS" /bin/bash -c "printf 'glmark2-es2-wayland >/dev/null 2>&1 &\n' > /root/.config/labwc/autostart"
 ```
 
-If you want to set the wallpaper when labwc starts, you need to put the wallpaper file in the system directory of rootfs (such as /usr/share/wallpapers/wallpaper.png) and modify the /root/.config/labwc/autostart file. Here we take the wallpaper provided by the bianbu-wallpapers deb package as an example:
+To set a wallpaper when Labwc starts, place the wallpaper file under the system directory in rootfs (e.g., `/usr/share/wallpapers/wallpaper.png`), and then modify the `autostart` file. The example below uses a wallpaper from the `bianbu-wallpapers` deb package:
 
 ```shell
 chroot "$TARGET_ROOTFS" /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-wallpapers swaybg"
 chroot "$TARGET_ROOTFS" /bin/bash -c "printf 'swaybg -m fill -i /usr/share/backgrounds/SolidIsland-2.png >/dev/null 2>&1 &\n' >> /root/.config/labwc/autostart"
 ```
 
-Tip: After installing all packages, you can clean up the cache to reduce the final firmware size:
+> **Tip:** After all packages are installed, run the following command to clean the cache and reduce the final firmware size:
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get clean"
 ```
 
-### Configure rc.xml
+### Configure `rc.xml`
 
-rc.xml is the core configuration file of labwc, which is used to define the behavior, shortcut keys, themes, window rules, etc. of the window manager. For specific configuration, see the official website of labwc:[https://github.com/labwc/labwc/blob/master/docs/rc.xml.all](https://github.com/labwc/labwc/blob/master/docs/rc.xml.all)。Here is a simple configuration of the /root/.config/labwc/rc.xml file to automatically maximize the window when opening glmark2-es2-wayland:
+`rc.xml` is the core configuration file for Labwc. It is used to define behaviors, keyboard shortcuts, themes, window rules, and more. For details, refer to the official documentation: [https://github.com/labwc/labwc/blob/master/docs/rc.xml.all](https://github.com/labwc/labwc/blob/master/docs/rc.xml.all).
+
+Below is a basic example of `/root/.config/labwc/rc.xml` that maximizes the `glmark2-es2-wayland` window upon launch:
 
 ```shell
 chroot "$TARGET_ROOTFS" /bin/bash -c "mkdir -p /root/.config/labwc"
@@ -101,11 +106,11 @@ chroot "$TARGET_ROOTFS" /bin/bash -c "cat > /root/.config/labwc/rc.xml <<'EOF'
 EOF"
 ```
 
-After completing the above configuration, the system can automatically log in to the root user and start glmark2-es2-wayland when it starts.
+After completing the above configuration, the system can automatically log in to the root user and start `glmark2-es2-wayland` when it starts.
 
 ## Generate Partition Images
 
-See the corresponding section of [bianbu 2.1/2.2 ROOTFS creation](./bianbu_2.1_rootfs_create.md).
+See the corresponding section in [bianbu 2.1/2.2 ROOTFS creation](./bianbu_2.1_rootfs_create.md).
 
 ## Create Firmware
 

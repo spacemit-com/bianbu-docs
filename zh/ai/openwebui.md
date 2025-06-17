@@ -4,11 +4,12 @@ sidebar_position: 3
 
 # Open-WebUI
 
-Open-WebUI（原 Ollama WebUI）是一个开源、可自托管的 Web 管理工具，专为本地或私有化部署的大型语言模型（LLM）设计。其核心目标是提供与 ChatGPT 类似的交互体验，同时支持离线运行和高度定制化功能。
+**Open-WebUI**（原 Ollama WebUI）是一个开源、可自托管的 Web 管理工具，专为本地或私有化部署的大型语言模型（LLM）设计。其核心目标是提供与 ChatGPT 类似的交互体验，同时支持离线运行和高度定制化功能。
 
 ## 安装
 
-为了简化您在 k1 上使用大语言模型的流程，我们在k1上制作了 Open-WebUI deb 软件包，可一键安装使用（需要系统版本2.1.1及以上）：
+为了简化您在 K1 上使用大语言模型的流程，我们在 K1 上制作了 Open-WebUI deb 软件包，可一键安装使用：
+> **注意：** 系统版本需 **2.1.1** 及以上。
 ```shell
 sudo apt update
 sudo apt install openwebui
@@ -19,6 +20,8 @@ sudo apt install openwebui
 
 右键点击 openwebui 桌面图标，点击允许运行，即可使用。
 ![](../static/openwebui.png)
+
+具体的使用指南，请参考 [OpenWebUI 使用指南](https://forum.spacemit.com/t/topic/185)
 
 ## 制作模型（可选）
 
