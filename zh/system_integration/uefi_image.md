@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # UEFI固件与系统镜像制作指南
 
-截至文档最新修改时间2024年07月01日，只有使用spinor启动的产品才支持UEFI固件。本文档将以 MUSE Pi Pro 为例并基于Bianbu 2.2来介绍如何制作基于EDK2的RISC-V UEFI固件与系统镜像。
+截至文档最新修改时间2025年07月01日，只有使用spinor启动的产品才支持UEFI固件。本文档将以 MUSE Pi Pro 为例并基于Bianbu Minimal 2.2来介绍如何制作基于EDK2的RISC-V UEFI固件与系统镜像。
 
 ## 文档内容概览
 
@@ -15,27 +15,21 @@ sidebar_position: 6
 5. **Titan固件** - 打包用于Titan工具烧录的固件包
 6. **SDCARD镜像制作** - 制作可直接写入SD卡的镜像文件
 
-## 前置条件
-
-- 已完成Bianbu 2.1/2.2 ROOTFS制作
-- 具备容器环境或Ubuntu/Debian系统
-- 拥有Spacemit K1设备MUSE Pi Pro
-
 ## 环境要求
 
-宿主机的环境准备和基础的 ROOTFS 制作见 bianbu 2.2 ROOTFS制作。在准备好容器环境和 ROOTFS 之后，即可进行 UEFI 固件和系统镜像的制作。
+宿主机的环境准备以及 Bianbu Minimal 2.2 的 ROOTFS 制作见 [Bianbu 2.1/2.2 ROOTFS制作](./bianbu_2.1_rootfs_create.md)。在准备好容器环境和 ROOTFS 之后，即可进行 UEFI 固件和系统镜像的制作。
 
 
-首先设置工作空间环境变量，分别管理UEFI固件编译和ROOTFS文件系统：
+首先设置工作空间环境变量，分别管理UEFI固件编译和镜像制作：
 
 ```shell
 export UEFI_WORKSPACE=/mnt/uefi-workspace
-export ROOTFS_WORKSPACE=/mnt/rootfs-workspace
+export ROOTFS_WORKSPACE=/mnt/image-workspace
 mkdir -p $UEFI_WORKSPACE
 mkdir -p $ROOTFS_WORKSPACE
 ```
 
-然后，清理之前制作的分区镜像文件，将rootfs和bootfs内容整合到工作目录，后续会重新制作文件系统：
+然后，清理先前制作的分区镜像文件 rootfs.ext4 和 bootfs.ext4，并将 rootfs 和 bootfs 目录的内容整合到工作目录，后续会重新制作文件系统：
 
 ```shell
 # 删除之前生成的分区镜像文件
@@ -49,6 +43,8 @@ mv $TARGET_ROOTFS $ROOTFS_WORKSPACE/rootfs
 ```
 
 ## UEFI固件制作
+
+在制作UEFI系统镜像之前，我们需要先制作UEFI固件。这是因为UEFI固件是系统启动的基础组件，它负责硬件初始化和引导加载程序的启动。传统的U-Boot启动方式需要特定的U-Boot镜像，而UEFI启动方式则需要符合UEFI标准的固件镜像。通过先制作UEFI固件（edk2.itb），我们才能替换掉传统的U-Boot镜像，从而实现UEFI标准的启动流程。
 
 1. 安装编译依赖
    ```shell
@@ -77,7 +73,7 @@ mv $TARGET_ROOTFS $ROOTFS_WORKSPACE/rootfs
    export GCC5_RISCV64_PREFIX=riscv64-linux-gnu-
    export PACKAGES_PATH=$UEFI_WORKSPACE/edk2:$UEFI_WORKSPACE/edk2-platforms
    export PYTHON_COMMAND=python3
-   export WORKSPACE=$UEFI_WORKSPACE/edk2-platforms/
+   export WORKSPACE=$UEFI_WORKSPACE
    
    # 初始化EDK2构建环境
    cd edk2/
@@ -91,7 +87,7 @@ mv $TARGET_ROOTFS $ROOTFS_WORKSPACE/rootfs
    build -a RISCV64 -p Platform/Spacemit/K1/MUSE-Pi-Pro/MUSE-Pi-Pro.dsc -t GCC5 -b DEBUG
    
    # 将生成的ITB固件文件复制到ROOTFS文件系统工作空间并重命名
-   cp $UEFI_WORKSPACE/edk2-platforms/fitimage/MUSE-Pi-Pro/MUSE-Pi-Pro.itb $ROOTFS_WORKSPACE/edk2.itb
+   cp $WORKSPACE/fitimage/MUSE-Pi-Pro/MUSE-Pi-Pro.itb $ROOTFS_WORKSPACE/edk2.itb
    ```
 
 4. 验证生成的固件文件
@@ -104,11 +100,15 @@ mv $TARGET_ROOTFS $ROOTFS_WORKSPACE/rootfs
 
    该文件即为用于Spacemit K1平台的UEFI固件镜像。
 
-## grub环境搭建
+## grub安装与配置
+
+在UEFI固件制作完成后，我们需要安装和配置GRUB引导器。GRUB是一个多重引导程序，它在UEFI固件初始化硬件后接管系统启动流程。UEFI固件会查找并加载存储在ESP（EFI System Partition）分区中的GRUB引导器，然后由GRUB根据配置文件加载Linux内核、设备树和初始化镜像。因此，我们需要创建ESP分区、安装GRUB到ESP分区，并配置GRUB来正确识别和启动我们的Bianbu系统。
 
 1. 环境准备
 
-   下载并烧录Bianbu 2.2镜像到MUSE Pi Pro，镜像获取及烧录方式参见：https://bianbu.spacemit.com/image
+   下载并烧录Bianbu 2.2镜像到MUSE Pi Pro，镜像获取及烧录方式参见: [镜像](../image.md)
+
+   烧录系统后，请确保系统能够连接网络且网络正常，因为制作分区文件的过程中需要下载软件包。
 
 2. 创建ESP分区文件
 
@@ -117,20 +117,20 @@ mv $TARGET_ROOTFS $ROOTFS_WORKSPACE/rootfs
    ```shell
    sudo apt update
    sudo apt install -y dosfstools
-   dd if=/dev/zero of=efi.img bs=1M count=200
-   mkfs.fat -F32 efi.img
+   sudo dd if=/dev/zero of=efi.img bs=1M count=200
+   sudo mkfs.fat -F32 efi.img
    sudo mkdir -p /boot/efi
    sudo mount efi.img /boot/efi
    sudo apt install -y grub-efi
-   grub-install riscv64-efi
-   update-grub
+   sudo grub-install riscv64-efi
+   sudo update-grub
    sudo umount /boot/efi
-   fsck.vfat -a efi.img
+   sudo fsck.vfat -a efi.img
    ```
 
-   创建的efi.img文件就是我们需要的ESP分区文件，请设法将这个文件转移到我们的ROOTFS文件系统工作空间中即可，例如采用scp远程传输。
+   创建的efi.img文件就是我们需要的ESP分区文件，，请设法将这个文件转移到我们的ROOTFS文件系统工作空间中，例如采用scp远程传输。
 
-   此外，要记录Bianbu 2.2系统的bootfs和rootfs对应磁盘分区的UUID，稍后制作UEFI的系统镜像时，要为rootfs和bootfs设置相同的UUID.
+   此外，要记录Bianbu 2.2系统的bootfs和rootfs对应磁盘分区的UUID，稍后制作UEFI的系统镜像时，要为rootfs和bootfs设置相同的UUID。这样做是因为我们的ESP分区文件和系统配置是从先前烧录的Bianbu系统中提取出来的，如果制作的UEFI镜像使用不同的UUID，那么从原系统复制的配置文件就无法正确识别新的分区，导致系统无法正常启动。
 
    ```shell
    # 查看rootfs分区的UUID
@@ -165,6 +165,9 @@ mv $TARGET_ROOTFS $ROOTFS_WORKSPACE/rootfs
    mount -o bind /dev rootfs/dev
    mount -o bind /dev/pts rootfs/dev/pts
    mkdir -p rootfs/boot/efi
+   # 创建临时ESP分区镜像文件，用于grub-install操作
+   # 这个临时文件仅用于满足grub-install的安装要求，让它能够在chroot环境中正确安装GRUB相关文件到rootfs中
+   # 实际使用的ESP分区文件是从真实Bianbu 2.2系统中提取的efi.img
    dd if=/dev/zero of=tmp.img bs=1M count=200
    apt update
    apt install -y dosfstools
@@ -174,6 +177,7 @@ mv $TARGET_ROOTFS $ROOTFS_WORKSPACE/rootfs
    chroot rootfs /bin/bash -c "apt install -y grub-efi"
    chroot rootfs /bin/bash -c "grub-install riscv-efi"
    chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get clean"
+   # 卸载并删除临时ESP分区文件，因为实际的ESP分区使用的是从真实系统提取的efi.img
    umount tmp.img
    rm tmp.img
    # 卸载系统资源
@@ -388,10 +392,12 @@ cd $ROOTFS_WORKSPACE
 mkdir -p bootfs
 mv rootfs/boot/* bootfs/
 
-# 生成分区镜像文件
+# 生成新的文件系统
 mke2fs -d bootfs -L bootfs -t ext4 -U $UUID_BOOTFS bootfs.ext4 "256M"
 mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
 ```
+
+需要注意的是，因为这里制作的是Bianbu Minimal,文件系统体积会比较小，所以设置rootfs.ext4文件系统大小为 2048M。如果是制作Bianbu Desktop 或 Bianbu Desktop Lite，请根据实际情况调整文件系统大小，例如 8192M。
 
 ## Titan固件
 
