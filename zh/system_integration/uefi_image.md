@@ -106,7 +106,7 @@ mv $TARGET_ROOTFS $ROOTFS_WORKSPACE/rootfs
 
 1. 环境准备
 
-   下载并烧录Bianbu 2.2镜像到MUSE Pi Pro，镜像获取及烧录方式参见: [镜像](../image.md)
+   下载并烧录Bianbu 2.2镜像到MUSE Pi Pro，镜像获取及烧录方式参见: [镜像](./image.md)
 
    烧录系统后，请确保系统能够连接网络且网络正常，因为制作分区文件的过程中需要下载软件包。
 
