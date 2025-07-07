@@ -17,7 +17,7 @@ sidebar_position: 6
 
 ## 环境要求
 
-宿主机的环境准备以及 Bianbu Minimal 2.2 的 ROOTFS 制作见 [Bianbu 2.1/2.2 ROOTFS制作](./bianbu_2.1_rootfs_create.md)。在准备好容器环境和 ROOTFS 之后，即可进行 UEFI 固件和系统镜像的制作。
+宿主机的环境准备以及 Bianbu Minimal 2.2 的 ROOTFS 制作见 [Bianbu 2.1/2.2 ROOTFS制作](https://bianbu.spacemit.com/system_integration/bianbu_2.1_rootfs_create)。在准备好容器环境和 ROOTFS 之后，即可进行 UEFI 固件和系统镜像的制作。
 
 
 首先设置工作空间环境变量，分别管理UEFI固件编译和镜像制作：
@@ -36,10 +36,10 @@ mkdir -p $ROOTFS_WORKSPACE
 rm -f rootfs.ext4 bootfs.ext4
 
 # 将bootfs内容合并回rootfs的/boot目录
-mv bootfs/* $TARGET_ROOTFS/boot/ 
+mv bootfs/* rootfs/boot/ 
 
 # 将整合后的rootfs移动到专用工作空间
-mv $TARGET_ROOTFS $ROOTFS_WORKSPACE/rootfs
+mv rootfs $ROOTFS_WORKSPACE/rootfs
 ```
 
 ## UEFI固件制作
@@ -58,13 +58,9 @@ mv $TARGET_ROOTFS $ROOTFS_WORKSPACE/rootfs
    ```shell
    cd $UEFI_WORKSPACE
    git clone https://gitee.com/bianbu-linux/edk2.git
-   cd edk2/
-   git submodule update --init
-   cd $UEFI_WORKSPACE
+   git -C edk2 submodule update --init
    git clone https://gitee.com/bianbu-linux/edk2-platforms.git
-   cd edk2-platforms/
-   git submodule update --init
-   cd $UEFI_WORKSPACE
+   git -C edk2-platforms submodule update --init
    ```
 
 3. 编译UEFI固件
@@ -106,7 +102,7 @@ mv $TARGET_ROOTFS $ROOTFS_WORKSPACE/rootfs
 
 1. 环境准备
 
-   下载并烧录Bianbu 2.2镜像到MUSE Pi Pro，镜像获取及烧录方式参见: [镜像](./image.md)
+   下载并烧录Bianbu 2.2镜像到MUSE Pi Pro,建议使用[Bianbu Desktop 2.2版本的固件](https://archive.spacemit.com/image/k1/version/bianbu/v2.2/bianbu-24.04-desktop-k1-v2.2-release-20250430190125.zip)，镜像获取方式及Titan烧录工具使用方法参见: [镜像](https://bianbu.spacemit.com/image)
 
    烧录系统后，请确保系统能够连接网络且网络正常，因为制作分区文件的过程中需要下载软件包。
 
@@ -117,18 +113,38 @@ mv $TARGET_ROOTFS $ROOTFS_WORKSPACE/rootfs
    ```shell
    sudo apt update
    sudo apt install -y dosfstools
-   sudo dd if=/dev/zero of=efi.img bs=1M count=200
-   sudo mkfs.fat -F32 efi.img
+   sudo dd if=/dev/zero of=~/efi.img bs=1M count=200
+   sudo mkfs.fat -F32 ~/efi.img
    sudo mkdir -p /boot/efi
-   sudo mount efi.img /boot/efi
+   sudo mount ~/efi.img /boot/efi
    sudo apt install -y grub-efi
    sudo grub-install riscv64-efi
    sudo update-grub
    sudo umount /boot/efi
-   sudo fsck.vfat -a efi.img
+   sudo fsck.vfat -a ~/efi.img
    ```
 
-   创建的efi.img文件就是我们需要的ESP分区文件，，请设法将这个文件转移到我们的ROOTFS文件系统工作空间中，例如采用scp远程传输。
+   创建的efi.img文件就是我们需要的ESP分区文件，请设法将这个文件转移到我们的ROOTFS文件系统工作空间中，例如采用scp远程传输。
+
+   以下是一个传输示例：
+
+   > 首先，在Muse Pi Pro 上执行以下命令获取制作ESP分区的用户名以及系统的IP地址。
+   >
+   > ```shell
+   >whoami
+   ># 假设输出为: bianbu
+   >ip a | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | cut -d'/' -f1
+   ># 假设输出为： 192.168.10.156
+   >```
+   >
+   >然后,切换到宿主机环境，注意这里是宿主机环境，不在虚拟机中，使用scp命令将efi.img文件远程传输到工作目录。
+   >
+   >```shell
+   >scp username@ip_addr:~/efi.img ~/bianbu-workspace
+   ># 例如：scp bianbu@192.168.10.156:~/efi.img ~/bianbu-workspace
+   >docker cp ~/bianbu-workspace/efi.img build-bianbu-rootfs:/mnt/image-workspace/
+   ># 这样efi.img文件就被我们传输到了制作系统镜像的工作目录下
+   >```
 
    此外，要记录Bianbu 2.2系统的bootfs和rootfs对应磁盘分区的UUID，稍后制作UEFI的系统镜像时，要为rootfs和bootfs设置相同的UUID。这样做是因为我们的ESP分区文件和系统配置是从先前烧录的Bianbu系统中提取出来的，如果制作的UEFI镜像使用不同的UUID，那么从原系统复制的配置文件就无法正确识别新的分区，导致系统无法正常启动。
 
@@ -176,15 +192,16 @@ mv $TARGET_ROOTFS $ROOTFS_WORKSPACE/rootfs
    chroot rootfs /bin/bash -c "apt update"
    chroot rootfs /bin/bash -c "apt install -y grub-efi"
    chroot rootfs /bin/bash -c "grub-install riscv-efi"
-   chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get clean"
+   chroot rootfs /bin/bash -c "update-grub"
+   chroot rootfs /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get clean"
    # 卸载并删除临时ESP分区文件，因为实际的ESP分区使用的是从真实系统提取的efi.img
    umount tmp.img
    rm tmp.img
    # 卸载系统资源
-   mount | grep "$TARGET_ROOTFS/proc" > /dev/null && umount -l $TARGET_ROOTFS/proc
-   mount | grep "$TARGET_ROOTFS/sys" > /dev/null && umount -l $TARGET_ROOTFS/sys
-   mount | grep "$TARGET_ROOTFS/dev/pts" > /dev/null && umount -l $TARGET_ROOTFS/dev/pts
-   mount | grep "$TARGET_ROOTFS/dev" > /dev/null && umount -l $TARGET_ROOTFS/dev
+   mount | grep "rootfs/proc" > /dev/null && umount -l rootfs/proc
+   mount | grep "rootfs/sys" > /dev/null && umount -l rootfs/sys
+   mount | grep "rootfs/dev/pts" > /dev/null && umount -l rootfs/dev/pts
+   mount | grep "rootfs/dev" > /dev/null && umount -l rootfs/dev
    echo 'usb_start=usb start' >> rootfs/boot/env_k1-x.txt
    export UUID_ESP=$(blkid efi.img | grep -o 'UUID="[^"]*"' | cut -d '"' -f 2)
    cat > rootfs/boot/grub/grub.cfg <<EOF
@@ -397,7 +414,7 @@ mke2fs -d bootfs -L bootfs -t ext4 -U $UUID_BOOTFS bootfs.ext4 "256M"
 mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
 ```
 
-需要注意的是，因为这里制作的是Bianbu Minimal,文件系统体积会比较小，所以设置rootfs.ext4文件系统大小为 2048M。如果是制作Bianbu Desktop 或 Bianbu Desktop Lite，请根据实际情况调整文件系统大小，例如 8192M。
+需要注意的是，因为这里制作的是Bianbu Minimal,文件系统体积会比较小，所以设置rootfs.ext4文件系统大小为 2048M。如果是制作Bianbu Desktop 或 Bianbu Desktop Lite，请根据实际情况调整文件系统大小，例如 10240M。
 
 ## Titan固件
 
