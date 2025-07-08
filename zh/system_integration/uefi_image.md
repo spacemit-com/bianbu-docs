@@ -573,7 +573,7 @@ mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
    cp $ROOTFS_WORKSPACE/rootfs/usr/lib/u-boot/spacemit/bootinfo_spinand.bin $SDCARD_TMP/factory
    cp $ROOTFS_WORKSPACE/rootfs/usr/lib/u-boot/spacemit/bootinfo_spinor.bin $SDCARD_TMP/factory
    cp $ROOTFS_WORKSPACE/rootfs/usr/lib/u-boot/spacemit/FSBL.bin $SDCARD_TMP/factory
-   cp $ROOTFS_WORKSPACE/rootfs/usr/lib/u-boot/spacemit/u-boot.itb $TMP
+   cp $ROOTFS_WORKSPACE/rootfs/usr/lib/u-boot/spacemit/u-boot.itb $SDCARD_TMP
    cp $ROOTFS_WORKSPACE/rootfs/usr/lib/u-boot/spacemit/env.bin $SDCARD_TMP
    cp $ROOTFS_WORKSPACE/rootfs/usr/lib/riscv64-linux-gnu/opensbi/generic/fw_dynamic.itb $SDCARD_TMP
    
