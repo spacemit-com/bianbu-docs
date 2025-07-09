@@ -15,7 +15,7 @@ For docker ce installation, refer to [https://docs.docker.com/engine/install/](h
 ### QEMU
 
 1. **Remove `binfmt-support`**
-   
+
    The customized `qemu-user-static` conflicts with `binfmt-support` due to:
    - `binfmt-support` uses a legacy SysVinit script: `/etc/init.d/binfmt-support`
    - The customized `qemu-user-static` relies on a systemd unit: `/lib/systemd/system/systemd-binfmt.service`
@@ -23,7 +23,7 @@ For docker ce installation, refer to [https://docs.docker.com/engine/install/](h
    Since the SysVinit script runs after the systemd service, it can override the systemd settings, causing conflicts.
 
    To avoid this, remove `binfmt-support`:
-   
+
    ```shell
    sudo apt-get purge binfmt-support
    ```
@@ -90,11 +90,21 @@ For docker ce installation, refer to [https://docs.docker.com/engine/install/](h
 
 5. **Set environment variables**
 
-   ```shell
-   export BASE_ROOTFS_URL=https://archive.spacemit.com/bianbu-base/bianbu-base-24.04-base-riscv64.tar.gz
-   export BASE_ROOTFS=$(basename "$BASE_ROOTFS_URL")
-   export TARGET_ROOTFS=rootfs
-   ```
+   - For **Version 2.1**
+
+      ```shell
+      export BASE_ROOTFS_URL=https://archive.spacemit.com/bianbu-base/bianbu-base-24.04-base-riscv64.tar.gz
+      export BASE_ROOTFS=$(basename "$BASE_ROOTFS_URL")
+      export TARGET_ROOTFS=rootfs
+      ```
+
+   - For **Version 2.2**
+
+      ```shell
+      export BASE_ROOTFS_URL=https://archive.spacemit.com/bianbu-base/bianbu-base-24.04.1-base-riscv64.tar.gz
+      export BASE_ROOTFS=$(basename "$BASE_ROOTFS_URL")
+      export TARGET_ROOTFS=rootfs
+      ```
 
 6. **Download the base rootfs**
 
@@ -121,7 +131,7 @@ For docker ce installation, refer to [https://docs.docker.com/engine/install/](h
 
 ### Configure Repository Sources
 
-1. **Set environment variables** 
+1. **Set environment variables**
 
    ```shell
    export REPO="archive.spacemit.com/bianbu"
@@ -135,27 +145,27 @@ For docker ce installation, refer to [https://docs.docker.com/engine/install/](h
 
    - For **Version 2.1**
 
-   ```shell
-   cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.sources
-   Types: deb
-   URIs: https://$REPO/
-   Suites: noble/snapshots/v2.1 noble-security/snapshots/v2.1 noble-updates/snapshots/v2.1 noble-porting/snapshots/v2.1 noble-customization/snapshots/v2.1 bianbu-v2.1-updates
-   Components: main universe restricted multiverse
-   Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
-   EOF
-   ```
+      ```shell
+      cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.sources
+      Types: deb
+      URIs: https://$REPO/
+      Suites: noble/snapshots/v2.1 noble-security/snapshots/v2.1 noble-updates/snapshots/v2.1 noble-porting/snapshots/v2.1 noble-customization/snapshots/v2.1 bianbu-v2.1-updates
+      Components: main universe restricted multiverse
+      Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
+      EOF
+      ```
 
    - For **Version 2.2**
 
-   ```shell
-   cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.sources
-   Types: deb
-   URIs: https://$REPO/
-   Suites: noble/snapshots/v2.2 noble-security/snapshots/v2.2 noble-updates/snapshots/v2.2 noble-porting/snapshots/v2.2 noble-customization/snapshots/v2.2 bianbu-v2.2-updates
-   Components: main universe restricted multiverse
-   Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
-   EOF
-   ```
+      ```shell
+      cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.sources
+      Types: deb
+      URIs: https://$REPO/
+      Suites: noble/snapshots/v2.2 noble-security/snapshots/v2.2 noble-updates/snapshots/v2.2 noble-porting/snapshots/v2.2 noble-customization/snapshots/v2.2 bianbu-v2.2-updates
+      Components: main universe restricted multiverse
+      Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
+      EOF
+      ```
 
 ### Configure DNS
 

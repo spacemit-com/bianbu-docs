@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Bianbu 2.1/2.2 ROOTFS制作
@@ -84,11 +84,21 @@ docker ce 安装可参考 [https://docs.docker.com/engine/install/](https://docs
 
 5. 配置环境变量，方便后续命令使用
 
-   ```shell
-   export BASE_ROOTFS_URL=https://archive.spacemit.com/bianbu-base/bianbu-base-24.04-base-riscv64.tar.gz
-   export BASE_ROOTFS=$(basename "$BASE_ROOTFS_URL")
-   export TARGET_ROOTFS=rootfs
-   ```
+   - 2.1 版本
+
+      ```shell
+      export BASE_ROOTFS_URL=https://archive.spacemit.com/bianbu-base/bianbu-base-24.04-base-riscv64.tar.gz
+      export BASE_ROOTFS=$(basename "$BASE_ROOTFS_URL")
+      export TARGET_ROOTFS=rootfs
+      ```
+
+   - 2.2 版本
+
+      ```shell
+      export BASE_ROOTFS_URL=https://archive.spacemit.com/bianbu-base/bianbu-base-24.04.1-base-riscv64.tar.gz
+      export BASE_ROOTFS=$(basename "$BASE_ROOTFS_URL")
+      export TARGET_ROOTFS=rootfs
+      ```
 
 6. 下载
 
@@ -129,27 +139,27 @@ docker ce 安装可参考 [https://docs.docker.com/engine/install/](https://docs
 
    - 2.1 版本
 
-   ```shell
-   cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.sources
-   Types: deb
-   URIs: https://$REPO/
-   Suites: noble/snapshots/v2.1 noble-security/snapshots/v2.1 noble-updates/snapshots/v2.1 noble-porting/snapshots/v2.1 noble-customization/snapshots/v2.1 bianbu-v2.1-updates
-   Components: main universe restricted multiverse
-   Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
-   EOF
-   ```
+      ```shell
+      cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.sources
+      Types: deb
+      URIs: https://$REPO/
+      Suites: noble/snapshots/v2.1 noble-security/snapshots/v2.1 noble-updates/snapshots/v2.1 noble-porting/snapshots/v2.1 noble-customization/snapshots/v2.1 bianbu-v2.1-updates
+      Components: main universe restricted multiverse
+      Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
+      EOF
+      ```
 
    - 2.2 版本
 
-   ```shell
-   cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.sources
-   Types: deb
-   URIs: https://$REPO/
-   Suites: noble/snapshots/v2.2 noble-security/snapshots/v2.2 noble-updates/snapshots/v2.2 noble-porting/snapshots/v2.2 noble-customization/snapshots/v2.2 bianbu-v2.2-updates
-   Components: main universe restricted multiverse
-   Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
-   EOF
-   ```
+      ```shell
+      cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.sources
+      Types: deb
+      URIs: https://$REPO/
+      Suites: noble/snapshots/v2.2 noble-security/snapshots/v2.2 noble-updates/snapshots/v2.2 noble-porting/snapshots/v2.2 noble-customization/snapshots/v2.2 bianbu-v2.2-updates
+      Components: main universe restricted multiverse
+      Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
+      EOF
+      ```
 
 ### 配置 DNS
 
