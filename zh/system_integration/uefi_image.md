@@ -22,7 +22,7 @@ sidebar_position: 6
 
 ## 环境要求
 
-1. **准备宿主机的环境**, 并参考 [Bianbu 2.1/2.2 ROOTFS制作](https://bianbu.spacemit.com/system_integration/bianbu_2.1_rootfs_create) **完成 ROOTFS 制作**。
+1. **准备宿主机的环境**, 制作  的 ROOTFS 请参考 [Bianbu 2.1/2.2 ROOTFS制作](https://bianbu.spacemit.com/system_integration/bianbu_2.1_rootfs_create) **完成 Bianbu Minimal 2.2 ROOTFS 制作**。
 
 2. **设置工作目录**
    设置工作空间环境变量，分别管理UEFI固件编译和镜像制作：
@@ -70,7 +70,7 @@ sidebar_position: 6
    git -C edk2-platforms submodule update --init
    ```
 
-3. **配置环境变量 + 编译UEFI固件**
+3. **编译UEFI固件**
 
    ```shell
    cd $UEFI_WORKSPACE
@@ -104,7 +104,7 @@ sidebar_position: 6
 
    该文件即为用于SpacemiT K1平台的 **UEFI 固件镜像**。
 
-## GRUB 安装与配置 + ESP 分区
+## GRUB 安装与配置
 
 在UEFI固件制作完成后，我们需要安装和配置GRUB引导器。GRUB是一个多重引导程序，它在UEFI固件初始化硬件后接管系统启动流程。UEFI固件会查找并加载存储在 ESP（EFI System Partition）分区中的GRUB引导器，然后由GRUB根据配置文件加载Linux内核、设备树和初始化镜像。因此，我们需要创建ESP分区、安装GRUB到ESP分区，并配置GRUB来正确识别和启动我们的Bianbu系统。
 
