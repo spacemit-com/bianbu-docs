@@ -121,7 +121,7 @@ sidebar_position: 6
    ```shell
    sudo apt update
    sudo apt install -y dosfstools
-   sudo dd if=/dev/zero of=~/efi.img bs=1M count=200
+   sudo dd if=/dev/zero of="$(echo ~)/efi.img" bs=1M count=200
    sudo mkfs.fat -F32 ~/efi.img
    sudo mkdir -p /boot/efi
    sudo mount ~/efi.img /boot/efi
