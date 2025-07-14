@@ -4,56 +4,63 @@ sidebar_position: 6
 
 # UEFI固件与系统镜像制作指南
 
-截至文档最新修改时间2025年07月01日，只有使用spinor启动的产品才支持UEFI固件。本文档将以 MUSE Pi Pro 为例并基于Bianbu Minimal 2.2来介绍如何制作基于EDK2的RISC-V UEFI固件与系统镜像。
+截至2025年07月01日, 当前只支持 **使用 spinor 启动的产品** 搭配 UEFI 固件。  
+本文基于 **Bianbu Minimal 2.2** 环境，适用于 MUSE Pi Pro 板卡。  
+教你如何一步一步制作基于EDK2的 RISC-V UEFI 固件，并制作可以刷机的系统镜像（支持 Titan 固件包 + SD 卡镜像）。
+
 
 ## 文档内容概览
 
+本指南共包含以下部分：
+
 1. **环境要求** - 工作空间配置和环境准备
-2. **UEFI固件制作** - 使用EDK2编译生成edk2.itb固件文件
-3. **GRUB环境搭建** - 创建ESP分区和配置GRUB启动器
-4. **重新制作文件系统** - 生成bootfs和rootfs分区镜像
-5. **Titan固件** - 打包用于Titan工具烧录的固件包
-6. **SDCARD镜像制作** - 制作可直接写入SD卡的镜像文件
+2. **UEFI 固件制作** - 使用EDK2编译生成 `edk2.itb` 固件文件
+3. **GRUB环境搭建 + ESP 分区** - 创建 ES P分区和配置 GRUB 启动器
+4. **重新制作文件系统** - 生成 bootfs 和 rootfs 分区镜像
+5. **制作 Titan 固件包** - 打包用于 Titan 工具烧录的固件包
+6. **SD卡镜像制作** - 制作可直接写入SD卡的镜像文件
 
 ## 环境要求
 
-宿主机的环境准备以及 Bianbu Minimal 2.2 的 ROOTFS 制作见 [Bianbu 2.1/2.2 ROOTFS制作](https://bianbu.spacemit.com/system_integration/bianbu_2.1_rootfs_create)。在准备好容器环境和 ROOTFS 之后，即可进行 UEFI 固件和系统镜像的制作。
+1. **准备宿主机的环境**, 制作  的 ROOTFS 请参考 [Bianbu 2.1/2.2 ROOTFS制作](https://bianbu.spacemit.com/system_integration/bianbu_2.1_rootfs_create) **完成 Bianbu Minimal 2.2 ROOTFS 制作**。
 
+2. **设置工作目录**
+   设置工作空间环境变量，分别管理UEFI固件编译和镜像制作：
 
-首先设置工作空间环境变量，分别管理UEFI固件编译和镜像制作：
+   ```shell
+   export UEFI_WORKSPACE=/mnt/uefi-workspace
+   export ROOTFS_WORKSPACE=/mnt/image-workspace
+   mkdir -p $UEFI_WORKSPACE
+   mkdir -p $ROOTFS_WORKSPACE
+   ```
 
-```shell
-export UEFI_WORKSPACE=/mnt/uefi-workspace
-export ROOTFS_WORKSPACE=/mnt/image-workspace
-mkdir -p $UEFI_WORKSPACE
-mkdir -p $ROOTFS_WORKSPACE
-```
+3. **准备 rootfs 和 boot 内容**
+   - 清理先前制作的分区镜像文件 `rootfs.ext4` 和 `bootfs.ext4`
+   - 将 rootfs 和 bootfs 目录的内容整合到工作目录，后续会重新制作文件系统：
 
-然后，清理先前制作的分区镜像文件 rootfs.ext4 和 bootfs.ext4，并将 rootfs 和 bootfs 目录的内容整合到工作目录，后续会重新制作文件系统：
+     ```shell
+     # 删除之前生成的分区镜像文件
+     rm -f rootfs.ext4 bootfs.ext4
 
-```shell
-# 删除之前生成的分区镜像文件
-rm -f rootfs.ext4 bootfs.ext4
+     # 将bootfs内容合并回rootfs的/boot目录
+     mv bootfs/* rootfs/boot/ 
 
-# 将bootfs内容合并回rootfs的/boot目录
-mv bootfs/* rootfs/boot/ 
+     # 将整合后的rootfs移动到专用工作空间
+     mv rootfs $ROOTFS_WORKSPACE/rootfs
+     ```
 
-# 将整合后的rootfs移动到专用工作空间
-mv rootfs $ROOTFS_WORKSPACE/rootfs
-```
-
-## UEFI固件制作
+## UEFI 固件制作
 
 在制作UEFI系统镜像之前，我们需要先制作UEFI固件。这是因为UEFI固件是系统启动的基础组件，它负责硬件初始化和引导加载程序的启动。传统的U-Boot启动方式需要特定的U-Boot镜像，而UEFI启动方式则需要符合UEFI标准的固件镜像。通过先制作UEFI固件（edk2.itb），我们才能替换掉传统的U-Boot镜像，从而实现UEFI标准的启动流程。
 
-1. 安装编译依赖
+1. **安装编译依赖**
    ```shell
    apt install -y git sudo make gcc g++ uuid-dev python3 u-boot-tools 2to3 brotli
    ```
 
-2. 拉取edk2项目代码
+2. **获取 edk2 项目代码**
 
-   edk2是TianoCore项目的核心仓库，提供UEFI固件开发的基础框架和通用代码；edk2-platforms是平台特定的代码仓库，包含各种硬件平台的支持代码和配置文件。两者配合使用来构建针对特定硬件平台的UEFI固件。
+   edk2 是 TianoCore 项目的核心仓库，提供UEFI固件开发的基础框架和通用代码；edk2-platforms 是平台特定的代码仓库，包含各种硬件平台的支持代码和配置文件。两者配合使用来构建针对特定硬件平台的UEFI固件。
 
    ```shell
    cd $UEFI_WORKSPACE
@@ -63,7 +70,8 @@ mv rootfs $ROOTFS_WORKSPACE/rootfs
    git -C edk2-platforms submodule update --init
    ```
 
-3. 编译UEFI固件
+3. **编译UEFI固件**
+
    ```shell
    cd $UEFI_WORKSPACE
    export GCC5_RISCV64_PREFIX=riscv64-linux-gnu-
@@ -86,34 +94,34 @@ mv rootfs $ROOTFS_WORKSPACE/rootfs
    cp $WORKSPACE/fitimage/MUSE-Pi-Pro/MUSE-Pi-Pro.itb $ROOTFS_WORKSPACE/edk2.itb
    ```
 
-4. 验证生成的固件文件
+4. **验证生成的固件文件**
 
-   编译完成后，可以在ROOTFS文件系统工作空间中找到生成的UEFI固件文件：
+   编译完成后，可以在 ROOTFS 文件系统工作空间中找到生成的 **UEFI固件文件**：
 
    ```shell
    ls -la $ROOTFS_WORKSPACE/edk2.itb
    ```
 
-   该文件即为用于Spacemit K1平台的UEFI固件镜像。
+   该文件即为用于SpacemiT K1平台的 **UEFI 固件镜像**。
 
-## grub安装与配置
+## GRUB 安装与配置
 
-在UEFI固件制作完成后，我们需要安装和配置GRUB引导器。GRUB是一个多重引导程序，它在UEFI固件初始化硬件后接管系统启动流程。UEFI固件会查找并加载存储在ESP（EFI System Partition）分区中的GRUB引导器，然后由GRUB根据配置文件加载Linux内核、设备树和初始化镜像。因此，我们需要创建ESP分区、安装GRUB到ESP分区，并配置GRUB来正确识别和启动我们的Bianbu系统。
+在UEFI固件制作完成后，我们需要安装和配置GRUB引导器。GRUB是一个多重引导程序，它在UEFI固件初始化硬件后接管系统启动流程。UEFI固件会查找并加载存储在 ESP（EFI System Partition）分区中的GRUB引导器，然后由GRUB根据配置文件加载Linux内核、设备树和初始化镜像。因此，我们需要创建ESP分区、安装GRUB到ESP分区，并配置GRUB来正确识别和启动我们的Bianbu系统。
 
-1. 环境准备
+1. **环境准备**
 
-   下载并烧录Bianbu 2.2镜像到MUSE Pi Pro,建议使用[Bianbu Desktop 2.2版本的固件](https://archive.spacemit.com/image/k1/version/bianbu/v2.2/bianbu-24.04-desktop-k1-v2.2-release-20250430190125.zip)，镜像获取方式及Titan烧录工具使用方法参见: [镜像](https://bianbu.spacemit.com/image)
+   下载并烧录 Bianbu 2.2 镜像到 MUSE Pi Pro,建议使用 [Bianbu Desktop 2.2版本的固件](https://archive.spacemit.com/image/k1/version/bianbu/v2.2/bianbu-24.04-desktop-k1-v2.2-release-20250430190125.zip)，镜像获取方式及 Titan 烧录工具使用方法可参见: [镜像](https://bianbu.spacemit.com/image)
 
-   烧录系统后，请确保系统能够连接网络且网络正常，因为制作分区文件的过程中需要下载软件包。
+   烧录系统后，请**确保系统能够正常连接网络且网络**，因为制作分区文件的过程中需要下载软件包。
 
-2. 创建ESP分区文件
+2. **创建ESP分区文件（给 GRUB 引导用）**
 
-   进入Bianbu 2.2系统后，执行以下命令制作ESP分区文件。
+   在 MUSE Pi Pro 设备上，进入 Bianbu 2.2 系统后，执行以下命令制作ESP分区文件。
 
    ```shell
    sudo apt update
    sudo apt install -y dosfstools
-   sudo dd if=/dev/zero of=~/efi.img bs=1M count=200
+   sudo dd if=/dev/zero of="$(echo ~)/efi.img" bs=1M count=200
    sudo mkfs.fat -F32 ~/efi.img
    sudo mkdir -p /boot/efi
    sudo mount ~/efi.img /boot/efi
@@ -124,29 +132,31 @@ mv rootfs $ROOTFS_WORKSPACE/rootfs
    sudo fsck.vfat -a ~/efi.img
    ```
 
-   创建的efi.img文件就是我们需要的ESP分区文件，请设法将这个文件转移到我们的ROOTFS文件系统工作空间中，例如采用scp远程传输。
+   创建的 `efi.img` 文件就是我们需要的ESP分区文件，请设法将这个文件转移到我们的ROOTFS文件系统工作空间中，例如采用scp远程传输。
 
    以下是一个传输示例：
 
-   > 首先，在Muse Pi Pro 上执行以下命令获取制作ESP分区的用户名以及系统的IP地址。
-   >
-   > ```shell
-   >whoami
-   ># 假设输出为: bianbu
-   >ip a | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | cut -d'/' -f1
-   ># 假设输出为： 192.168.10.156
-   >```
-   >
-   >然后,切换到宿主机环境，注意这里是宿主机环境，不在虚拟机中，使用scp命令将efi.img文件远程传输到工作目录。
-   >
-   >```shell
-   >scp username@ip_addr:~/efi.img ~/bianbu-workspace
-   ># 例如：scp bianbu@192.168.10.156:~/efi.img ~/bianbu-workspace
-   >docker cp ~/bianbu-workspace/efi.img build-bianbu-rootfs:/mnt/image-workspace/
-   ># 这样efi.img文件就被我们传输到了制作系统镜像的工作目录下
-   >```
+   - 首先，在Muse Pi Pro 上执行以下命令获取制作ESP分区的用户名以及系统的IP地址。
+   
+     ```shell
+     whoami
+     # 假设输出为: bianbu
+     ip a | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | cut -d'/' -f1
+     # 假设输出为： 192.168.10.156
+     ```
+   
+   - 然后,切换到**宿主机环境**，注意这里是宿主机环境，不在虚拟机中，使用 `scp` 命令将 `efi.img` 文件远程传输到工作目录。
+   
+     ```shell
+     scp username@ip_addr:~/efi.img ~/bianbu-workspace
+     # 例如：scp bianbu@192.168.10.156:~/efi.img ~/bianbu-workspace
+     docker cp ~/bianbu-workspace/efi.img build-bianbu-rootfs:/mnt/image-workspace/
+     # 这样efi.img文件就被我们传输到了制作系统镜像的工作目录下
+     ```
 
-   此外，要记录Bianbu 2.2系统的bootfs和rootfs对应磁盘分区的UUID，稍后制作UEFI的系统镜像时，要为rootfs和bootfs设置相同的UUID。这样做是因为我们的ESP分区文件和系统配置是从先前烧录的Bianbu系统中提取出来的，如果制作的UEFI镜像使用不同的UUID，那么从原系统复制的配置文件就无法正确识别新的分区，导致系统无法正常启动。
+3. **获取 bootfs 和 rootfs 的 UUID**
+
+   记录 Bianbu 2.2 系统的 bootfs 和 rootfs 对应磁盘分区的 UUID，稍后制作 UEFI 的系统镜像时，要为 rootfs 和 bootfs 设置相同的 UUID。这样做是因为我们的 ESP 分区文件和系统配置是从先前烧录的 Bianbu 系统中提取出来的，如果制作的 UEFI 镜像使用不同的 UUID，那么从原系统复制的配置文件就无法正确识别新的分区，导致系统无法正常启动。
 
    ```shell
    # 查看rootfs分区的UUID
@@ -158,9 +168,9 @@ mv rootfs $ROOTFS_WORKSPACE/rootfs
    # 假设输出为: 26d39279-a9ae-485e-8467-dda899d9c3bf
    ```
 
-3. grub配置
+4. **GRUB 配置**
 
-   首先，将更改获取的UUID同步到环境变量中，rootfs的UUID对应UUID_ROOTFS,bootfs的UUID对应UUID_BOOTFS.
+   - 将更改获取的UUID同步到环境变量中，rootfs的UUID对应`UUID_ROOTFS`, bootfs的UUID对应`UUID_BOOTFS`.
    
    ```shell
    # 请将‘xxxxx’替换为对应的UUID
@@ -171,7 +181,7 @@ mv rootfs $ROOTFS_WORKSPACE/rootfs
    # export UUID_BOOTFS=26d39279-a9ae-485e-8467-dda899d9c3bf
    ```
 
-   准备好ESP分区文件之后，需要在rootfs中安装并配置grub.
+   - 准备好ESP分区文件之后，需要在rootfs中安装并配置grub.
 
    ```shell
    cd $ROOTFS_WORKSPACE
@@ -389,7 +399,7 @@ mv rootfs $ROOTFS_WORKSPACE/rootfs
    EOF
    ```
 
-   修改fstab配置文件，让ESP分区自动挂载。
+   - 修改`fstab`配置文件，让ESP分区自动挂载。
 
    ```shell
    cat >rootfs/etc/fstab <<EOF
@@ -414,17 +424,17 @@ mke2fs -d bootfs -L bootfs -t ext4 -U $UUID_BOOTFS bootfs.ext4 "256M"
 mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
 ```
 
-需要注意的是，因为这里制作的是Bianbu Minimal,文件系统体积会比较小，所以设置rootfs.ext4文件系统大小为 2048M。如果是制作Bianbu Desktop 或 Bianbu Desktop Lite，请根据实际情况调整文件系统大小，例如 10240M。
+需要注意的是，因为这里制作的是 Bianbu Minimal, 文件系统体积会比较小，所以设置 `rootfs.ext4` 文件系统大小为 2048M。如果是制作 Bianbu Desktop 或 Bianbu Desktop Lite，请根据实际情况调整文件系统大小，例如 10240M。
 
-## Titan固件
+## 制作 Titan 固件包
 
-1. 安装依赖
+1. **安装依赖**
 
    ```shell
    apt -y install zip
    ```
 
-2. 拷贝固件依赖的文件
+2. **拷贝固件依赖的文件**
 
    ```shell
    export TMP=$ROOTFS_WORKSPACE/pack_dir
@@ -451,7 +461,7 @@ mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
    cp $ROOTFS_WORKSPACE/rootfs.ext4 $TMP
    ```
 
-3. 下载参考分区表
+3. **下载参考分区表**
 
    ```shell
    wget -P $TMP https://gitee.com/bianbu/image-config/raw/main/fastboot.yaml
@@ -460,16 +470,16 @@ mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
    wget -P $TMP https://gitee.com/bianbu/image-config/raw/main/partition_universal.json
    ```
 
-4. 修改分区表
+4. **修改分区表**
 
-   修改partition_2M.json分区表，将u-boot.itb文件替换为edk2.itb文件：
+   - 修改 `partition_2M.json` 分区表，将 `u-boot.itb` 文件替换为 `edk2.itb` 文件：
 
    ```shell
    # 将u-boot.itb替换为edk2.itb
    sed -i 's/"image": "u-boot.itb"/"image": "edk2.itb"/g' $TMP/partition_2M.json
    ```
 
-   修改partition_universal.json分区表，添加ESP分区并调整分区顺序：
+   - 修改 `partition_universal.json` 分区表，添加ESP分区并调整分区顺序：
 
    ```shell
    # 使用jq工具添加ESP分区并调整后续分区偏移量
@@ -512,7 +522,7 @@ mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
    rm $TMP/partition_universal.json.bak
    ```
 
-   修改partition_flash.json，在bootfs分区的image数组中添加edk2.itb和efi.img文件：
+   - 修改 `partition_flash.json`，在 bootfs 分区的 image 数组中添加 `edk2.itb` 和 `efi.img` 文件：
 
    ```shell
    # 备份原文件
@@ -540,8 +550,7 @@ mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
    rm $TMP/partition_flash.json.bak
    ```
 
-
-5. 打包
+5. **打包 - 生成 zip 文件**
 
    ```shell
    cd $TMP
@@ -549,11 +558,11 @@ mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
    zip -r ../bianbu-custom.zip *
    ```
 
-## SDCARD镜像制作
+## SD卡镜像制作
 
-如果需要制作可直接写入SD卡的镜像文件，可以使用genimage工具：
+如果需要制作可直接写入SD卡的镜像文件，可以使用 **genimage** 工具：
 
-1. 安装genimage工具
+1. **安装 genimage 工具**
 
    ```shell
    echo 'tzdata tzdata/Areas select Asia' | debconf-set-selections
@@ -561,7 +570,7 @@ mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
    DEBIAN_FRONTEND=noninteractive apt-get -y install wget python3 genimage
    ```
 
-2. 准备SDCARD镜像制作文件
+2. **准备 SD 卡镜像内容**
 
    ```shell
    export SDCARD_TMP=$ROOTFS_WORKSPACE/sdcard_pack_dir
@@ -586,7 +595,7 @@ mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
    cp $ROOTFS_WORKSPACE/rootfs.ext4 $SDCARD_TMP
    ```
 
-3. 下载并修改分区表配置
+3. **下载并修改分区表配置**
 
    ```shell
    # 下载基础分区表
@@ -620,7 +629,7 @@ mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
    rm $SDCARD_TMP/partition_universal_temp.json
    ```
 
-4. 生成genimage配置文件
+4. **生成 genimage 配置文件**
 
    ```shell
    # 下载genimage配置生成脚本
@@ -630,7 +639,7 @@ mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
    python3 $SDCARD_TMP/gen_imgcfg.py -i $SDCARD_TMP/partition_universal.json -n bianbu-uefi.sdcard -o $SDCARD_TMP/genimage.cfg
    ```
 
-5. 制作SDCARD镜像
+5. **制作SD卡镜像**
 
    ```shell
    # 创建临时目录
@@ -652,7 +661,7 @@ mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
    ls -la bianbu-uefi.sdcard
    ```
 
-   当看到以下信息时，说明打包成功。
+   当看到以下信息时，说明**打包成功**。
 
    ```shell
    INFO: hdimage(bianbu-uefi.sdcard): adding partition 'bootinfo' from 'factory/bootinfo_sd.bin' ...
