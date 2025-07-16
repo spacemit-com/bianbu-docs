@@ -22,31 +22,33 @@ The SpacemiT AI Demo Repository is a comprehensive collection of AI application 
 ```
 spacemit_demo/
 ├── examples/
-│   ├── CV/                    # Computer Vision Examples
-│   │   ├── yolov5/           # Object Detection Model
-│   │   ├── yolov8/           # Object Detection Model  
-│   │   ├── yolov11/          # Object Detection Model
-│   │   ├── resnet/           # Image Classification Model
-│   │   ├── efficientnet/     # Image Classification Model
-│   │   ├── mobilenet_v2/     # Lightweight Classification Model
-│   │   ├── inception_v1/     # Image Classification Model
-│   │   ├── inception_v3/     # Image Classification Model
-│   │   ├── swin-tiny/        # Vision Transformer Model
-│   │   ├── fcn/              # Semantic Segmentation Model
-│   │   ├── unet/             # Semantic Segmentation Model
-│   │   ├── arcface/          # Face Recognition Model
-│   │   ├── yolov5-face/      # Face Detection Model
-│   │   ├── nanotrack/        # Object Tracking Model
-│   │   ├── SAM/              # Image Segmentation Model
-│   │   ├── CLIP/             # Multimodal Model
-│   │   └── yolo-world/       # Open-Vocabulary Detection Model
-│   └── NLP/                  # Natural Language Processing Examples
-│       ├── spacemit_asr/     # Automatic Speech Recognition Module
-│       ├── spacemit_llm/     # Large Language Model Module
-│       ├── spacemit_tts/     # Text-to-Speech Module
-│       ├── spacemit_audio/   # Audio Processing Module
-│       └── *.py              # Various AI Function Demo Scripts
-└── README.md                 # Project Overview
+│   ├── CV/                           # Computer Vision Examples
+│   │   ├── yolov5/                  # Object Detection Model
+│   │   ├── yolov6/                  # Object Detection Model
+│   │   ├── yolov8/                  # Object Detection Model  
+│   │   ├── yolov8-pose/             # Pose Detection Model
+│   │   ├── yolov11/                 # Object Detection Model
+│   │   ├── yolov5-face/             # Face Detection Model
+│   │   ├── yolo-world/              # Open-Vocabulary Detection Model
+│   │   ├── resnet/                  # Image Classification Model
+│   │   ├── efficientnet/            # Image Classification Model
+│   │   ├── mobilenet_v2/            # Lightweight Classification Model
+│   │   ├── inception_v1/            # Image Classification Model
+│   │   ├── inception_v3/            # Image Classification Model
+│   │   ├── swin-tiny_16xb64_in1k/   # Vision Transformer Model
+│   │   ├── fcn/                     # Semantic Segmentation Model
+│   │   ├── unet/                    # Semantic Segmentation Model
+│   │   ├── SAM/                     # Image Segmentation Model
+│   │   ├── arcface/                 # Face Recognition Model
+│   │   ├── nanotrack/               # Object Tracking Model
+│   │   └── CLIP/                    # Multimodal Model
+│   └── NLP/                         # Natural Language Processing Examples
+│       ├── spacemit_asr/            # Automatic Speech Recognition Module
+│       ├── spacemit_llm/            # Large Language Model Module
+│       ├── spacemit_tts/            # Text-to-Speech Module
+│       ├── spacemit_audio/          # Audio Processing Module
+│       └── *.py                     # Various AI Function Demo Scripts
+└── README.md                        # Project Overview
 ```
 
 ## Example Categories
@@ -65,6 +67,7 @@ The computer vision module contains mainstream CV model examples, covering image
 #### Object Detection
 - **YOLOv5/v8/v11**: Latest YOLO series object detection algorithms
 - **YOLOv6**: Efficient object detection algorithm proposed by Meituan
+- **YOLOv8-pose**: Human pose detection model based on YOLOv8
 - **YOLO-World**: Open-vocabulary object detection model
 
 #### Semantic Segmentation

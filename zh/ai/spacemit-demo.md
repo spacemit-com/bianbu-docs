@@ -22,31 +22,33 @@ SpacemiT AI Demo 示例库是基于进迭时空 K 系列芯片适配的 AI 应�
 ```
 spacemit_demo/
 ├── examples/
-│   ├── CV/                    # 计算机视觉示例
-│   │   ├── yolov5/           # 目标检测模型
-│   │   ├── yolov8/           # 目标检测模型  
-│   │   ├── yolov11/          # 目标检测模型
-│   │   ├── resnet/           # 图像分类模型
-│   │   ├── efficientnet/     # 图像分类模型
-│   │   ├── mobilenet_v2/     # 轻量级分类模型
-│   │   ├── inception_v1/     # 图像分类模型
-│   │   ├── inception_v3/     # 图像分类模型
-│   │   ├── swin-tiny/        # 视觉 Transformer 模型
-│   │   ├── fcn/              # 语义分割模型
-│   │   ├── unet/             # 语义分割模型
-│   │   ├── arcface/          # 人脸识别模型
-│   │   ├── yolov5-face/      # 人脸检测模型
-│   │   ├── nanotrack/        # 目标跟踪模型
-│   │   ├── SAM/              # 图像分割模型
-│   │   ├── CLIP/             # 多模态模型
-│   │   └── yolo-world/       # 开放词汇检测模型
-│   └── NLP/                  # 自然语言处理示例
-│       ├── spacemit_asr/     # 语音识别模块
-│       ├── spacemit_llm/     # 大语言模型模块
-│       ├── spacemit_tts/     # 文本转语音模块
-│       ├── spacemit_audio/   # 音频处理模块
-│       └── *.py              # 各种 AI 功能演示脚本
-└── README.md                 # 项目总览
+│   ├── CV/                           # 计算机视觉示例
+│   │   ├── yolov5/                  # 目标检测模型
+│   │   ├── yolov6/                  # 目标检测模型
+│   │   ├── yolov8/                  # 目标检测模型  
+│   │   ├── yolov8-pose/             # 姿态检测模型
+│   │   ├── yolov11/                 # 目标检测模型
+│   │   ├── yolov5-face/             # 人脸检测模型
+│   │   ├── yolo-world/              # 开放词汇检测模型
+│   │   ├── resnet/                  # 图像分类模型
+│   │   ├── efficientnet/            # 图像分类模型
+│   │   ├── mobilenet_v2/            # 轻量级分类模型
+│   │   ├── inception_v1/            # 图像分类模型
+│   │   ├── inception_v3/            # 图像分类模型
+│   │   ├── swin-tiny_16xb64_in1k/   # 视觉 Transformer 模型
+│   │   ├── fcn/                     # 语义分割模型
+│   │   ├── unet/                    # 语义分割模型
+│   │   ├── SAM/                     # 图像分割模型
+│   │   ├── arcface/                 # 人脸识别模型
+│   │   ├── nanotrack/               # 目标跟踪模型
+│   │   └── CLIP/                    # 多模态模型
+│   └── NLP/                         # 自然语言处理示例
+│       ├── spacemit_asr/            # 语音识别模块
+│       ├── spacemit_llm/            # 大语言模型模块
+│       ├── spacemit_tts/            # 文本转语音模块
+│       ├── spacemit_audio/          # 音频处理模块
+│       └── *.py                     # 各种 AI 功能演示脚本
+└── README.md                        # 项目总览
 ```
 
 ## 示例分类
@@ -65,6 +67,7 @@ spacemit_demo/
 #### 目标检测
 - **YOLOv5/v8/v11**: 最新的 YOLO 系列目标检测算法
 - **YOLOv6**: 美团提出的高效目标检测算法
+- **YOLOv8-pose**: 基于 YOLOv8 的人体姿态检测模型
 - **YOLO-World**: 支持开放词汇的目标检测模型
 
 #### 语义分割  
