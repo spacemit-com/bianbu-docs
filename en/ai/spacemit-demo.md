@@ -53,7 +53,7 @@ spacemit_demo/
 
 ## Example Categories
 
-### 🖼️ Computer Vision (CV)
+### Computer Vision (CV)
 
 The computer vision module contains mainstream CV model examples, covering image classification, object detection, semantic segmentation, face recognition, and other tasks:
 
@@ -83,7 +83,7 @@ The computer vision module contains mainstream CV model examples, covering image
 - **NanoTrack**: Lightweight object tracking algorithm
 - **CLIP**: OpenAI's image-text multimodal understanding model
 
-### 🤖 Natural Language Processing (NLP)
+### Natural Language Processing (NLP)
 
 The NLP module provides complete speech and text processing solutions, supporting the full workflow from speech input to intelligent responses:
 
