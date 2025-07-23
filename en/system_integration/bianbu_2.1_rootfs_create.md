@@ -287,8 +287,8 @@ chroot $TARGET_ROOTFS /bin/bash -c "chmod 600 /etc/netplan/01-netcfg.yaml"
 cat <<EOF | tee $TARGET_ROOTFS/etc/netplan/01-network-manager-all.yaml
 # Let NetworkManager manage all devices on this system
 network:
-version: 2
-renderer: NetworkManager
+   version: 2
+   renderer: NetworkManager
 EOF
 chroot $TARGET_ROOTFS /bin/bash -c "chmod 600 /etc/netplan/01-network-manager-all.yaml"
 ```
