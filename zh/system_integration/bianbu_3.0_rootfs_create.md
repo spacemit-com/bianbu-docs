@@ -1,8 +1,8 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
-# Bianbu 2.1/2.2 ROOTFS制作
+# Bianbu 3.0 ROOTFS制作
 
 ## 环境要求
 
@@ -84,18 +84,10 @@ docker ce 安装可参考 [https://docs.docker.com/engine/install/](https://docs
 
 5. 配置环境变量，方便后续命令使用
 
-   - 2.1 版本
+   - 3.0 版本
 
       ```shell
-      export BASE_ROOTFS_URL=https://archive.spacemit.com/bianbu-base/bianbu-base-24.04-base-riscv64.tar.gz
-      export BASE_ROOTFS=$(basename "$BASE_ROOTFS_URL")
-      export TARGET_ROOTFS=rootfs
-      ```
-
-   - 2.2 版本
-
-      ```shell
-      export BASE_ROOTFS_URL=https://archive.spacemit.com/bianbu-base/bianbu-base-24.04.1-base-riscv64.tar.gz
+      export BASE_ROOTFS_URL=https://archive.spacemit.com/bianbu-base/bianbu-base-25.04-base-riscv64.tar.gz
       export BASE_ROOTFS=$(basename "$BASE_ROOTFS_URL")
       export TARGET_ROOTFS=rootfs
       ```
@@ -131,31 +123,17 @@ docker ce 安装可参考 [https://docs.docker.com/engine/install/](https://docs
    export REPO="archive.spacemit.com/bianbu"
    ```
 
-   [点击查看2.1版本发布说明](../release_notes/bianbu_2.1.md)
-
-   [点击查看2.2版本发布说明](../release_notes/bianbu_2.2.md)
+   [点击查看3.0版本发布说明](../release_notes/bianbu_3.0.md)
 
 2. 配置 bianbu.sources
 
-   - 2.1 版本
+   - 3.0 版本
 
       ```shell
       cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.sources
       Types: deb
       URIs: https://$REPO/
-      Suites: noble/snapshots/v2.1 noble-security/snapshots/v2.1 noble-updates/snapshots/v2.1 noble-porting/snapshots/v2.1 noble-customization/snapshots/v2.1 bianbu-v2.1-updates
-      Components: main universe restricted multiverse
-      Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
-      EOF
-      ```
-
-   - 2.2 版本
-
-      ```shell
-      cat <<EOF | tee $TARGET_ROOTFS/etc/apt/sources.list.d/bianbu.sources
-      Types: deb
-      URIs: https://$REPO/
-      Suites: noble/snapshots/v2.2 noble-security/snapshots/v2.2 noble-updates/snapshots/v2.2 noble-porting/snapshots/v2.2 noble-customization/snapshots/v2.2 bianbu-v2.2-updates
+      Suites: plucky/snapshots/v3.0 plucky-security/snapshots/v3.0 plucky-updates/snapshots/v3.0 plucky-porting/snapshots/v3.0 plucky-customization/snapshots/v3.0 bianbu-v3.0-updates
       Components: main universe restricted multiverse
       Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
       EOF
@@ -182,7 +160,6 @@ chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --
 
 - Minimal：bianbu-minimal
 - Dekstop：bianbu-desktop bianbu-desktop-zh bianbu-desktop-en bianbu-desktop-minimal-en bianbu-standard bianbu-development
-- NAS：bianbu-nas
 - Desktop Lite：bianbu-desktop-lite
 
 Dekstop,Desktop Lite和NAS都是基于Minimal的，建议先安装Mnimal元包再安装相应元包。
@@ -202,18 +179,8 @@ chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --
 
 - Desktop Lite变体：
 
-由于用户引导程序暂未适配完毕，需要手动创建一个用户以便进入桌面
-
-注意，Bianbu 2.2才支持此变体
-
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
-
-chroot $TARGET_ROOTFS /bin/bash -c "apt-get -y install adduser"
-chroot $TARGET_ROOTFS /bin/bash -c "adduser --gecos \"\" --disabled-password bianbu"
-chroot $TARGET_ROOTFS /bin/bash -c "echo bianbu:bianbu | chpasswd"
-chroot $TARGET_ROOTFS /bin/bash -c "usermod -aG adm,cdrom,sudo,plugdev bianbu"
-
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-desktop-lite"
 ```
 
@@ -327,6 +294,8 @@ mv $TARGET_ROOTFS/boot/* bootfs
 mke2fs -d bootfs -L bootfs -t ext4 -U $UUID_BOOTFS bootfs.ext4 "256M"
 mke2fs -d $TARGET_ROOTFS -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
 ```
+
+注意：关于rootfs.ext4大小。bianbu-minimal 推荐2048M， bianbu-desktop 推荐8192M，bianbu-desktop-lite 推荐6144M
 
 此时，在当前目录可以看到两个分区镜像，bootfs.ext4 和 rootfs.ext4，可使用 fastboot 烧写到板子中。
 

@@ -131,6 +131,9 @@ OpenSBI is an implementation of the Supervisor Binary Interface for RISC-V archi
 - **Bianbu 2.x**  
   Latest version: v2.2
 
+- **Bianbu 3.x**  
+  Latest version: v3.0
+
 ## Feedback & Issues
 
 Please report issues and suggestions via:  
