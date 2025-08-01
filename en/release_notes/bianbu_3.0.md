@@ -31,24 +31,24 @@ Corresponding **Bianbu Linux** version: [v2.2.6](https://bianbu-linux.spacemit.c
 
 - **gcc-14**: Default enabled extension instruction sets "--with-arch=rv64gc_zba_zbb_zbc_zbs_zicsr_zifencei" and "--with-tune=spacemit-x60"
 
-**Factory Reset**
+**System Restore Function**
 
-- **read-only-rootfs-config**: Added support for read-only root filesystem
+- **read-only-rootfs-config**: Added support for read-only root filesystem [Usage Guide](../development/system-restore.md)
 
 **Display**
 
-- **wlroots**: Fixed vulkan rendering failure when using drm render node
+- **wlroots**: Fixed Vulkan rendering failure when using Drm render node
 - **raindrop**: Fixed probabilistic disappearance of secondary screen desktop and icons in dual-screen extended mode
-- **xwayland**: Added transparent conversion support from OpenGL to Vulkan via Zink
+- **img-gpu-powervr**: Added OpenGL to Vulkan API conversion support via Zink; Fixed Godot Vulkan backend initialization failure
+- **xwayland, xserver-xorg-core**: Added OpenGL->Vulkan API conversion support in XWayland/Xorg (requires configuration /etc/environment: XWAYLAND_NO_GLAMOR=0)
 
 **Multimedia**
 
 - **freerdp3**: Added rvv_YUV420ToRGB_8u_P3AC4R
 
 - **mpp**:
-  - Fixed yuv420p parameter exception
+  - Fixed bytesperline parameter exception when decoding output yuv420p
   - Fixed mpp function pointer variables having the same name as ffmpeg functions
-- **pipewire**: Fixed the issue where audio output device automatically switches to HDMI after sleep/wake
 - **mpv**:
   - Specified to use opengl rendering
   - Fixed video display issue in desktop-lite

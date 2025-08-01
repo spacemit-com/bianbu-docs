@@ -87,7 +87,7 @@ Docker ce installation can refer to [https://docs.docker.com/engine/install/](ht
    - Version 3.0
 
       ```shell
-      export BASE_ROOTFS_URL=https://archive.spacemit.com/bianbu-base/bianbu-base-25.04-base-riscv64.tar.gz
+      export BASE_ROOTFS_URL=https://archive.spacemit.com/bianbu-base/bianbu-base-25.04.2-base-riscv64.tar.gz
       export BASE_ROOTFS=$(basename "$BASE_ROOTFS_URL")
       export TARGET_ROOTFS=rootfs
       ```

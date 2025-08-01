@@ -31,24 +31,24 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 - **gcc-14**: 默认开启扩展指令集"--with-arch=rv64gc_zba_zbb_zbc_zbs_zicsr_zifencei"和"--with-tune=spacemit-x60"
 
-**恢复出厂设置**
+**系统还原功能**
 
-- **read-only-rootfs-config**：新增支持只读根文件系统
+- **read-only-rootfs-config**：新增支持只读根文件系统 [使用指南](../development/system-restore.md)
 
 **显示**
 
-- **wlroots**：修复vulkan 使用 drm render node 渲染失败
+- **wlroots**：修复 Vulkan 使用 Drm render node 渲染失败
 - **raindrop**：修复双屏拓展模式下，副屏桌面及图标概率性消失的问题
-- **xwayland**：新增OpenGL通过Zink到Vulkan的透明转换支持
+- **img-gpu-powervr**：新增 OpenGL 通过 Zink 到 Vulkan 的 API 转换支持; 修复 Godot Vulkan 后端初始化失败
+- **xwayland, xserver-xorg-core**：新增 XWayland/Xorg 中 OpenGL->Vulkan 的 API 转换支持（需配置 /etc/environment: XWAYLAND_NO_GLAMOR=0）
 
 **多媒体**
 
 - **freerdp3**：新增 rvv_YUV420ToRGB_8u_P3AC4R
 
 - **mpp**：
-  - 修复 yuv420p参数异常
+  - 修复 解码输出yuv420p时bytesperline参数异常
   - 修复 mpp函数指针变量与ffmpeg函数同名
-- **pipewire**：修复休眠唤醒后声音输出设备会自动切换到HDMI问题法退出的问题
 - **mpv**：
   - 指定使用opengl渲染
   - 修复desktop-lite无法显示视频
