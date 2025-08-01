@@ -12,3 +12,4 @@ slug: /release_notes
 - [Bianbu 2.1更新说明](bianbu_2.1.md) [已停服]
 - [Bianbu 2.2更新说明](bianbu_2.2.md) [长期支持版本]
 - [Bianbu 3.0更新说明](bianbu_3.0.md)
+
