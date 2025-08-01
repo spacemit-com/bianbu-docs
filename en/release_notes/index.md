@@ -8,6 +8,6 @@ slug: /release_notes
 Below are the release notes for various versions of Bianbu:
 
 - [Bianbu 1.0 Release Notes](bianbu_1.0.md) [End of Life]
-- [Bianbu 2.0 Release Notes](bianbu_2.0.md)
-- [Bianbu 2.1 Release Notes](bianbu_2.1.md)
-- [Bianbu 2.2 Release Notes](bianbu_2.2.md)
+- [Bianbu 2.0 Release Notes](bianbu_2.0.md) [End of Life]
+- [Bianbu 2.1 Release Notes](bianbu_2.1.md) [End of Life]
+- [Bianbu 2.2 Release Notes](bianbu_2.2.md) [LTS]
