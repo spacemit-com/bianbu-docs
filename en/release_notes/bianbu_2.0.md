@@ -2,7 +2,9 @@
 sidebar_position: 2
 ---
 
-# Bianbu 2.0 Release Notes
+# Bianbu 2.0 Release Notes [End of Life]
+
+Bianbu 2.0 will reach end of maintenance on July 31, 2025. We recommend using version 2.2 or later. If you have any questions, please contact us.
 
 Build from Ubuntu **24.04** sources.
 

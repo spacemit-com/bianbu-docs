@@ -90,7 +90,15 @@ Package Version
 pip     24.0
 ```
 
-该列表应该比系统 Python 中安装的包列表短得多。您现在可以使用pip安全地安装软件包。在虚拟环境中使用pip安装的任何软件包都只会安装到该虚拟环境中。在虚拟环境中， python或python3命令会自动使用虚拟环境下的 Python 软件包，而不是系统环境的 Python包。
+该列表应该比系统 Python 中安装的包列表短得多。您现在可以使用pip安全地安装软件包。
+
+为了更好的兼容性，强烈建议升级虚拟环境中的 pip 到最新版本以避免某些安装失败的问题。
+
+```
+pip install --upgrade pip
+```
+
+在虚拟环境中使用pip安装的任何软件包都只会安装到该虚拟环境中。在虚拟环境中， python或python3命令会自动使用虚拟环境下的 Python 软件包，而不是系统环境的 Python包。
 例如使用pip安装wheel包：
 
 ```shell
@@ -133,11 +141,26 @@ Type "help", "copyright", "credits" or "license" for more information.
 (myenv) ➜  ~ deactivate
 ```
 
+
+
+### Python 版本支持
+
+| **Python解释器版本** | **支持情况** |
+| :------------------: | :----------: |
+|     Python 3.12      |   长期支持   |
+|     Python 3.13      |   长期支持   |
+
+强烈建议您使用 Python 3.12 及以上版本的 Python，通常，跟随系统的 Python 版本是较好的做法。
+
+
+
 ### 使用pyenv管理Python 版本
 
 pyenv 是一个非常流行的 Python 版本管理工具，它允许您轻松地安装、管理和切换多个 Python 版本。您可以根据项目需要在不同的 Python 版本之间自由切换，下面介绍如何使用 pyenv 配置多个 Python 版本。
 
 更多信息请参考[pyenv官方教程](https://github.com/pyenv/pyenv)
+
+
 
 #### 安装pyenv
 

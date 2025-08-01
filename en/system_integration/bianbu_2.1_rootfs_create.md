@@ -275,8 +275,10 @@ network:
     ethernets:
         end0:
             dhcp4: true
+            dhcp-identifier: mac
         end1:
             dhcp4: true
+            dhcp-identifier: mac
 EOF
 chroot $TARGET_ROOTFS /bin/bash -c "chmod 600 /etc/netplan/01-netcfg.yaml"
 ```
