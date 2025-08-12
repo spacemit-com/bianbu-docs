@@ -144,8 +144,8 @@ NLP 模块提供了完整的语音和文本处理解决方案，支持从语音�
 
 | 模型 | 模型格式 | 量化格式 | 存储大小 | 内存 | 推理速度（4核） |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| melotts | onnx | 动态量化 | 74MB | 100MB | 2<RTF<4 |
-| matchtts | onnx | model-steps-3动态量化 | 73MB | 300MB | 0.64<RTF<0.75 |
+| melotts | onnx | 动态量化 | 74MB | 100MB | RTF: 2-4 |
+| matchtts | onnx | model-steps-3动态量化 | 73MB | 300MB | RTF: 0.64-0.75 |
 
 ## 快速开始
 

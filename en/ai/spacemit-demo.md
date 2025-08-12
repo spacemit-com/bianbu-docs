@@ -144,8 +144,8 @@ Note: The following metrics are from the latest repository README. CV metrics ex
 
 | Model | Model Format | Quantization | Storage | Memory | Inference Speed (4 cores) |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| melotts | onnx | dynamic | 74MB | 100MB | 2<RTF<4 |
-| matchtts | onnx | model-steps-3 dynamic | 73MB | 300MB | 0.64<RTF<0.75 |
+| melotts | onnx | dynamic | 74MB | 100MB |  RTF: 2-4 |
+| matchtts | onnx | model-steps-3 dynamic | 73MB | 300MB | RTF: 0.64-0.75 |
 
 ## Quick Start
 
