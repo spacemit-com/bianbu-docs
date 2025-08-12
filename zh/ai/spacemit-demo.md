@@ -8,14 +8,14 @@ sidebar_position: 5
 
 SpacemiT AI Demo 示例库是基于进迭时空 K 系列芯片适配的 AI 应用示例集合。该项目为开发者提供了丰富的 AI 模型部署教程和完整的示例代码，涵盖了计算机视觉（CV）、自然语言处理（NLP）、语音处理等多个 AI 领域。
 
-📦 **源码仓库**: [https://gitee.com/bianbu/spacemit-demo.git](https://gitee.com/bianbu/spacemit-demo.git)
+**源码仓库**: [https://gitee.com/bianbu/spacemit-demo.git](https://gitee.com/bianbu/spacemit-demo.git)
 
 ## 项目特点
 
-- 🚀 **开箱即用**: 提供完整的模型下载、量化、部署流程
-- 🔧 **多语言支持**: 同时提供 Python 和 C++ 版本的示例代码  
-- 📊 **性能优化**: 针对 SpacemiT K1 芯片深度优化，提供详细的性能数据
-- 📚 **完整文档**: 每个示例都包含详细的 README 文档和使用说明
+- **开箱即用**: 提供完整的模型下载、量化、部署流程
+- **多语言支持**: 同时提供 Python 和 C++ 版本的示例代码  
+- **性能优化**: 针对 SpacemiT K1 芯片深度优化，提供详细的性能数据
+- **完整文档**: 每个示例都包含详细的 README 文档和使用说明
 
 ## 目录结构
 
@@ -101,27 +101,51 @@ NLP 模块提供了完整的语音和文本处理解决方案，支持从语音�
 
 ## 性能数据
 
+注：以下性能数据均为最新仓库 README 提供的数据。CV 性能不包含前后处理时间；ASR 为 2 核测试，其余如未特殊说明均为 4 核测试。
+
 ### CV 模型性能 (4核)
-| 模型类型 | 具体模型 | 输入尺寸 | 数据类型 | 帧率 |
-|---------|---------|----------|----------|------|
-| 图像分类 | ResNet50 | 224×224 | INT8 | 23 FPS |
-| 图像分类 | EfficientNet-B1 | 224×224 | INT8 | 18 FPS |
-| 目标检测 | YOLOv5n | 640×640 | INT8 | 6 FPS |
-| 目标检测 | YOLOv8n | 320×320 | INT8 | 26 FPS |
-| 人脸识别 | ArcFace | 320×320 | INT8 | 23 FPS |
+
+| 模型大类 | 具体模型 | 输入大小 | 数据类型 | 帧率(4核) |
+| :--: | :--: | :--: | :--: | :--: |
+| EfficientNet | EfficientNet_b1 | [1,3,224,224] | int8 | 18 |
+| Inception | Inception_v1 | [1,3,224,224] | int8 | 16 |
+|  | Inception_v3 | [1,3,229,229] | int8 | 18 |
+| MobileNet | MobileNetv2 | [1,3,224,224] | int8 | 57 |
+| ResNet | ResNet50 | [1,3,224,224] | int8 | 21 |
+| YOLOv5 | YOLOv5n | [1,3,640,640] | int8 | 7 |
+| YOLOv6 | YOLOv6n | [1,3,320,320] | int8 | 47 |
+| YOLOv8 | YOLOv8n | [1,3,320,320] | int8 | 33 |
+|  | YOLOv8n | [1,3,192,320] | int8 | 61 |
+| YOLOv11 | YOLOv11n | [1,3,320,320] | int8 | 42 |
+| NanoTrack | NanoTrack | [1,3,255,255] | int8 | 48 |
+| ArcFace | arcface_mobilefacenet | [1,3,320,320] | int8 | 22 |
+| YOLOv5-face | YOLOv5n-face | [1,3,320,320] | int8 | 17 |
 
 ### LLM 模型性能 (4核)
-| 模型 | 参数量 | 量化格式 | 存储大小 | 推理速度 |
-|------|--------|----------|----------|----------|
-| Qwen2.5-0.5B | 0.5B | Q4_0 | 336MB | 11 tokens/s |
-| DeepSeek R1-1.5B | 1.5B | Q4_0 | 1017MB | 4.5 tokens/s |
-| SmolLM2-135M | 135M | FP16 | 271MB | 15 tokens/s |
 
-### 语音模型性能
-| 模型类型 | 模型 | 量化格式 | 存储大小 | 性能指标 |
-|---------|------|----------|----------|----------|
-| ASR | SenseVoice-Small | 动态量化 | 229MB | RTF=0.38 |
-| TTS | MeloTTS | 动态量化 | 74MB | RTF=2-4 |
+| 模型 | 参数量 | 模型格式 | 量化格式 | 存储大小 | 内存 | 推理速度（4核） | 作用 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Qwen2.5-0.5B | 0.5b | gguf | q4_0 | 336MB | 480MB | 11tokens/s | 对话 |
+| Deepseek R1-1.5B | 1.5b | gguf | q4_0 | 1017MB | 1.26GB | 4.5tokens/s | 对话 |
+| Qwen2.5-0.5B-f16-agv-fc | 0.5b | gguf | q4_0 | 271MB | 480MB | 11tokens/s | 函数调用 |
+| Qwen2.5-0.5B-f16-elephant-fc | 0.5b | gguf | q4_0 | 271MB | 480MB | 11tokens/s | 函数调用 |
+| smollm2:135m | 135m | gguf | fp16 | 271MB | 490MB | 15tokens/s | 对话 |
+| smollm2-135m-f16-agv-fc | 135m | gguf | fp16 | 270MB | 480MB | 15tokens/s | 函数调用 |
+| smollm2-135m-q40-agv-fc | 135m | gguf | q4_0 | 77MB | 320MB | 30tokens/s | 函数调用 |
+
+### ASR 模型性能
+
+| 模型 | 参数量 | 模型格式 | 量化格式 | 存储大小 | 内存 | 推理速度（2核） |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| sensevoice-small（python） | 330m | onnx | 动态量化 | 229MB | 430MB | RTF=0.38 |
+| sensevoice-small（c++） | 330m | onnx | 动态量化 | 229MB | 360MB | RTF=0.3 |
+
+### TTS 模型性能
+
+| 模型 | 模型格式 | 量化格式 | 存储大小 | 内存 | 推理速度（4核） |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| melotts | onnx | 动态量化 | 74MB | 100MB | 2<RTF<4 |
+| matchtts | onnx | model-steps-3动态量化 | 73MB | 300MB | 0.64<RTF<0.75 |
 
 ## 快速开始
 
@@ -161,8 +185,8 @@ python 03_asr_demo.py
 
 ## 技术支持
 
-- 📖 **官方文档**: 详细的使用说明和 API 文档
-- 🐛 **问题反馈**: [Gitee Issues](https://gitee.com/bianbu/spacemit-demo/issues)
-- 💬 **社区交流**: SpacemiT 开发者社区
+- **官方文档**: 详细的使用说明和 API 文档
+- **问题反馈**: [Gitee Issues](https://gitee.com/bianbu/spacemit-demo/issues)
+- **社区交流**: SpacemiT 开发者社区
 
 立即访问 [SpacemiT AI Demo 源码仓库](https://gitee.com/bianbu/spacemit-demo.git) 开始您的 AI 开发之旅！
