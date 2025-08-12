@@ -8,14 +8,14 @@ sidebar_position: 5
 
 The SpacemiT AI Demo Repository is a comprehensive collection of AI application examples adapted for SpacemiT K-series chips. This project provides developers with rich AI model deployment tutorials and complete sample code, covering multiple AI domains including Computer Vision (CV), Natural Language Processing (NLP), and speech processing.
 
-📦 **Source Repository**: [https://gitee.com/bianbu/spacemit-demo.git](https://gitee.com/bianbu/spacemit-demo.git)
+**Source Repository**: [https://gitee.com/bianbu/spacemit-demo.git](https://gitee.com/bianbu/spacemit-demo.git)
 
 ## Key Features
 
-- 🚀 **Ready-to-Use**: Complete model download, quantization, and deployment workflow
-- 🔧 **Multi-Language Support**: Provides both Python and C++ example code
-- 📊 **Performance Optimized**: Deeply optimized for SpacemiT K1 chips with detailed performance metrics
-- 📚 **Complete Documentation**: Each example includes detailed README documentation and usage instructions
+- **Ready-to-Use**: Complete model download, quantization, and deployment workflow
+- **Multi-Language Support**: Provides both Python and C++ example code
+- **Performance Optimized**: Deeply optimized for SpacemiT K1 chips with detailed performance metrics
+- **Complete Documentation**: Each example includes detailed README documentation and usage instructions
 
 ## Directory Structure
 
@@ -101,27 +101,51 @@ The NLP module provides complete speech and text processing solutions, supportin
 
 ## Performance Metrics
 
+Note: The following metrics are from the latest repository README. CV metrics exclude pre/post-processing time. ASR is tested on 2 cores; others use 4 cores unless otherwise specified.
+
 ### CV Model Performance (4 cores)
-| Model Type | Specific Model | Input Size | Data Type | Frame Rate |
-|------------|----------------|------------|-----------|------------|
-| Classification | ResNet50 | 224×224 | INT8 | 23 FPS |
-| Classification | EfficientNet-B1 | 224×224 | INT8 | 18 FPS |
-| Detection | YOLOv5n | 640×640 | INT8 | 6 FPS |
-| Detection | YOLOv8n | 320×320 | INT8 | 26 FPS |
-| Face Recognition | ArcFace | 320×320 | INT8 | 23 FPS |
+
+| Category | Model | Input Size | Data Type | FPS (4 cores) |
+| :--: | :--: | :--: | :--: | :--: |
+| EfficientNet | EfficientNet_b1 | [1,3,224,224] | int8 | 18 |
+| Inception | Inception_v1 | [1,3,224,224] | int8 | 16 |
+|  | Inception_v3 | [1,3,229,229] | int8 | 18 |
+| MobileNet | MobileNetv2 | [1,3,224,224] | int8 | 57 |
+| ResNet | ResNet50 | [1,3,224,224] | int8 | 21 |
+| YOLOv5 | YOLOv5n | [1,3,640,640] | int8 | 7 |
+| YOLOv6 | YOLOv6n | [1,3,320,320] | int8 | 47 |
+| YOLOv8 | YOLOv8n | [1,3,320,320] | int8 | 33 |
+|  | YOLOv8n | [1,3,192,320] | int8 | 61 |
+| YOLOv11 | YOLOv11n | [1,3,320,320] | int8 | 42 |
+| NanoTrack | NanoTrack | [1,3,255,255] | int8 | 48 |
+| ArcFace | arcface_mobilefacenet | [1,3,320,320] | int8 | 22 |
+| YOLOv5-face | YOLOv5n-face | [1,3,320,320] | int8 | 17 |
 
 ### LLM Model Performance (4 cores)
-| Model | Parameters | Quantization | Storage Size | Inference Speed |
-|-------|------------|-------------|--------------|----------------|
-| Qwen2.5-0.5B | 0.5B | Q4_0 | 336MB | 11 tokens/s |
-| DeepSeek R1-1.5B | 1.5B | Q4_0 | 1017MB | 4.5 tokens/s |
-| SmolLM2-135M | 135M | FP16 | 271MB | 15 tokens/s |
 
-### Speech Model Performance
-| Model Type | Model | Quantization | Storage Size | Performance Metric |
-|------------|-------|-------------|--------------|-------------------|
-| ASR | SenseVoice-Small | Dynamic | 229MB | RTF=0.38 |
-| TTS | MeloTTS | Dynamic | 74MB | RTF=2-4 |
+| Model | Parameters | Model Format | Quantization | Storage | Memory | Inference Speed (4 cores) | Purpose |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Qwen2.5-0.5B | 0.5b | gguf | q4_0 | 336MB | 480MB | 11 tokens/s | Chat |
+| Deepseek R1-1.5B | 1.5b | gguf | q4_0 | 1017MB | 1.26GB | 4.5 tokens/s | Chat |
+| Qwen2.5-0.5B-f16-agv-fc | 0.5b | gguf | q4_0 | 271MB | 480MB | 11 tokens/s | Function Calling |
+| Qwen2.5-0.5B-f16-elephant-fc | 0.5b | gguf | q4_0 | 271MB | 480MB | 11 tokens/s | Function Calling |
+| smollm2:135m | 135m | gguf | fp16 | 271MB | 490MB | 15 tokens/s | Chat |
+| smollm2-135m-f16-agv-fc | 135m | gguf | fp16 | 270MB | 480MB | 15 tokens/s | Function Calling |
+| smollm2-135m-q40-agv-fc | 135m | gguf | q4_0 | 77MB | 320MB | 30 tokens/s | Function Calling |
+
+### ASR Model Performance
+
+| Model | Parameters | Model Format | Quantization | Storage | Memory | Inference Speed (2 cores) |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| sensevoice-small (python) | 330m | onnx | dynamic | 229MB | 430MB | RTF=0.38 |
+| sensevoice-small (c++) | 330m | onnx | dynamic | 229MB | 360MB | RTF=0.3 |
+
+### TTS Model Performance
+
+| Model | Model Format | Quantization | Storage | Memory | Inference Speed (4 cores) |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| melotts | onnx | dynamic | 74MB | 100MB |  RTF: 2-4 |
+| matchtts | onnx | model-steps-3 dynamic | 73MB | 300MB | RTF: 0.64-0.75 |
 
 ## Quick Start
 
@@ -161,8 +185,8 @@ python 03_asr_demo.py
 
 ## Technical Support
 
-- 📖 **Official Documentation**: Detailed usage instructions and API documentation
-- 🐛 **Issue Reporting**: [Gitee Issues](https://gitee.com/bianbu/spacemit-demo/issues)
-- 💬 **Community Discussion**: SpacemiT Developer Community
+- **Official Documentation**: Detailed usage instructions and API documentation
+- **Issue Reporting**: [Gitee Issues](https://gitee.com/bianbu/spacemit-demo/issues)
+- **Community Discussion**: SpacemiT Developer Community
 
 Visit the [SpacemiT AI Demo Source Repository](https://gitee.com/bianbu/spacemit-demo.git) now to start your AI development journey!
