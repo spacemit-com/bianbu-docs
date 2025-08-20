@@ -19,6 +19,16 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - This source provides packages for all future 2.2.x versions (e.g., 2.2.1), which are hosted in `bianbu-v2.2-updates`.  
 - To download source packages, modify `Types: deb` to `Types: deb deb-src`.
 
+## v2.2.1
+
+**Release Date:** August 16, 2025
+
+Corresponding **Bianbu Linux** version: [v2.2.7](https://bianbu-linux.spacemit.com/release_notes/bl-v2.2.y)
+
+### Major Updates
+
+- Added support for the Lichee Pi 3A board
+
 ## v2.2
 
 **Release Date:** 2025-5-9
@@ -78,6 +88,7 @@ The corresponding **Bianbu Linux version:** [v2.2](https://bianbu-linux.spacemit
 - **asr-llm**: Supports integration of automatic speech recognition with large language models
 
 **BSP**
-- **bianbu-esos**: 
+
+- **bianbu-esos**:
   - Adapted to `v2.2` kernel
   - Added related license information
