@@ -9,10 +9,9 @@ sidebar_position: 1
 
 We provide the following Bianbu images for developers and customers to learn, test, and evaluate:
 
-- **Bianbu Minimal**: Command-line version  
-- **Bianbu Desktop**: GNOME desktop environment  
-- **Bianbu Desktop Lite**: LXQt desktop environment  
-- **Bianbu NAS**: OMV (OpenMediaVault) based NAS image
+- **Bianbu Minimal:** Minimal system version with command-line interface.
+- **Bianbu Desktop:** GNOME desktop version with integrated Chromium, LibreOffice, MPV and other applications.
+- **Bianbu NAS:** Custom version based on [openmediavault](https://www.openmediavault.org).
 
 ## Why Bianbu?
 

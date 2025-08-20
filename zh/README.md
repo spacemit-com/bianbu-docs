@@ -9,10 +9,9 @@ sidebar_position: 1
 
 Bianbu 为开发者和客户提供以下镜像，用于学习和评估：
 
-- **Bianbu minimal：** 命令行版本
-- **Bianbu Desktop：** GNOME桌面版本
-- **Bianbu Desktop Lite：** LXQt桌面版本
-- **Bianbu NAS：** OMV版本
+- **Bianbu Minimal：** 最小系统版本，提供命令行界面。
+- **Bianbu Desktop：** GNOME桌面版本，集成 Chromium、LibreOffice、MPV 等应用。
+- **Bianbu NAS：** 基于 [openmediavault](https://www.openmediavault.org) 定制的版本。
 
 ## 为什么做Bianbu
 
