@@ -19,6 +19,16 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - 使用此源即可安装到后续的2.2.x（如2.2.1）发布的包，其存放在 `bianbu-v2.2-updates`。
 - 如需下载源码，请将`Types: deb`改成`Types: deb deb-src`。
 
+## v2.2.1
+
+**发布日期：** 2025-8-16
+
+对应的 **Bianbu Linux** 版本：[v2.2.7](https://bianbu-linux.spacemit.com/release_notes/bl-v2.2.y)
+
+### 主要更新
+
+- 支持Lichee PI 3A开发板
+
 ## v2.2
 
 **发布日期：** 2025-5-9

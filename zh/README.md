@@ -9,10 +9,9 @@ sidebar_position: 1
 
 Bianbu 为开发者和客户提供以下镜像，用于学习和评估：
 
-- **Bianbu minimal：** 命令行版本
-- **Bianbu Desktop：** GNOME桌面版本
-- **Bianbu Desktop Lite：** LXQt桌面版本
-- **Bianbu NAS：** OMV版本
+- **Bianbu Minimal：** 最小系统版本，提供命令行界面。
+- **Bianbu Desktop：** GNOME桌面版本，集成 Chromium、LibreOffice、MPV 等应用。
+- **Bianbu NAS：** 基于 [openmediavault](https://www.openmediavault.org) 定制的版本。
 
 ## 为什么做Bianbu
 
@@ -131,10 +130,10 @@ OpenSBI 是 RISC-V 架构处理器的监管程序接口的实现，运行在 M �
   最新版本：v1.0.15
 
 - Bianbu 2.x
-  最新版本：v2.2
+  最新版本：v2.2.1
 
 - Bianbu 3.x
-  最新版本：v3.0
+  最新版本：v3.0.1
 
 ## 问题反馈渠道
 

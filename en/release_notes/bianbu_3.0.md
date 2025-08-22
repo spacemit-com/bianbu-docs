@@ -19,6 +19,16 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 - Using this repository allows installation of subsequent 3.0.x releases (such as 3.0.1), which are stored in `bianbu-v3.0-updates`.
 - To download source code, change `Types: deb` to `Types: deb deb-src`.
 
+## v3.0.1
+
+**Release Date:** August 16, 2025
+
+Corresponding **Bianbu Linux** version: [v2.2.7](https://bianbu-linux.spacemit.com/release_notes/bl-v2.2.y)
+
+### Major Updates
+
+- Added support for the Lichee Pi 3A board
+
 ## v3.0
 
 **Release Date:** July 31, 2025
