@@ -6,7 +6,7 @@ sidebar_position: 6
 ## Introduction
 LocalAI is a complete AI stack for running AI models locally. Designed to be simple, efficient, and accessible, it provides an alternative to OpenAI's API. Users can run large language models (LLMs), image generation, speech transcription, and other AI tasks on consumer-grade hardware (including CPU environments) while maintaining data privacy and security.
 
-LocalAI supports multiple deployment methods like binaries or Docker, but none directly support RISC-V platforms. This document details how to compile, install, and use LocalAI from source on our Bianbu platform, along with adding custom inference backends.
+This document details how to compile, install, and use LocalAI from source on our Bianbu platform, along with adding custom inference backends.
 
 ## Compilation and Installation Steps
 
