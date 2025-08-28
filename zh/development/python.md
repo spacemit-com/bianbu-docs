@@ -345,7 +345,7 @@ global.extra-index-url='https://git.spacemit.com/api/v4/projects/33/packages/pyp
 
 ## 使用 Thonny 编辑器
 
-我们推荐使用[Thonny](https://thonny.org/)在 Bianbu 上编辑 Python 代码。
+可以使用[Thonny](https://thonny.org/)在 Bianbu 上快速编辑 Python 代码。但为了更好的体验，推荐使用 JupyterLab 
 
 安装：
 
@@ -360,6 +360,131 @@ thonny
 ```
 
 默认情况下，Thonny 使用系统 Python。但是，您可以通过单击 Thonny 窗口右下角的解释器菜单切换到使用 Python 虚拟环境。可以选择已配置的环境或使用Configure interpreter…创建一个新的虚拟环境​ ​。
+
+
+
+## 使用 JupyterLab (with vscode)
+
+### JupyterLab 简介
+
+**JupyterLab** 是一个基于 Web 的 **交互式开发环境（IDE）**，主要用于 **数据科学、机器学习、科学计算和教育**。它是 **Jupyter Notebook** 的升级版和扩展版，提供了更强大的功能和更灵活的用户界面。
+
+#### **核心特点**
+
+1. **多文档界面**
+   - 可以同时打开多个 Notebook、终端、文本文件、Markdown、CSV、图片、代码编辑器。
+   - 采用 **标签页和分屏布局**，方便组织工作流。
+2. **交互式计算**
+   - 支持多种编程语言（通过 Jupyter 内核，最常见的是 Python）。
+   - 可以直接运行代码块、查看结果（图表、表格、数学公式）。
+3. **丰富的可视化支持**
+   - 与 **Matplotlib、Plotly、Bokeh、Altair** 等库无缝集成。
+   - 支持交互式图表和实时更新。
+4. **强大的扩展机制**
+   - 可以安装插件（Extensions），增强功能，比如 Git 集成、代码格式化、调试器等。
+5. **终端与文件管理**
+   - 内置 Linux Shell 终端。
+   - 文件管理器可直接操作服务器文件。
+
+#### **使用场景**
+
+- **数据探索与可视化**：快速查看和分析数据集。
+- **机器学习建模**：训练、调试、可视化模型。
+- **教育与科研**：作为教学工具，支持数学公式 (LaTeX)、交互式演示。
+- **原型开发**：结合代码、文档、图表快速迭代。
+
+------
+
+### 安装 JupyterLab 
+
+安装依赖
+
+```
+sudo apt install python3-pip python3-venv libxrender1 libgl1 libglib2.0-0t64
+```
+
+设置 pip 源
+
+```
+pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+pip config set global.extra-index-url https://git.spacemit.com/api/v4/projects/33/packages/pypi/simple
+```
+
+安装
+
+```
+python3 -m venv ~/jupter-env
+source ~/jupter-env/bin/activate
+pip install pip -U
+pip install ipykernel jupyterlab opencv-python matplotlib scipy
+```
+
+------
+
+### 启动 JupyterLab
+
+```
+source ~/jupter-env/bin/activate
+jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --notebook-dir=~/
+```
+
+你可以看到如下输出
+
+![](./static/jupyter2.png)
+
+将 http://127.0.0.1:8888/lab?token=1e41eaf84a91a47b00d1c0c2ed3a43632c3999f79d36803c 这一段复制并保存到你的记事本。这里 token 后面的数字会有变化，请复制你自己终端打印的，而不是本文的。
+
+新建一个终端，使用 ip addr 命令查看板子 ip 地址
+
+![](./static/ipaddr1.png)
+
+在本示例中，10.0.91.183 即为板子的 ip 地址，在你的场景中，这可能是如 192.168.... 的值
+
+替换刚刚复制的链接里面的 127.0.0.1 为 板子ip (这里是 10.0.91.183)，如下：
+
+http://10.0.91.183:8888/lab?token=1e41eaf84a91a47b00d1c0c2ed3a43632c3999f79d36803c
+
+### 在浏览器使用 JupyterLab
+
+打开你的 x86 主机上的浏览器，在地址栏粘贴刚刚得到的 http://10.0.91.183:8888/lab?token=1e41eaf84a91a47b00d1c0c2ed3a43632c3999f79d36803c 你将看到如下界面：
+
+![](./static/jupyter3.png)
+
+现在你可以使用 Notebook 来交互式执行和调试代码，也可以打开 Terminal，Terminal 默认激活了虚拟环境，因此你可以 pip 安装想要的包，随后刷新环境以使用它。
+
+参考[Jupyter 官方教程](https://docs.jupyter.org/en/latest/) 获得完整的使用体验。
+
+------
+
+### 在 VSCode 使用 JupyterLab
+
+使用 VSCode 打开一个空白文件夹，新建一个 demo.ipynb 文件，如下：
+
+![](./static/vscode1.png)
+
+点击 “选择内核”，选择 “现有 Jupyter 服务器” 粘贴我们刚才保存的链接，如下
+
+![](./static/vscode-remote2.png)
+
+按下 enter 键，出现：
+
+![](./static/vscode-remote3.png)
+
+再次按下 enter 键
+
+![](./static/vscode-remote4.png)
+
+鼠标点击 Python 3 (ipykernel) 即可
+
+当你新建另一个 Notebook 时，就可以直接选择该 kernel 了， 而无需较繁琐的配置。
+
+你可以运行一些示例代码来检查一切是否正常工作
+
+![](./static/vscode-remote5.png)
+
+当你在虚拟环境中安装了新的包时，点击重启就可以刷新环境。
+
+
 
 ## 从 Python 使用 GPIO
 
