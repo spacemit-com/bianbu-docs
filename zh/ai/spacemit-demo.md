@@ -105,21 +105,22 @@ NLP 模块提供了完整的语音和文本处理解决方案，支持从语音�
 
 ### CV 模型性能 (4核)
 
-| 模型大类 | 具体模型 | 输入大小 | 数据类型 | 帧率(4核) |
-| :--: | :--: | :--: | :--: | :--: |
-| EfficientNet | EfficientNet_b1 | [1,3,224,224] | int8 | 18 |
-| Inception | Inception_v1 | [1,3,224,224] | int8 | 16 |
-|  | Inception_v3 | [1,3,229,229] | int8 | 18 |
-| MobileNet | MobileNetv2 | [1,3,224,224] | int8 | 57 |
-| ResNet | ResNet50 | [1,3,224,224] | int8 | 21 |
-| YOLOv5 | YOLOv5n | [1,3,640,640] | int8 | 7 |
-| YOLOv6 | YOLOv6n | [1,3,320,320] | int8 | 47 |
-| YOLOv8 | YOLOv8n | [1,3,320,320] | int8 | 33 |
-|  | YOLOv8n | [1,3,192,320] | int8 | 61 |
-| YOLOv11 | YOLOv11n | [1,3,320,320] | int8 | 42 |
-| NanoTrack | NanoTrack | [1,3,255,255] | int8 | 48 |
-| ArcFace | arcface_mobilefacenet | [1,3,320,320] | int8 | 22 |
-| YOLOv5-face | YOLOv5n-face | [1,3,320,320] | int8 | 17 |
+|   模型大类   |       具体模型        |   输入大小    | 数据类型 | 帧率(4核) | 
+| :----------: | :-------------------: | :-----------: | :------: | :-------: |
+| EfficientNet |    EfficientNet_b1    | [1,3,224,224] |   int8   |    23     |
+|  Inception   |     Inception_v1      | [1,3,224,224] |   int8   |    18     |
+|              |     Inception_v3      | [1,3,229,229] |   int8   |    18     |
+|  MobileNet   |      MobileNetv2      | [1,3,224,224] |   int8   |    67     |
+|    ResNet    |       ResNet50        | [1,3,224,224] |   int8   |    25     |
+|    YOLOv5    |        YOLOv5n        | [1,3,640,640] |   int8   |     8     |
+|    YOLOv6    |        YOLOv6n        | [1,3,320,320] |   int8   |    54     |
+|    YOLOv8    |        YOLOv8n        | [1,3,320,320] |   int8   |    73     |
+|              |        YOLOv8n        | [1,3,192,320] |   int8   |    106    |
+|   YOLOv11    |       YOLOv11n        | [1,3,320,320] |   int8   |    35     |
+|  NanoTrack   |       NanoTrack       | [1,3,255,255] |   int8   |    55     |
+|   ArcFace    | Arcface_mobilefacenet | [1,3,320,320] |   int8   |    27     |
+| YOLOv5-face  |     YOLOv5n-face      | [1,3,320,320] |   int8   |    21     |
+
 
 ### LLM 模型性能 (4核)
 
