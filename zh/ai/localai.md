@@ -53,6 +53,9 @@ sudo apt install libgrpc++-dev
 ### 编译LocalAI
 下载我们的源码，根据下面操作进行编译
 ```bash
+wget https://archive.spacemit.com/spacemit-ai/localai/localai.tar.gz
+tar xvzf localai.tar.gz
+
 # 切换到项目目录
 cd localai
 

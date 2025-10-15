@@ -52,6 +52,9 @@ sudo apt install libgrpc++-dev
 ### Compile LocalAI
 Download our source code and compile:
 ```bash
+wget https://archive.spacemit.com/spacemit-ai/localai/localai.tar.gz
+tar xvzf localai.tar.gz
+
 # Navigate to project directory
 cd localai
 
