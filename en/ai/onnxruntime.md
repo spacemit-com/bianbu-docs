@@ -16,7 +16,7 @@ sudo apt-get install -y onnxruntime python3-spacemit-ort libopencv-dev
 Verify the installation:
 
 ```shell
-python
+python3
 >>> import onnxruntime as ort
 >>> import spacemit_ort
 >>> available_providers = ort.get_available_providers()

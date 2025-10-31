@@ -25,7 +25,7 @@ spacemit-llama.cpp 目前支持三种量化格式的加速模型：
 以下示例可快速说明如何使用它：
 
 ```bash
-wget https://modelscope.cn/models/unsloth/Qwen3-0.6B-GGUF/resolve/master/Qwen3-0.6B-Q4_0.gguf -P ～/
+wget https://modelscope.cn/models/unsloth/Qwen3-0.6B-GGUF/resolve/master/Qwen3-0.6B-Q4_0.gguf -P ~/
 ```
 
 导入环境
