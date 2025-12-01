@@ -43,7 +43,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 **系统还原功能**
 
-- **read-only-rootfs-config**：新增支持只读根文件系统 [使用指南](../development/system-restore.md)
+- **read-only-rootfs-config**：新增支持只读根文件系统 [使用指南](../../../development/system-restore.md)
 
 **显示**
 

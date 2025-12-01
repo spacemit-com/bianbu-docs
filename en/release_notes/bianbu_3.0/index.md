@@ -7,4 +7,4 @@ slug: /bianbu_3.0
 
 
 - [GNOME Version Release Notes](GNOME/bianbu_3.0.md)
-- [LXQt Version Release Notes]()
+- [LXQt Version Release Notes]

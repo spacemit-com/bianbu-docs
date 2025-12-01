@@ -10,5 +10,5 @@ slug: /user_guide
 
 - [GNOME](GNOME/index.md)
 
-- [LXQt](GNOME/index.md)
+- [LXQt]
 

@@ -48,7 +48,7 @@ It is strongly recommended to upgrade to **Bianbu V2.0**.
 Please refer to the following resources:
 
 * [Spacemit Forum Guide](https://forum.spacemit.com/t/topic/250)
-* [System Upgrade Guide](./user_guide/upgrade.md)
+* [System Upgrade Guide](./user_guide/GNOME/upgrade.md)
 
 ### Issues You May Encounter During Bianbu 2.0.x Upgrade
 

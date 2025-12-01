@@ -14,14 +14,14 @@ sidebar_position: 3
 
    如无法打开，请确认已升级到1.0.15或更高版本。
 
-![软件和更新](../static/swupdates.jpeg)
+![软件和更新](../../static/swupdates.jpeg)
 
 2. **配置版本订阅通道**
    - 切换至 **更新** 标签页
    - 在 **订阅** 下拉菜单中选择目标版本（如 Bianbu 2.0）
    - 点击 **关闭** 按钮, 关闭应用保存配置
 
-![订阅](../static/subscribe.png)
+![订阅](../../static/subscribe.png)
 
 ## 升级
 
@@ -34,7 +34,7 @@ sidebar_position: 3
 > 
 > 注意： 
 > - 升级过程中 **不建议强行中断或暂停软件更新**，否则可能导致系统状态异常或软件包损坏。
-> - 升级异常处理请参阅 [FAQ](../faqs.md#更新)
+> - 升级异常处理请参阅 [FAQ](../../faqs.md#更新)
 
 ### 方式一：命令行启动图形化升级（推荐）
 
@@ -62,12 +62,12 @@ do-release-upgrade
 
 1. 确保设备联网
 2. 启动 **软件更新器** 应用
-![Updater](../static/updater.png)
+![Updater](../../static/updater.png)
 或者，也可以通过 **设置** → **系统** → **软件更新** 启动 **软件更新器** 应用。
-![Updater](../static/updater00.png)
+![Updater](../../static/updater00.png)
 3. 等待检查更新完成
 4. 如果检测到新版本，可点击 **升级...** 按钮
-![Update Request](../static/updater01.png)
+![Update Request](../../static/updater01.png)
    > 如果不希望升级，可以点击 **确认(O)** 按钮
 5. 按向导提示完成升级流程
 6. 执行系统重启

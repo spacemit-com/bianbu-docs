@@ -13,14 +13,14 @@ Both **Bianbu Desktop** and **Bianbu NAS** support online upgrades.
 1. Open the **Software & Updates** application
 
     - If the application cannot be launched, ensure the system is running **version 1.0.15 or above**.
-   ![Software and Updates](../static/swupdates_en.jpeg)
+   ![Software and Updates](../../static/swupdates_en.jpeg)
 
 2. **Configure the subscription version:**
 
    - Switch to the **Updates** tab.
    - In the **Subscribed to** drop-down menu, select the target version (e.g., Development versions).
    - Click **Close** to save the changes and exit.
-  ![Subscribe](../static/swupdates_en.png)
+  ![Subscribe](../../static/swupdates_en.png)
 
 ## Upgrade Process
 
@@ -35,7 +35,7 @@ Both **Bianbu Desktop** and **Bianbu NAS** support online upgrades.
 >
 > **Note:**
 > - **Do not interrupt or force-close** the update process, as this may lead to system inconsistencies or corrupted packages.
-> - If you encounter any issues during the upgrade, please refer to the [FAQs](../faqs.md#update).
+> - If you encounter any issues during the upgrade, please refer to the [FAQs](../../faqs.md#update).
 
 ### Method 1: Launch GUI Upgrade via Terminal (Recommended)
 
@@ -69,14 +69,14 @@ Follow the terminal prompts to complete the upgrade. Reboot after the process fi
 
 2. Launch the **Software Updater** application.
 
-   ![Updater](../static/updater_en.png)
+   ![Updater](../../static/updater_en.png)
   Alternatively, you can launch Software Updater via **Settings** → **System** → **Software Updates**.
-  ![Updater01](../static/updater01_en.png)
+  ![Updater01](../../static/updater01_en.png)
 3. Wait for update checking to complete.
 
 4. If a new version is detected, click **Upgrade...** to begin.
 
-   ![Update Prompt](../static/updater02_en.png)
+   ![Update Prompt](../../static/updater02_en.png)
 
    > To cancel the upgrade, click **OK**.
 

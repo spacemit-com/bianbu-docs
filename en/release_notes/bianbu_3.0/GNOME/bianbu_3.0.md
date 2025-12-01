@@ -43,7 +43,7 @@ Corresponding **Bianbu Linux** version: [v2.2.6](https://bianbu-linux.spacemit.c
 
 **System Restore Function**
 
-- **read-only-rootfs-config**: Added support for read-only root filesystem [Usage Guide](../development/system-restore.md)
+- **read-only-rootfs-config**: Added support for read-only root filesystem [Usage Guide](../../../development/system-restore.md)
 
 **Display**
 
