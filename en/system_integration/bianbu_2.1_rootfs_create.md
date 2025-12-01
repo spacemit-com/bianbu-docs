@@ -187,11 +187,11 @@ chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --
 Different variants have different metapackages:
 
 - Minimal: `bianbu-minimal`
-- Desktop: `bianbu-desktop`, `bianbu-desktop-zh`, `bianbu-desktop-en`, `bianbu-desktop-minimal-en`, `bianbu-standard`, `bianbu-development`
+- Desktop Desktop Version: `bianbu-desktop`, `bianbu-desktop-zh`, `bianbu-desktop-en`, `bianbu-desktop-minimal-en`, `bianbu-standard`, `bianbu-development`
 - NAS: `bianbu-nas`
-- Desktop Lite：`bianbu-desktop-lite`
+- LXQt Desktop Version：`bianbu-desktop-lite`
 
-Desktop, Desktop Lite, and NAS variants are all based on Minimal. It is recommended to install the Minimal meta-package first, then install the corresponding meta-packages.
+GNOME, LXQt, and NAS variants are all based on Minimal. It is recommended to install the Minimal meta-package first, then install the corresponding meta-packages.
 
 - **Minimal variant:**
 
@@ -199,14 +199,14 @@ Desktop, Desktop Lite, and NAS variants are all based on Minimal. It is recommen
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
 ```
 
-- **Desktop variant:**
+- **GNOME Desktop variant:**
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-desktop bianbu-desktop-zh bianbu-desktop-en bianbu-desktop-minimal-en bianbu-standard bianbu-development"
 ```
 
-- **Desktop Lite variant:**
+- **LXQt Desktop variant:**
 
 Since the user setup program is not yet fully adapted, you need to manually create a user to enter the desktop environment.
 
@@ -265,7 +265,7 @@ chroot $TARGET_ROOTFS /bin/bash -c "echo root:bianbu | chpasswd"
 
 #### Configure Network
 
-- **minimal**
+- **Minimal**
 
 ```shell
 cat <<EOF | tee $TARGET_ROOTFS/etc/netplan/01-netcfg.yaml
@@ -283,7 +283,7 @@ EOF
 chroot $TARGET_ROOTFS /bin/bash -c "chmod 600 /etc/netplan/01-netcfg.yaml"
 ```
 
-- **desktop/desktop-lite**
+- **GNOME/LXQt Desktop Version**
 
 ```shell
 cat <<EOF | tee $TARGET_ROOTFS/etc/netplan/01-network-manager-all.yaml

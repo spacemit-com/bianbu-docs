@@ -181,26 +181,26 @@ chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --
 不同变体有不同的元包，
 
 - Minimal：bianbu-minimal
-- Dekstop：bianbu-desktop bianbu-desktop-zh bianbu-desktop-en bianbu-desktop-minimal-en bianbu-standard bianbu-development
+- GNOME桌面版本：bianbu-desktop bianbu-desktop-zh bianbu-desktop-en bianbu-desktop-minimal-en bianbu-standard bianbu-development
 - NAS：bianbu-nas
-- Desktop Lite：bianbu-desktop-lite
+- LXQt桌面版本：bianbu-desktop-lite
 
-Dekstop,Desktop Lite和NAS都是基于Minimal的，建议先安装Mnimal元包再安装相应元包。
+GNOME, LXQt和NAS都是基于Minimal的，建议先安装Mnimal元包再安装相应元包。
 
-- minimal 变体：
+- Minimal 变体：
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
 ```
 
-- Desktop 变体：
+- Desktop桌面版本变体：
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-desktop bianbu-desktop-zh bianbu-desktop-en bianbu-desktop-minimal-en bianbu-standard bianbu-development"
 ```
 
-- Desktop Lite变体：
+- LXQt桌面版本变体：
 
 由于用户引导程序暂未适配完毕，需要手动创建一个用户以便进入桌面
 
@@ -259,7 +259,7 @@ chroot $TARGET_ROOTFS /bin/bash -c "echo root:bianbu | chpasswd"
 
 #### 配置网络
 
-- minimal
+- Minimal
 
 ```shell
 cat <<EOF | tee $TARGET_ROOTFS/etc/netplan/01-netcfg.yaml
@@ -277,7 +277,7 @@ EOF
 chroot $TARGET_ROOTFS /bin/bash -c "chmod 600 /etc/netplan/01-netcfg.yaml"
 ```
 
-- desktop/desktop-lite
+- GNOME/LXQt桌面版本
 
 ```shell
 cat <<EOF | tee $TARGET_ROOTFS/etc/netplan/01-network-manager-all.yaml

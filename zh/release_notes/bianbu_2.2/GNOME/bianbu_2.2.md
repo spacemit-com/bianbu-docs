@@ -37,7 +37,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 ### 主要更新
 
-**新镜像 - bianbu-desktop-lite**
+**新镜像 - bianbu lxqt桌面版本镜像**
 
 - 基于 `lxqt 2.1.0`
 - 默认使用 Wayland 协议

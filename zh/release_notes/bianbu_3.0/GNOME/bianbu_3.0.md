@@ -61,7 +61,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
   - 修复 mpp函数指针变量与ffmpeg函数同名
 - **mpv**：
   - 指定使用opengl渲染
-  - 修复desktop-lite无法显示视频
+  - 修复LXQt桌面版本无法显示视频
 - **ffmpeg**：
   - 新增解码支持输出DRM_FORMAT_YUV420
   - 修复avcodec_send_packet失败，解码异常退出

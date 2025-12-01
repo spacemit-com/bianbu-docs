@@ -37,7 +37,7 @@ The corresponding **Buildroot version:** [v2.2](https://bianbu-linux.spacemit.co
 
 ### Key Updates
 
-**New Image - bianbu-desktop-lite**
+**New Image - bianbu lxqt desktop version**
 
 - Based on `lxqt 2.1.0`
 - Default display protocol: **Wayland**

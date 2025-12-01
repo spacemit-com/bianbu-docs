@@ -61,7 +61,7 @@ Corresponding **Buildroot** version: [v2.2.6](https://bianbu-linux.spacemit.com/
   - Fixed mpp function pointer variables having the same name as ffmpeg functions
 - **mpv**:
   - Specified to use opengl rendering
-  - Fixed video display issue in desktop-lite
+  - Fixed video display issue in lxqt desktop version
 - **ffmpeg**:
   - Added decoding support for DRM_FORMAT_YUV420 output
   - Fixed avcodec_send_packet failure and abnormal decoding exit
