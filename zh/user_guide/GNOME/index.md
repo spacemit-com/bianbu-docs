@@ -4,7 +4,7 @@ slug: /GNOME
 ---
 
 
-# GNOME桌面版本用户指南
+# GNOME
 
 以下是一些用户指南：
 

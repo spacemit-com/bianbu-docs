@@ -3,7 +3,7 @@ sidebar_position: 4
 slug: /GNOME
 ---
 
-# User Guide
+# GNOME
 
 Here are some user guides:
 

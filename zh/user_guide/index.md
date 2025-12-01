@@ -8,7 +8,7 @@ slug: /user_guide
 
 以下是GNOME和LXQt版本的用户指南：
 
-- [GNOME](GNOME/index.md)
+- [GNOME](./GNOME/index.md)
 
 - [LXQt]
 
