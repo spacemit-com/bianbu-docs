@@ -2,6 +2,6 @@
 sidebar_position: 3
 ---
 
-# gnome
+# GNOME
 
 [Release Notes](bianbu_2.2.md)

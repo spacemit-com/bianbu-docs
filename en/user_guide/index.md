@@ -10,5 +10,5 @@ Here are the user guides for GNOME and LXQt versions:
 
 - [GNOME](GNOME/index.md)
 
-- [LXQt](GNOME/index.md)
+- [LXQt]
 
