@@ -103,7 +103,7 @@ After the UEFI firmware creation is completed, it is necessary to install and co
 
 1. Environment Preparation
 
-   Download and flash the Bianbu 2.2 image to the MUSE Pi Pro. It is recommended to use the [Bianbu Desktop 2.2 firmware version](https://archive.spacemit.com/image/k1/version/bianbu/v2.2/bianbu-24.04-desktop-k1-v2.2-release-20250430190125.zip)，the method for obtaining the image and the usage of the Titan Flasher tool can be found at [Image](https://bianbu.spacemit.com/en/image/).
+   Download and flash the Bianbu 2.2 image to the MUSE Pi Pro. It is recommended to use the [Bianbu GNOME Desktop 2.2 firmware version](https://archive.spacemit.com/image/k1/version/bianbu/v2.2/bianbu-24.04-desktop-k1-v2.2-release-20250430190125.zip)，the method for obtaining the image and the usage of the Titan Flasher tool can be found at [Image](https://bianbu.spacemit.com/en/image/).
    
    After flashing the system, ensure that the system can connect to the network and that the network connection is normal, as the process of creating partition files requires downloading software packages.   
 
@@ -414,7 +414,7 @@ mke2fs -d bootfs -L bootfs -t ext4 -U $UUID_BOOTFS bootfs.ext4 "256M"
 mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
 ```
 
-**Note:** Due to the relatively small file system in **Bianbu Minimal** builds, the `rootfs.ext4` file-system size is set to 2048 MB by default. For **Bianbu Desktop** or **Bianbu Desktop Lite** builds, file-system size adjustment according to actual requirements is recommended (e.g., 10240 MB).
+**Note:** Due to the relatively small file system in **Bianbu Minimal** builds, the `rootfs.ext4` file-system size is set to 2048 MB by default. For **Bianbu GNOME Desktop Version** or **Bianbu LXQt Desktop Version** builds, file-system size adjustment according to actual requirements is recommended (e.g., 10240 MB).
 
 ## Titan Firmware
 

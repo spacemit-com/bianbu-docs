@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # 系统升级
 
-**Bianbu Desktop** 和 **Bianbu NAS** 支持在线升级。
+**Bianbu GNOME桌面版本** 和 **Bianbu NAS** 支持在线升级。
 
 ## 选择订阅的版本
 
@@ -38,7 +38,7 @@ sidebar_position: 3
 
 ### 方式一：命令行启动图形化升级（推荐）
 
-**仅限 Bianbu Desktop**
+**仅限 Bianbu GNOME桌面版本**
 
 请运行以下命令，使用图形界面辅助完成升级：
 ```bash
@@ -58,7 +58,7 @@ do-release-upgrade
 
 ### 方式三：软件更新器升级
 
-**仅限 Bianbu Desktop**
+**仅限 Bianbu GNOME桌面版本**
 
 1. 确保设备联网
 2. 启动 **软件更新器** 应用

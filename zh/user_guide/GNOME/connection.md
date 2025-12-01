@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # 联网
 
-本节以 **Bianbu Desktop** 系统为例，介绍如何连接 **有线** 和 **无线** 网络。
+本节以 **Bianbu GNOME桌面** 系统为例，介绍如何连接 **有线** 和 **无线** 网络。
 
 ## 连接有线网络
 
@@ -23,7 +23,7 @@ sidebar_position: 1
 
 ### 方法二：终端命令
 
-在 **Bianbu Desktop** 中打开终端，执行以下命令：
+在 **Bianbu GNOMOE桌面系统** 中打开终端，执行以下命令：
 
 ```bash
 ifconfig

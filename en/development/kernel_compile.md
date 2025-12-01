@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Kernel Compile
 
-This guide details how to compile the kernel for Bianbu Linux (using `linux-6.6` as an example). Two compilation methods are supported:
+This guide details how to compile the kernel for Buildroot (using `linux-6.6` as an example). Two compilation methods are supported:
 
 - Cross-compilation – faster build time
 - Native compilation – more convenient to operate directly on the target system
@@ -19,7 +19,7 @@ git clone https://gitee.com/bianbu-linux/linux-6.6 ~/linux-6.6
 
 ### Prepare Cross-Development Environment
 
-1. Refer to Bianbu Linux's [Development Environment](https://bianbu-linux.spacemit.com/source#development-environment) to set up the cross-compiler.
+1. Refer to Buildroot's [Development Environment](https://bianbu-linux.spacemit.com/source#development-environment) to set up the cross-compiler.
 
 2. Install required build dependencies with:
 

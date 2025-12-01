@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # 内核编译
 
-本指南介绍如何为 Bianbu Linux 编译内核(以`linux-6.6`为例)，支持两种方式：
+本指南介绍如何为 Buildroot 编译内核(以`linux-6.6`为例)，支持两种方式：
 
 - **交叉编译**：速度快
 - **本地编译**：操作方便
@@ -19,7 +19,7 @@ git clone https://gitee.com/bianbu-linux/linux-6.6 ~/linux-6.6
 
 ### 准备交叉开发环境
 
-1. 请参考 Bianbu Linux 的 [开发环境](https://bianbu-linux.spacemit.com/source#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83) 准备好交叉编译环境。
+1. 请参考 Buildroot 的 [开发环境](https://bianbu-linux.spacemit.com/source#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83) 准备好交叉编译环境。
 
 2. 然后安装以下编译依赖：
 

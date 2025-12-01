@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # System Upgrade
 
-Both **Bianbu Desktop** and **Bianbu NAS** support online upgrades.
+Both **Bianbu GNOME Desktop Version** and **Bianbu NAS** support online upgrades.
 
 ## Select the Subscription Version
 
@@ -39,7 +39,7 @@ Both **Bianbu Desktop** and **Bianbu NAS** support online upgrades.
 
 ### Method 1: Launch GUI Upgrade via Terminal (Recommended)
 
-**Available for Bianbu Desktop only**
+**Available for Bianbu GNOME only**
 
 To perform the upgrade with a graphical interface, run:
 
@@ -63,7 +63,7 @@ Follow the terminal prompts to complete the upgrade. Reboot after the process fi
 
 ### Method 3: Upgrade via Software Updater
 
-**Available for Bianbu Desktop only**
+**Available for Bianbu GNOME only**
 
 1. Ensure the device is connected to the internet.
 
@@ -72,14 +72,14 @@ Follow the terminal prompts to complete the upgrade. Reboot after the process fi
    ![Updater](../../static/updater_en.png)
   Alternatively, you can launch Software Updater via **Settings** → **System** → **Software Updates**.
   ![Updater01](../../static/updater01_en.png)
-3. Wait for update checking to complete.
+1. Wait for update checking to complete.
 
-4. If a new version is detected, click **Upgrade...** to begin.
+2. If a new version is detected, click **Upgrade...** to begin.
 
    ![Update Prompt](../../static/updater02_en.png)
 
    > To cancel the upgrade, click **OK**.
 
-5. Follow the upgrade wizard step by step.
+3. Follow the upgrade wizard step by step.
 
-6. Reboot the system to apply changes.
+4. Reboot the system to apply changes.

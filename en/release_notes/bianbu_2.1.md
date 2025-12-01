@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Bianbu 2.1 Release Notes [End of Life]
 
-Bianbu Linux 2.1 will reach end of maintenance on July 31, 2025. We recommend using version 2.2 or later. If you have any questions, please contact us.
+Buildroot 2.1 will reach end of maintenance on July 31, 2025. We recommend using version 2.2 or later. If you have any questions, please contact us.
 
 Build from **Ubuntu 24.04.1** sources.
 
@@ -25,7 +25,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 **Release Date:** 2025-3-13
 
-The corresponding **Bianbu Linux version:** [v2.1](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.1.y#v21-release-note)
+The corresponding **Buildroot version:** [v2.1](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.1.y#v21-release-note)
 
 ### Key Updates
 
@@ -39,7 +39,7 @@ The corresponding **Bianbu Linux version:** [v2.1](https://bianbu-linux.spacemit
 
 **Release Date:** 2025-2-11
 
-The corresponding **Bianbu Linux version:** [v2.1](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.1.y#v21-release-note)
+The corresponding **Buildroot version:** [v2.1](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.1.y#v21-release-note)
 
 ### Key Updates
 

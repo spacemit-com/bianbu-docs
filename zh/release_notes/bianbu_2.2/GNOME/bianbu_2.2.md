@@ -33,7 +33,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 **发布日期：** 2025-5-9
 
-对应的 **Bianbu Linux** 版本：[v2.2](https://bianbu-linux.spacemit.com/release_notes/bl-v2.2.y)
+对应的 **Buildroot** 版本：[v2.2](https://bianbu-linux.spacemit.com/release_notes/bl-v2.2.y)
 
 ### 主要更新
 

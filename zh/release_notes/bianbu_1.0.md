@@ -18,7 +18,7 @@ Bianbu V1.0 基于Ubuntu 23.10构建，Ubuntu 社区已停止对23.10的维护�
 
 发布日期：2024-5-30
 
-Bianbu Linux版本：[v1.0](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v10%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+Buildroot版本：[v1.0](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v10%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ### 主要组件
 
@@ -70,7 +70,7 @@ Bianbu Linux版本：[v1.0](https://bianbu-linux.spacemit.com/release_notes/bl-v
 
 发布日期：2024-6-19
 
-Bianbu Linux版本：[v1.0.3](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v103%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+Buildroot版本：[v1.0.3](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v103%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ### 主要更新
 
@@ -83,7 +83,7 @@ Bianbu Linux版本：[v1.0.3](https://bianbu-linux.spacemit.com/release_notes/bl
 
 发布日期：2024-6-26
 
-Bianbu Linux版本：[v1.0.5](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v105%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+Buildroot版本：[v1.0.5](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v105%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ### 主要更新
 
@@ -94,31 +94,31 @@ Bianbu Linux版本：[v1.0.5](https://bianbu-linux.spacemit.com/release_notes/bl
 
 发布日期：2024-7-11
 
-Bianbu Linux版本：[v1.0.7](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v107%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+Buildroot版本：[v1.0.7](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v107%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ## v1.0.8
 
 发布日期：2024-7-16
 
-Bianbu Linux版本：[v1.0.8](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v108%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+Buildroot版本：[v1.0.8](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v108%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ## v1.0.9
 
 发布日期：2024-7-20
 
-Bianbu Linux版本：[v1.0.9](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v109%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+Buildroot版本：[v1.0.9](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v109%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ## v1.0.11
 
 发布日期：2024-8-1
 
-Bianbu Linux版本：[v1.0.11](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v1011%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+Buildroot版本：[v1.0.11](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v1011%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ## v1.0.12
 
 发布日期：2024-8-2
 
-Bianbu Linux版本：[v1.0.12](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v1012%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+Buildroot版本：[v1.0.12](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v1012%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ### 主要更新
 
@@ -128,7 +128,7 @@ Bianbu Linux版本：[v1.0.12](https://bianbu-linux.spacemit.com/release_notes/b
 
 发布日期：2024-8-16
 
-Bianbu Linux版本：[v1.0.13](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v1013%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+Buildroot版本：[v1.0.13](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v1013%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ### 主要更新
 
@@ -142,7 +142,7 @@ Bianbu Linux版本：[v1.0.13](https://bianbu-linux.spacemit.com/release_notes/b
 
 发布日期：2024-8-31
 
-Bianbu Linux版本：[v1.0.14](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v1014%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+Buildroot版本：[v1.0.14](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v1014%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ### 主要更新
 
@@ -153,7 +153,7 @@ Bianbu Linux版本：[v1.0.14](https://bianbu-linux.spacemit.com/release_notes/b
 
 发布日期：2024-9-7
 
-Bianbu Linux版本：[v1.0.15](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v1015%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+Buildroot版本：[v1.0.15](https://bianbu-linux.spacemit.com/release_notes/bl-v1.0.y#v1015%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ### 主要更新
 

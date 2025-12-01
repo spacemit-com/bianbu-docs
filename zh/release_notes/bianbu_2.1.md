@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Bianbu 2.1更新说明 [已停服]
 
-Bianbu Linux 2.1 于 2025年7月31日 停止维护，推荐使用 2.2 或后续版本，如有疑问，请联系我们。
+Buildroot 2.1 于 2025年7月31日 停止维护，推荐使用 2.2 或后续版本，如有疑问，请联系我们。
 
 基于 **Ubuntu 24.04.1** 源码构建。
 
@@ -25,7 +25,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 **发布日期：** 2025-3-13
 
-对应的 **Bianbu Linux** 版本: [v2.1](https://bianbu-linux.spacemit.com/release_notes/bl-v2.1.y#v21%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+对应的 **Buildroot** 版本: [v2.1](https://bianbu-linux.spacemit.com/release_notes/bl-v2.1.y#v21%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ### 主要更新
 
@@ -38,7 +38,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 **发布日期：** 2025-2-11
 
-对应的 **Bianbu Linux** 版本：[v2.1](https://bianbu-linux.spacemit.com/release_notes/bl-v2.1.y#v21%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
+对应的 **Buildroot** 版本：[v2.1](https://bianbu-linux.spacemit.com/release_notes/bl-v2.1.y#v21%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E)
 
 ### 主要更新
 

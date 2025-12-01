@@ -20,7 +20,7 @@ Default root password: `bianbu`
 
 ### GNOME Version
 
-URL: [Bianbu GNOME Image](https://archive.spacemit.com/image/k1/version/bianbu/)
+URL: [Bianbu GNOME Desktop Image](https://archive.spacemit.com/image/k1/version/bianbu/)
 
 ### LXQt Version
 
