@@ -133,7 +133,7 @@ docker ce 安装可参考 [https://docs.docker.com/engine/install/](https://docs
 
    [点击查看2.1版本发布说明](../release_notes/bianbu_2.1.md)
 
-   [点击查看2.2版本发布说明](../release_notes/bianbu_2.2/GNOME/bianbu_2.2.md)
+   [点击查看2.2版本发布说明](../release_notes/bianbu_2.2/bianbu_gnome_2.2.md)
 
 2. 配置 bianbu.sources
 
