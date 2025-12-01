@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Bianbu 2.2更新说明
+# GNOME
 
 基于 **Ubuntu 24.04.1** 源码构建。
 

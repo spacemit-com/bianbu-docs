@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Bianbu 2.2 Release Notes
+# GNOME
 
 Built from **Ubuntu 24.04.1** sources.
 

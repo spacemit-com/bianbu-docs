@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Bianbu 3.0 Release Notes
+# GNOME
 
 Built based on **Ubuntu 25.04** source code.
 
