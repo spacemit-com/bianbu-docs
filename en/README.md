@@ -9,9 +9,9 @@ sidebar_position: 1
 
 We provide the following Bianbu images for developers and customers to learn, test, and evaluate:
 
-- **Bianbu Minimal:** Minimal system version with command-line interface.
-- **Bianbu Desktop:** GNOME desktop version with integrated Chromium, LibreOffice, MPV and other applications.
-- **Bianbu NAS:** Custom version based on [openmediavault](https://www.openmediavault.org).
+- **GNOME Desktop Version:** Built on GNOME Shell, it provides a GNOME desktop environment with pre installed applications such as Chromium, LibreOffice, MPV, etc. for system evaluation, demonstration, learning, and development.
+- **LXQt Desktop Version:** A lightweight desktop version with a redesigned UI based on LXQt, designed for lightweight scenarios with high resource and performance requirements.
+- **Minimal Version:** A non-graphical desktop environment for lightweight system development and evaluation.
 
 ## Why Bianbu?
 
@@ -43,7 +43,7 @@ Bianbu manages the packages of these components through the [APT source](http://
 
 ### Applications
 
-- GNOME desktop and its common applications
+- GNOME/LXQt desktop and its common applications
 - Remote desktop
 - Chromium browser
 - LibreOffice suite

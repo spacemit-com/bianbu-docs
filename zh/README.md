@@ -9,9 +9,9 @@ sidebar_position: 1
 
 Bianbu 为开发者和客户提供以下镜像，用于学习和评估：
 
-- **Bianbu Minimal：** 最小系统版本，提供命令行界面。
-- **Bianbu Desktop：** GNOME桌面版本，集成 Chromium、LibreOffice、MPV 等应用。
-- **Bianbu NAS：** 基于 [openmediavault](https://www.openmediavault.org) 定制的版本。
+- **GNOME桌面版本：** 基于GNOME Shell构建，提供GNOME桌面环境，预装Chromium、LibreOffice、MPV等应用，用于系统的评测、演示、学习和开发。
+- **LXQt桌面版本：** 基于LXQt重新设计UI的轻桌面版本，用于轻量级、对资源和性能有要求的场景。
+- **命令行版本：** 无图形桌面环境，用于轻量系统开发和评估。
 
 ## 为什么做Bianbu
 
@@ -43,7 +43,7 @@ Bianbu 通过 APT 软件源管理这些组件的软件包，软件包是标准�
 
 ### 应用
 
-- GNOME 桌面及其常用应用
+- GNOME/LXQt桌面及其常用应用
 - 远程桌面
 - Chromium 浏览器
 - LibreOffice 办公套件
