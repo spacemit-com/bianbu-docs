@@ -9,9 +9,9 @@ sidebar_position: 1
 
 Bianbu 为开发者和客户提供以下镜像，用于学习和评估：
 
-- **GNOME桌面版本：** 基于GNOME Shell构建，提供GNOME桌面环境，预装Chromium、LibreOffice、MPV等应用，用于系统的评测、演示、学习和开发。
-- **LXQt桌面版本：** 基于LXQt重新设计UI的轻桌面版本，用于轻量级、对资源和性能有要求的场景。
-- **命令行版本：** 无图形桌面环境，用于轻量系统开发和评估。
+- **GNOME桌面版本：** 原生桌面版，预装GNOME Shell桌面环境、Chromium、LibreOffice、MPV等应用。
+- **LXQt桌面版本：** 基于LXQt重新设计和开发的轻桌面，用于轻量级，对资源占用和性能有要求的场景。
+- **命令行版本：** 最小系统版本，提供命令行界面。
 
 ## 为什么做Bianbu
 

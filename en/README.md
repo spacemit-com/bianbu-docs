@@ -9,9 +9,9 @@ sidebar_position: 1
 
 We provide the following Bianbu images for developers and customers to learn, test, and evaluate:
 
-- **GNOME Desktop Version:** Built on GNOME Shell, it provides a GNOME desktop environment with pre installed applications such as Chromium, LibreOffice, MPV, etc. for system evaluation, demonstration, learning, and development.
-- **LXQt Desktop Version:** A lightweight desktop version with a redesigned UI based on LXQt, designed for lightweight scenarios with high resource and performance requirements.
-- **Minimal Version:** A non-graphical desktop environment for lightweight system development and evaluation.
+- **GNOME Desktop Version:** The native desktop version comes pre-installed with the GNOME Shell desktop environment, Chromium, LibreOffice, MPV, and other applications.
+- **LXQt Desktop Version:** A lightweight desktop redesigned and developed based on LXQt, designed for lightweight scenarios with requirements for resource consumption and performance.
+- **Minimal Version:** Minimal system version, providing a command-line interface.
 
 ## Why Bianbu?
 
