@@ -18,16 +18,11 @@ sidebar_position: 2
 
 ## 下载
 
-### GNOME版本
+- GNOME: [镜像下载](https://archive.spacemit.com/image/k1/version/bianbu/)
 
-地址：[Bianbu GNOME Image](https://archive.spacemit.com/image/k1/version/bianbu/)
+- LXQt: [镜像下载](https://archive.spacemit.com/image/k1/version/bianbu-computer/)
 
-### LXQt版本
-
-
-### 命令行版本
-
-地址：[Bianbu Minimal Image](https://archive.spacemit.com/image/k1/version/bianbu/)
+- Minimal: [镜像下载](https://archive.spacemit.com/image/k1/version/bianbu/)
 
 ## 刷机
 

@@ -12,7 +12,7 @@ Bianbu 软件包遵循 Debian 软件包规范，使用 `apt` 工具进行管理�
 - **软件源**
 Bianbu 提供以下官方 APT 软件包源：
   - **Bianbu 1.0**（已停止维护）: [http://archive.spacemit.com/bianbu-ports/](http://archive.spacemit.com/bianbu-ports/)
-  - **Bianbu 2.0** （当前版本）: [http://archive.spacemit.com/bianbu/](http://archive.spacemit.com/bianbu/)
+  - **Bianbu 2.0 & 3.0** : [http://archive.spacemit.com/bianbu/](http://archive.spacemit.com/bianbu/)
 
 ## 更新软件源
 

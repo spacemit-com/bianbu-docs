@@ -5,9 +5,7 @@ sidebar_position: 1
 
 # 简介
 
-**Bianbu** 是一个针对 **RISC-V** 架构的处理器做了深度优化的操作系统，基于 **Ubuntu** 社区源码构建，适用于不同产品领域。
-
-Bianbu 为开发者和客户提供以下镜像，用于学习和评估：
+**Bianbu** 是为RISC-V架构的处理器深度优化的操作系统，基于Ubuntu社区源码构建，为进迭时空AI CPU提供系统底座。Bianbu为开发者和用户提供以下版本镜像：
 
 - **GNOME桌面版本：** 原生桌面版，预装GNOME Shell桌面环境、Chromium、LibreOffice、MPV等应用。
 - **LXQt桌面版本：** 基于LXQt重新设计和开发的轻桌面，用于轻量级，对资源占用和性能有要求的场景。
@@ -129,7 +127,7 @@ OpenSBI 是 RISC-V 架构处理器的监管程序接口的实现，运行在 M �
 - Bianbu 1.0 【已经停止维护】
   最新版本：v1.0.15
 
-- Bianbu 2.x
+- Bianbu 2.x 【K1长期维护版本】
   最新版本：v2.2.1
 
 - Bianbu 3.x

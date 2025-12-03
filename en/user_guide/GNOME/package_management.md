@@ -10,7 +10,7 @@ Bianbu software packages follow the Debian package standards and are managed usi
 - **Repositories**
 Bianbu provides the following official APT package repositories:
   - **Bianbu 1.0**  (End of Life) : [http://archive.spacemit.com/bianbu-ports/](http://archive.spacemit.com/bianbu-ports/)
-  - **Bianbu 2.0** (Current Release): [http://archive.spacemit.com/bianbu/](http://archive.spacemit.com/bianbu/)
+  - **Bianbu 2.0 & 3.0** : [http://archive.spacemit.com/bianbu/](http://archive.spacemit.com/bianbu/)
 
 ## Update Package
 

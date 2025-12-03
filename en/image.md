@@ -18,15 +18,11 @@ Default root password: `bianbu`
 
 ## Download
 
-### GNOME Version
+- GNOME: [Image Download](https://archive.spacemit.com/image/k1/version/bianbu/)
 
-URL: [Bianbu GNOME Desktop Image](https://archive.spacemit.com/image/k1/version/bianbu/)
+- LXQt: [Image Download](https://archive.spacemit.com/image/k1/version/bianbu-computer/)
 
-### LXQt Version
-
-### Minimal Version
-
-URL: [Bianbu Minimal Image](https://archive.spacemit.com/image/k1/version/bianbu/)
+- Minimal: [Image Download](https://archive.spacemit.com/image/k1/version/bianbu/)
 
 ## Flashing
 
