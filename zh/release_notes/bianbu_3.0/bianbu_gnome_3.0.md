@@ -23,7 +23,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 **发布日期：** 2025-8-16
 
-对应的 **Buildroot** 版本：[v2.2.7](https://bianbu-linux.spacemit.com/release_notes/bl-v2.2.y)
+对应的 **BSP** 版本：[v2.2.7](https://bianbu-linux.spacemit.com/release_notes/bl-v2.2.y)
 
 ### 主要更新
 
@@ -33,7 +33,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 **发布日期：** 2025-7-31
 
-对应的 **Buildroot** 版本：[v2.2.6](https://bianbu-linux.spacemit.com/release_notes/bl-v2.2.y)
+对应的 **BSP** 版本：[v2.2.6](https://bianbu-linux.spacemit.com/release_notes/bl-v2.2.y)
 
 ### 主要更新
 

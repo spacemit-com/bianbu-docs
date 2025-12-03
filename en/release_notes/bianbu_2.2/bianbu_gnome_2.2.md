@@ -23,7 +23,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 **Release Date:** August 16, 2025
 
-Corresponding **Buildroot** version: [v2.2.7](https://bianbu-linux.spacemit.com/release_notes/bl-v2.2.y)
+Corresponding **BSP** version: [v2.2.7](https://bianbu-linux.spacemit.com/release_notes/bl-v2.2.y)
 
 ### Major Updates
 
@@ -33,7 +33,7 @@ Corresponding **Buildroot** version: [v2.2.7](https://bianbu-linux.spacemit.com/
 
 **Release Date:** 2025-5-9
 
-The corresponding **Buildroot version:** [v2.2](https://bianbu-linux.spacemit.com/release_notes/bl-v2.2.y)
+The corresponding **BSP version:** [v2.2](https://bianbu-linux.spacemit.com/release_notes/bl-v2.2.y)
 
 ### Key Updates
 
