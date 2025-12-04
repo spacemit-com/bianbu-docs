@@ -25,7 +25,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 **Release Date:** 2024-12-11
 
-The corresponding **Buildroot version:** [v2.0.4](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v204-release-note)
+The corresponding **Buildroot version:** [v2.0.4](https://sdk.spacemit.com/en/release_notes/bl-v2.0.y#v204-release-note)
 
 ### Major Updates
 
@@ -45,7 +45,7 @@ The corresponding **Buildroot version:** [v2.0.4](https://bianbu-linux.spacemit.
 
 **Release Date:** 2024-11-11
 
-The corresponding **Buildroot version:**: [v2.0.2](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v202-release-note)
+The corresponding **Buildroot version:**: [v2.0.2](https://sdk.spacemit.com/en/release_notes/bl-v2.0.y#v202-release-note)
 
 ### Major Updates
 
@@ -58,7 +58,7 @@ The corresponding **Buildroot version:**: [v2.0.2](https://bianbu-linux.spacemit
 
 **Release Date:** 2024-10-28
 
-The corresponding **Buildroot version:** [v2.0.1](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v201-release-note)
+The corresponding **Buildroot version:** [v2.0.1](https://sdk.spacemit.com/en/release_notes/bl-v2.0.y#v201-release-note)
 
 ### Major Updates
 
@@ -68,7 +68,7 @@ The corresponding **Buildroot version:** [v2.0.1](https://bianbu-linux.spacemit.
 
 **Release Date:** 2024-10-22
 
-The corresponding **Buildroot version:** [v2.0](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v20-release-note)
+The corresponding **Buildroot version:** [v2.0](https://sdk.spacemit.com/en/release_notes/bl-v2.0.y#v20-release-note)
 
 ### Major Updates
 
@@ -82,7 +82,7 @@ The corresponding **Buildroot version:** [v2.0](https://bianbu-linux.spacemit.co
 
 **Release Date:** 2024-9-30
 
-The corresponding **Buildroot version:** [v2.0rc7](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v20rc7-release-note)
+The corresponding **Buildroot version:** [v2.0rc7](https://sdk.spacemit.com/en/release_notes/bl-v2.0.y#v20rc7-release-note)
 
 ### Major Updates
 
@@ -94,7 +94,7 @@ The corresponding **Buildroot version:** [v2.0rc7](https://bianbu-linux.spacemit
 
 **Release Date:** 2024-9-7
 
-The corresponding **Buildroot version:** [v2.0rc6](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v20rc6-release-note)
+The corresponding **Buildroot version:** [v2.0rc6](https://sdk.spacemit.com/en/release_notes/bl-v2.0.y#v20rc6-release-note)
 
 ### Major Updates
 
@@ -107,7 +107,7 @@ The corresponding **Buildroot version:** [v2.0rc6](https://bianbu-linux.spacemit
 
 **Release Date:** 2024-9-2
 
-The corresponding **Buildroot version:** [v2.0rc5](https://bianbu-linux.spacemit.com/en/release_notes/bl-v2.0.y#v20rc5-release-note)
+The corresponding **Buildroot version:** [v2.0rc5](https://sdk.spacemit.com/en/release_notes/bl-v2.0.y#v20rc5-release-note)
 
 ### Major Updates
 

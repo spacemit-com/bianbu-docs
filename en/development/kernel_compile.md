@@ -19,7 +19,7 @@ git clone https://gitee.com/spacemit-buildroot/linux-6.6.git ~/linux-6.6
 
 ### Prepare Cross-Development Environment
 
-1. Refer to Buildroot's [Development Environment](https://bianbu-linux.spacemit.com/source#development-environment) to set up the cross-compiler.
+1. Refer to Buildroot's [Development Environment](https://sdk.spacemit.com/source#development-environment) to set up the cross-compiler.
 
 2. Install required build dependencies with:
 

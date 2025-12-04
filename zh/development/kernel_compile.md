@@ -19,7 +19,7 @@ git clone https://gitee.com/spacemit-buildroot/linux-6.6 ~/linux-6.6
 
 ### 准备交叉开发环境
 
-1. 请参考 Buildroot 的 [开发环境](https://bianbu-linux.spacemit.com/source#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83) 准备好交叉编译环境。
+1. 请参考 Buildroot 的 [开发环境](https://sdk.spacemit.com/source#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83) 准备好交叉编译环境。
 
 2. 然后安装以下编译依赖：
 
