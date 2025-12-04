@@ -12,7 +12,7 @@ sidebar_position: 1
 ## 下载内核源码
 
 ```shell
-git clone https://gitee.com/bianbu-linux/linux-6.6 ~/linux-6.6
+git clone https://gitee.com/spacemit-buildroot/linux-6.6 ~/linux-6.6
 ```
 
 ## 交叉编译方式
@@ -248,7 +248,7 @@ make -j$(nproc) -C /lib/modules/`uname -r`/build M=/path/to/rtl8852bs clean
 下载源码：
 
 ```shell
-git clone https://gitee.com/bianbu-linux/uboot-2022.10 ~/uboot-2022.10
+git clone https://gitee.com/spacemit-buildroot/uboot-2022.10 ~/uboot-2022.10
 ```
 
 交叉编译请先配置以下参数，本地编译忽略：
@@ -275,7 +275,7 @@ dpkg-buildpackage -us -uc -b
 下载源码：
 
 ```shell
-git clone https://gitee.com/bianbu-linux/opensbi ~/opensbi
+git clone https://gitee.com/spacemit-buildroot/opensbi ~/opensbi
 ```
 
 交叉编译请先配置以下参数，本地编译忽略：

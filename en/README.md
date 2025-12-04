@@ -94,22 +94,22 @@ The Linux kernel is responsible for managing the processor and other hardware re
 
 Supported versions:
 
-- **6.1**: [https://gitee.com/bianbu-linux/linux-6.1](https://gitee.com/bianbu-linux/linux-6.1) (EOL)
-- **6.6**:  [https://gitee.com/bianbu-linux/linux-6.6](https://gitee.com/bianbu-linux/linux-6.6) (LTS)
+- **6.1**: [https://gitee.com/spacemit-buildroot/linux-6.1](https://gitee.com/spacemit-buildroot/linux-6.1) (EOL)
+- **6.6**:  [https://gitee.com/spacemit-buildroot/linux-6.6](https://gitee.com/spacemit-buildroot/linux-6.6) (LTS)
 
 ### U-Boot
 
 U-Boot is a bootloader responsible for initializing specific hardware and loading the Linux kernel image, device tree, and initial RAM filesystem from media (such as SD card, eMMC, SPI Flash, SSD, network).
 
 - Version: u-boot-2022.10
-- Source code: [https://gitee.com/bianbu-linux/uboot-2022.10](https://gitee.com/bianbu-linux/uboot-2022.10)
+- Source code: [https://gitee.com/spacemit-buildroot/uboot-2022.10](https://gitee.com/spacemit-buildroot/uboot-2022.10)
 
 ### OpenSBI
 
 OpenSBI is an implementation of the Supervisor Binary Interface for RISC-V architecture processors, running in M-mode firmware, providing interfaces for bootloaders, hypervisors, and operating systems to access hardware.
 
 - Version: 1.3
-- Source code: [https://gitee.com/bianbu-linux/opensbi](https://gitee.com/bianbu-linux/opensbi)
+- Source code: [https://gitee.com/spacemit-buildroot/opensbi](https://gitee.com/spacemit-buildroot/opensbi)
 
 ## Supported Devices
 

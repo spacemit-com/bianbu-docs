@@ -83,7 +83,7 @@ sidebar_position: 5
 3. 下载生成genimage.cfg的脚本，并生成genimage.cfg
 
    ```shell
-   wget -P $TMP https://gitee.com/bianbu-linux/scripts/raw/bl-v1.0.y/gen_imgcfg.py
+   wget -P $TMP https://gitee.com/spacemit-buildroot/scripts/raw/bl-v1.0.y/gen_imgcfg.py
    python3 $TMP/gen_imgcfg.py -i $TMP/partition_universal.json -n bianbu-custom.sdcard -o $TMP/genimage.cfg
    ```
    

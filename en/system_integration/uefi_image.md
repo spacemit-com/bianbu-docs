@@ -58,9 +58,9 @@ Before creating the UEFI system image, it is necessary to create the UEFI firmwa
 
    ```shell
    cd $UEFI_WORKSPACE
-   git clone https://gitee.com/bianbu-linux/edk2.git
+   git clone https://gitee.com/spacemit-buildroot/edk2.git
    git -C edk2 submodule update --init
-   git clone https://gitee.com/bianbu-linux/edk2-platforms.git
+   git clone https://gitee.com/spacemit-buildroot/edk2-platforms.git
    git -C edk2-platforms submodule update --init
    ```
 
@@ -624,7 +624,7 @@ For creating an image file directly writable to an SD card, the genimage tool ca
 
    ```shell
    # Download of genimage configuration generation script
-   wget -P $SDCARD_TMP https://gitee.com/bianbu-linux/scripts/raw/bl-v1.0.y/gen_imgcfg.py
+   wget -P $SDCARD_TMP https://gitee.com/spacemit-buildroot/scripts/raw/bl-v1.0.y/gen_imgcfg.py
    
    # Generation of genimage configuration
    python3 $SDCARD_TMP/gen_imgcfg.py -i $SDCARD_TMP/partition_universal.json -n bianbu-uefi.sdcard -o $SDCARD_TMP/genimage.cfg

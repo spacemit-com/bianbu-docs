@@ -12,7 +12,7 @@ This guide details how to compile the kernel for Buildroot (using `linux-6.6` as
 ## Download Kernel Source Code
 
 ```shell
-git clone https://gitee.com/bianbu-linux/linux-6.6 ~/linux-6.6
+git clone https://gitee.com/spacemit-buildroot/linux-6.6.git ~/linux-6.6
 ```
 
 ## Cross-Compilation Method
@@ -244,7 +244,7 @@ make -j$(nproc) -C /lib/modules/`uname -r`/build M=/path/to/rtl8852bs clean
 Download the source code:
 
 ```shell
-git clone https://gitee.com/bianbu-linux/uboot-2022.10 ~/uboot-2022.10
+git clone https://gitee.com/spacemit-buildroot/uboot-2022.10 ~/uboot-2022.10
 ```
 
 For cross-compilation, configure the following parameters first. Skip for native compilation:
@@ -271,7 +271,7 @@ The generated Debian package is located in the parent directory. Install it with
 Download the source code:
 
 ```shell
-git clone https://gitee.com/bianbu-linux/opensbi ~/opensbi
+git clone https://gitee.com/spacemit-buildroot/opensbi ~/opensbi
 ```
 
 For cross-compilation, configure the following parameters first. Skip for native compilation:

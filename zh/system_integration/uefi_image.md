@@ -64,9 +64,9 @@ sidebar_position: 6
 
    ```shell
    cd $UEFI_WORKSPACE
-   git clone https://gitee.com/bianbu-linux/edk2.git
+   git clone https://gitee.com/spacemit-buildroot/edk2.git
    git -C edk2 submodule update --init
-   git clone https://gitee.com/bianbu-linux/edk2-platforms.git
+   git clone https://gitee.com/spacemit-buildroot/edk2-platforms.git
    git -C edk2-platforms submodule update --init
    ```
 
@@ -633,7 +633,7 @@ mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
 
    ```shell
    # 下载genimage配置生成脚本
-   wget -P $SDCARD_TMP https://gitee.com/bianbu-linux/scripts/raw/bl-v1.0.y/gen_imgcfg.py
+   wget -P $SDCARD_TMP https://gitee.com/spacemit-buildroot/scripts/raw/bl-v1.0.y/gen_imgcfg.py
    
    # 生成genimage配置
    python3 $SDCARD_TMP/gen_imgcfg.py -i $SDCARD_TMP/partition_universal.json -n bianbu-uefi.sdcard -o $SDCARD_TMP/genimage.cfg

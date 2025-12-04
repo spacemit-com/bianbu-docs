@@ -93,8 +93,8 @@ Linux 内核负责管理处理器和其他硬件资源，提供用户和应用�
 
 支持版本与源码链接：
 
-- 6.1： [https://gitee.com/bianbu-linux/linux-6.1](https://gitee.com/bianbu-linux/linux-6.1) (已停止维护 EOL)
-- 6.6： [https://gitee.com/bianbu-linux/linux-6.6](https://gitee.com/bianbu-linux/linux-6.6) (长期支持 LTS)
+- 6.1： [https://gitee.com/spacemit-buildroot/linux-6.1](https://gitee.com/spacemit-buildroot/linux-6.1) (已停止维护 EOL)
+- 6.6： [https://gitee.com/spacemit-buildroot/linux-6.6](https://gitee.com/spacemit-buildroot/linux-6.6) (长期支持 LTS)
 
 ### U-Boot
 
@@ -102,7 +102,7 @@ U-Boot 是一个引导加载程序，负责初始化特定硬件，从介质（�
 
 - 版本：u-boot-2022.10
 
-- 源码：[https://gitee.com/bianbu-linux/uboot-2022.10](https://gitee.com/bianbu-linux/uboot-2022.10)
+- 源码：[https://gitee.com/spacemit-buildroot/uboot-2022.10](https://gitee.com/spacemit-buildroot/uboot-2022.10)
 
 ### OpenSBI
 
@@ -110,7 +110,7 @@ OpenSBI 是 RISC-V 架构处理器的监管程序接口的实现，运行在 M �
 
 - 版本：1.3
 
-- 源码：[https://gitee.com/bianbu-linux/opensbi](https://gitee.com/bianbu-linux/opensbi)
+- 源码：[https://gitee.com/spacemit-buildroot/opensbi](https://gitee.com/spacemit-buildroot/opensbi)
 
 ## 支持的设备
 
