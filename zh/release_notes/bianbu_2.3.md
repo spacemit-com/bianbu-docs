@@ -31,11 +31,11 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 **1. UI**
 - 优化状态栏用户体验
 - 定制 Calamares 安装程序界面
-- 支持 Bianbu Star SDDM 主题
+- 支持 SpacemiT SDDM 主题
 - 简化 Panel 操作
 - 简化文件浏览器操作
 - 支持 Wayland 锁屏应用
-- 支持 Bianbu Star Qt系统主题
+- 支持 SpacemiT Qt系统主题
 
 **2. 应用**
 - 支持永中Office（可安装）
