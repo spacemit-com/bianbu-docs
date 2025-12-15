@@ -35,9 +35,9 @@ Corresponding **BSP** version: [v2.2.7](https://sdk.spacemit.com/release_notes/b
 
 The corresponding **BSP version:** [v2.2](https://sdk.spacemit.com/release_notes/bl-v2.2.y)
 
-### Key Updates
+### Key updates to LXQt desktop components
 
-**New Image - bianbu lxqt desktop version**
+**1. New Image - bianbu lxqt desktop version**
 
 - Based on `lxqt 2.1.0`
 - Default display protocol: **Wayland**
@@ -48,7 +48,13 @@ The corresponding **BSP version:** [v2.2](https://sdk.spacemit.com/release_notes
   - Ctrl + Alt + ←/→: Switch between left/right workspaces
   - logo + F1~F4: Jump to specified workspace
 
-**Display**
+### Key updates to GNOME desktop components
+
+There are currently no updates to the GNOME desktop components.
+
+### Key updates to Bianbu OS basic components
+
+**1. Display**
 
 - **wlroots**:
   - Added real-time display of desktop FPS
@@ -57,7 +63,7 @@ The corresponding **BSP version:** [v2.2](https://sdk.spacemit.com/release_notes
 - **raindrop**:
   - Fixed issue where secondary screen or icons might disappear in extended mode
 
-**Multimedia**
+**2. Multimedia**
 
 - **mpp**: Fixed segment fault when multiple encoding occurs
 - **pipewire**: Fixed crash caused by locking screen during screen recording
@@ -79,15 +85,15 @@ The corresponding **BSP version:** [v2.2](https://sdk.spacemit.com/release_notes
   - Added feature to decode and output one frame per input frame
   - Adjusted some log levels
 
-**Development Tools**
+**3. Development Tools**
 
 - **gpiozero**: Added support RV4B 40Pin interface
 
-**AI**
+**4. AI**
 
 - **asr-llm**: Supports integration of automatic speech recognition with large language models
 
-**BSP**
+**5. BSP**
 
 - **bianbu-esos**:
   - Adapted to `v2.2` kernel

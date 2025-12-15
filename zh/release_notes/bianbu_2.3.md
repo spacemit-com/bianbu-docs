@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# LXQt
+# Bianbu 2.3更新说明
 
 基于 **Ubuntu 24.04.1** 源码构建。
 
@@ -26,20 +26,20 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 对应的 **BSP** 版本：[v2.2](https://sdk.spacemit.com/release_notes/bl-v2.2.y)
 
-### 主要更新
+### LXQt桌面组件主要更新
 
-- **UI**
-  - 优化状态栏用户体验
-  - 定制 Calamares 安装程序界面
-  - 支持 Bianbu Star SDDM 主题
-  - 简化 Panel 操作
-  - 简化文件浏览器操作
-  - 支持 Wayland 锁屏应用
-  - 支持 Bianbu Star Qt系统主题
+**1. UI**
+- 优化状态栏用户体验
+- 定制 Calamares 安装程序界面
+- 支持 Bianbu Star SDDM 主题
+- 简化 Panel 操作
+- 简化文件浏览器操作
+- 支持 Wayland 锁屏应用
+- 支持 Bianbu Star Qt系统主题
 
-- **应用**
-  - 支持永中Office（可安装）
+**2. 应用**
+- 支持永中Office（可安装）
 
-- **性能**
-  - 优化系统启动时间
-  - libreoffice使用Qt6 GPU加速
+**3. 性能**
+- 优化系统启动时间
+- libreoffice使用Qt6 GPU加速

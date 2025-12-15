@@ -35,24 +35,24 @@ Corresponding **BSP** version: [v2.2.7](https://sdk.spacemit.com/release_notes/b
 
 Corresponding **BSP** version: [v2.2.6](https://sdk.spacemit.com/release_notes/bl-v2.2.y)
 
-### Major Updates
+### Key updates to GNOME desktop components
 
-**Toolchain**
+**1. Toolchain**
 
 - **gcc-14**: Default enabled extension instruction sets "--with-arch=rv64gc_zba_zbb_zbc_zbs_zicsr_zifencei" and "--with-tune=spacemit-x60"
 
-**System Restore Function**
+**2. System Restore Function**
 
 - **read-only-rootfs-config**: Added support for read-only root filesystem [Usage Guide](../../development/system-restore.md)
 
-**Display**
+**3. Display**
 
 - **wlroots**: Fixed Vulkan rendering failure when using Drm render node
 - **raindrop**: Fixed probabilistic disappearance of secondary screen desktop and icons in dual-screen extended mode
 - **img-gpu-powervr**: Added OpenGL to Vulkan API conversion support via Zink; Fixed Godot Vulkan backend initialization failure
 - **xwayland, xserver-xorg-core**: Added OpenGL->Vulkan API conversion support in XWayland/Xorg (requires configuration /etc/environment: XWAYLAND_NO_GLAMOR=0)
 
-**Multimedia**
+**4. Multimedia**
 
 - **freerdp3**: Added rvv_YUV420ToRGB_8u_P3AC4R
 
@@ -66,12 +66,12 @@ Corresponding **BSP** version: [v2.2.6](https://sdk.spacemit.com/release_notes/b
   - Added decoding support for DRM_FORMAT_YUV420 output
   - Fixed avcodec_send_packet failure and abnormal decoding exit
 
-**Libraries**
+**5. Libraries**
 
 - **zlib**
   - Fixed sigsegv
   - Optimized chunkcopy_rvv
 
-**BSP**
+**6. BSP**
 
 - **bianbu-esos**: Support for low memory solutions

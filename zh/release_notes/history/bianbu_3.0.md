@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# GNOME
+# Bianbu 3.0更新说明
 
 基于 **Ubuntu 25.04** 源码构建。
 
@@ -35,24 +35,24 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 对应的 **BSP** 版本：[v2.2.6](https://sdk.spacemit.com/release_notes/bl-v2.2.y)
 
-### 主要更新
+### Bianbu OS基础组件主要更新
 
-**工具链**
+**1. 工具链**
 
 - **gcc-14**: 默认开启扩展指令集"--with-arch=rv64gc_zba_zbb_zbc_zbs_zicsr_zifencei"和"--with-tune=spacemit-x60"
 
-**系统还原功能**
+**2. 系统还原功能**
 
 - **read-only-rootfs-config**：新增支持只读根文件系统 [使用指南](../../development/system-restore.md)
 
-**显示**
+**3. 显示**
 
 - **wlroots**：修复 Vulkan 使用 Drm render node 渲染失败
 - **raindrop**：修复双屏拓展模式下，副屏桌面及图标概率性消失的问题
 - **img-gpu-powervr**：新增 OpenGL 通过 Zink 到 Vulkan 的 API 转换支持; 修复 Godot Vulkan 后端初始化失败
 - **xwayland, xserver-xorg-core**：新增 XWayland/Xorg 中 OpenGL->Vulkan 的 API 转换支持（需配置 /etc/environment: XWAYLAND_NO_GLAMOR=0）
 
-**多媒体**
+**4. 多媒体**
 
 - **freerdp3**：新增 rvv_YUV420ToRGB_8u_P3AC4R
 
@@ -66,12 +66,12 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
   - 新增解码支持输出DRM_FORMAT_YUV420
   - 修复avcodec_send_packet失败，解码异常退出
 
-**库**
+**5. 库**
 
 - **zlib**
   - 修复 sigsegv
   - 优化 chunkcopy_rvv
 
-**BSP**
+**6. BSP**
 
 - **bianbu-esos**: 支持小内存方案
