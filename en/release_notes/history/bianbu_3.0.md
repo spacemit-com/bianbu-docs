@@ -35,7 +35,7 @@ Corresponding **BSP** version: [v2.2.7](https://sdk.spacemit.com/release_notes/b
 
 Corresponding **BSP** version: [v2.2.6](https://sdk.spacemit.com/release_notes/bl-v2.2.y)
 
-### Key updates to GNOME desktop components
+### Key updates to Bianbu OS basic components
 
 **1. Toolchain**
 
