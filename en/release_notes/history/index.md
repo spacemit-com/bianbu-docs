@@ -3,7 +3,7 @@ sidebar_position: 3
 slug: /release_notes/history
 ---
 
-# Release Notes
+# Historical versions
 
 Below are the release notes for various versions of Bianbu:
 
