@@ -5,13 +5,12 @@ sidebar_position: 1
 
 # Overview
 
-**Bianbu** is a RISC-V optimized operating system based on **Ubuntu** community sources. It is designed for a wide range of product applications and delivers enhanced performance on RISC-V processors.
+**Bianbu** is an operating system deeply optimized for RISC-V architecture processors, built on the Ubuntu community source code, and provides a system foundation for iterative spatiotemporal AI CPUs. Bianbu provides the following version images for developers and users:
 
-We provide the following Bianbu images for developers and customers to learn, test, and evaluate:
 
-- **Bianbu Minimal:** Minimal system version with command-line interface.
-- **Bianbu Desktop:** GNOME desktop version with integrated Chromium, LibreOffice, MPV and other applications.
-- **Bianbu NAS:** Custom version based on [openmediavault](https://www.openmediavault.org).
+- **GNOME Desktop Version:** The native desktop version comes pre-installed with the GNOME Shell desktop environment, Chromium, LibreOffice, MPV, and other applications.
+- **LXQt Desktop Version:** A lightweight desktop redesigned and developed based on LXQt, designed for lightweight scenarios with requirements for resource consumption and performance.
+- **Minimal Version:** Minimal system version, providing a command-line interface.
 
 ## Why Bianbu?
 
@@ -43,7 +42,7 @@ Bianbu manages the packages of these components through the [APT source](http://
 
 ### Applications
 
-- GNOME desktop and its common applications
+- GNOME/LXQt desktop and its common applications
 - Remote desktop
 - Chromium browser
 - LibreOffice suite
@@ -95,22 +94,22 @@ The Linux kernel is responsible for managing the processor and other hardware re
 
 Supported versions:
 
-- **6.1**: [https://gitee.com/bianbu-linux/linux-6.1](https://gitee.com/bianbu-linux/linux-6.1) (EOL)
-- **6.6**:  [https://gitee.com/bianbu-linux/linux-6.6](https://gitee.com/bianbu-linux/linux-6.6) (LTS)
+- **6.1**: [https://gitee.com/spacemit-buildroot/linux-6.1](https://gitee.com/spacemit-buildroot/linux-6.1) (EOL)
+- **6.6**:  [https://gitee.com/spacemit-buildroot/linux-6.6](https://gitee.com/spacemit-buildroot/linux-6.6) (LTS)
 
 ### U-Boot
 
 U-Boot is a bootloader responsible for initializing specific hardware and loading the Linux kernel image, device tree, and initial RAM filesystem from media (such as SD card, eMMC, SPI Flash, SSD, network).
 
 - Version: u-boot-2022.10
-- Source code: [https://gitee.com/bianbu-linux/uboot-2022.10](https://gitee.com/bianbu-linux/uboot-2022.10)
+- Source code: [https://gitee.com/spacemit-buildroot/uboot-2022.10](https://gitee.com/spacemit-buildroot/uboot-2022.10)
 
 ### OpenSBI
 
 OpenSBI is an implementation of the Supervisor Binary Interface for RISC-V architecture processors, running in M-mode firmware, providing interfaces for bootloaders, hypervisors, and operating systems to access hardware.
 
 - Version: 1.3
-- Source code: [https://gitee.com/bianbu-linux/opensbi](https://gitee.com/bianbu-linux/opensbi)
+- Source code: [https://gitee.com/spacemit-buildroot/opensbi](https://gitee.com/spacemit-buildroot/opensbi)
 
 ## Supported Devices
 
@@ -127,7 +126,8 @@ OpenSBI is an implementation of the Supervisor Binary Interface for RISC-V archi
 - **Bianbu 1.0** (End of Life)  
   Latest version: v1.0.15
 
-- **Bianbu 2.x**  
+- **Bianbu 2.x** (K1 Long-Term Maintenance Version)
+
   Latest version: v2.2.1
 
 - **Bianbu 3.x**  

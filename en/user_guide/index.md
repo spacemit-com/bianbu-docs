@@ -3,10 +3,12 @@ sidebar_position: 4
 slug: /user_guide
 ---
 
-# User Guide
 
-Here are some user guides:
+# Bianbu User Guide
 
-- [Connection](connection.md)
-- [Package Management](package_management.md)
-- [System Upgrade](upgrade.md)
+Here are the user guides for GNOME and LXQt versions:
+
+- [GNOME](GNOME/index.md)
+
+- [LXQt]
+

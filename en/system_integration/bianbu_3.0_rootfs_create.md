@@ -123,7 +123,7 @@ Docker ce installation can refer to [https://docs.docker.com/engine/install/](ht
    export REPO="archive.spacemit.com/bianbu"
    ```
 
-   [Click to view 3.0 version release notes](../release_notes/bianbu_3.0.md)
+   [Click to view 3.0 version release notes](../release_notes/history/bianbu_3.0.md)
 
 2. Configure bianbu.sources
 
@@ -159,25 +159,25 @@ chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --
 Different variants have different meta packages:
 
 - Minimal: bianbu-minimal
-- Desktop: bianbu-desktop bianbu-desktop-zh bianbu-desktop-en bianbu-desktop-minimal-en bianbu-standard bianbu-development
-- Desktop Lite: bianbu-desktop-lite
+- GNOME Desktop Version: bianbu-desktop bianbu-desktop-zh bianbu-desktop-en bianbu-desktop-minimal-en bianbu-standard bianbu-development
+- LXQt Desktop Version: bianbu-desktop-lite
 
-Desktop, Desktop Lite and NAS are all based on Minimal. It is recommended to install the Minimal meta package first, then install the corresponding meta package.
+GNOME, LXQt and NAS are all based on Minimal. It is recommended to install the Minimal meta package first, then install the corresponding meta package.
 
-- minimal variant:
+- Minimal variant:
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
 ```
 
-- Desktop variant:
+- GNOME Desktop variant:
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-desktop bianbu-desktop-zh bianbu-desktop-en bianbu-desktop-minimal-en bianbu-standard bianbu-development"
 ```
 
-- Desktop Lite variant:
+- LXQt Desktop variant:
 
 ```shell
 chroot $TARGET_ROOTFS /bin/bash -c "DEBIAN_FRONTEND=noninteractive apt-get -y --allow-downgrades install bianbu-minimal"
@@ -226,7 +226,7 @@ chroot $TARGET_ROOTFS /bin/bash -c "echo root:bianbu | chpasswd"
 
 #### Configure Network
 
-- minimal
+- Minimal
 
 ```shell
 cat <<EOF | tee $TARGET_ROOTFS/etc/netplan/01-netcfg.yaml
@@ -244,7 +244,7 @@ EOF
 chroot $TARGET_ROOTFS /bin/bash -c "chmod 600 /etc/netplan/01-netcfg.yaml"
 ```
 
-- desktop/desktop-lite
+- GNOME/LXQt Desktop Version
 
 ```shell
 cat <<EOF | tee $TARGET_ROOTFS/etc/netplan/01-network-manager-all.yaml
@@ -295,7 +295,7 @@ mke2fs -d bootfs -L bootfs -t ext4 -U $UUID_BOOTFS bootfs.ext4 "256M"
 mke2fs -d $TARGET_ROOTFS -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
 ```
 
-Note: Regarding rootfs.ext4 size. bianbu-minimal recommends 2048M, bianbu-desktop recommends 8192M, bianbu-desktop-lite recommends 6144M
+Note: Regarding rootfs.ext4 size. minimal recommends 2048M, bianbu gnome version recommends 8192M, bianbu lxqt version recommends 6144M
 
 At this point, you can see two partition images in the current directory, bootfs.ext4 and rootfs.ext4, which can be flashed to the board using fastboot.
 

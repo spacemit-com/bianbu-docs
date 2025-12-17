@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Kernel Compile
 
-This guide details how to compile the kernel for Bianbu Linux (using `linux-6.6` as an example). Two compilation methods are supported:
+This guide details how to compile the kernel for Buildroot (using `linux-6.6` as an example). Two compilation methods are supported:
 
 - Cross-compilation – faster build time
 - Native compilation – more convenient to operate directly on the target system
@@ -12,14 +12,14 @@ This guide details how to compile the kernel for Bianbu Linux (using `linux-6.6`
 ## Download Kernel Source Code
 
 ```shell
-git clone https://gitee.com/bianbu-linux/linux-6.6 ~/linux-6.6
+git clone https://gitee.com/spacemit-buildroot/linux-6.6.git ~/linux-6.6
 ```
 
 ## Cross-Compilation Method
 
 ### Prepare Cross-Development Environment
 
-1. Refer to Bianbu Linux's [Development Environment](https://bianbu-linux.spacemit.com/source#development-environment) to set up the cross-compiler.
+1. Refer to Buildroot's [Development Environment](https://sdk.spacemit.com/source#development-environment) to set up the cross-compiler.
 
 2. Install required build dependencies with:
 
@@ -244,7 +244,7 @@ make -j$(nproc) -C /lib/modules/`uname -r`/build M=/path/to/rtl8852bs clean
 Download the source code:
 
 ```shell
-git clone https://gitee.com/bianbu-linux/uboot-2022.10 ~/uboot-2022.10
+git clone https://gitee.com/spacemit-buildroot/uboot-2022.10 ~/uboot-2022.10
 ```
 
 For cross-compilation, configure the following parameters first. Skip for native compilation:
@@ -271,7 +271,7 @@ The generated Debian package is located in the parent directory. Install it with
 Download the source code:
 
 ```shell
-git clone https://gitee.com/bianbu-linux/opensbi ~/opensbi
+git clone https://gitee.com/spacemit-buildroot/opensbi ~/opensbi
 ```
 
 For cross-compilation, configure the following parameters first. Skip for native compilation:

@@ -64,9 +64,9 @@ sidebar_position: 6
 
    ```shell
    cd $UEFI_WORKSPACE
-   git clone https://gitee.com/bianbu-linux/edk2.git
+   git clone https://gitee.com/spacemit-buildroot/edk2.git
    git -C edk2 submodule update --init
-   git clone https://gitee.com/bianbu-linux/edk2-platforms.git
+   git clone https://gitee.com/spacemit-buildroot/edk2-platforms.git
    git -C edk2-platforms submodule update --init
    ```
 
@@ -110,7 +110,7 @@ sidebar_position: 6
 
 1. **环境准备**
 
-   下载并烧录 Bianbu 2.2 镜像到 MUSE Pi Pro,建议使用 [Bianbu Desktop 2.2版本的固件](https://archive.spacemit.com/image/k1/version/bianbu/v2.2/bianbu-24.04-desktop-k1-v2.2-release-20250430190125.zip)，镜像获取方式及 Titan 烧录工具使用方法可参见: [镜像](https://bianbu.spacemit.com/image)
+   下载并烧录 Bianbu 2.2 镜像到 MUSE Pi Pro,建议使用 [Bianbu GNOME 2.2版本的固件](https://archive.spacemit.com/image/k1/version/bianbu/v2.2/bianbu-24.04-desktop-k1-v2.2-release-20250430190125.zip)，镜像获取方式及 Titan 烧录工具使用方法可参见: [镜像](https://bianbu.spacemit.com/image)
 
    烧录系统后，请**确保系统能够正常连接网络且网络**，因为制作分区文件的过程中需要下载软件包。
 
@@ -424,7 +424,7 @@ mke2fs -d bootfs -L bootfs -t ext4 -U $UUID_BOOTFS bootfs.ext4 "256M"
 mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
 ```
 
-需要注意的是，因为这里制作的是 Bianbu Minimal, 文件系统体积会比较小，所以设置 `rootfs.ext4` 文件系统大小为 2048M。如果是制作 Bianbu Desktop 或 Bianbu Desktop Lite，请根据实际情况调整文件系统大小，例如 10240M。
+需要注意的是，因为这里制作的是 Bianbu Minimal, 文件系统体积会比较小，所以设置 `rootfs.ext4` 文件系统大小为 2048M。如果是制作 Bianbu GNOME桌面版本 或 Bianbu LXQt桌面版本，请根据实际情况调整文件系统大小，例如 10240M。
 
 ## 制作 Titan 固件包
 
@@ -633,7 +633,7 @@ mke2fs -d rootfs -L rootfs -t ext4 -N 524288 -U $UUID_ROOTFS rootfs.ext4 "2048M"
 
    ```shell
    # 下载genimage配置生成脚本
-   wget -P $SDCARD_TMP https://gitee.com/bianbu-linux/scripts/raw/bl-v1.0.y/gen_imgcfg.py
+   wget -P $SDCARD_TMP https://gitee.com/spacemit-buildroot/scripts/raw/bl-v1.0.y/gen_imgcfg.py
    
    # 生成genimage配置
    python3 $SDCARD_TMP/gen_imgcfg.py -i $SDCARD_TMP/partition_universal.json -n bianbu-uefi.sdcard -o $SDCARD_TMP/genimage.cfg

@@ -25,7 +25,7 @@ tar -xzvf ~/spacemit-llama.cpp.riscv64.0.0.4.tar.gz -C ~/
 The following example demonstrates how to download a model:
 
 ```bash
-wget https://modelscope.cn/models/unsloth/Qwen3-0.6B-GGUF/resolve/master/Qwen3-0.6B-Q4_0.gguf -P ～/
+wget https://modelscope.cn/models/unsloth/Qwen3-0.6B-GGUF/resolve/master/Qwen3-0.6B-Q4_0.gguf -P ~/
 ```
 
 Import environment

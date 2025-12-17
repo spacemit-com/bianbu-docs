@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # 内核编译
 
-本指南介绍如何为 Bianbu Linux 编译内核(以`linux-6.6`为例)，支持两种方式：
+本指南介绍如何为 Buildroot 编译内核(以`linux-6.6`为例)，支持两种方式：
 
 - **交叉编译**：速度快
 - **本地编译**：操作方便
@@ -12,14 +12,14 @@ sidebar_position: 1
 ## 下载内核源码
 
 ```shell
-git clone https://gitee.com/bianbu-linux/linux-6.6 ~/linux-6.6
+git clone https://gitee.com/spacemit-buildroot/linux-6.6 ~/linux-6.6
 ```
 
 ## 交叉编译方式
 
 ### 准备交叉开发环境
 
-1. 请参考 Bianbu Linux 的 [开发环境](https://bianbu-linux.spacemit.com/source#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83) 准备好交叉编译环境。
+1. 请参考 Buildroot 的 [开发环境](https://sdk.spacemit.com/source#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83) 准备好交叉编译环境。
 
 2. 然后安装以下编译依赖：
 
@@ -248,7 +248,7 @@ make -j$(nproc) -C /lib/modules/`uname -r`/build M=/path/to/rtl8852bs clean
 下载源码：
 
 ```shell
-git clone https://gitee.com/bianbu-linux/uboot-2022.10 ~/uboot-2022.10
+git clone https://gitee.com/spacemit-buildroot/uboot-2022.10 ~/uboot-2022.10
 ```
 
 交叉编译请先配置以下参数，本地编译忽略：
@@ -275,7 +275,7 @@ dpkg-buildpackage -us -uc -b
 下载源码：
 
 ```shell
-git clone https://gitee.com/bianbu-linux/opensbi ~/opensbi
+git clone https://gitee.com/spacemit-buildroot/opensbi ~/opensbi
 ```
 
 交叉编译请先配置以下参数，本地编译忽略：

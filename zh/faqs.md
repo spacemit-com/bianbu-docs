@@ -41,7 +41,7 @@ sidebar_position: 9
 **更新方法**
 
 可以参考进迭时空论坛链接：https://forum.spacemit.com/t/topic/250
-或见 [系统升级](./user_guide/upgrade.md)。
+或见 [系统升级](./user_guide/GNOME/upgrade.md)。
 
 ### Bianbu 2.0.x 升级时可能遇到的问题
 

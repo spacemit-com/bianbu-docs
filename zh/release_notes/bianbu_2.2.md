@@ -23,9 +23,9 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 **发布日期：** 2025-8-16
 
-对应的 **Bianbu Linux** 版本：[v2.2.7](https://bianbu-linux.spacemit.com/release_notes/bl-v2.2.y)
+对应的 **BSP** 版本：[v2.2.7](https://sdk.spacemit.com/release_notes/bl-v2.2.y)
 
-### 主要更新
+### Bianbu OS基础组件主要更新
 
 - 支持Lichee PI 3A开发板
 
@@ -33,11 +33,11 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 **发布日期：** 2025-5-9
 
-对应的 **Bianbu Linux** 版本：[v2.2](https://bianbu-linux.spacemit.com/release_notes/bl-v2.2.y)
+对应的 **BSP** 版本：[v2.2](https://sdk.spacemit.com/release_notes/bl-v2.2.y)
 
-### 主要更新
+### LXQt桌面组件主要更新
 
-**新镜像 - bianbu-desktop-lite**
+**1. 新镜像 - bianbu lxqt桌面版本镜像**
 
 - 基于 `lxqt 2.1.0`
 - 默认使用 Wayland 协议
@@ -48,7 +48,13 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
   - Ctrl + Alt + ←/→ 切换左右工作区
   - logo + F1~F4 跳转到指定工作区
 
-**显示**
+### GNOME桌面组件主要更新
+
+该版本GNOME桌面组件暂无更新
+
+### Bianbu OS基础组件主要更新
+
+**1. 显示**
 
 - **wlroots**：
   - 新增实时显示桌面帧率功能
@@ -56,7 +62,7 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
 
 - **raindrop**：修复双屏拓展模式下，副屏桌面及图标概率性消失的问题
 
-**多媒体**
+**2. 多媒体**
 
 - **mpp**：修复 multiple encoding 时发生 segment fault 的问题
 - **pipewire**：修复录屏时锁屏导致的报错退出问题
@@ -78,15 +84,15 @@ Signed-By: /usr/share/keyrings/bianbu-archive-keyring.gpg
   - 新增输入一帧解码输出一帧的功能
   - 调整部分打印等级
 
-**开发工具**
+**3. 开发工具**
 
 - **gpiozero**: 支持 RV4B 40Pin 接口
 
-**AI**
+**4. AI**
 
 - **asr-llm**：支持将自动语音识别与大语言模型集成
 
-**BSP**
+**5. BSP**
 
 - **bianbu-esos**:
   - 适配 `v2.2` 内核
